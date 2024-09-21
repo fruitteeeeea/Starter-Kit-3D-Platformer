@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqg7c1eb7khs2"]
+
+[ext_resource type="PackedScene" uid="uid://bukwcb0x5d8k6" path="res://test/floor/block_grass_large_2.tscn" id="1_enrwf"]
+[ext_resource type="PackedScene" uid="uid://cvf1t0t6ajuhh" path="res://test/floor/block_grass_large_slope_narrow_2.tscn" id="2_y8wov"]
+
+[node name="floor" type="Node3D"]
+
+[node name="block-grass-large2" parent="." instance=ExtResource("1_enrwf")]
+
+[node name="block-grass-large-slope-narrow2" parent="." instance=ExtResource("2_y8wov")]
