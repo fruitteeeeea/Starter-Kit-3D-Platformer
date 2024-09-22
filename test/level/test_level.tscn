@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://24k8hgospgqc"]
+[gd_scene load_steps=14 format=3 uid="uid://24k8hgospgqc"]
 
 [ext_resource type="MeshLibrary" uid="uid://cote2g2mk3obv" path="res://test/floor/floor.tres" id="1_k4w35"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_p1nlk"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="3_pvdor"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="4_l06dd"]
-[ext_resource type="PackedScene" uid="uid://ckl1r5aerds4k" path="res://test/GLB format/arrows.glb" id="5_bdaag"]
+[ext_resource type="PackedScene" uid="uid://cyq8lfon4cta0" path="res://test/map/arrow.tscn" id="4_nw20x"]
 [ext_resource type="PackedScene" uid="uid://djow5jwpudcl8" path="res://test/GLB format/tree-pine.glb" id="6_wlygd"]
 [ext_resource type="PackedScene" uid="uid://cfdksv7dmqxlj" path="res://test/GLB format/tree.glb" id="7_5uusq"]
 [ext_resource type="PackedScene" uid="uid://dmifdv0tx8ncl" path="res://test/GLB format/grass.glb" id="7_apfpi"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="8_yphjb"]
 [ext_resource type="PackedScene" uid="uid://caqn7ymusg172" path="res://test/GLB format/flowers-tall.glb" id="9_q38ir"]
 [ext_resource type="PackedScene" uid="uid://cwln3rifmtb6p" path="res://test/GLB format/rocks.glb" id="10_v8d3b"]
+[ext_resource type="PackedScene" uid="uid://b4o0ra1xvrr35" path="res://test/attack/food.tscn" id="12_holk0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1lyig"]
 radius = 1.0
@@ -21,7 +22,8 @@ radius = 1.0
 environment = ExtResource("2_p1nlk")
 
 [node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("3_pvdor")]
-transform = Transform3D(-0.433357, 0, -0.249403, 0, 0.5, 0, 0.249403, 0, -0.433357, 4.46519, 4.58349, 6.27327)
+transform = Transform3D(-0.433357, 0, -0.249403, 0, 0.5, 0, 0.249403, 0, -0.433357, 3.67908, 4.58349, 4.30524)
+collision_layer = 3
 view = NodePath("../View")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
@@ -147,44 +149,111 @@ transform = Transform3D(0.436943, 0, 0.899489, 0, 1, 0, -0.899489, 0, 0.436943, 
 [node name="grass6" parent="World/Plants" instance=ExtResource("7_apfpi")]
 transform = Transform3D(0.436943, 0, 0.899489, 0, 1, 0, -0.899489, 0, 0.436943, -0.650171, 1.45252, -2.61763)
 
-[node name="cube11" parent="World" instance=ExtResource("8_yphjb")]
-transform = Transform3D(0.476646, 0.924607, 0.941422, -0.929853, 0.945559, -0.457882, -0.93624, -0.468385, 0.934042, -4.06888, -0.138702, 6.39304)
-
-[node name="cube12" parent="World" instance=ExtResource("8_yphjb")]
-transform = Transform3D(-1.02876, -0.695523, 0.652886, -0.929853, 0.945557, -0.457881, -0.213027, -0.768461, -1.15432, -3.80318, 0.618188, 8.62684)
-
-[node name="cube14" parent="World" instance=ExtResource("8_yphjb")]
-transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241, -0.974547, 1.4522, 2.05595, -8.75338, -0.138702, 4.94886)
-
-[node name="cube13" parent="World" instance=ExtResource("8_yphjb")]
-transform = Transform3D(0.828383, 0.283809, -1.09617, -0.929853, 0.945559, -0.457882, 0.646156, 0.996863, 0.746399, -9.37876, 1.1545, -5.44784)
-
-[node name="cube15" parent="World" instance=ExtResource("8_yphjb")]
-transform = Transform3D(0.40497, 0.886811, 1.00893, -0.929853, 0.945557, -0.457881, -0.969395, -0.536518, 0.860687, -11.6223, 1.91139, -5.61223)
-
-[node name="cube16" parent="World" instance=ExtResource("8_yphjb")]
-transform = Transform3D(0.659361, -1.16298, -2.34484, 1.97375, 1.80907, -0.342241, 1.71904, -1.63103, 1.29234, -8.1469, 1.1545, -7.50865)
-
-[node name="flowers-tall2" parent="World" instance=ExtResource("9_q38ir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94193, 1.49988, 4.35829)
-
-[node name="flowers-tall3" parent="World" instance=ExtResource("9_q38ir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32631, 2.5, 1.02606)
-
-[node name="flowers-tall4" parent="World" instance=ExtResource("9_q38ir")]
-transform = Transform3D(0.979582, 0, 0.201044, 0, 1, 0, -0.201044, 0, 0.979582, -4.36, 2.5, -6.68276)
-
-[node name="rocks2" parent="World" instance=ExtResource("10_v8d3b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4706, 0.50533, -13.7418)
-
-[node name="arrows2" parent="." instance=ExtResource("5_bdaag")]
-transform = Transform3D(0.0392771, 1.26969e-09, 0.999229, -3.10126e-10, 1, -1.25848e-09, -0.999229, -2.60459e-10, 0.0392771, 0.195335, 1.5, 3.3711)
-
-[node name="grass2" parent="." instance=ExtResource("7_apfpi")]
+[node name="grass13" parent="World/Plants" instance=ExtResource("7_apfpi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8911, 2.5, -2.13373)
 
-[node name="grass3" parent="." instance=ExtResource("7_apfpi")]
+[node name="grass14" parent="World/Plants" instance=ExtResource("7_apfpi")]
 transform = Transform3D(0.601355, 0, 0.798982, 0, 1, 0, -0.798982, 0, 0.601355, -7.97996, 2.5, -3.26753)
 
-[node name="grass4" parent="." instance=ExtResource("7_apfpi")]
+[node name="grass16" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.601355, 0, 0.798982, 0, 1, 0, -0.798982, 0, 0.601355, 8.3673, 0.471337, -14.5869)
+
+[node name="grass17" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.954099, 0, 0.29949, 0, 1, 0, -0.29949, 0, 0.954099, 9.17901, 0.471337, -19.2763)
+
+[node name="grass15" parent="World/Plants" instance=ExtResource("7_apfpi")]
 transform = Transform3D(0.178579, 0, 0.983926, 0, 1, 0, -0.983926, 0, 0.178579, -8.17914, 2.5, -2.57805)
+
+[node name="flowers-tall2" parent="World/Plants" instance=ExtResource("9_q38ir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94193, 1.49988, 4.35829)
+
+[node name="flowers-tall3" parent="World/Plants" instance=ExtResource("9_q38ir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.32631, 2.5, 1.02606)
+
+[node name="flowers-tall4" parent="World/Plants" instance=ExtResource("9_q38ir")]
+transform = Transform3D(0.979582, 0, 0.201044, 0, 1, 0, -0.201044, 0, 0.979582, -4.36, 2.5, -6.68276)
+
+[node name="flowers-tall5" parent="World/Plants" instance=ExtResource("9_q38ir")]
+transform = Transform3D(0.569122, -4.02094e-08, -0.822253, 4.47297e-08, 1, -1.79418e-08, 0.822253, -2.65681e-08, 0.569122, -0.769495, 2.5, -12.9661)
+
+[node name="rocks2" parent="World/Plants" instance=ExtResource("10_v8d3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4706, 0.50533, -13.7418)
+
+[node name="Arrow" parent="World" instance=ExtResource("4_nw20x")]
+transform = Transform3D(0.00298467, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00298467, -0.124592, 1.49673, 3.22196)
+
+[node name="Cloud" type="Node3D" parent="World"]
+
+[node name="cube11" parent="World/Cloud" instance=ExtResource("8_yphjb")]
+transform = Transform3D(0.476646, 0.924607, 0.941422, -0.929853, 0.945559, -0.457882, -0.93624, -0.468385, 0.934042, -4.06888, -0.138702, 6.39304)
+
+[node name="cube12" parent="World/Cloud" instance=ExtResource("8_yphjb")]
+transform = Transform3D(-1.02876, -0.695523, 0.652886, -0.929853, 0.945557, -0.457881, -0.213027, -0.768461, -1.15432, -3.80318, 0.618188, 8.62684)
+
+[node name="cube14" parent="World/Cloud" instance=ExtResource("8_yphjb")]
+transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241, -0.974547, 1.4522, 2.05595, -8.75338, -0.138702, 4.94886)
+
+[node name="cube13" parent="World/Cloud" instance=ExtResource("8_yphjb")]
+transform = Transform3D(0.828383, 0.283809, -1.09617, -0.929853, 0.945559, -0.457882, 0.646156, 0.996863, 0.746399, -9.37876, 1.1545, -5.44784)
+
+[node name="cube15" parent="World/Cloud" instance=ExtResource("8_yphjb")]
+transform = Transform3D(0.40497, 0.886811, 1.00893, -0.929853, 0.945557, -0.457881, -0.969395, -0.536518, 0.860687, -11.6223, 1.91139, -5.61223)
+
+[node name="cube16" parent="World/Cloud" instance=ExtResource("8_yphjb")]
+transform = Transform3D(0.659361, -1.16298, -2.34484, 1.97375, 1.80907, -0.342241, 1.71904, -1.63103, 1.29234, -8.1469, 1.1545, -7.50865)
+
+[node name="Food" type="Node3D" parent="World"]
+
+[node name="food" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0842, 2.4394, -22.7447)
+
+[node name="food2" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9778, 2.4394, -21.548)
+
+[node name="food3" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5363, 2.4394, -22.8244)
+
+[node name="food4" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.882, 2.4394, -21.8405)
+
+[node name="food5" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3606, 2.4394, -21.3087)
+
+[node name="food6" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9457, 2.4394, -22.399)
+
+[node name="food7" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1479, 2.4394, -22.7713)
+
+[node name="food8" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0947, 2.4394, -23.8882)
+
+[node name="food9" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0947, 2.4394, -23.8882)
+
+[node name="food10" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7673, 2.83777, -23.2155)
+
+[node name="food11" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6609, 2.83777, -22.0188)
+
+[node name="food12" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2194, 2.83777, -23.2952)
+
+[node name="food13" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5651, 2.83777, -22.3113)
+
+[node name="food14" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0437, 2.83777, -21.7795)
+
+[node name="food15" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6288, 2.83777, -22.8698)
+
+[node name="food16" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.831, 2.83777, -23.2421)
+
+[node name="food17" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7778, 2.83777, -24.3589)
+
+[node name="food18" parent="World/Food" instance=ExtResource("12_holk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7778, 2.83777, -24.3589)

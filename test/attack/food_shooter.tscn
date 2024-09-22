@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl41kwvg83ec5"]
+
+[ext_resource type="Script" path="res://test/attack/food_shooter.gd" id="1_iqme4"]
+[ext_resource type="PackedScene" uid="uid://cgtrpk7koy71t" path="res://test/attack/fruit/GLB format/hot-dog-raw.glb" id="2_amspu"]
+
+[node name="Food Shooter" type="Node3D"]
+script = ExtResource("1_iqme4")
+
+[node name="hot-dog-raw2" parent="." instance=ExtResource("2_amspu")]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275916, 0.0502615, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.276299, 0.0502615, 0)
