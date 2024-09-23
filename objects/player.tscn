@@ -44,7 +44,7 @@ normal_fade = 0.5
 [node name="ParticlesTrail" type="CPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_q7stj")
 cast_shadow = 0
-amount = 60
+amount = 6
 mesh = ExtResource("4_mvhqy")
 emission_shape = 1
 emission_sphere_radius = 0.2

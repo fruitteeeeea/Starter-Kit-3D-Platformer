@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://24k8hgospgqc"]
+[gd_scene load_steps=15 format=3 uid="uid://24k8hgospgqc"]
 
 [ext_resource type="MeshLibrary" uid="uid://cote2g2mk3obv" path="res://test/floor/floor.tres" id="1_k4w35"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_p1nlk"]
@@ -11,10 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="8_yphjb"]
 [ext_resource type="PackedScene" uid="uid://caqn7ymusg172" path="res://test/GLB format/flowers-tall.glb" id="9_q38ir"]
 [ext_resource type="PackedScene" uid="uid://cwln3rifmtb6p" path="res://test/GLB format/rocks.glb" id="10_v8d3b"]
-[ext_resource type="PackedScene" uid="uid://b4o0ra1xvrr35" path="res://test/attack/food.tscn" id="12_holk0"]
+[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://test/attack/turkey.tscn" id="13_58qoj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1lyig"]
 radius = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2t3k"]
+size = Vector3(20.2934, 8.67676, 1)
 
 [node name="Test Level" type="Node3D"]
 
@@ -22,7 +25,7 @@ radius = 1.0
 environment = ExtResource("2_p1nlk")
 
 [node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("3_pvdor")]
-transform = Transform3D(-0.433357, 0, -0.249403, 0, 0.5, 0, 0.249403, 0, -0.433357, 3.67908, 4.58349, 4.30524)
+transform = Transform3D(-0.433357, 0, -0.249403, 0, 0.5, 0, 0.249403, 0, -0.433357, 12.7214, 4.58349, -11.1811)
 collision_layer = 3
 view = NodePath("../View")
 
@@ -204,56 +207,186 @@ transform = Transform3D(0.659361, -1.16298, -2.34484, 1.97375, 1.80907, -0.34224
 
 [node name="Food" type="Node3D" parent="World"]
 
-[node name="food" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0842, 2.4394, -22.7447)
+[node name="Air Wall" type="Node3D" parent="World"]
 
-[node name="food2" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9778, 2.4394, -21.548)
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Air Wall"]
 
-[node name="food3" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5363, 2.4394, -22.8244)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.993276, 0.115769, 0, -0.115769, 0.993276, 14.4748, 3.87131, -10.4311)
+shape = SubResource("BoxShape3D_o2t3k")
 
-[node name="food4" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.882, 2.4394, -21.8405)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.993276, 0.115769, 0, -0.115769, 0.993276, 14.4748, 3.87131, -31.7305)
+shape = SubResource("BoxShape3D_o2t3k")
 
-[node name="food5" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3606, 2.4394, -21.3087)
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.2039, 3.87131, -20.6047)
+shape = SubResource("BoxShape3D_o2t3k")
 
-[node name="food6" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9457, 2.4394, -22.399)
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.42301, 3.87131, -22.9767)
+shape = SubResource("BoxShape3D_o2t3k")
 
-[node name="food7" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1479, 2.4394, -22.7713)
+[node name="food" type="Node3D" parent="World"]
 
-[node name="food8" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0947, 2.4394, -23.8882)
+[node name="Turkey" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41504, 1.56087, -20.4699)
 
-[node name="food9" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0947, 2.4394, -23.8882)
+[node name="Turkey2" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2173, 1.56087, -19.7712)
 
-[node name="food10" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7673, 2.83777, -23.2155)
+[node name="Turkey3" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1415, 0.967775, -20.0663)
 
-[node name="food11" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6609, 2.83777, -22.0188)
+[node name="Turkey4" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94832, 2.07005, -20.4699)
 
-[node name="food12" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2194, 2.83777, -23.2952)
+[node name="Turkey5" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7506, 2.07005, -19.7712)
 
-[node name="food13" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5651, 2.83777, -22.3113)
+[node name="Turkey6" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6748, 1.47696, -20.0663)
 
-[node name="food14" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0437, 2.83777, -21.7795)
+[node name="Turkey7" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.65543, 1.94721, -19.2771)
 
-[node name="food15" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6288, 2.83777, -22.8698)
+[node name="Turkey8" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45768, 1.94721, -18.5783)
 
-[node name="food16" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.831, 2.83777, -23.2421)
+[node name="Turkey9" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3819, 1.35411, -18.8734)
 
-[node name="food17" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7778, 2.83777, -24.3589)
+[node name="Turkey10" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3555, 1.56087, -20.0578)
 
-[node name="food18" parent="World/Food" instance=ExtResource("12_holk0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7778, 2.83777, -24.3589)
+[node name="Turkey11" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1578, 1.56087, -19.359)
+
+[node name="Turkey12" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.082, 0.967775, -19.6541)
+
+[node name="Turkey13" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8888, 2.07005, -20.0578)
+
+[node name="Turkey14" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.691, 2.07005, -19.359)
+
+[node name="Turkey15" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6152, 1.47696, -19.6541)
+
+[node name="Turkey16" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5959, 1.94721, -18.8649)
+
+[node name="Turkey17" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3982, 1.94721, -18.1661)
+
+[node name="Turkey18" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3224, 1.35411, -18.4613)
+
+[node name="Turkey19" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8367, 1.56087, -24.0071)
+
+[node name="Turkey20" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6389, 1.56087, -23.3083)
+
+[node name="Turkey21" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5631, 0.967775, -23.6034)
+
+[node name="Turkey22" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3699, 2.07005, -24.0071)
+
+[node name="Turkey23" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1722, 2.07005, -23.3083)
+
+[node name="Turkey24" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0964, 1.47696, -23.6034)
+
+[node name="Turkey25" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.077, 1.94721, -22.8142)
+
+[node name="Turkey26" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8793, 1.94721, -22.1154)
+
+[node name="Turkey27" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8035, 1.35411, -22.4105)
+
+[node name="Turkey28" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5299, 1.56087, -18.089)
+
+[node name="Turkey29" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3322, 1.56087, -17.3902)
+
+[node name="Turkey30" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2564, 0.967775, -17.6853)
+
+[node name="Turkey31" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0632, 2.07005, -18.089)
+
+[node name="Turkey32" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8655, 2.07005, -17.3902)
+
+[node name="Turkey33" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7896, 1.47696, -17.6853)
+
+[node name="Turkey34" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77033, 1.94721, -16.8961)
+
+[node name="Turkey35" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5726, 1.94721, -16.1973)
+
+[node name="Turkey36" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4968, 1.35411, -16.4925)
+
+[node name="Turkey37" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.651, 1.56087, -17.4288)
+
+[node name="Turkey38" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4532, 1.56087, -16.73)
+
+[node name="Turkey39" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3774, 0.967775, -17.0251)
+
+[node name="Turkey40" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1843, 2.07005, -17.4288)
+
+[node name="Turkey41" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9865, 2.07005, -16.73)
+
+[node name="Turkey42" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9107, 1.47696, -17.0251)
+
+[node name="Turkey43" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8914, 1.94721, -16.2359)
+
+[node name="Turkey44" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6936, 1.94721, -15.5371)
+
+[node name="Turkey45" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6178, 1.35411, -15.8323)
+
+[node name="Turkey46" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.651, 2.79004, -20.1389)
+
+[node name="Turkey47" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4532, 2.79004, -19.4401)
+
+[node name="Turkey48" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3774, 2.19694, -19.7353)
+
+[node name="Turkey49" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1843, 3.29922, -20.1389)
+
+[node name="Turkey50" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9865, 3.29922, -19.4401)
+
+[node name="Turkey51" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9107, 2.70613, -19.7353)
+
+[node name="Turkey52" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8914, 3.17638, -18.946)
+
+[node name="Turkey53" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6936, 3.17638, -18.2473)
+
+[node name="Turkey54" parent="World/food" instance=ExtResource("13_58qoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6178, 2.58328, -18.5424)

@@ -25,13 +25,20 @@ var coins = 0
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
 
+var is_freez := false
+
 # Functions
+
+func _ready() -> void:
+	add_to_group("player")
 
 func _physics_process(delta):
 
 	# Handle functions
 
-	handle_controls(delta)
+	if !is_freez:
+		handle_controls(delta)
+
 	handle_gravity(delta)
 
 	handle_effects(delta)
@@ -120,6 +127,7 @@ func handle_controls(delta):
 
 		if jump_single or jump_double:
 			jump()
+
 
 # Handle gravity
 
