@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqjuw1d4d3rnx"]
+
+[ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_0t6sv"]
+[ext_resource type="Script" path="res://test/enemy/enemy_skeleton.gd" id="2_r0nd8"]
+[ext_resource type="Script" path="res://test/drop item/drop_item.gd" id="3_wy335"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n1vwf"]
+radius = 0.25
+height = 0.75
+
+[node name="Enemy Skeleton" instance=ExtResource("1_0t6sv")]
+collision_layer = 3
+script = ExtResource("2_r0nd8")
+
+[node name="torso" parent="character-skeleton/root" index="2"]
+transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.223184, 0)
+
+[node name="arm-left" parent="character-skeleton/root/torso" index="0"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.225, 0.0025)
+
+[node name="arm-right" parent="character-skeleton/root/torso" index="1"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 0.225, 0.0025)
+
+[node name="head" parent="character-skeleton/root/torso" index="2"]
+transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
+shape = SubResource("CapsuleShape3D_n1vwf")
+
+[node name="DropItem" type="Marker3D" parent="." index="3"]
+script = ExtResource("3_wy335")

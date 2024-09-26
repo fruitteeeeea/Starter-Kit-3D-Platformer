@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpiuanfjrb3aw"]
+
+[ext_resource type="PackedScene" uid="uid://bn6tg8uui6ohd" path="res://test/attack/fruit/GLB format/pineapple.glb" id="1_unou1"]
+[ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="2_r5jud"]
+[ext_resource type="Script" path="res://test/drop item/pineapple_2.gd" id="2_s841c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22no7"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_r5jud")
+billboard_mode = 1
+billboard_keep_scale = true
+proximity_fade_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_cpi15"]
+
+[sub_resource type="Curve" id="Curve_7ty2i"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_1nlb0"]
+colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w7jch"]
+radius = 4.0
+
+[node name="pineapple2" instance=ExtResource("1_unou1")]
+script = ExtResource("2_s841c")
+
+[node name="pineapple" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0.25, 0)
+
+[node name="Particles" type="CPUParticles3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447834, 0)
+material_override = SubResource("StandardMaterial3D_22no7")
+mesh = SubResource("QuadMesh_cpi15")
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_7ty2i")
+color_ramp = SubResource("Gradient_1nlb0")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390971, 0)
+shape = SubResource("SphereShape3D_w7jch")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -37,6 +37,9 @@ func show_label(visible01 := false):
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	if !body.has_method("player"):
+		return
+	
 	show_label(true)
 	playe_in_area = true
 

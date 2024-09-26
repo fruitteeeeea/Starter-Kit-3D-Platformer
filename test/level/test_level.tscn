@@ -1,23 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://24k8hgospgqc"]
+[gd_scene load_steps=21 format=3 uid="uid://24k8hgospgqc"]
 
 [ext_resource type="MeshLibrary" uid="uid://cote2g2mk3obv" path="res://test/floor/floor.tres" id="1_k4w35"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_p1nlk"]
+[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://test/enemy/enemy_skeleton.tscn" id="3_kgy68"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="3_pvdor"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="4_l06dd"]
 [ext_resource type="PackedScene" uid="uid://cyq8lfon4cta0" path="res://test/map/arrow.tscn" id="4_nw20x"]
-[ext_resource type="PackedScene" uid="uid://djow5jwpudcl8" path="res://test/GLB format/tree-pine.glb" id="6_wlygd"]
-[ext_resource type="PackedScene" uid="uid://cfdksv7dmqxlj" path="res://test/GLB format/tree.glb" id="7_5uusq"]
-[ext_resource type="PackedScene" uid="uid://dmifdv0tx8ncl" path="res://test/GLB format/grass.glb" id="7_apfpi"]
+[ext_resource type="PackedScene" uid="uid://ds8yncr41wcuu" path="res://test/GLB format/tree-pine.glb" id="6_wlygd"]
+[ext_resource type="PackedScene" uid="uid://b1fw18piq10vy" path="res://test/GLB format/tree.glb" id="7_5uusq"]
+[ext_resource type="PackedScene" uid="uid://c5wjln7xt883p" path="res://test/GLB format/grass.glb" id="7_apfpi"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="8_yphjb"]
-[ext_resource type="PackedScene" uid="uid://caqn7ymusg172" path="res://test/GLB format/flowers-tall.glb" id="9_q38ir"]
-[ext_resource type="PackedScene" uid="uid://cwln3rifmtb6p" path="res://test/GLB format/rocks.glb" id="10_v8d3b"]
+[ext_resource type="PackedScene" uid="uid://ctowrhvd5o7df" path="res://test/GLB format/flowers-tall.glb" id="9_q38ir"]
+[ext_resource type="PackedScene" uid="uid://byi8n3vwlmppk" path="res://test/GLB format/rocks.glb" id="10_v8d3b"]
 [ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://test/attack/turkey.tscn" id="13_58qoj"]
+[ext_resource type="PackedScene" uid="uid://co3quursonq47" path="res://test/map/barrel.tscn" id="13_485hn"]
+[ext_resource type="Script" path="res://test/level/enemy_spwan.gd" id="15_a7f00"]
+[ext_resource type="PackedScene" uid="uid://bpiuanfjrb3aw" path="res://test/drop item/pineapple_2.tscn" id="15_uifax"]
+[ext_resource type="PackedScene" uid="uid://fg23drk7hoh8" path="res://test/drop item/soda_glass_2.tscn" id="16_byoej"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_1lyig"]
 radius = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2t3k"]
-size = Vector3(20.2934, 8.67676, 1)
+size = Vector3(35.4124, 8.67676, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1a66l"]
 
 [node name="Test Level" type="Node3D"]
 
@@ -25,15 +32,14 @@ size = Vector3(20.2934, 8.67676, 1)
 environment = ExtResource("2_p1nlk")
 
 [node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("3_pvdor")]
-transform = Transform3D(-0.433357, 0, -0.249403, 0, 0.5, 0, 0.249403, 0, -0.433357, 12.7214, 4.58349, -11.1811)
-collision_layer = 3
+transform = Transform3D(-0.433357, 0, -0.249403, 0, 0.5, 0, 0.249403, 0, -0.433357, 11.2142, 4.58349, -13.0019)
 view = NodePath("../View")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("SphereMesh_1lyig")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.963565, 0.204897, -0.171929, 0, 0.642788, 0.766044, 0.267474, 0.738133, -0.619368, 0, 4.89622, -0.0345625)
+transform = Transform3D(-0.199316, 0.750674, -0.629891, -7.94025e-09, 0.642788, 0.766044, 0.979935, 0.152685, -0.128118, 6.40581, 4.89622, -9.71505)
 shadow_enabled = true
 shadow_opacity = 0.75
 
@@ -43,9 +49,10 @@ script = ExtResource("4_l06dd")
 target = NodePath("../Player")
 
 [node name="Camera" type="Camera3D" parent="View"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, -3.57628e-07, 0, 0, 1, 0, 0, 0)
 current = true
 fov = 40.0
+size = 10.0
 
 [node name="World" type="Node3D" parent="."]
 
@@ -53,7 +60,7 @@ fov = 40.0
 mesh_library = ExtResource("1_k4w35")
 cell_size = Vector3(1.8, 1, 1.8)
 data = {
-"cells": PackedInt32Array(65535, 1, 0, 0, 1, 0, 1, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 2, 1, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 65535, 3, 0, 65533, 65534, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65535, 65534, 0, 65534, 65534, 0, 65533, 0, 0, 65534, 0, 0, 131070, 65532, 0, 131069, 65531, 0, 131069, 65532, 0, 131070, 65530, 0, 131070, 65531, 0, 131071, 65531, 0, 131071, 65530, 0, 131069, 65529, 0, 131069, 65530, 0, 131070, 65529, 0, 131071, 65529, 0, 131070, 65533, 1, 131071, 65532, 0, 196606, 65528, 1, 196606, 65527, 0, 196605, 65527, 0, 196605, 65526, 0, 196606, 65526, 0, 196607, 65526, 0, 196607, 65527, 0, 131072, 65526, 0, 131072, 65527, 0, 196600, 65530, 0, 196600, 65531, 0, 196599, 65531, 0, 196599, 65530, 0, 196598, 65531, 0, 196598, 65530, 0, 2, 65531, 0, 2, 65530, 0, 1, 65531, 0, 1, 65530, 0, 1, 65529, 0, 2, 65529, 0, 65536, 65530, 1048577, 131068, 65535, 1048577, 131067, 65534, 1048576, 131067, 65535, 1048576, 131067, 0, 1048576, 131066, 0, 1048576, 131066, 65535, 1048576, 131066, 65534, 1048576, 131065, 65534, 1048576, 131065, 65535, 1048576, 131065, 0, 1048576, 65533, 65529, 0, -65532, 65529, 0, -65531, 65529, 0, -65530, 65529, 0, -65529, 65529, 0, -65528, 65529, 0, -65527, 65529, 0, -65526, 65529, 0, -65525, 65529, 0, -65525, 65528, 0, -65525, 65527, 0, -65525, 65526, 0, -65525, 65525, 0, -65525, 65524, 0, -65525, 65523, 0, -65525, 65522, 0, -65525, 65521, 0, -65526, 65521, 0, -65527, 65521, 0, -65528, 65521, 0, -65528, 65520, 0, -65529, 65520, 0, -65530, 65520, 0, -65531, 65520, 0, -65532, 65520, 0, -65532, 65519, 0, -65527, 65520, 0, -65526, 65520, 0, -65525, 65520, 0, -65525, 65519, 0, -65526, 65519, 0, -65527, 65519, 0, -65528, 65519, 0, -65531, 65519, 0, -65530, 65519, 0, -65529, 65519, 0, -65532, 65521, 0, -65532, 65522, 0, -65532, 65523, 0, -65532, 65524, 0, -65532, 65525, 0, -65532, 65526, 0, -65531, 65526, 0, -65531, 65527, 0, -65531, 65528, 0, -65532, 65528, 0, -65532, 65527, 0, -65530, 65521, 0, -65531, 65522, 0, -65531, 65523, 0, -65531, 65524, 0, -65531, 65525, 0, -65531, 65521, 0, -65530, 65524, 0, -65529, 65524, 0, -65529, 65523, 0, -65529, 65522, 0, -65529, 65521, 0, -65529, 65525, 0, -65530, 65525, 0, -65530, 65523, 0, -65528, 65523, 0, -65529, 65526, 0, -65529, 65527, 0, -65530, 65528, 0, -65530, 65526, 0, -65530, 65522, 0, -65530, 65527, 0, -65528, 65524, 0, -65528, 65525, 0, -65527, 65526, 0, -65527, 65527, 0, -65527, 65528, 0, -65528, 65528, 0, -65529, 65528, 0, -65526, 65528, 0, -65526, 65527, 0, -65526, 65526, 0, -65526, 65525, 0, -65526, 65524, 0, -65526, 65523, 0, -65526, 65522, 0, -65527, 65522, 0, -65527, 65523, 0, -65528, 65522, 0, -65527, 65524, 0, -65527, 65525, 0, -65528, 65526, 0, -65528, 65527, 0, 3, 65529, 1048577)
+"cells": PackedInt32Array(65535, 1, 0, 0, 1, 0, 1, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 2, 1, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 65535, 3, 0, 65533, 65534, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 65535, 65534, 0, 65534, 65534, 0, 65533, 0, 0, 65534, 0, 0, 131070, 65532, 0, 131069, 65531, 0, 131069, 65532, 0, 131070, 65530, 0, 131070, 65531, 0, 131071, 65531, 0, 131071, 65530, 0, 131069, 65529, 0, 131069, 65530, 0, 131070, 65529, 0, 131071, 65529, 0, 131070, 65533, 1, 131071, 65532, 0, 196606, 65528, 1, 196606, 65527, 0, 196605, 65527, 0, 196605, 65526, 0, 196606, 65526, 0, 196607, 65526, 0, 196607, 65527, 0, 131072, 65526, 0, 131072, 65527, 0, 196600, 65530, 0, 196600, 65531, 0, 196599, 65531, 0, 196599, 65530, 0, 196598, 65531, 0, 196598, 65530, 0, 2, 65531, 0, 2, 65530, 0, 1, 65531, 0, 1, 65530, 0, 1, 65529, 0, 2, 65529, 0, 65536, 65530, 1048577, 131068, 65535, 1048577, 131067, 65534, 1048576, 131067, 65535, 1048576, 131067, 0, 1048576, 131066, 0, 1048576, 131066, 65535, 1048576, 131066, 65534, 1048576, 131065, 65534, 1048576, 131065, 65535, 1048576, 131065, 0, 1048576, 65533, 65529, 0, -65532, 65529, 0, -65531, 65529, 0, -65530, 65529, 0, -65529, 65529, 0, -65528, 65529, 0, -65527, 65529, 0, -65526, 65529, 0, -65525, 65529, 0, -65525, 65528, 0, -65525, 65527, 0, -65525, 65526, 0, -65525, 65525, 0, -65525, 65524, 0, -65525, 65523, 0, -65525, 65522, 0, -65525, 65521, 0, -65526, 65521, 0, -65527, 65521, 0, -65528, 65521, 0, -65528, 65520, 0, -65529, 65520, 0, -65530, 65520, 0, -65531, 65520, 0, -65532, 65520, 0, -65532, 65519, 0, -65527, 65520, 0, -65526, 65520, 0, -65525, 65520, 0, -65525, 65519, 0, -65526, 65519, 0, -65527, 65519, 0, -65528, 65519, 0, -65531, 65519, 0, -65530, 65519, 0, -65529, 65519, 0, -65532, 65521, 0, -65532, 65522, 0, -65532, 65523, 0, -65532, 65524, 0, -65532, 65525, 0, -65532, 65526, 0, -65531, 65526, 0, -65531, 65527, 0, -65531, 65528, 0, -65532, 65528, 0, -65532, 65527, 0, -65530, 65521, 0, -65531, 65522, 0, -65531, 65523, 0, -65531, 65524, 0, -65531, 65525, 0, -65531, 65521, 0, -65530, 65524, 0, -65529, 65524, 0, -65529, 65523, 0, -65529, 65522, 0, -65529, 65521, 0, -65529, 65525, 0, -65530, 65525, 0, -65530, 65523, 0, -65528, 65523, 0, -65529, 65526, 0, -65529, 65527, 0, -65530, 65528, 0, -65530, 65526, 0, -65530, 65522, 0, -65530, 65527, 0, -65528, 65524, 0, -65528, 65525, 0, -65527, 65526, 0, -65527, 65527, 0, -65527, 65528, 0, -65528, 65528, 0, -65529, 65528, 0, -65526, 65528, 0, -65526, 65527, 0, -65526, 65526, 0, -65526, 65525, 0, -65526, 65524, 0, -65526, 65523, 0, -65526, 65522, 0, -65527, 65522, 0, -65527, 65523, 0, -65528, 65522, 0, -65527, 65524, 0, -65527, 65525, 0, -65528, 65526, 0, -65528, 65527, 0, 3, 65529, 1048577, -65529, 65518, 0, -65528, 65517, 0, -65527, 65517, 0, -65526, 65517, 0, -65525, 65517, 0, -65525, 65518, 0, -65524, 65517, 0, -65523, 65517, 0, -65522, 65517, 0, -65521, 65517, 0, -65515, 65518, 0, -65515, 65519, 0, -65515, 65520, 0, -65515, 65521, 0, -65515, 65522, 0, -65515, 65523, 0, -65515, 65524, 0, -65515, 65525, 0, -65515, 65526, 0, -65515, 65527, 0, -65515, 65528, 0, -65515, 65529, 0, -65524, 65529, 0, -65523, 65529, 0, -65522, 65529, 0, -65521, 65529, 0, -65520, 65529, 0, -65519, 65529, 0, -65518, 65529, 0, -65517, 65529, 0, -65516, 65529, 0, -65532, 65513, 0, -65532, 65514, 0, -65532, 65515, 0, -65532, 65516, 0, -65532, 65517, 0, -65531, 65517, 0, -65531, 65518, 0, -65532, 65518, 0, -65531, 65513, 0, -65530, 65513, 0, -65529, 65513, 0, -65528, 65513, 0, -65527, 65513, 0, -65526, 65513, 0, -65525, 65513, 0, -65524, 65513, 0, -65523, 65513, 0, -65522, 65513, 0, -65521, 65513, 0, -65520, 65513, 0, -65519, 65513, 0, -65518, 65513, 0, -65517, 65513, 0, -65516, 65513, 0, -65515, 65513, 0, -65515, 65514, 0, -65515, 65515, 0, -65515, 65516, 0, -65515, 65517, 0, -65531, 65516, 0, -65530, 65517, 0, -65529, 65517, 0, -65530, 65518, 0, -65528, 65518, 0, -65527, 65518, 0, -65526, 65518, 0, -65531, 65514, 0, -65530, 65514, 0, -65529, 65514, 0, -65527, 65514, 0, -65526, 65514, 0, -65525, 65514, 0, -65524, 65514, 0, -65523, 65514, 0, -65522, 65514, 0, -65519, 65514, 0, -65518, 65514, 0, -65517, 65514, 0, -65516, 65514, 0, -65520, 65514, 0, -65521, 65514, 0, -65528, 65514, 0, -65529, 65515, 0, -65530, 65515, 0, -65531, 65515, 0, -65527, 65516, 0, -65526, 65516, 0, -65525, 65516, 0, -65524, 65516, 0, -65523, 65516, 0, -65522, 65516, 0, -65521, 65515, 0, -65520, 65515, 0, -65519, 65515, 0, -65518, 65515, 0, -65517, 65515, 0, -65523, 65515, 0, -65525, 65515, 0, -65526, 65515, 0, -65528, 65515, 0, -65528, 65516, 0, -65524, 65515, 0, -65527, 65515, 0, -65522, 65515, 0, -65516, 65515, 0, -65519, 65516, 0, -65520, 65516, 0, -65521, 65516, 0, -65529, 65516, 0, -65530, 65516, 0, -65518, 65516, 0, -65517, 65516, 0, -65516, 65516, 0, -65517, 65517, 0, -65518, 65517, 0, -65519, 65517, 0, -65520, 65517, 0, -65520, 65518, 0, -65519, 65518, 0, -65518, 65518, 0, -65517, 65518, 0, -65516, 65518, 0, -65516, 65517, 0, -65524, 65518, 0, -65523, 65518, 0, -65522, 65518, 0, -65521, 65518, 0, -65524, 65519, 0, -65523, 65520, 0, -65522, 65520, 0, -65522, 65519, 0, -65521, 65519, 0, -65520, 65519, 0, -65519, 65519, 0, -65518, 65519, 0, -65517, 65519, 0, -65516, 65519, 0, -65523, 65519, 0, -65524, 65520, 0, -65524, 65521, 0, -65523, 65521, 0, -65522, 65521, 0, -65521, 65521, 0, -65520, 65521, 0, -65519, 65521, 0, -65518, 65521, 0, -65517, 65521, 0, -65516, 65521, 0, -65516, 65520, 0, -65517, 65520, 0, -65518, 65520, 0, -65519, 65520, 0, -65520, 65520, 0, -65521, 65520, 0, -65516, 65522, 0, -65516, 65523, 0, -65516, 65524, 0, -65517, 65523, 0, -65518, 65523, 0, -65519, 65523, 0, -65521, 65523, 0, -65522, 65523, 0, -65523, 65523, 0, -65524, 65523, 0, -65524, 65522, 0, -65523, 65522, 0, -65522, 65522, 0, -65521, 65522, 0, -65520, 65522, 0, -65519, 65522, 0, -65518, 65522, 0, -65517, 65522, 0, -65520, 65523, 0, -65519, 65524, 0, -65520, 65524, 0, -65523, 65524, 0, -65524, 65524, 0, -65522, 65524, 0, -65521, 65524, 0, -65518, 65524, 0, -65517, 65524, 0, -65524, 65526, 0, -65523, 65526, 0, -65522, 65526, 0, -65521, 65526, 0, -65520, 65526, 0, -65519, 65526, 0, -65518, 65526, 0, -65517, 65526, 0, -65517, 65525, 0, -65516, 65526, 0, -65516, 65525, 0, -65518, 65525, 0, -65519, 65525, 0, -65521, 65525, 0, -65522, 65525, 0, -65523, 65525, 0, -65524, 65525, 0, -65520, 65525, 0, -65524, 65527, 0, -65523, 65527, 0, -65522, 65527, 0, -65521, 65527, 0, -65520, 65527, 0, -65519, 65527, 0, -65516, 65527, 0, -65517, 65527, 0, -65518, 65527, 0, -65524, 65528, 0, -65523, 65528, 0, -65522, 65528, 0, -65521, 65528, 0, -65520, 65528, 0, -65519, 65528, 0, -65518, 65528, 0, -65517, 65528, 0, -65516, 65528, 0)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
@@ -161,11 +168,53 @@ transform = Transform3D(0.601355, 0, 0.798982, 0, 1, 0, -0.798982, 0, 0.601355, 
 [node name="grass16" parent="World/Plants" instance=ExtResource("7_apfpi")]
 transform = Transform3D(0.601355, 0, 0.798982, 0, 1, 0, -0.798982, 0, 0.601355, 8.3673, 0.471337, -14.5869)
 
+[node name="grass18" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.601355, 0, 0.798982, 0, 1, 0, -0.798982, 0, 0.601355, 11.968, 0.471337, -18.8531)
+
+[node name="grass19" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(-0.229982, 1.09012e-10, 0.973195, -1.02043e-10, 1, -1.36128e-10, -0.973195, -1.30614e-10, -0.229982, 12.3939, 0.471337, -19.319)
+
+[node name="grass20" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.222263, 1.55404e-10, 0.974987, -1.02043e-10, 1, -1.36128e-10, -0.974987, -6.92339e-11, 0.222263, 12.8066, 0.471337, -18.72)
+
+[node name="grass21" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.222263, 1.55404e-10, 0.974987, -1.02043e-10, 1, -1.36128e-10, -0.974987, -6.92339e-11, 0.222263, 13.3523, 0.471337, -20.344)
+
 [node name="grass17" parent="World/Plants" instance=ExtResource("7_apfpi")]
 transform = Transform3D(0.954099, 0, 0.29949, 0, 1, 0, -0.29949, 0, 0.954099, 9.17901, 0.471337, -19.2763)
 
 [node name="grass15" parent="World/Plants" instance=ExtResource("7_apfpi")]
 transform = Transform3D(0.178579, 0, 0.983926, 0, 1, 0, -0.983926, 0, 0.178579, -8.17914, 2.5, -2.57805)
+
+[node name="grass22" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.222263, 1.55404e-10, 0.974987, -1.02043e-10, 1, -1.36128e-10, -0.974987, -6.92339e-11, 0.222263, 19.0266, 0.471337, -33.5979)
+
+[node name="grass23" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.954099, 0, 0.29949, 0, 1, 0, -0.29949, 0, 0.954099, 14.8533, 0.471337, -32.5302)
+
+[node name="grass24" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.178579, 0, 0.983926, 0, 1, 0, -0.983926, 0, 0.178579, -2.50483, 2.5, -15.832)
+
+[node name="grass25" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(-0.237838, 1.07952e-10, 0.971305, -1.02043e-10, 1, -1.36128e-10, -0.971305, -1.31491e-10, -0.237838, 16.8228, 0.471337, -37.2193)
+
+[node name="grass26" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.719, 0, 0.695009, 0, 1, 0, -0.695009, 0, 0.719, 13.5694, 0.471337, -34.3959)
+
+[node name="grass27" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(-0.280901, 0, 0.959737, 0, 1, 0, -0.959737, 0, -0.280901, 5.52569, 2.5, -11.6927)
+
+[node name="grass28" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(-0.237838, 1.07952e-10, 0.971305, -1.02043e-10, 1, -1.36128e-10, -0.971305, -1.31491e-10, -0.237838, 30.5177, 0.471337, -36.2292)
+
+[node name="grass29" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.719, 0, 0.695009, 0, 1, 0, -0.695009, 0, 0.719, 27.2642, 0.471337, -33.4058)
+
+[node name="grass31" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(-0.237838, 1.07952e-10, 0.971305, -1.02043e-10, 1, -1.36128e-10, -0.971305, -1.31491e-10, -0.237838, 33.1743, 0.471337, -39.5597)
+
+[node name="grass32" parent="World/Plants" instance=ExtResource("7_apfpi")]
+transform = Transform3D(0.719, 0, 0.695009, 0, 1, 0, -0.695009, 0, 0.719, 29.9208, 0.471337, -36.7363)
 
 [node name="flowers-tall2" parent="World/Plants" instance=ExtResource("9_q38ir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94193, 1.49988, 4.35829)
@@ -212,19 +261,19 @@ transform = Transform3D(0.659361, -1.16298, -2.34484, 1.97375, 1.80907, -0.34224
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Air Wall"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.993276, 0.115769, 0, -0.115769, 0.993276, 14.4748, 3.87131, -10.4311)
+transform = Transform3D(1, 0, 0, 0, 0.993276, 0.115769, 0, -0.115769, 0.993276, 22.0343, 3.87131, -10.4164)
 shape = SubResource("BoxShape3D_o2t3k")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.993276, 0.115769, 0, -0.115769, 0.993276, 14.4748, 3.87131, -31.7305)
+transform = Transform3D(1, 0, 0, 0, 0.993276, 0.115769, 0, -0.115769, 0.993276, 23.3495, 3.87131, -41.7628)
 shape = SubResource("BoxShape3D_o2t3k")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.2039, 3.87131, -20.6047)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40.2587, 3.87131, -27.8139)
 shape = SubResource("BoxShape3D_o2t3k")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="World/Air Wall/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.42301, 3.87131, -22.9767)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.42301, 3.87131, -30.0692)
 shape = SubResource("BoxShape3D_o2t3k")
 
 [node name="food" type="Node3D" parent="World"]
@@ -232,161 +281,64 @@ shape = SubResource("BoxShape3D_o2t3k")
 [node name="Turkey" parent="World/food" instance=ExtResource("13_58qoj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41504, 1.56087, -20.4699)
 
-[node name="Turkey2" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2173, 1.56087, -19.7712)
+[node name="Joint" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93903, 1.49136, 0)
 
-[node name="Turkey3" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1415, 0.967775, -20.0663)
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Joint"]
 
-[node name="Turkey4" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94832, 2.07005, -20.4699)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Joint/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.327367, 0)
+shape = SubResource("SphereShape3D_1a66l")
 
-[node name="Turkey5" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7506, 2.07005, -19.7712)
+[node name="barrel" parent="World/Joint" instance=ExtResource("13_485hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256602, 0)
 
-[node name="Turkey6" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6748, 1.47696, -20.0663)
+[node name="barrel2" parent="World/Joint" instance=ExtResource("13_485hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87849, 0)
 
-[node name="Turkey7" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.65543, 1.94721, -19.2771)
+[node name="barrel3" parent="World/Joint" instance=ExtResource("13_485hn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00321686, 1.44248, 0)
 
-[node name="Turkey8" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.45768, 1.94721, -18.5783)
+[node name="ConeTwistJoint3D" type="ConeTwistJoint3D" parent="World/Joint"]
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../barrel")
 
-[node name="Turkey9" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3819, 1.35411, -18.8734)
+[node name="ConeTwistJoint3D2" type="ConeTwistJoint3D" parent="World/Joint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803093, 0)
+node_a = NodePath("../barrel")
+node_b = NodePath("../barrel2")
 
-[node name="Turkey10" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3555, 1.56087, -20.0578)
+[node name="ConeTwistJoint3D3" type="ConeTwistJoint3D" parent="World/Joint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.293788, 1.08509, 0)
+node_a = NodePath("../barrel2")
+node_b = NodePath("../barrel3")
 
-[node name="Turkey11" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1578, 1.56087, -19.359)
+[node name="drop items" type="Node3D" parent="World"]
 
-[node name="Turkey12" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.082, 0.967775, -19.6541)
+[node name="soda-glass2" parent="World/drop items" instance=ExtResource("16_byoej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9938, 0.729944, -17.3658)
 
-[node name="Turkey13" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8888, 2.07005, -20.0578)
+[node name="pineapple2" parent="World/drop items" instance=ExtResource("15_uifax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1642, 0.730453, -18.6185)
 
-[node name="Turkey14" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.691, 2.07005, -19.359)
+[node name="Enemy Skeleton" parent="." instance=ExtResource("3_kgy68")]
+transform = Transform3D(-0.921579, 1.32745e-08, -0.388191, 4.53688e-08, 1, -7.35115e-08, 0.388191, -8.53584e-08, -0.921579, 8.97752, 8.07574, -13.8391)
 
-[node name="Turkey15" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6152, 1.47696, -19.6541)
+[node name="EnemySpwan" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5934, 6.49353, -25.293)
+script = ExtResource("15_a7f00")
+do_spwan_enemy = true
 
-[node name="Turkey16" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5959, 1.94721, -18.8649)
+[node name="Timer" type="Timer" parent="EnemySpwan"]
+autostart = true
 
-[node name="Turkey17" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3982, 1.94721, -18.1661)
+[node name="EnemySpwan2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6444, 6.49353, -27.1451)
+script = ExtResource("15_a7f00")
+do_spwan_enemy = true
 
-[node name="Turkey18" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3224, 1.35411, -18.4613)
+[node name="Timer" type="Timer" parent="EnemySpwan2"]
+autostart = true
 
-[node name="Turkey19" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8367, 1.56087, -24.0071)
-
-[node name="Turkey20" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6389, 1.56087, -23.3083)
-
-[node name="Turkey21" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5631, 0.967775, -23.6034)
-
-[node name="Turkey22" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3699, 2.07005, -24.0071)
-
-[node name="Turkey23" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1722, 2.07005, -23.3083)
-
-[node name="Turkey24" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0964, 1.47696, -23.6034)
-
-[node name="Turkey25" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.077, 1.94721, -22.8142)
-
-[node name="Turkey26" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8793, 1.94721, -22.1154)
-
-[node name="Turkey27" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8035, 1.35411, -22.4105)
-
-[node name="Turkey28" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5299, 1.56087, -18.089)
-
-[node name="Turkey29" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3322, 1.56087, -17.3902)
-
-[node name="Turkey30" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2564, 0.967775, -17.6853)
-
-[node name="Turkey31" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0632, 2.07005, -18.089)
-
-[node name="Turkey32" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8655, 2.07005, -17.3902)
-
-[node name="Turkey33" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7896, 1.47696, -17.6853)
-
-[node name="Turkey34" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77033, 1.94721, -16.8961)
-
-[node name="Turkey35" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5726, 1.94721, -16.1973)
-
-[node name="Turkey36" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4968, 1.35411, -16.4925)
-
-[node name="Turkey37" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.651, 1.56087, -17.4288)
-
-[node name="Turkey38" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4532, 1.56087, -16.73)
-
-[node name="Turkey39" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3774, 0.967775, -17.0251)
-
-[node name="Turkey40" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1843, 2.07005, -17.4288)
-
-[node name="Turkey41" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9865, 2.07005, -16.73)
-
-[node name="Turkey42" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9107, 1.47696, -17.0251)
-
-[node name="Turkey43" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8914, 1.94721, -16.2359)
-
-[node name="Turkey44" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6936, 1.94721, -15.5371)
-
-[node name="Turkey45" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6178, 1.35411, -15.8323)
-
-[node name="Turkey46" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.651, 2.79004, -20.1389)
-
-[node name="Turkey47" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4532, 2.79004, -19.4401)
-
-[node name="Turkey48" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3774, 2.19694, -19.7353)
-
-[node name="Turkey49" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1843, 3.29922, -20.1389)
-
-[node name="Turkey50" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9865, 3.29922, -19.4401)
-
-[node name="Turkey51" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9107, 2.70613, -19.7353)
-
-[node name="Turkey52" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8914, 3.17638, -18.946)
-
-[node name="Turkey53" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6936, 3.17638, -18.2473)
-
-[node name="Turkey54" parent="World/food" instance=ExtResource("13_58qoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6178, 2.58328, -18.5424)
+[connection signal="timeout" from="EnemySpwan/Timer" to="EnemySpwan" method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemySpwan2/Timer" to="EnemySpwan2" method="_on_timer_timeout"]

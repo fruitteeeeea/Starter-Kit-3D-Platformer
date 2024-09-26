@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkl2y8jm4m4ay"]
+
+[ext_resource type="PackedScene" uid="uid://duwnfhp0npek7" path="res://test/attack/fruit/GLB format/corn.glb" id="1_onefa"]
+[ext_resource type="Script" path="res://test/player/corn_2.gd" id="2_bhonv"]
+
+[node name="corn2" instance=ExtResource("1_onefa")]
+transform = Transform3D(1, 0, 0, 0, 0.268147, -0.963378, 0, 0.963378, 0.268147, 0, 0, 0)
+script = ExtResource("2_bhonv")

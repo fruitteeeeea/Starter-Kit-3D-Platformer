@@ -7,6 +7,7 @@ extends RigidBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().create_timer(1.8).timeout #炸弹冷却
 	explode()
 	pass # Replace with function body.
 
@@ -18,18 +19,24 @@ func _process(delta: float) -> void:
 
 func explode():
 	particles_trail.emitting = true
-	await get_tree().create_timer(1.8).timeout
 	whole_ham_2.visible = false
 	particles_trail.visible = false
 	particles_trail_2.emitting = true
 	hit_the_box()
 	await particles_trail_2.finished
 	queue_free()
-	pass
 
 
 func hit_the_box():
 	var bodies = radius.get_overlapping_bodies()
+	#处理敌人
+	for obj in bodies:
+		if obj.is_in_group("Enemy"):
+			obj.die()
+			#var source = self.global_position
+			#obj.get_hit(source)
+
+	#处理环境物品
 	for obj in bodies:
 		if obj.is_in_group("Box"):
 			var source = self.global_position

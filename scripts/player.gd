@@ -6,7 +6,7 @@ signal coin_collected
 @export var view: Node3D
 
 @export_subgroup("Properties")
-@export var movement_speed = 250
+@export var movement_speed = 300
 @export var jump_strength = 7
 
 var movement_velocity: Vector3
@@ -31,6 +31,10 @@ var is_freez := false
 
 func _ready() -> void:
 	add_to_group("player")
+
+
+func player():
+	pass
 
 func _physics_process(delta):
 
@@ -58,7 +62,7 @@ func _physics_process(delta):
 	if Vector2(velocity.z, velocity.x).length() > 0:
 		rotation_direction = Vector2(velocity.z, velocity.x).angle()
 
-	rotation.y = lerp_angle(rotation.y, rotation_direction, delta * 10)
+	rotation.y = lerp_angle(rotation.y, rotation_direction, delta * 25) #人物转身速度
 
 	# Falling/respawning
 

@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://fg23drk7hoh8"]
+
+[ext_resource type="PackedScene" uid="uid://0kcvm17uc5yg" path="res://test/attack/fruit/GLB format/soda-glass.glb" id="1_03jdq"]
+[ext_resource type="Script" path="res://test/drop item/soda_glass_2.gd" id="2_2cmv0"]
+[ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="3_s2bhm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ytnr"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_s2bhm")
+billboard_mode = 1
+billboard_keep_scale = true
+proximity_fade_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_l00hf"]
+
+[sub_resource type="Curve" id="Curve_hbprg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xcqmi"]
+colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+
+[node name="soda-glass2" instance=ExtResource("1_03jdq")]
+script = ExtResource("2_2cmv0")
+
+[node name="soda-glass" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0)
+
+[node name="Particles" type="CPUParticles3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447834, 0)
+material_override = SubResource("StandardMaterial3D_7ytnr")
+mesh = SubResource("QuadMesh_l00hf")
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_hbprg")
+color_ramp = SubResource("Gradient_xcqmi")

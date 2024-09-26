@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://cyq8lfon4cta0"]
 
 [ext_resource type="Script" path="res://test/map/arrow.gd" id="1_1f62j"]
-[ext_resource type="Texture2D" uid="uid://djok7tn83f7j4" path="res://test/GLB format/Textures/colormap.png" id="1_ptolg"]
+[ext_resource type="Texture2D" uid="uid://bslwu82eat6kl" path="res://test/GLB format/Textures/colormap.png" id="1_ptolg"]
 [ext_resource type="Texture2D" uid="uid://bangle1vgsmld" path="res://test/Vector/xbox_button_a.svg" id="2_ocq0a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhm1v"]

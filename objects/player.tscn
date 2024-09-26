@@ -26,6 +26,7 @@ point_count = 3
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 3
 script = ExtResource("1_ffboj")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
@@ -62,5 +63,8 @@ autoplay = true
 
 [node name="Food Shooter" parent="." instance=ExtResource("6_5077v")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.473548, 0.656121)
+
+[node name="FellowPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.530365, 1.04677, 0.611316)
 
 [editable path="Character"]
