@@ -5,8 +5,11 @@ extends RigidBody3D
 @onready var particles_trail_2: CPUParticles3D = $ParticlesTrail2
 @onready var radius: Area3D = $Radius
 
+var camera : Camera3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	camera = get_viewport().get_camera_3d()
 	await get_tree().create_timer(1.8).timeout #炸弹冷却
 	explode()
 	pass # Replace with function body.
@@ -18,12 +21,16 @@ func _process(delta: float) -> void:
 
 
 func explode():
+	if camera.has_method("add_trauma"):
+		camera.add_trauma(.6)
+
 	particles_trail.emitting = true
 	whole_ham_2.visible = false
 	particles_trail.visible = false
 	particles_trail_2.emitting = true
 	hit_the_box()
 	await particles_trail_2.finished
+
 	queue_free()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://24k8hgospgqc"]
+[gd_scene load_steps=23 format=3 uid="uid://24k8hgospgqc"]
 
 [ext_resource type="MeshLibrary" uid="uid://cote2g2mk3obv" path="res://test/floor/floor.tres" id="1_k4w35"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_p1nlk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="3_pvdor"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="4_l06dd"]
 [ext_resource type="PackedScene" uid="uid://cyq8lfon4cta0" path="res://test/map/arrow.tscn" id="4_nw20x"]
+[ext_resource type="Script" path="res://test/level/camera.gd" id="4_xi41n"]
 [ext_resource type="PackedScene" uid="uid://ds8yncr41wcuu" path="res://test/GLB format/tree-pine.glb" id="6_wlygd"]
 [ext_resource type="PackedScene" uid="uid://b1fw18piq10vy" path="res://test/GLB format/tree.glb" id="7_5uusq"]
 [ext_resource type="PackedScene" uid="uid://c5wjln7xt883p" path="res://test/GLB format/grass.glb" id="7_apfpi"]
@@ -20,6 +21,13 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_1lyig"]
 radius = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3m376"]
+noise_type = 0
+frequency = 0.1
+fractal_octaves = 4
+fractal_gain = 0.1
+fractal_weighted_strength = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2t3k"]
 size = Vector3(35.4124, 8.67676, 1)
@@ -53,6 +61,8 @@ transform = Transform3D(1, 0, 0, 0, 1, -3.57628e-07, 0, 0, 1, 0, 0, 0)
 current = true
 fov = 40.0
 size = 10.0
+script = ExtResource("4_xi41n")
+noise = SubResource("FastNoiseLite_3m376")
 
 [node name="World" type="Node3D" parent="."]
 
