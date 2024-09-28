@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://biiq1grdc7rpg"]
+
+[ext_resource type="Script" path="res://test/attack/bomb type/baisc_bomb.gd" id="1_74mtl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a2q2k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yx8nx"]
+
+[node name="Baisc Bomb" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_74mtl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_a2q2k")
+
+[node name="ExplodeRadius" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplodeRadius"]
+shape = SubResource("SphereShape3D_yx8nx")

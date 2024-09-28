@@ -7,10 +7,13 @@ extends RigidBody3D
 
 var camera : Camera3D
 
+@export var ExplodeLag := 1.8 #抛出后的倒计时
+@export var CameraTrauma := 0.4 #添加的镜头晃动
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera = get_viewport().get_camera_3d()
-	await get_tree().create_timer(1.8).timeout #炸弹冷却
+	await get_tree().create_timer(ExplodeLag).timeout #炸弹冷却
 	explode()
 	pass # Replace with function body.
 
@@ -22,7 +25,7 @@ func _process(delta: float) -> void:
 
 func explode():
 	if camera.has_method("add_trauma"):
-		camera.add_trauma(.6)
+		camera.add_trauma(CameraTrauma)
 
 	particles_trail.emitting = true
 	whole_ham_2.visible = false

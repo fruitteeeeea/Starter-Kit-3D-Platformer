@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://b4o0ra1xvrr35"]
+[gd_scene load_steps=18 format=4 uid="uid://b4o0ra1xvrr35"]
 
 [ext_resource type="Script" path="res://test/attack/food.gd" id="1_f023g"]
-[ext_resource type="Texture2D" uid="uid://3a4gbi28gr77" path="res://test/attack/fruit/GLB format/Textures/colormap.png" id="1_u5k5l"]
+[ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/fruit/GLB format/Textures/colormap.png" id="1_u5k5l"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="2_4aavb"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="4_1lbsa"]
 
@@ -96,23 +96,6 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_6vlfr"]
 colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvxsq"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("4_1lbsa")
-billboard_mode = 1
-billboard_keep_scale = true
-proximity_fade_enabled = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_wpn6a"]
-
-[sub_resource type="Curve" id="Curve_rtiwy"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_yidc2"]
-colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
-
 [node name="food" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 3
@@ -191,18 +174,3 @@ scale_amount_min = 0.15
 scale_amount_max = 0.15
 scale_amount_curve = SubResource("Curve_r8shg")
 color_ramp = SubResource("Gradient_6vlfr")
-
-[node name="Particles2" type="CPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447834, 0)
-material_override = SubResource("StandardMaterial3D_cvxsq")
-mesh = SubResource("QuadMesh_wpn6a")
-direction = Vector3(1, 1, 1)
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_max = 1.0
-damping_min = 0.5
-damping_max = 0.5
-scale_amount_min = 0.15
-scale_amount_max = 0.15
-scale_amount_curve = SubResource("Curve_rtiwy")
-color_ramp = SubResource("Gradient_yidc2")
