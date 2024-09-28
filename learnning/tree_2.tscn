@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://be6vv7l6eedd3"]
+
+[ext_resource type="PackedScene" uid="uid://b1fw18piq10vy" path="res://test/GLB format/tree.glb" id="1_qtjnt"]
+
+[node name="tree2" instance=ExtResource("1_qtjnt")]
