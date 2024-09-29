@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/view.gd" id="4_l06dd"]
 [ext_resource type="PackedScene" uid="uid://cyq8lfon4cta0" path="res://test/map/arrow.tscn" id="4_nw20x"]
 [ext_resource type="Script" path="res://test/level/camera.gd" id="4_xi41n"]
+[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="5_ctk00"]
 [ext_resource type="PackedScene" uid="uid://ds8yncr41wcuu" path="res://test/GLB format/tree-pine.glb" id="6_wlygd"]
 [ext_resource type="PackedScene" uid="uid://b1fw18piq10vy" path="res://test/GLB format/tree.glb" id="7_5uusq"]
 [ext_resource type="PackedScene" uid="uid://c5wjln7xt883p" path="res://test/GLB format/grass.glb" id="7_apfpi"]
@@ -22,13 +23,6 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_1lyig"]
 radius = 1.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_3m376"]
-noise_type = 0
-frequency = 0.1
-fractal_octaves = 4
-fractal_gain = 0.1
-fractal_weighted_strength = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2t3k"]
 size = Vector3(35.4124, 8.67676, 1)
@@ -63,7 +57,7 @@ current = true
 fov = 40.0
 size = 10.0
 script = ExtResource("4_xi41n")
-noise = SubResource("FastNoiseLite_3m376")
+noise = ExtResource("5_ctk00")
 
 [node name="World" type="Node3D" parent="."]
 

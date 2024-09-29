@@ -25,6 +25,7 @@ colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
 radius = 4.0
 
 [node name="pineapple2" instance=ExtResource("1_unou1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("2_s841c")
 
 [node name="pineapple" parent="." index="0"]

@@ -3,8 +3,11 @@ extends CharacterBody3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var drop_item: Marker3D = $DropItem
 
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D #开始导航
+
 var speed = 1.5
 const JUMP_VELOCITY = 4.5
+var direction = Vector3.ZERO
 
 var gravity = -25
 
@@ -27,8 +30,15 @@ func _physics_process(delta: float) -> void:
 		velocity.y = gravity
 
 	if is_instance_valid(player) && is_on_floor():
+		#var direction = (player.global_position - global_position).normalized()
+		navigation_agent_3d.set_target_position(player.global_position)
+
+		#导航抓捕玩家
+		var destination = navigation_agent_3d.get_next_path_position()
+		var local_destination = destination - global_position
+		direction = local_destination.normalized()
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-		var direction = (player.global_position - global_position).normalized()
+
 		velocity = direction * speed
 
 	move_and_slide()

@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 
 
 func explode():
-	if camera.has_method("add_trauma"):
+	if camera.has_method("add_trauma") && is_instance_valid(camera):
 		camera.add_trauma(CameraTrauma)
 
 	particles_trail.emitting = true

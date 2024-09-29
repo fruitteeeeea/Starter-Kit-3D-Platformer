@@ -2,20 +2,18 @@ extends Camera3D
 
 var TREE = preload("res://learnning/tree_2.tscn")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+signal add_trauma_signal
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+var defult_zoom := 12.0 #等距相机的默认距离
+var run_zoom := 15.0 #等距相机的奔跑距离
+var zoom_tween : Tween
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_right"):
-		shoot_ray()
-
+		do_zoom(run_zoom)
+	
+	if event.is_action_released("mouse_right"):
+		do_zoom(defult_zoom)
 
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -29,10 +27,21 @@ func shoot_ray():
 	ray_query.to = to
 	
 	var raycast_result = space.intersect_ray(ray_query)
-	print(raycast_result)
 	
 	if !raycast_result.is_empty():
-		var tree = TREE.instantiate()
-		tree.position = raycast_result["position"]
-		get_tree().root.add_child(tree)
-		
+		#var tree = TREE.instantiate()
+		#tree.position = raycast_result["position"]
+		#get_tree().root.add_child(tree)
+		return raycast_result["position"]
+
+
+func add_trauma(trauma_amount : float):
+	add_trauma_signal.emit(trauma_amount)
+
+
+func do_zoom(zoom01 : float = 15.0):
+	if zoom_tween:
+		zoom_tween.kill()
+	
+	zoom_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	zoom_tween.tween_property(self, "size", zoom01, 1.0)

@@ -52,3 +52,10 @@ func add_pineapple():
 	var pineapple = Pineapple.instantiate()
 	get_tree().root.add_child(pineapple)
 	pineapple.global_position = global_position
+
+
+func shoot_direction():
+	var camera = get_viewport().get_camera_3d()
+	if camera.has_method("shoot_ray"):
+		var target_position = camera.shoot_ray
+	pass

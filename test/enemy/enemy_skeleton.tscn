@@ -12,6 +12,8 @@ height = 0.75
 collision_layer = 3
 script = ExtResource("2_r0nd8")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="0"]
+
 [node name="torso" parent="character-skeleton/root" index="2"]
 transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.223184, 0)
 
@@ -24,9 +26,9 @@ transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 
 [node name="head" parent="character-skeleton/root/torso" index="2"]
 transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
 shape = SubResource("CapsuleShape3D_n1vwf")
 
-[node name="DropItem" type="Marker3D" parent="." index="3"]
+[node name="DropItem" type="Marker3D" parent="." index="4"]
 script = ExtResource("3_wy335")
