@@ -1,4 +1,5 @@
-extends Node3D
+extends RigidBody3D
+class_name Bomb #炸弹基类
 
 @onready var explode_radius: Area3D = $ExplodeRadius
 @onready var collision_shape_3d: CollisionShape3D = $ExplodeRadius/CollisionShape3D
@@ -6,12 +7,11 @@ extends Node3D
 var camera : Camera3D
 
 enum BombType {BULLET, BOMB} #炸弹类型
-@export var Type = BombType.BULLET
 
-@export var BombModle : Node3D #炸弹模型
-@export var IdleParticle : CPUParticles3D #闲置粒子
-@export var TrailParticle : CPUParticles3D #尾迹粒子
-@export var ExplodeParticle : CPUParticles3D #爆炸发生的粒子
+@export_subgroup("Data")
+@export var Type = BombType.BULLET
+@export var BombSpeed := 200 #发射速度
+@export var BombRotation := 20 #发射旋转
 
 @export var ExplodeLag := 1.8 #抛出后的倒计时
 @export var CameraTrauma := 0.4 #添加的镜头晃动
@@ -21,6 +21,12 @@ enum BombType {BULLET, BOMB} #炸弹类型
 
 @export var AffectEnvivormentObject := true #影响环境物品
 @export var ImpactForce := 2800 #爆炸冲击力
+
+@export_subgroup("Visual")
+@export var BombModle : Node3D #炸弹模型
+@export var IdleParticle : CPUParticles3D #闲置粒子
+@export var TrailParticle : CPUParticles3D #尾迹粒子
+@export var ExplodeParticle : CPUParticles3D #爆炸发生的粒子
 
 func _ready() -> void:
 	collision_shape_3d.shape.radius = ExplodeRadius #应用爆炸半径
