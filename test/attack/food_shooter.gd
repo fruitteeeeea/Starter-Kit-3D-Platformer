@@ -1,7 +1,7 @@
 extends Node3D
 
-var Food := preload("res://test/attack/food.tscn")
-var Pineapple := preload("res://test/drop item/pineapple_2.tscn")
+var Food := preload("res://test/attack/bomb type/coconut_bomb.tscn")
+#var Food := preload("res://test/attack/food.tscn")
 
 #发射子弹位置
 @onready var marker_3d: Marker3D = $Marker3D
@@ -21,7 +21,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("main_weapon"):
 		for i in bullet_number:
 			add_food()
-			#add_pineapple()
 			await get_tree().create_timer(.1).timeout
 
 func add_food() -> void:
@@ -46,12 +45,6 @@ func add_food() -> void:
 	var direction = ((marker_3d_2.global_position - marker_3d.global_position)\
 	 + Vector3(0, bullet_velocity_y, 0)).normalized() 
 	food.apply_central_force(direction * 900) #设计好弹道速度
-
-
-func add_pineapple():
-	var pineapple = Pineapple.instantiate()
-	get_tree().root.add_child(pineapple)
-	pineapple.global_position = global_position
 
 
 func shoot_direction():

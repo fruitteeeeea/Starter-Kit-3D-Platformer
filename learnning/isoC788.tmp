@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=13 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
@@ -14,6 +14,9 @@
 [sub_resource type="NavigationMesh" id="NavigationMesh_grd4m"]
 vertices = PackedVector3Array(8.65894, 2, 1.00894, 10.1589, 2, 1.00894, 9.90894, 2, -30.2411, 8.15894, 2, 1.75894, -42.8411, 2, -30.2411, -42.8411, 2, 1.75894, 15.1589, 2, 1.00894, 15.4089, 2, -30.2411, 16.6589, 2, 1.00894, 16.9089, 2, 2.75894, 39.1589, 2, 2.50894, 39.1589, 2, -30.2411, 8.15894, 2, 7.50894, -42.8411, 2, 33.7589, 8.15894, 2, 33.7589, 9.15894, 3, 7.00894, 10.4089, 3, 7.00894, 10.6589, 3, 3.25894, 9.15894, 3, 2.00894, 14.4089, 3, 3.25894, 15.9089, 3, 2.00894, 14.6589, 3, 7.00894, 15.9089, 3, 7.00894, 16.9089, 2, 6.25894, 39.1589, 2, 6.50894, 13.6589, 2, 4.25894, 11.6589, 2, 4.25894, 11.6589, 2, 7.50894, 13.9089, 2, 8.00894, 11.1589, 2, 8.00894, 17.1589, 2, 33.7589, 16.6589, 2, 8.00894, 16.9089, 2, 7.50894, 8.65894, 2, 8.00894, 39.1589, 2, 33.7589)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(1, 2, 6), PackedInt32Array(6, 2, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 7), PackedInt32Array(8, 6, 7), PackedInt32Array(5, 3, 12), PackedInt32Array(14, 13, 12), PackedInt32Array(12, 13, 5), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(17, 18, 19), PackedInt32Array(19, 18, 20), PackedInt32Array(21, 19, 22), PackedInt32Array(22, 19, 20), PackedInt32Array(9, 10, 23), PackedInt32Array(23, 10, 24), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(27, 28, 29), PackedInt32Array(29, 28, 14), PackedInt32Array(14, 28, 30), PackedInt32Array(28, 31, 30), PackedInt32Array(30, 31, 32), PackedInt32Array(14, 12, 33), PackedInt32Array(14, 33, 29), PackedInt32Array(23, 24, 32), PackedInt32Array(32, 24, 30), PackedInt32Array(30, 24, 34)]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4s23f"]
+radius = 1.0
 
 [node name="isomatric_view" type="Node3D"]
 
@@ -99,10 +102,14 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(-0.433357, 0, -0.249403, 0, 0.5, 0, 0.249403, 0, -0.433357, -0.359849, 4.90448, -2.03825)
 view = NodePath("../View/Camera3D")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("SphereMesh_4s23f")
+
 [node name="EnemySpwan" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0851593, 6.49353, 0.240204)
 script = ExtResource("8_01ata")
 do_spwan_enemy = true
+spwan_enemy_number = 50
 
 [node name="Timer" type="Timer" parent="EnemySpwan"]
 one_shot = true

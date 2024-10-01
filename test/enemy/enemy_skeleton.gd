@@ -44,6 +44,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func take_damage(damge := 00):
+	drop_item.add_pineapple()
+	queue_free()
+
+
 func die():
 	drop_item.add_pineapple()
 	queue_free()

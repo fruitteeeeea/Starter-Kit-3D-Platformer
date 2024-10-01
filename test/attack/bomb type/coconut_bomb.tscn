@@ -1,5 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://da00be7g8nywg"]
+[gd_scene load_steps=4 format=3 uid="uid://da00be7g8nywg"]
 
 [ext_resource type="PackedScene" uid="uid://biiq1grdc7rpg" path="res://test/attack/bomb type/baisc_bomb.tscn" id="1_ukw1x"]
+[ext_resource type="PackedScene" uid="uid://dgemcju4iko0u" path="res://test/attack/bomb type/coconut_2.tscn" id="2_bhj5k"]
 
-[node name="Coconut Bomb" instance=ExtResource("1_ukw1x")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_5oa5g"]
+radius = 0.15
+
+[node name="Coconut Bomb" node_paths=PackedStringArray("BombModle") instance=ExtResource("1_ukw1x")]
+gravity_scale = 3.0
+BombModle = NodePath("coconut2")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113729, 0)
+shape = SubResource("SphereShape3D_5oa5g")
+
+[node name="coconut2" parent="." index="2" instance=ExtResource("2_bhj5k")]

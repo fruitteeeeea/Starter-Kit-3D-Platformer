@@ -8,7 +8,7 @@ var camera : Camera3D
 
 enum BombType {BULLET, BOMB} #炸弹类型
 
-@export_subgroup("Data")
+@export_subgroup("Stata")
 @export var Type = BombType.BULLET
 @export var BombSpeed := 200 #发射速度
 @export var BombRotation := 20 #发射旋转

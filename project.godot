@@ -23,6 +23,10 @@ config/icon="res://icon.png"
 Audio="*res://scripts/audio.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [dialogic]
 
 directories/dch_directory={}
