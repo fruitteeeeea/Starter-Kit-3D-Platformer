@@ -41,6 +41,7 @@ func _process(delta):
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.has_method("player"):
+		await get_tree().create_timer(0.25).timeout
 		is_floting = false
 		target = body
 		is_collectting = true

@@ -8,6 +8,7 @@ radius = 0.15
 
 [node name="Coconut Bomb" node_paths=PackedStringArray("BombModle") instance=ExtResource("1_ukw1x")]
 gravity_scale = 3.0
+IsHitExplode = true
 BombModle = NodePath("coconut2")
 
 [node name="CollisionShape3D" parent="." index="0"]

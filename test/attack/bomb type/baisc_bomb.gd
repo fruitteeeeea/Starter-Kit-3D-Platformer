@@ -9,7 +9,9 @@ var camera : Camera3D
 enum BombType {BULLET, BOMB} #炸弹类型
 
 @export_subgroup("Stata")
-@export var Type = BombType.BULLET
+@export var Type = BombType.BOMB #炸弹类型
+@export var IsHitExplode := false #接触爆炸
+
 @export var BombSpeed := 200 #发射速度
 @export var BombRotation := 20 #发射旋转
 
@@ -30,9 +32,18 @@ enum BombType {BULLET, BOMB} #炸弹类型
 
 func _ready() -> void:
 	collision_shape_3d.shape.radius = ExplodeRadius #应用爆炸半径
-	await get_tree().create_timer(ExplodeLag).timeout
-	explode()
+	
+	bomb_state() #分情况引爆炸弹
 
+#分情况爆炸
+func bomb_state():
+	await get_tree().create_timer(ExplodeLag).timeout
+	explode() 
+
+#直击检测
+func _on_direct_hit_detect_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Enemy") && IsHitExplode:
+		explode()
 
 #爆炸
 func explode():
