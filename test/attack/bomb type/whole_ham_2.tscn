@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://lnpn778gs3gm"]
+
+[ext_resource type="PackedScene" uid="uid://cqhul2j82t3o2" path="res://test/attack/food model/GLB format/whole-ham.glb" id="1_kxwxj"]
+
+[node name="whole-ham2" instance=ExtResource("1_kxwxj")]

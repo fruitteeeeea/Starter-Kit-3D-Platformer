@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://fg23drk7hoh8"]
 
-[ext_resource type="PackedScene" uid="uid://0kcvm17uc5yg" path="res://test/attack/fruit/GLB format/soda-glass.glb" id="1_03jdq"]
+[ext_resource type="PackedScene" uid="uid://0kcvm17uc5yg" path="res://test/attack/food model/GLB format/soda-glass.glb" id="1_03jdq"]
 [ext_resource type="Script" path="res://test/drop item/soda_glass_2.gd" id="2_2cmv0"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="3_s2bhm"]
 

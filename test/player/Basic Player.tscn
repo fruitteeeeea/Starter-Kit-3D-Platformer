@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dknht2bov7s7k"]
+
+[ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_6tj76"]
+[ext_resource type="Script" path="res://test/player/basic_player.gd" id="1_b7nfu"]
+[ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="2_8875h"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_1bjfr"]
+[ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
+[ext_resource type="Script" path="res://objects/weapon.gd" id="5_8m6nj"]
+[ext_resource type="PackedScene" uid="uid://drvpwuomxqk4t" path="res://test/attack/weapon type/basic_weapon.tscn" id="8_fgm0e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pdyd2"]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju2u7"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+backlight = Color(0, 0.521569, 0.709804, 1)
+billboard_keep_scale = true
+grow_amount = 1.882
+proximity_fade_distance = 0.25
+
+[sub_resource type="Curve" id="Curve_vde70"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Basic Player" type="CharacterBody3D"]
+collision_layer = 3
+script = ExtResource("1_b7nfu")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CapsuleShape3D_pdyd2")
+
+[node name="Character" parent="." instance=ExtResource("1_6tj76")]
+
+[node name="Shadow" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+size = Vector3(1, 2, 1)
+texture_albedo = ExtResource("2_8875h")
+modulate = Color(1, 1, 1, 0.705882)
+normal_fade = 0.5
+
+[node name="ParticlesTrail" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ju2u7")
+cast_shadow = 0
+amount = 6
+mesh = ExtResource("3_1bjfr")
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_vde70")
+
+[node name="SoundFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0se0j")
+volume_db = -5.0
+pitch_scale = 1.25
+autoplay = true
+
+[node name="Weapon" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, 0)
+script = ExtResource("5_8m6nj")
+
+[node name="Basic Weapon" parent="Weapon" instance=ExtResource("8_fgm0e")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0449612, 0, -0.818392)
+
+[editable path="Character"]

@@ -5,13 +5,16 @@ extends CharacterBody3D
 
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D #开始导航
 
-var speed = 1.5
+var speed = 1.2
 const JUMP_VELOCITY = 4.5
 var direction = Vector3.ZERO
 
 var gravity = -25
 
 var player : CharacterBody3D
+
+@export var health_component : Node
+@onready var damage_number_spawn_point: Marker3D = $DamageNumberSpawnPoint #受击数字生成
 
 func _ready() -> void:
 	add_to_group("Enemy")
@@ -44,11 +47,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func take_damage(damge := 00):
-	drop_item.add_pineapple()
-	queue_free()
-
-
-func die():
-	drop_item.add_pineapple()
-	queue_free()
+func take_damage(damge := 1.0):
+	damage_number_spawn_point.spwan_damage_number(damge)
+	
+	if health_component:
+		health_component.damage(damge)
+	
+	if health_component.health <= 0:
+		drop_item.add_pineapple()
+		queue_free()

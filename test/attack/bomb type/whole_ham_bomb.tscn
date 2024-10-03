@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpgtjanqpsud6"]
+
+[ext_resource type="PackedScene" uid="uid://biiq1grdc7rpg" path="res://test/attack/bomb type/baisc_bomb.tscn" id="1_542dr"]
+[ext_resource type="PackedScene" uid="uid://lnpn778gs3gm" path="res://test/attack/bomb type/whole_ham_2.tscn" id="2_j6v44"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mv6xa"]
+radius = 0.25
+height = 0.8
+
+[node name="Whole Ham Bomb" instance=ExtResource("1_542dr")]
+SLOT = 1
+BombSpeedX = 600
+ExplodeRadius = 3.0
+
+[node name="whole-ham2" parent="Model" index="0" instance=ExtResource("2_j6v44")]
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.221457, 0.0461375)
+shape = SubResource("CapsuleShape3D_mv6xa")

@@ -7,13 +7,16 @@ class_name Bomb #炸弹基类
 var camera : Camera3D
 
 enum BombType {BULLET, BOMB} #炸弹类型
+enum BombSlot {MAIN, SECONDARY} #炸弹类型
 
-@export_subgroup("Stata")
+@export_subgroup("Properties")
 @export var Type = BombType.BOMB #炸弹类型
-@export var IsHitExplode := false #接触爆炸
+@export var SLOT = BombSlot.MAIN #炸弹槽位
+@export var IsHitExplode := false #直击爆炸
 
-@export var BombSpeed := 200 #发射速度
-@export var BombRotation := 20 #发射旋转
+@export var BombSpeedX := 900 #初始 x 轴速度
+@export var BombSpeedY := 0.1 #初始 y 轴速度
+@export var BombRotation := 45 #发射旋转
 
 @export var ExplodeLag := 1.8 #抛出后的倒计时
 @export var CameraTrauma := 0.4 #添加的镜头晃动
@@ -25,7 +28,7 @@ enum BombType {BULLET, BOMB} #炸弹类型
 @export var ImpactForce := 2800 #爆炸冲击力
 
 @export_subgroup("Visual")
-@export var BombModle : Node3D #炸弹模型
+@onready var Model: Node3D = $Model #炸弹模型
 @export var IdleParticle : CPUParticles3D #闲置粒子
 @export var TrailParticle : CPUParticles3D #尾迹粒子
 @export var ExplodeParticle : CPUParticles3D #爆炸发生的粒子
@@ -34,6 +37,9 @@ func _ready() -> void:
 	collision_shape_3d.shape.radius = ExplodeRadius #应用爆炸半径
 	
 	bomb_state() #分情况引爆炸弹
+
+func bullet(): #自己是子弹的标识
+	pass 
 
 #分情况爆炸
 func bomb_state():
@@ -63,7 +69,7 @@ func explode():
 			hit_the_envi_object(object)
 	
 	#视觉效果
-	BombModle.visible = false
+	Model.visible = false
 	IdleParticle.emitting = false
 	TrailParticle.emitting = false
 	ExplodeParticle.emitting = true
@@ -79,3 +85,7 @@ func hit_the_enemy(enemy01 : CharacterBody3D):
 #冲击环境物品
 func hit_the_envi_object(object01 : RigidBody3D):
 	object01.apply_central_force((object01.global_position - global_position).normalized() * ImpactForce)
+
+#额外功能的 bomb #坠落伤害双倍
+func drop_dubble():
+	pass

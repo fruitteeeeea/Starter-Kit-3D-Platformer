@@ -6,6 +6,8 @@ extends Node
 @export var max_y := 5.0
 @export var max_z := 5.0
 
+@export var max_trauma := 1.0 #限制最大抖动
+
 @export var noise : FastNoiseLite
 @export var noise_speed := 50.0
 
@@ -28,13 +30,9 @@ func _process(delta: float) -> void:
 	camera_3d.rotation_degrees.y = initial_rotation.y + max_y * get_shake_intensity() * get_noise_from_seed(1)
 	camera_3d.rotation_degrees.z = initial_rotation.z + max_z * get_shake_intensity() * get_noise_from_seed(2)
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("main_weapon"):
-		#add_trauma(.6)
-
 #增加抖动
 func add_trauma(trauma_amount : float):
-	trauma = clamp(trauma + trauma_amount, 0.0, 1.0)
+	trauma = clamp(trauma + trauma_amount, 0.0, max_trauma)
 
 #平滑抖动
 func get_shake_intensity() -> float:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://bn7xwvst3to0c"]
 
-[ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/fruit/GLB format/Textures/colormap.png" id="1_wdg36"]
+[ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="1_wdg36"]
 [ext_resource type="Script" path="res://test/attack/turkey.gd" id="1_yn6ox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_quv2g"]

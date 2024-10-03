@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bpiuanfjrb3aw"]
 
-[ext_resource type="PackedScene" uid="uid://bn6tg8uui6ohd" path="res://test/attack/fruit/GLB format/pineapple.glb" id="1_unou1"]
+[ext_resource type="PackedScene" uid="uid://bn6tg8uui6ohd" path="res://test/attack/food model/GLB format/pineapple.glb" id="1_unou1"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="2_r5jud"]
 [ext_resource type="Script" path="res://test/drop item/pineapple_2.gd" id="2_s841c"]
 

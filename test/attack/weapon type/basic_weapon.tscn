@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://drvpwuomxqk4t"]
+[gd_scene load_steps=5 format=3 uid="uid://drvpwuomxqk4t"]
 
 [ext_resource type="Script" path="res://test/attack/weapon type/basic_weapon.gd" id="1_hsfq8"]
+[ext_resource type="PackedScene" uid="uid://da00be7g8nywg" path="res://test/attack/bomb type/coconut_bomb.tscn" id="2_uj8cy"]
+[ext_resource type="PackedScene" uid="uid://cgtrpk7koy71t" path="res://test/attack/food model/GLB format/hot-dog-raw.glb" id="3_iitpp"]
+[ext_resource type="PackedScene" uid="uid://bpgtjanqpsud6" path="res://test/attack/bomb type/whole_ham_bomb.tscn" id="3_rwpb3"]
 
 [node name="Basic Weapon" type="Node3D"]
 script = ExtResource("1_hsfq8")
+MainWeaponScene = ExtResource("2_uj8cy")
+SecoundaryWeaponScene = ExtResource("3_rwpb3")
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="hot-dog-raw2" parent="model" instance=ExtResource("3_iitpp")]
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275916, 0.0502615, 0)

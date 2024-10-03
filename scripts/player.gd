@@ -132,7 +132,6 @@ func handle_controls(delta):
 		if jump_single or jump_double:
 			jump()
 
-
 # Handle gravity
 
 func handle_gravity(delta):

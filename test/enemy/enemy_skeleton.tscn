@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqjuw1d4d3rnx"]
+[gd_scene load_steps=8 format=3 uid="uid://dqjuw1d4d3rnx"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_0t6sv"]
 [ext_resource type="Script" path="res://test/enemy/enemy_skeleton.gd" id="2_r0nd8"]
 [ext_resource type="Script" path="res://test/drop item/drop_item.gd" id="3_wy335"]
+[ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/attack/components/health_component.tscn" id="4_ungiq"]
+[ext_resource type="PackedScene" uid="uid://cxgrdxibbb8wp" path="res://test/enemy/damage_number.tscn" id="5_w6d7j"]
+[ext_resource type="Script" path="res://test/enemy/damage_number_spawn_point.gd" id="6_pmj16"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n1vwf"]
 radius = 0.25
 height = 0.75
 
-[node name="Enemy Skeleton" instance=ExtResource("1_0t6sv")]
+[node name="Enemy Skeleton" node_paths=PackedStringArray("health_component") instance=ExtResource("1_0t6sv")]
 collision_layer = 3
 script = ExtResource("2_r0nd8")
+health_component = NodePath("HealthComponent")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="0"]
 
@@ -26,9 +30,19 @@ transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 
 [node name="head" parent="character-skeleton/root/torso" index="2"]
 transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
 
+[node name="AnimationPlayer" parent="." index="2"]
+speed_scale = 0.8
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
 shape = SubResource("CapsuleShape3D_n1vwf")
 
 [node name="DropItem" type="Marker3D" parent="." index="4"]
 script = ExtResource("3_wy335")
+
+[node name="HealthComponent" parent="." index="5" instance=ExtResource("4_ungiq")]
+
+[node name="DamageNumberSpawnPoint" type="Marker3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.703704, 0)
+script = ExtResource("6_pmj16")
+DamageNumber = ExtResource("5_w6d7j")

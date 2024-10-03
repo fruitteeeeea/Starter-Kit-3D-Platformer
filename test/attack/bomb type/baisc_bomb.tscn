@@ -55,10 +55,13 @@ point_count = 4
 [node name="Baisc Bomb" type="RigidBody3D" node_paths=PackedStringArray("IdleParticle", "TrailParticle", "ExplodeParticle")]
 collision_layer = 2
 collision_mask = 3
+gravity_scale = 3.0
 script = ExtResource("1_74mtl")
 IdleParticle = NodePath("IdleParticles")
 TrailParticle = NodePath("TrailParticles")
 ExplodeParticle = NodePath("ExplodeParticles")
+
+[node name="Model" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_a2q2k")

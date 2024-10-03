@@ -4,8 +4,11 @@ var TREE = preload("res://learnning/tree_2.tscn")
 
 signal add_trauma_signal
 
-var defult_zoom := 12.0 #等距相机的默认距离
-var run_zoom := 15.0 #等距相机的奔跑距离
+#相机 tween 相关
+var defult_zoom := 10.0 #等距相机的默认距离
+var run_zoom := 12.0 #等距相机的奔跑距离
+var run_tween_time := 1.0 #等距相机奔跑 tween 执行时间
+var defult_tween_time := 5.0 #等距相机默认 tween 执行时间
 var zoom_tween : Tween
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -39,9 +42,9 @@ func add_trauma(trauma_amount : float):
 	add_trauma_signal.emit(trauma_amount)
 
 
-func do_zoom(zoom01 : float = 15.0):
+func do_zoom(zoom01 : float = 15.0, time01 : float = defult_tween_time):
 	if zoom_tween:
 		zoom_tween.kill()
 	
 	zoom_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	zoom_tween.tween_property(self, "size", zoom01, 1.0)
+	zoom_tween.tween_property(self, "size", zoom01, time01)
