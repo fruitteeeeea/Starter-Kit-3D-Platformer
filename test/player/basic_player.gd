@@ -169,3 +169,7 @@ func collect_coin():
 	coins += 1
 
 	coin_collected.emit(coins)
+
+
+func super_jump():
+	pass

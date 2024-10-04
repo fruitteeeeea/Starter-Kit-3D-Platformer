@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal enemy_dead(enemy : CharacterBody3D)
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var drop_item: Marker3D = $DropItem
 
@@ -54,5 +56,6 @@ func take_damage(damge := 1.0):
 		health_component.damage(damge)
 	
 	if health_component.health <= 0:
+		enemy_dead.emit(self)
 		drop_item.add_pineapple()
 		queue_free()

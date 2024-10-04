@@ -8,6 +8,7 @@ radius = 0.15
 
 [node name="Coconut Bomb" instance=ExtResource("1_ukw1x")]
 IsHitExplode = true
+JUMPDOUBLE = true
 
 [node name="coconut2" parent="Model" index="0" instance=ExtResource("2_bhj5k")]
 

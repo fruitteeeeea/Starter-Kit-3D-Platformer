@@ -83,6 +83,8 @@ func shoot_bullet(bullet_scene : PackedScene):
 	if !player.is_on_floor(): #处于空中时
 		bullet_velocity_y = throw_velocity_y * bullet.BombSpeedY
 		bullet_velocity_x = throw_velocity_x * bullet.BombSpeedX
+		bullet.be_throw = true #标记炸弹处于投掷状态下丢出
+		
 	else: #处于地面时
 		bullet_velocity_y = normal_velocity_y * bullet.BombSpeedY
 		bullet_velocity_x = normal_velocity_x * bullet.BombSpeedX

@@ -20,4 +20,4 @@ func face_to_mouse_cursor():
 	if camera.has_method("shoot_ray"):
 		var mouse_pos = camera.shoot_ray()
 		if mouse_pos:
-			look_at(mouse_pos)
+			look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z))

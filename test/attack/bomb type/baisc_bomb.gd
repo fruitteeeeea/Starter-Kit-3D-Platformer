@@ -33,6 +33,13 @@ enum BombSlot {MAIN, SECONDARY} #炸弹类型
 @export var TrailParticle : CPUParticles3D #尾迹粒子
 @export var ExplodeParticle : CPUParticles3D #爆炸发生的粒子
 
+#特别炸弹
+@export_subgroup("Special")
+@export var JUMPDOUBLE := false #跳投双倍
+
+var be_throw := false #处于投掷状态下发射
+var first_collide := true #第一次碰撞
+
 func _ready() -> void:
 	collision_shape_3d.shape.radius = ExplodeRadius #应用爆炸半径
 	
@@ -49,6 +56,9 @@ func bomb_state():
 #直击检测
 func _on_direct_hit_detect_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy") && IsHitExplode:
+		if JUMPDOUBLE && be_throw && first_collide:
+			first_collide = false
+			ExplodeDamage *= 2
 		explode()
 
 #爆炸
@@ -86,6 +96,16 @@ func hit_the_enemy(enemy01 : CharacterBody3D):
 func hit_the_envi_object(object01 : RigidBody3D):
 	object01.apply_central_force((object01.global_position - global_position).normalized() * ImpactForce)
 
-#额外功能的 bomb #坠落伤害双倍
-func drop_dubble():
-	pass
+#持续检测碰撞信息
+#func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	#if first_collide == false:
+		#return
+		#
+	#var collision_info = move_and_collide(Vector3.ZERO)
+	#if collision_info:
+		#var collider = collision_info.get_collider()
+		#var layer = collider.collision_layer
+		#
+		#if layer == 1:
+			#print("Collided with the ground")
+			#first_collide == false
