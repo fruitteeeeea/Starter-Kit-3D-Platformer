@@ -2,7 +2,7 @@ extends Label3D
 
 func _ready() -> void:
 	scale = scale * 0.8
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.4).timeout
 	fadetween()
 
 

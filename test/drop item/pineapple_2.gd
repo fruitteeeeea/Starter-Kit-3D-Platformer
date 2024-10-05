@@ -7,6 +7,7 @@ var target : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	scale = Vector3(randf_range(.8, 1.2), randf_range(.8, 1.2), randf_range(.8, 1.2)) #随机大小
 	#born_tween()
 	pass # Replace with function body.
 
@@ -36,6 +37,7 @@ func _process(delta):
 		global_position = global_position.lerp(target.global_position, delta * 10)
 		
 		if global_position.distance_to(target.global_position) <.5:
+			SoundManager.play_sfx("ReachPlayerSFX")
 			queue_free()
 
 

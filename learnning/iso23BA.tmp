@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=18 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_lni6x"]
-[ext_resource type="Script" path="res://test/level/level_manager.gd" id="1_od1ql"]
 [ext_resource type="MeshLibrary" uid="uid://cote2g2mk3obv" path="res://test/floor/floor.tres" id="2_ujwmj"]
 [ext_resource type="PackedScene" uid="uid://b1fw18piq10vy" path="res://test/GLB format/tree.glb" id="3_elp3a"]
 [ext_resource type="Script" path="res://learnning/truma_component.gd" id="3_qusnx"]
@@ -28,9 +27,6 @@ shadow_color = Color(0, 0, 0, 0.376471)
 shadow_offset = Vector2(2, 2)
 
 [node name="isomatric_view" type="Node3D"]
-
-[node name="LevelManager" type="Node" parent="."]
-script = ExtResource("1_od1ql")
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10846, 1.48326, 1.26512)
@@ -224,51 +220,29 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Player Speed" type="Label" parent="HUD/PlayeStates"]
+[node name="Player Health" type="Label" parent="HUD/PlayeStates"]
 layout_mode = 0
 offset_left = 595.0
 offset_top = 823.0
 offset_right = 819.0
 offset_bottom = 882.0
-text = "Player Speed : "
+text = "Player Health"
 label_settings = SubResource("LabelSettings_aif3r")
 
-[node name="Speed" type="Label" parent="HUD/PlayeStates"]
+[node name="3" type="Label" parent="HUD/PlayeStates"]
 layout_mode = 0
-offset_left = 904.0
+offset_left = 887.0
 offset_top = 823.0
-offset_right = 983.0
+offset_right = 912.0
 offset_bottom = 879.0
-text = "null"
-label_settings = SubResource("LabelSettings_aif3r")
-
-[node name="LuckCombo!" type="Control" parent="HUD"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="Luck Combo!!" type="Label" parent="HUD/LuckCombo!"]
-layout_mode = 0
-offset_left = 105.0
-offset_top = 364.0
-offset_right = 281.0
-offset_bottom = 420.0
-text = " Combo!!"
-label_settings = SubResource("LabelSettings_aif3r")
-
-[node name="Luck Combo!!2" type="Label" parent="HUD/LuckCombo!"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 363.0
-offset_right = 212.0
-offset_bottom = 419.0
-text = "5X"
+text = "3"
 label_settings = SubResource("LabelSettings_aif3r")
 
 [node name="Baisc Item" parent="." instance=ExtResource("15_cvgpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)
 
 [node name="Baisc Item2" parent="." instance=ExtResource("15_cvgpy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23452, 1.70519, 2.4316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.33807, 1.70519, 2.4316)
 
 [node name="Baisc Item3" parent="." instance=ExtResource("15_cvgpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05744, 1.70519, 2.36686)

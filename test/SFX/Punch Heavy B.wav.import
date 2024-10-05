@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfxr4isijglmi"
+path="res://.godot/imported/Punch Heavy B.wav-d179ea4db5ba4d03d48bbe11938a1201.sample"
+
+[deps]
+
+source_file="res://test/SFX/Punch Heavy B.wav"
+dest_files=["res://.godot/imported/Punch Heavy B.wav-d179ea4db5ba4d03d48bbe11938a1201.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

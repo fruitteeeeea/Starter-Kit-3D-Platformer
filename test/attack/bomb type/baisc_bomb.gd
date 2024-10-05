@@ -63,6 +63,8 @@ func _on_direct_hit_detect_body_entered(body: Node3D) -> void:
 
 #爆炸
 func explode():
+	SoundManager.play_sfx("ExplodeSFX")
+	
 	#应用相机抖动
 	camera = get_viewport().get_camera_3d()
 	if camera.has_method("add_trauma"):

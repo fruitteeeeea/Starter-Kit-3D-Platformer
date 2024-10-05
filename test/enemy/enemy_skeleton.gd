@@ -4,7 +4,6 @@ signal enemy_dead(enemy : CharacterBody3D)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var drop_item: Marker3D = $DropItem
-
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D #开始导航
 
 var speed = 1.2
@@ -50,6 +49,7 @@ func _physics_process(delta: float) -> void:
 
 
 func take_damage(damge := 1.0):
+	SoundManager.play_sfx("EnemyHurtSFX", true)
 	damage_number_spawn_point.spwan_damage_number(damge)
 	
 	if health_component:

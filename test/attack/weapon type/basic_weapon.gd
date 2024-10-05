@@ -4,6 +4,9 @@ extends Node3D
 @onready var marker_3d: Marker3D = $Marker3D
 @onready var marker_3d_2: Marker3D = $Marker3D2
 
+#音效节点
+@onready var fire_sfx: AudioStreamPlayer = $FireSFX
+
 #确认玩家
 var player : CharacterBody3D
 
@@ -70,6 +73,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 #射击子弹
 func shoot_bullet(bullet_scene : PackedScene):
+	fire_sfx.play() #播放音效
+	
 	var bullet = bullet_scene.instantiate()
 	if bullet.has_method("bullet") == false: #确认子弹确实是子弹
 		return

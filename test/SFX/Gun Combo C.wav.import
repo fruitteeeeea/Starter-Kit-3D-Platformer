@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8vgxlw8kld64"
+path="res://.godot/imported/Gun Combo C.wav-4e3ba3b458a97c74a32ab0a4d387a42d.sample"
+
+[deps]
+
+source_file="res://test/SFX/Gun Combo C.wav"
+dest_files=["res://.godot/imported/Gun Combo C.wav-4e3ba3b458a97c74a32ab0a4d387a42d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

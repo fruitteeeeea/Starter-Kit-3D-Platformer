@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cve3lpk276l5x"
+path="res://.godot/imported/Impact Vibro 003.wav-5939255d4a70988ad13f4d151d91f730.sample"
+
+[deps]
+
+source_file="res://test/SFX/Impact Vibro 003.wav"
+dest_files=["res://.godot/imported/Impact Vibro 003.wav-5939255d4a70988ad13f4d151d91f730.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmsy3yogm81i2"]
+
+[ext_resource type="Script" path="res://test/attack/item/basic_item.gd" id="1_qsguh"]
+[ext_resource type="PackedScene" uid="uid://fg23drk7hoh8" path="res://test/drop item/soda_glass_2.tscn" id="1_sxafw"]
+[ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="2_yb3hd"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vwxvv"]
+viewport_path = NodePath("ExplainLabel/Sprite3D/SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u4acs"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2fjj"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_yb3hd")
+billboard_mode = 1
+billboard_keep_scale = true
+proximity_fade_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_qlsrk"]
+
+[sub_resource type="Curve" id="Curve_dvse7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_7f8mx"]
+colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+
+[node name="Baisc Item" type="Node3D"]
+script = ExtResource("1_qsguh")
+description01 = "soda glass"
+description02 = "player
+move speed + 49%"
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.251038, 0)
+
+[node name="soda-glass2" parent="Model" instance=ExtResource("1_sxafw")]
+
+[node name="ExplainLabel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17987, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="ExplainLabel"]
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_vwxvv")
+
+[node name="SubViewport" type="SubViewport" parent="ExplainLabel/Sprite3D"]
+size = Vector2i(256, 256)
+
+[node name="Panel" type="Panel" parent="ExplainLabel/Sprite3D/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExplainLabel/Sprite3D/SubViewport/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ExplainLabel/Sprite3D/SubViewport/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "奖励品 01
+"
+
+[node name="Label2" type="Label" parent="ExplainLabel/Sprite3D/SubViewport/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "增加玩家 
+49% 移速
+"
+
+[node name="DetectPlayerArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectPlayerArea"]
+shape = SubResource("SphereShape3D_u4acs")
+
+[node name="IdleParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447834, 0)
+material_override = SubResource("StandardMaterial3D_l2fjj")
+mesh = SubResource("QuadMesh_qlsrk")
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_dvse7")
+color_ramp = SubResource("Gradient_7f8mx")
+
+[connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_entered"]
+[connection signal="body_exited" from="DetectPlayerArea" to="." method="_on_detect_player_area_body_exited"]

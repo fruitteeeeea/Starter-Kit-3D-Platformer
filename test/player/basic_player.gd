@@ -171,5 +171,6 @@ func collect_coin():
 	coin_collected.emit(coins)
 
 
-func super_jump():
+func increas_power(value := 1.0):
+	movement_speed += movement_speed * value
 	pass
