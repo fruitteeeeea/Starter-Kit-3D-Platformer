@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://o2slllhhui58"
+path="res://.godot/imported/Mineral Insectoid Pain 005.wav-91e78899b116dcc83b9794470f068185.sample"
+
+[deps]
+
+source_file="res://test/SFX/Mineral Insectoid Pain 005.wav"
+dest_files=["res://.godot/imported/Mineral Insectoid Pain 005.wav-91e78899b116dcc83b9794470f068185.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

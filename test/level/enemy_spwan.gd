@@ -11,9 +11,21 @@ var rand_range := 10.0 #刷怪半径
 @export var maximun_enemy := 25 #敌人最大数量
 var enemy_array := [] #怪物队列
 
+@export var level_manager : Node #确认关卡管理器
 
 func _ready() -> void:
+	if level_manager == null:
+		printerr("level manager not found")
+		return
+	
+	level_manager.battel_begain.connect(func(): change_spwan_state(true))
+	level_manager.battel_finished.connect(func(): change_spwan_state(false))
+	
 	timer.wait_time = spwan_enemy_time
+
+#更改生成状态
+func change_spwan_state(state := false):
+	do_spwan_enemy = state
 
 
 func _on_timer_timeout() -> void:

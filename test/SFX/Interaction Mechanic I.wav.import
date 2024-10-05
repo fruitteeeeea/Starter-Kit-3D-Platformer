@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c0vwo4wtdigow"
+path="res://.godot/imported/Interaction Mechanic I.wav-91609fddd502b5d79e4bb69fd12b6c19.sample"
+
+[deps]
+
+source_file="res://test/SFX/Interaction Mechanic I.wav"
+dest_files=["res://.godot/imported/Interaction Mechanic I.wav-91609fddd502b5d79e4bb69fd12b6c19.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

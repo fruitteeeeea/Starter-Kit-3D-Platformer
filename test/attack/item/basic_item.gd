@@ -25,6 +25,8 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && player_inside:
 		player_accept_power()
+		SoundManager.play_sfx("SodaGlassSFX")
+		print("1")
 		queue_free()
 
 func _on_detect_player_area_body_entered(body: Node3D) -> void:
