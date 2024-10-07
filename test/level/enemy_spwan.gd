@@ -43,9 +43,10 @@ func spwan_enemy():
 		Vector3(randf_range(-rand_range, rand_range), 0, randf_range(-rand_range, rand_range)) #随机位置
 		
 		enemy_array.append(enemy) #添加到敌人数组中
-		enemy.enemy_dead.connect(_remove_enemy_from_array) #敌人链接移除数组信号
+		enemy.enemy_dead.connect(_remove_enemy_from_array_and_other_staff) #敌人链接移除数组信号
 
 #执行删除敌人操作
-func _remove_enemy_from_array(enemy : CharacterBody3D):
+func _remove_enemy_from_array_and_other_staff(enemy : CharacterBody3D):
 	enemy_array.erase(enemy)
 	print(enemy_array.size())
+	level_manager.add_combo()

@@ -12,7 +12,7 @@ radius = 0.25
 height = 0.75
 
 [node name="Enemy Skeleton" node_paths=PackedStringArray("health_component") instance=ExtResource("1_0t6sv")]
-collision_layer = 3
+collision_layer = 2
 script = ExtResource("2_r0nd8")
 health_component = NodePath("HealthComponent")
 
@@ -37,12 +37,14 @@ speed_scale = 0.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
 shape = SubResource("CapsuleShape3D_n1vwf")
 
-[node name="DropItem" type="Marker3D" parent="." index="4"]
-script = ExtResource("3_wy335")
+[node name="HealthComponent" parent="." index="4" instance=ExtResource("4_ungiq")]
 
-[node name="HealthComponent" parent="." index="5" instance=ExtResource("4_ungiq")]
-
-[node name="DamageNumberSpawnPoint" type="Marker3D" parent="." index="6"]
+[node name="DamageNumberSpawnPoint" type="Marker3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.703704, 0)
 script = ExtResource("6_pmj16")
 DamageNumber = ExtResource("5_w6d7j")
+
+[node name="DropItem" type="Marker3D" parent="." index="6"]
+script = ExtResource("3_wy335")
+min_drop_number = 1
+max_dorp_number = 2

@@ -2,6 +2,9 @@ extends Node
 
 signal battel_begain
 signal battel_finished
+signal add_combo_signal
+
+@onready var state_timer: Timer = $StateTimer
 
 #枚举游戏阶段
 enum Phase {
@@ -21,11 +24,12 @@ enum Phase {
 
 func _ready() -> void:
 	if bgm:
-		SoundManager.play_bgm(bgm)
+		SoundManager.play_bgm(bgm) #播放背景音乐
 	
 	state01()
 
-func state01():
+func state01(): #五秒预备阶段
+	
 	await get_tree().create_timer(5).timeout
 	battel_begain.emit()
 	state02()
@@ -33,3 +37,6 @@ func state01():
 func state02():
 	await get_tree().create_timer(60).timeout
 	battel_finished.emit()
+
+func add_combo():
+	add_combo_signal.emit()

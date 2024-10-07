@@ -2,8 +2,8 @@ extends Marker3D
 
 #掉落物品
 var Pineapple := preload("res://test/drop item/pineapple_2.tscn")
-var min_drop_number := 4
-var max_dorp_number := 5
+@export var min_drop_number := 4
+@export var max_dorp_number := 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
