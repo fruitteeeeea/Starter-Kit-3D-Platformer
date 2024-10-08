@@ -7,18 +7,30 @@ extends Node3D
 @onready var timer: Timer = $Timer #射击间隔
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var limited_posx : Vector2 #限制的水平活动范围
+var limited_posz : Vector2 #限制的水平活动范围
 
 var can_shoot := true #是否可以射击
 var dected_player := false #是否检测到玩家
 
+var level_manager : Node #定义关卡编辑器
 var player : CharacterBody3D #玩家场景
 
 func _ready() -> void:
+	if get_parent().has_method("level_manager"):
+		level_manager = get_parent()
+		level_manager.battel_begain.connect(change_shoot_state.bind(true))
+		level_manager.battel_finished.connect(change_shoot_state.bind(false))
+	
 	born_tween()
 	
 	await get_tree().create_timer(randf_range(1.0, 5.0)).timeout
 	timer.start()
 
+
+func change_shoot_state(state := false):
+	do_shoot = state
+	
 
 #检测玩家进出
 func _on_detect_player_body_entered(body: Node3D) -> void:
@@ -31,11 +43,18 @@ func _on_detect_player_body_exited(body: Node3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if can_shoot && do_shoot:
-		animation_player.play("alert")
-		await animation_player.animation_finished
-		shoot_bullet()
-		animation_player.play("after_shoot")
+	limited_posx = level_manager.level_pos_h
+	limited_posz = level_manager.level_pos_v
+	
+	if limited_posx && limited_posz: #随机更改位置
+		global_position.x = randf_range(limited_posx.x, limited_posx.y)
+		global_position.z = randf_range(limited_posz.x, limited_posz.y)
+	
+	#if can_shoot && do_shoot:
+		#animation_player.play("alert")
+		#await animation_player.animation_finished
+		#shoot_bullet()
+		#animation_player.play("after_shoot")
 
 #生成时候的tween
 func born_tween():

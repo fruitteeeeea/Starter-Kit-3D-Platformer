@@ -1,6 +1,6 @@
 extends Marker3D
 
-var rand_range := 10.0 #刷怪半径
+var rand_range := 8.0 #刷怪半径
 
 @onready var timer: Timer = $Timer #刷怪间隔
 
@@ -18,8 +18,8 @@ func _ready() -> void:
 		printerr("level manager not found")
 		return
 	
-	level_manager.battel_begain.connect(func(): change_spwan_state(true))
-	level_manager.battel_finished.connect(func(): change_spwan_state(false))
+	level_manager.battel_begain.connect(change_spwan_state.bind(true))
+	level_manager.battel_finished.connect(change_spwan_state.bind(false))
 	
 	timer.wait_time = spwan_enemy_time
 

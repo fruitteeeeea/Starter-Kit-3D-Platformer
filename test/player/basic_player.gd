@@ -4,6 +4,7 @@ signal coin_collected
 
 @export_subgroup("Components")
 @export var view: Node3D
+@export var specific_weapon : Node3D
 
 @export_subgroup("Properties")
 @export var movement_speed = 300

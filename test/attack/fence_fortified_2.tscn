@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://vrfllbyb6g3f"]
+
+[ext_resource type="PackedScene" uid="uid://ct3jarjp04q5p" path="res://test/attack/interactive_comp[onent/fence-fortified.glb" id="1_soo23"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aqmp3"]
+points = PackedVector3Array(-0.0651689, 0.488724, -0.196607, -0.254107, -0.00410712, -0.254107, 0.255179, -0.00410712, -0.254107, 0.000535697, 0.0451915, -0.196607, 0.233884, 0.507667, -0.244801, -0.254107, 0.406594, -0.254107, 0.255179, -0.00410712, -0.204825, -0.254107, -0.00410712, -0.204825, 0.246953, 0.521607, -0.204825, -0.245882, 0.521607, -0.204825, 0.246953, 0.406594, -0.254107, -0.232813, 0.507667, -0.244801, 0.186843, 0.453148, -0.197, -0.182894, 0.0593583, -0.197438, 0.183375, 0.06, -0.197528, -0.193192, 0.452455, -0.197101, 0.255129, 0.299815, -0.254102, -0.254107, 0.406594, -0.204825, 0.255129, 0.299815, -0.204825, -0.120063, 0.483899, -0.19721)
+
+[node name="fence-fortified2" instance=ExtResource("1_soo23")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="fence-fortified" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fence-fortified/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_aqmp3")

@@ -6,6 +6,12 @@ signal add_combo_signal
 
 @onready var state_timer: Timer = $StateTimer
 
+#获取关卡尺寸
+@export var LevelSizeTopLeft : Marker3D
+@export var LevelSizeDownRight : Marker3D
+var level_pos_h : Vector2
+var level_pos_v : Vector2
+
 #枚举游戏阶段
 enum Phase {
 	SHOPPING,
@@ -23,20 +29,32 @@ enum Phase {
 @export var bgm : AudioStream
 
 func _ready() -> void:
-	if bgm:
-		SoundManager.play_bgm(bgm) #播放背景音乐
-	
-	state01()
+	if LevelSizeTopLeft && LevelSizeDownRight:
+		level_pos_h = Vector2(LevelSizeTopLeft.global_position.x, LevelSizeDownRight.global_position.x)
+		level_pos_v = Vector2(LevelSizeTopLeft.global_position.z, LevelSizeDownRight.global_position.z)
+	pass
+
+
+func level_manager():
+	pass
 
 func state01(): #五秒预备阶段
+	if bgm:
+		SoundManager.play_bgm(bgm) #播放背景音乐
 	
 	#await get_tree().create_timer(5).timeout
 	battel_begain.emit()
 	state02()
 
 func state02():
-	await get_tree().create_timer(60).timeout
+	var battle_time := bgm.get_length()
+	await get_tree().create_timer(battle_time - 5.0).timeout
 	battel_finished.emit()
 
 func add_combo():
 	add_combo_signal.emit()
+
+
+func _on_battle_zone_body_entered(body: Node3D) -> void:
+	if body.has_method("player"):
+		state01()

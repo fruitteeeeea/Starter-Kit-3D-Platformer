@@ -1,5 +1,8 @@
 extends Node3D
 
+signal ui_main_weapon_fire_rate(time : float) #向ui发送射击冷却信号
+signal ui_secondary_weapon_fire_rate(time : float) #向ui发送射击冷却信号
+
 #发射子弹位置
 @onready var marker_3d: Marker3D = $Marker3D
 @onready var marker_3d_2: Marker3D = $Marker3D2
@@ -55,6 +58,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("main_weapon") && MainWeaponScene && main_weapon_can_shoot:
 		main_weapon_can_shoot = false
+		ui_main_weapon_fire_rate.emit() #向ui发送子弹冷却信号
 		for i in main_weapon_multiplier: #发射相应子弹
 			shoot_bullet(MainWeaponScene)
 			await get_tree().create_timer(multiplier_timer).timeout #等待一下发射间隔
@@ -64,6 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("secondary_weapon") && SecoundaryWeaponScene && secondary_weapon_can_shoot:
 		secondary_weapon_can_shoot = false
+		ui_secondary_weapon_fire_rate.emit() #向ui发送子弹冷却信号
 		for i in secondary_weapon_multiplier:
 			shoot_bullet(SecoundaryWeaponScene)
 			await get_tree().create_timer(multiplier_timer).timeout #等待一下发射间隔
