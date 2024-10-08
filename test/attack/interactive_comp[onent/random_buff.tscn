@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfo5c2x5m4cgb"]
+
+[ext_resource type="Script" path="res://test/attack/interactive_comp[onent/random_buff.gd" id="1_4bf08"]
+[ext_resource type="PackedScene" uid="uid://cs48gc2gns8cx" path="res://test/attack/interactive_comp[onent/floor-hole.glb" id="1_budek"]
+[ext_resource type="PackedScene" uid="uid://deb08bnok3vk7" path="res://test/attack/interactive_comp[onent/tree-log-small.glb" id="2_be2km"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="4_eyywq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y76lc"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+backlight = Color(0, 0.521569, 0.709804, 1)
+billboard_keep_scale = true
+grow_amount = 1.882
+proximity_fade_distance = 0.25
+
+[sub_resource type="Curve" id="Curve_5repp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="RandomBuff" type="Node3D"]
+script = ExtResource("1_4bf08")
+
+[node name="floor-hole2" parent="." instance=ExtResource("1_budek")]
+
+[node name="tree-log-small2" parent="." instance=ExtResource("2_be2km")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0.000623927, 1.03509, -0.188569)
+
+[node name="ParticlesTrail" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0822923, 0)
+material_override = SubResource("StandardMaterial3D_y76lc")
+cast_shadow = 0
+emitting = false
+amount = 6
+mesh = ExtResource("4_eyywq")
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.3, 0.3)
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_5repp")

@@ -30,7 +30,7 @@ func _ready() -> void:
 
 func state01(): #五秒预备阶段
 	
-	await get_tree().create_timer(5).timeout
+	#await get_tree().create_timer(5).timeout
 	battel_begain.emit()
 	state02()
 

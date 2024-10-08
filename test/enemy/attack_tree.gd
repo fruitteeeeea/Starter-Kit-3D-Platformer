@@ -1,11 +1,13 @@
 extends Node3D
 
 @export var Bullet : PackedScene #子弹场景
+@export var do_shoot := false #是否进行射击
 
 @onready var shoot_point: Marker3D = $ShootPoint #子弹发射点
 @onready var timer: Timer = $Timer #射击间隔
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var do_shoot := true #是否进行射击
+
 var can_shoot := true #是否可以射击
 var dected_player := false #是否检测到玩家
 
@@ -29,8 +31,11 @@ func _on_detect_player_body_exited(body: Node3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if can_shoot:
+	if can_shoot && do_shoot:
+		animation_player.play("alert")
+		await animation_player.animation_finished
 		shoot_bullet()
+		animation_player.play("after_shoot")
 
 #生成时候的tween
 func born_tween():
@@ -62,4 +67,3 @@ func shoot_bullet():
 		bullet.position = shoot_point.global_position
 		var target_position = (player.global_position - global_position).normalized() #记得归一化向量
 		bullet.direction = target_position
-	
