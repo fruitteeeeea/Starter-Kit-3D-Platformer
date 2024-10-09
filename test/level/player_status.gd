@@ -1,7 +1,7 @@
 extends Control
 
 @export var player : CharacterBody3D #获取玩家
-@export var player_weapon : Node3D #获取玩家武器
+var player_weapon : Node3D #获取玩家武器
 
 @onready var progress_bar: ProgressBar = $Weapon/ProgressBar
 @onready var progress_bar_2: ProgressBar = $Weapon/ProgressBar2
@@ -31,7 +31,3 @@ func activate_progress_bar_2():
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(progress_bar_2, "value", progress_bar_2.max_value, time)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

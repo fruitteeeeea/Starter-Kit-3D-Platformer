@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=28 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cmsy3yogm81i2" path="res://test/attack/item/basic_item.tscn" id="15_cvgpy"]
 [ext_resource type="Script" path="res://test/level/luck_combo!!.gd" id="17_acph1"]
 [ext_resource type="Script" path="res://test/level/player_status.gd" id="21_t5yi6"]
+[ext_resource type="Script" path="res://test/level/level_status.gd" id="22_lfo0c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6lwo"]
 size = Vector3(20, 5, 18)
@@ -490,6 +491,31 @@ offset_top = 847.0
 offset_right = 444.0
 offset_bottom = 870.0
 text = "Sub Weapon"
+
+[node name="LevelStatus" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("22_lfo0c")
+
+[node name="Wave" type="Label" parent="HUD/LevelStatus"]
+layout_mode = 0
+offset_left = 677.0
+offset_top = 11.0
+offset_right = 890.0
+offset_bottom = 86.0
+text = "Wave1:"
+label_settings = SubResource("LabelSettings_aif3r")
+
+[node name="TimeLeft" type="Label" parent="HUD/LevelStatus"]
+layout_mode = 0
+offset_left = 849.0
+offset_top = 11.0
+offset_right = 1062.0
+offset_bottom = 86.0
+text = "00:11"
+label_settings = SubResource("LabelSettings_aif3r")
 
 [node name="Baisc Item" parent="." instance=ExtResource("15_cvgpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)
