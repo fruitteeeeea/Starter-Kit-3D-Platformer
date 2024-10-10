@@ -5,6 +5,7 @@ signal coin_collected
 @export_subgroup("Components")
 @export var view: Node3D
 @export var specific_weapon : Node3D
+@export var FollowBot : PackedScene
 
 @export_subgroup("Properties")
 @export var movement_speed = 300
@@ -25,6 +26,7 @@ var coins = 0
 @onready var sound_footsteps = $SoundFootsteps
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
+@onready var follow_point: Marker3D = $Character/FollowPoint #无人机追踪点
 
 var is_freez := false
 
@@ -33,9 +35,21 @@ var camera : Camera3D
 func _ready() -> void:
 	add_to_group("player")
 	camera = get_viewport().get_camera_3d()
+	add_bot()
 
 func player():
 	pass
+
+#添加无人机
+func add_bot():
+	await get_tree().create_timer(.5).timeout
+	if FollowBot && follow_point:
+		var follow_bot = FollowBot.instantiate()
+		get_tree().root.add_child(follow_bot)
+		follow_bot.position = follow_point.global_position
+		follow_bot.player = self
+		follow_bot.follow_point  = follow_point #赋予跟踪marker3d
+
 
 func _physics_process(delta):
 

@@ -21,12 +21,14 @@ point_count = 3
 [node name="RandomBuff" type="Node3D"]
 script = ExtResource("1_4bf08")
 
-[node name="floor-hole2" parent="." instance=ExtResource("1_budek")]
+[node name="model" type="Node3D" parent="."]
 
-[node name="tree-log-small2" parent="." instance=ExtResource("2_be2km")]
+[node name="tree-log-small2" parent="model" instance=ExtResource("2_be2km")]
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0.000623927, 1.03509, -0.188569)
 
-[node name="ParticlesTrail" type="CPUParticles3D" parent="."]
+[node name="floor-hole2" parent="." instance=ExtResource("1_budek")]
+
+[node name="Particles" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0822923, 0)
 material_override = SubResource("StandardMaterial3D_y76lc")
 cast_shadow = 0
@@ -40,3 +42,5 @@ direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0.1, 0)
 scale_amount_min = 0.75
 scale_amount_curve = SubResource("Curve_5repp")
+
+[node name="Timer" type="Timer" parent="."]

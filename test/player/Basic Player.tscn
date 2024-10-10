@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dknht2bov7s7k"]
+[gd_scene load_steps=12 format=3 uid="uid://dknht2bov7s7k"]
 
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_6tj76"]
 [ext_resource type="Script" path="res://test/player/basic_player.gd" id="1_b7nfu"]
+[ext_resource type="PackedScene" uid="uid://dmhdh82n3210p" path="res://test/follow_bot.tscn" id="2_5ukek"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="2_8875h"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_1bjfr"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
@@ -29,12 +30,16 @@ point_count = 3
 collision_layer = 7
 script = ExtResource("1_b7nfu")
 specific_weapon = NodePath("Weapon/Basic Weapon")
+FollowBot = ExtResource("2_5ukek")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CapsuleShape3D_pdyd2")
 
 [node name="Character" parent="." instance=ExtResource("1_6tj76")]
+
+[node name="FollowPoint" type="Marker3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.565477, 1.26363, 0.542291)
 
 [node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
@@ -68,5 +73,6 @@ script = ExtResource("5_8m6nj")
 
 [node name="Basic Weapon" parent="Weapon" instance=ExtResource("8_fgm0e")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0449612, 0, -0.818392)
+main_weapon_fire_rate = 0.5
 
 [editable path="Character"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=29 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bfo5c2x5m4cgb" path="res://test/attack/interactive_comp[onent/random_buff.tscn" id="5_ohgqq"]
 [ext_resource type="PackedScene" uid="uid://c5wjln7xt883p" path="res://test/GLB format/grass.glb" id="6_5repo"]
 [ext_resource type="Script" path="res://test/level/enemy_spwan.gd" id="8_01ata"]
+[ext_resource type="PackedScene" uid="uid://88om2cwr1ohh" path="res://test/enemy/enemy_ghost.tscn" id="8_75gdi"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="10_g7m0e"]
 [ext_resource type="MeshLibrary" uid="uid://cdrnv4trlxysk" path="res://test/floor/floor_2.tres" id="10_ngq57"]
 [ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://test/enemy/enemy_skeleton.tscn" id="10_ot1se"]
@@ -44,6 +45,8 @@ LevelSizeTopLeft = NodePath("LevelSizeTopLeft")
 LevelSizeDownRight = NodePath("LevelSizeDownRight")
 bgm = ExtResource("2_3warf")
 
+[node name="StateTimer" type="Timer" parent="LevelManager"]
+
 [node name="EnemySpwan" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.63249, -15.9239)
 script = ExtResource("8_01ata")
@@ -65,25 +68,42 @@ level_manager = NodePath("..")
 wait_time = 1.5
 autostart = true
 
-[node name="StateTimer" type="Timer" parent="LevelManager"]
+[node name="EnemySpwan3" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 1.51639, -15.9239)
+script = ExtResource("8_01ata")
+Enemy = ExtResource("5_jv8au")
+spwan_enemy_time = 3.0
+maximun_enemy = 10
+level_manager = NodePath("..")
 
-[node name="AttackTree" parent="LevelManager" instance=ExtResource("5_jv8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24316, 1.46152, -18.4358)
+[node name="Timer" type="Timer" parent="LevelManager/EnemySpwan3"]
+wait_time = 1.5
+autostart = true
 
-[node name="AttackTree2" parent="LevelManager" instance=ExtResource("5_jv8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11184, 1.46152, -7.70594)
+[node name="EnemySpwan4" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.64885, -15.9302)
+script = ExtResource("8_01ata")
+Enemy = ExtResource("8_75gdi")
+spwan_enemy_time = 5.0
+maximun_enemy = 6
+level_manager = NodePath("..")
 
-[node name="AttackTree3" parent="LevelManager" instance=ExtResource("5_jv8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4791, 1.46152, -16.8738)
+[node name="Timer" type="Timer" parent="LevelManager/EnemySpwan4"]
+wait_time = 1.5
+autostart = true
 
-[node name="AttackTree4" parent="LevelManager" instance=ExtResource("5_jv8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81827, 1.46152, -21.6982)
+[node name="RandomBuffSpwan" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 1.57017, -15.9302)
+script = ExtResource("8_01ata")
+Enemy = ExtResource("5_ohgqq")
+spwan_enemy_number = 2
+spwan_enemy_time = 10.0
+maximun_enemy = 5
+level_manager = NodePath("..")
 
-[node name="AttackTree5" parent="LevelManager" instance=ExtResource("5_jv8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.79143, 1.46152, -10.3375)
-
-[node name="AttackTree6" parent="LevelManager" instance=ExtResource("5_jv8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20222, 1.46152, -11.9962)
+[node name="Timer" type="Timer" parent="LevelManager/RandomBuffSpwan"]
+wait_time = 1.5
+autostart = true
 
 [node name="Fence" type="GridMap" parent="LevelManager"]
 mesh_library = ExtResource("11_esxq3")
@@ -102,10 +122,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.356291, 3.24756, -15.4889)
 shape = SubResource("BoxShape3D_v6lwo")
 
 [node name="LevelSizeTopLeft" type="Marker3D" parent="LevelManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4357, 0, -17.8262)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5468, 0, -24.5252)
 
 [node name="LevelSizeDownRight" type="Marker3D" parent="LevelManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15485, 0, -14.7041)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.49206, 0, -6.50897)
+
+[node name="character-ghost" parent="LevelManager" instance=ExtResource("8_75gdi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04552, 3.29446, -11.3721)
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10846, 1.48326, 1.26512)
@@ -121,7 +144,7 @@ script = ExtResource("1_3law7")
 
 [node name="truma_component" type="Node" parent="View/Camera3D"]
 script = ExtResource("3_qusnx")
-max_trauma = 0.8
+max_trauma = 0.6
 noise = ExtResource("4_lksb1")
 
 [node name="World" type="Node3D" parent="."]
@@ -351,7 +374,7 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8
 [node name="mouse position" type="Node3D" parent="."]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("10_g7m0e")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.9938, 6.94406, 8.6063)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.54617, 3.05559, -1.80088)
 view = NodePath("../View/Camera3D")
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -463,7 +486,6 @@ offset_top = 802.0
 offset_right = 548.0
 offset_bottom = 835.0
 max_value = 1.0
-step = 0.1
 value = 1.0
 
 [node name="ProgressBar2" type="ProgressBar" parent="HUD/PlayerStatus/Weapon"]
@@ -517,6 +539,15 @@ offset_bottom = 86.0
 text = "00:11"
 label_settings = SubResource("LabelSettings_aif3r")
 
+[node name="Loot" type="Label" parent="HUD/LevelStatus"]
+layout_mode = 0
+offset_left = 771.0
+offset_top = 59.0
+offset_right = 984.0
+offset_bottom = 134.0
+text = "Loot : 1"
+label_settings = SubResource("LabelSettings_aif3r")
+
 [node name="Baisc Item" parent="." instance=ExtResource("15_cvgpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)
 
@@ -527,20 +558,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23452, 1.70519, 2.4316)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05744, 1.70519, 2.36686)
 
 [node name="RandomBuff" parent="." instance=ExtResource("5_ohgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0331, 1.59625, 1.61399)
-
-[node name="RandomBuff2" parent="." instance=ExtResource("5_ohgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94218, 1.59625, -1.97322)
-
-[node name="RandomBuff3" parent="." instance=ExtResource("5_ohgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6217, 1.59625, -1.08924)
-
-[node name="RandomBuff4" parent="." instance=ExtResource("5_ohgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5031, 1.59625, -4.37555)
-
-[node name="RandomBuff5" parent="." instance=ExtResource("5_ohgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62808, 1.59625, 0.734771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1684, 1.59625, -0.954897)
 
 [connection signal="timeout" from="LevelManager/EnemySpwan/Timer" to="LevelManager/EnemySpwan" method="_on_timer_timeout"]
 [connection signal="timeout" from="LevelManager/EnemySpwan2/Timer" to="LevelManager/EnemySpwan2" method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelManager/EnemySpwan3/Timer" to="LevelManager/EnemySpwan3" method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelManager/EnemySpwan4/Timer" to="LevelManager/EnemySpwan4" method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelManager/RandomBuffSpwan/Timer" to="LevelManager/RandomBuffSpwan" method="_on_timer_timeout"]
 [connection signal="body_entered" from="LevelManager/BattleZone" to="LevelManager" method="_on_battle_zone_body_entered"]

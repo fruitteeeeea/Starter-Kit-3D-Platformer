@@ -12,7 +12,7 @@ signal add_combo_signal
 var level_pos_h : Vector2
 var level_pos_v : Vector2
 
-#枚举游戏阶段
+#枚举游戏阶段a
 enum Phase {
 	SHOPPING,
 	COUNTDOWN,
@@ -32,7 +32,6 @@ func _ready() -> void:
 	if LevelSizeTopLeft && LevelSizeDownRight:
 		level_pos_h = Vector2(LevelSizeTopLeft.global_position.x, LevelSizeDownRight.global_position.x)
 		level_pos_v = Vector2(LevelSizeTopLeft.global_position.z, LevelSizeDownRight.global_position.z)
-	pass
 
 
 func level_manager():
@@ -50,6 +49,7 @@ func state02():
 	var battle_time := bgm.get_length()
 	await get_tree().create_timer(battle_time - 5.0).timeout
 	battel_finished.emit()
+	kill_every_enemy() #秒杀所有敌人
 
 func add_combo():
 	add_combo_signal.emit()
@@ -58,3 +58,9 @@ func add_combo():
 func _on_battle_zone_body_entered(body: Node3D) -> void:
 	if body.has_method("player"):
 		state01()
+
+#回合结束 秒杀所有敌人
+func kill_every_enemy():
+	for i in get_children():
+		if i.has_method("take_damage"):
+			i.take_damage(100)

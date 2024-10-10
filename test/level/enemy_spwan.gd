@@ -5,6 +5,8 @@ var rand_range := 8.0 #刷怪半径
 @onready var timer: Timer = $Timer #刷怪间隔
 
 @export var do_spwan_enemy := false #是否生成敌人
+@export var activate := true
+
 @export var Enemy : PackedScene #敌人类型
 @export var spwan_enemy_number := 1 #生成敌人数量
 @export var spwan_enemy_time := 1.0 #生成敌人间隔
@@ -17,6 +19,9 @@ func _ready() -> void:
 	if level_manager == null:
 		printerr("level manager not found")
 		return
+	
+	if !activate: #是否启用
+		timer.stop()
 	
 	level_manager.battel_begain.connect(change_spwan_state.bind(true))
 	level_manager.battel_finished.connect(change_spwan_state.bind(false))
@@ -38,7 +43,7 @@ func _on_timer_timeout() -> void:
 func spwan_enemy():
 	for i in range(spwan_enemy_number):
 		var enemy = Enemy.instantiate() #生成敌人
-		get_tree().root.add_child(enemy)
+		get_parent().add_child(enemy)
 		enemy.global_position = global_position + \
 		Vector3(randf_range(-rand_range, rand_range), 0, randf_range(-rand_range, rand_range)) #随机位置
 		
@@ -48,5 +53,5 @@ func spwan_enemy():
 #执行删除敌人操作
 func _remove_enemy_from_array_and_other_staff(enemy : CharacterBody3D):
 	enemy_array.erase(enemy)
-	print(enemy_array.size())
+	#print(enemy_array.size())
 	level_manager.add_combo()

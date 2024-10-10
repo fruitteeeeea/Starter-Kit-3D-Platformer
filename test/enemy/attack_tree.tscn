@@ -1,9 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://crhujlo44n8ip"]
+[gd_scene load_steps=21 format=4 uid="uid://crhujlo44n8ip"]
 
 [ext_resource type="Texture2D" uid="uid://c10wr12hm64hl" path="res://test/enemy/model/Textures/colormap.png" id="1_0dcte"]
 [ext_resource type="Script" path="res://test/enemy/attack_tree.gd" id="1_rg2ce"]
 [ext_resource type="PackedScene" uid="uid://bqemx80esbtm3" path="res://test/enemy/bullet.tscn" id="2_jfl6f"]
 [ext_resource type="Texture2D" uid="uid://dyjllxgpbhgll" path="res://test/enemy/caution_sign.png" id="4_t4aj7"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_xl55f"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="6_sj7q0"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_j18cf"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="8_e3kf8"]
+[ext_resource type="PackedScene" uid="uid://cs48gc2gns8cx" path="res://test/attack/interactive_comp[onent/floor-hole.glb" id="9_loqdx"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="10_1it14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glbtw"]
 resource_name = "colormap"
@@ -138,10 +144,24 @@ _data = {
 "alert": SubResource("Animation_1632i")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l7jc"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+backlight = Color(0, 0.521569, 0.709804, 1)
+billboard_keep_scale = true
+grow_amount = 1.882
+proximity_fade_distance = 0.25
+
+[sub_resource type="Curve" id="Curve_k5h6t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="AttackTree" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 script = ExtResource("1_rg2ce")
 Bullet = ExtResource("2_jfl6f")
+
+[node name="floor-hole2" parent="." instance=ExtResource("9_loqdx")]
 
 [node name="ShootPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.287189, 0)
@@ -151,9 +171,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.287189, 0)
 [node name="pine-fall" type="MeshInstance3D" parent="pine-fall2"]
 mesh = SubResource("ArrayMesh_hhvtm")
 skeleton = NodePath("")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
 
 [node name="DetectPlayer" type="Area3D" parent="."]
 collision_layer = 0
@@ -174,6 +191,57 @@ libraries = {
 "": SubResource("AnimationLibrary_u4huy")
 }
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("5_xl55f")
+
+[node name="CompoundState" type="Node" parent="StateChart"]
+script = ExtResource("6_sj7q0")
+initial_state = NodePath("Respwan")
+
+[node name="Respwan" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("7_j18cf")
+
+[node name="to shoot" type="Node" parent="StateChart/CompoundState/Respwan"]
+script = ExtResource("8_e3kf8")
+to = NodePath("../../Shoot")
+event = &"to_shoot"
+delay_in_seconds = "0.8"
+
+[node name="Shoot" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("7_j18cf")
+
+[node name="to idle" type="Node" parent="StateChart/CompoundState/Shoot"]
+script = ExtResource("8_e3kf8")
+to = NodePath("../../Idle")
+event = &"to_idle"
+delay_in_seconds = "1.8"
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("7_j18cf")
+
+[node name="to respwan" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("8_e3kf8")
+to = NodePath("../../Respwan")
+event = &"to_respwan"
+delay_in_seconds = "0.0"
+
+[node name="Particles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0822923, 0)
+material_override = SubResource("StandardMaterial3D_7l7jc")
+cast_shadow = 0
+emitting = false
+amount = 6
+mesh = ExtResource("10_1it14")
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.1, 0.5)
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_k5h6t")
+
 [connection signal="body_entered" from="DetectPlayer" to="." method="_on_detect_player_body_entered"]
 [connection signal="body_exited" from="DetectPlayer" to="." method="_on_detect_player_body_exited"]
+[connection signal="state_entered" from="StateChart/CompoundState/Respwan" to="." method="_on_respwan_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/Shoot" to="." method="_on_shoot_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="." method="_on_idle_state_entered"]

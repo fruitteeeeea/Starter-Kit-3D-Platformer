@@ -3,8 +3,13 @@ extends CharacterBody3D
 signal enemy_dead(enemy : CharacterBody3D)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var drop_item: Marker3D = $DropItem
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D #开始导航
+@export var do_navigate := false #是否执行导航
+
+#生命值部分
+@export var health_component : Node
+@onready var damage_number_spawn_point: Marker3D = $DamageNumberSpawnPoint #受击数字生成
+@onready var drop_item: Marker3D = $DropItem
 
 var speed = 1.2
 const JUMP_VELOCITY = 4.5
@@ -13,11 +18,6 @@ var direction = Vector3.ZERO
 var gravity = -25
 
 var player : CharacterBody3D
-
-@export var health_component : Node
-@onready var damage_number_spawn_point: Marker3D = $DamageNumberSpawnPoint #受击数字生成
-
-@export var do_navigate := false #是否执行导航
 
 func _ready() -> void:
 	add_to_group("Enemy")
