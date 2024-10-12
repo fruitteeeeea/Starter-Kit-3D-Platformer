@@ -24,6 +24,9 @@ var player : CharacterBody3D
 var level_manager : Node
 var target_position : Vector3
 
+#身体部分
+var body_parts = []
+
 func _ready() -> void:
 	add_to_group("Enemy")
 	

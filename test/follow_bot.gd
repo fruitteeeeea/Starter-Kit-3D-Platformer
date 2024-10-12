@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_right"):
+	if event.is_action_pressed("main_weapon"):
 		bot_shoot()
 
 func bot_shoot():

@@ -40,8 +40,10 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qeanf"]
+transparency = 1
 diffuse_mode = 2
 specular_mode = 2
+albedo_color = Color(1, 1, 1, 0.188235)
 metallic_specular = 0.0
 backlight = Color(0, 0.521569, 0.709804, 1)
 billboard_keep_scale = true
