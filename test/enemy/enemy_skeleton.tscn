@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqjuw1d4d3rnx"]
+[gd_scene load_steps=9 format=3 uid="uid://dqjuw1d4d3rnx"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_0t6sv"]
 [ext_resource type="Script" path="res://test/enemy/enemy_skeleton.gd" id="2_r0nd8"]
+[ext_resource type="PackedScene" uid="uid://begv2uphnjvod" path="res://test/enemy/blood_taril.tscn" id="3_8wxq6"]
 [ext_resource type="Script" path="res://test/drop item/drop_item.gd" id="3_wy335"]
 [ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/attack/components/health_component.tscn" id="4_ungiq"]
 [ext_resource type="PackedScene" uid="uid://cxgrdxibbb8wp" path="res://test/enemy/damage_number.tscn" id="5_w6d7j"]
@@ -13,22 +14,21 @@ height = 0.75
 
 [node name="Enemy Skeleton" node_paths=PackedStringArray("health_component") instance=ExtResource("1_0t6sv")]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("2_r0nd8")
 health_component = NodePath("HealthComponent")
+BloodTrail = ExtResource("3_8wxq6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="0"]
-
-[node name="root" parent="character-skeleton" index="0"]
-transform = Transform3D(1, -1.86264e-09, -8.14188e-17, 0, -4.37114e-08, 1, -1.86264e-09, -1, -4.37114e-08, 0, 0.1, 0)
 
 [node name="torso" parent="character-skeleton/root" index="2"]
 transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.223184, 0)
 
 [node name="arm-left" parent="character-skeleton/root/torso" index="0"]
-transform = Transform3D(1, -1.86265e-09, -8.14188e-17, 0, -4.37114e-08, 1, -1.86265e-09, -1, -4.37114e-08, 0.15, 0.225, 0.0025)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.225, 0.0025)
 
 [node name="arm-right" parent="character-skeleton/root/torso" index="1"]
-transform = Transform3D(1, -1.86265e-09, -8.14188e-17, 0, -4.37114e-08, 1, -1.86265e-09, -1, -4.37114e-08, -0.15, 0.225, 0.0025)
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 0.225, 0.0025)
 
 [node name="head" parent="character-skeleton/root/torso" index="2"]
 transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
@@ -51,3 +51,6 @@ DamageNumber = ExtResource("5_w6d7j")
 script = ExtResource("3_wy335")
 min_drop_number = 1
 max_dorp_number = 2
+
+[node name="BloodTarilPos" type="Marker3D" parent="." index="7"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.0245163, 0.337645)

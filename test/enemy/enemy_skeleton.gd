@@ -11,6 +11,9 @@ signal enemy_dead(enemy : CharacterBody3D)
 @onready var damage_number_spawn_point: Marker3D = $DamageNumberSpawnPoint #受击数字生成
 @onready var drop_item: Marker3D = $DropItem
 
+@onready var blood_taril_pos: Marker3D = $BloodTarilPos #血迹生成点
+@export var BloodTrail : PackedScene #血迹
+
 var speed = 1.2
 const JUMP_VELOCITY = 4.5
 var direction = Vector3.ZERO
@@ -71,6 +74,7 @@ func handle_navigation():
 func take_damage(damge := 1.0):
 	SoundManager.play_sfx("EnemyHurtSFX", true)
 	do_hit_flash() #受击反馈
+	spwan_bloodtrail() #生成血迹
 	damage_number_spawn_point.spwan_damage_number(damge)
 	
 	if health_component:
@@ -97,3 +101,11 @@ func hit_flash(part01 : MeshInstance3D):
 	part01.set_surface_override_material(0, hit_flash_material)
 	await get_tree().create_timer(.25).timeout
 	part01.set_surface_override_material(0, null)
+
+#生成血迹
+func spwan_bloodtrail():
+	var blood_trail = BloodTrail.instantiate()
+	get_tree().root.add_child(blood_trail)
+	blood_trail.global_position = blood_taril_pos.global_position
+	blood_trail.global_rotation = global_rotation
+	blood_trail.rotation_degrees.x = 90
