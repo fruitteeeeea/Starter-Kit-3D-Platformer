@@ -14,7 +14,7 @@ func _ready() -> void:
 		player_weapon.ui_main_weapon_fire_rate.connect(activate_progress_bar)
 		player_weapon.ui_secondary_weapon_fire_rate.connect(activate_progress_bar_2)
 
-
+#主武器进度条
 func activate_progress_bar():
 	var time = player_weapon.main_weapon_fire_rate
 	progress_bar.value = progress_bar.min_value
@@ -23,7 +23,7 @@ func activate_progress_bar():
 	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(progress_bar, "value", progress_bar.max_value, time)
 
-
+#副武器进度条
 func activate_progress_bar_2():
 	var time = player_weapon.secondary_weapon_fire_rate
 	progress_bar_2.value = progress_bar_2.min_value

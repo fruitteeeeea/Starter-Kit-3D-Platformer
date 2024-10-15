@@ -17,6 +17,7 @@ radius = 0.8
 [node name="enemy_ghost" instance=ExtResource("1_ksqmb")]
 collision_layer = 2
 script = ExtResource("2_a5scm")
+floting = true
 
 [node name="character_ghost" parent="." index="0"]
 transform = Transform3D(-0.01, -1.50996e-09, 6.60024e-17, 0, -4.37114e-10, -0.01, 1.50996e-09, -0.01, 4.37114e-10, 0, 0, 0)

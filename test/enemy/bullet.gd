@@ -11,3 +11,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = direction * speed
 	move_and_slide()
+
+
+func _on_visible_on_screen_enabler_3d_screen_exited() -> void:
+	queue_free()
+	pass

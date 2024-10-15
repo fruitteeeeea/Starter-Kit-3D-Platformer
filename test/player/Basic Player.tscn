@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dknht2bov7s7k"]
+[gd_scene load_steps=13 format=3 uid="uid://dknht2bov7s7k"]
 
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_6tj76"]
 [ext_resource type="Script" path="res://test/player/basic_player.gd" id="1_b7nfu"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
 [ext_resource type="Script" path="res://objects/weapon.gd" id="5_8m6nj"]
 [ext_resource type="PackedScene" uid="uid://drvpwuomxqk4t" path="res://test/attack/weapon type/basic_weapon.tscn" id="8_fgm0e"]
+[ext_resource type="Texture2D" uid="uid://b6g6xonw5fdb7" path="res://test/navigation_n.svg" id="9_gwjtp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pdyd2"]
 radius = 0.3
@@ -74,5 +75,10 @@ script = ExtResource("5_8m6nj")
 [node name="Basic Weapon" parent="Weapon" instance=ExtResource("8_fgm0e")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0449612, 0, -0.818392)
 main_weapon_fire_rate = 0.5
+
+[node name="Sprite3D" type="Sprite3D" parent="Weapon"]
+transform = Transform3D(-3, -2.62268e-07, 1.14641e-14, 0, -1.31134e-07, -3, 2.62268e-07, -3, 1.31134e-07, 0, 0.0941321, 0)
+offset = Vector2(0, 45)
+texture = ExtResource("9_gwjtp")
 
 [editable path="Character"]

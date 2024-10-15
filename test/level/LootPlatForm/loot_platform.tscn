@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://b13rt3lc5uulx"]
+
+[ext_resource type="PackedScene" uid="uid://bjgr70s00mh1p" path="res://test/level/LootPlatForm/GLB format/border-straight.glb" id="1_udnx2"]
+[ext_resource type="PackedScene" uid="uid://bke7od6sdjgvn" path="res://test/level/LootPlatForm/GLB format/stairs.glb" id="2_surss"]
+[ext_resource type="PackedScene" uid="uid://bj0vs8rk58oyg" path="res://test/level/LootPlatForm/GLB format/tree.glb" id="3_e1fln"]
+[ext_resource type="PackedScene" uid="uid://3wy23kme0t2r" path="res://test/level/LootPlatForm/GLB format/column.glb" id="4_4o45x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lftpd"]
+size = Vector3(3.37781, 0.45752, 2.05176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lseft"]
+size = Vector3(3.37781, 0.45752, 1.41815)
+
+[node name="LootPlatform" type="Node3D"]
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="border-straight2" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502075, 0, 0.765199)
+
+[node name="border-straight3" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13989, 0, 0.765199)
+
+[node name="border-straight4" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12171, 0, 0.765199)
+
+[node name="border-straight5" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483888, 0, 0.765199)
+
+[node name="border-straight6" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502075, 0, 0.213727)
+
+[node name="border-straight7" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13989, 0, 0.213727)
+
+[node name="border-straight8" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12171, 0, 0.213727)
+
+[node name="border-straight9" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483888, 0, 0.213727)
+
+[node name="border-straight10" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502075, 0, 0.23253)
+
+[node name="border-straight11" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13989, 0, 0.23253)
+
+[node name="border-straight12" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12171, 0, 0.23253)
+
+[node name="border-straight13" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483888, 0, 0.23253)
+
+[node name="border-straight14" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.502075, 0, -0.318943)
+
+[node name="border-straight15" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13989, 0, -0.318943)
+
+[node name="border-straight16" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12171, 0, -0.318943)
+
+[node name="border-straight17" parent="Model" instance=ExtResource("1_udnx2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483888, 0, -0.318943)
+
+[node name="stairs2" parent="Model" instance=ExtResource("2_surss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12515, -0.118868, 1.53735)
+
+[node name="stairs3" parent="Model" instance=ExtResource("2_surss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13328, -0.118868, 1.53735)
+
+[node name="stairs4" parent="Model" instance=ExtResource("2_surss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.466907, -0.118868, 1.53735)
+
+[node name="stairs5" parent="Model" instance=ExtResource("2_surss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13919, -0.118868, 1.53735)
+
+[node name="tree2" parent="Model" instance=ExtResource("3_e1fln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35364, 0, -0.443359)
+
+[node name="tree3" parent="Model" instance=ExtResource("3_e1fln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74251, 0, -1.13)
+
+[node name="tree4" parent="Model" instance=ExtResource("3_e1fln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1131, 0, 0.588379)
+
+[node name="tree5" parent="Model" instance=ExtResource("3_e1fln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92033, 0, -0.380737)
+
+[node name="column2" parent="Model" instance=ExtResource("4_4o45x")]
+transform = Transform3D(1, -2.08722e-14, 3.10862e-15, 6.43929e-15, 2, 0, 1.77636e-15, 0, 1, -2.13116, -8.9407e-08, 0.712944)
+
+[node name="column3" parent="Model" instance=ExtResource("4_4o45x")]
+transform = Transform3D(1, -2.08722e-14, 3.10862e-15, 6.43929e-15, 2, 0, 1.77636e-15, 0, 1, 1.53373, -2.08616e-07, -1.23859)
+
+[node name="Collision" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049282, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00396729, 0.136982, 0.339668)
+shape = SubResource("BoxShape3D_lftpd")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Collision"]
+transform = Transform3D(1, -1.93631e-08, 4.5227e-09, 1.93631e-08, 0.896533, -0.442977, 4.5227e-09, 0.442977, 0.896533, 0, -0.252796, 1.80508)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision/StaticBody3D2"]
+transform = Transform3D(1, -1.86507e-11, -7.86882e-11, 1.83307e-11, 0.999983, -0.00406665, 7.87641e-11, 0.00406665, 0.999983, -0.00396729, 0.171055, 0.0121751)
+shape = SubResource("BoxShape3D_lseft")

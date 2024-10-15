@@ -4,6 +4,8 @@ signal enemy_dead(enemy : CharacterBody3D)
 
 @onready var character_ghost: Node3D = $character_ghost #模型
 
+@export var floting := false
+
 #生命值部分
 @onready var health_component: Node = $HealthComponent
 @onready var damage_number_spawn_point: Marker3D = $DamageNumberSpawnPoint

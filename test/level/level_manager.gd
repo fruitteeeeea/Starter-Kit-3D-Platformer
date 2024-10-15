@@ -47,9 +47,10 @@ func state01(): #五秒预备阶段
 
 func state02():
 	var battle_time := bgm.get_length()
-	await get_tree().create_timer(battle_time - 5.0).timeout
-	battel_finished.emit()
-	kill_every_enemy() #秒杀所有敌人
+	#await get_tree().create_timer(battle_time - 5.0).timeout
+	#state_timer.wait_time = battle_time - 5.0
+	state_timer.start(battle_time - 5.0)
+
 
 func add_combo():
 	add_combo_signal.emit()
@@ -64,3 +65,9 @@ func kill_every_enemy():
 	for i in get_children():
 		if i.has_method("take_damage"):
 			i.take_damage(100)
+
+
+func _on_state_timer_timeout() -> void:
+	battel_finished.emit()
+	kill_every_enemy() #秒杀所有敌人
+	pass # Replace with function body.

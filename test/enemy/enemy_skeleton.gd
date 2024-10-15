@@ -6,6 +6,8 @@ signal enemy_dead(enemy : CharacterBody3D)
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D #开始导航
 @export var do_navigate := false #是否执行导航
 
+@export var floting := false
+
 #生命值部分
 @export var health_component : Node
 @onready var damage_number_spawn_point: Marker3D = $DamageNumberSpawnPoint #受击数字生成
@@ -81,12 +83,12 @@ func take_damage(damge := 1.0):
 		health_component.damage(damge)
 	
 	if health_component.health <= 0:
+		enemy_dead.emit(self) #先发送信号到生成节点
 		chase_player = false
 		animation_player.play("die")
 		await animation_player.animation_finished
 		await get_tree().create_timer(randf_range(.5, .8)).timeout
 		
-		enemy_dead.emit(self)
 		drop_item.add_pineapple()
 		SoundManager.play_sfx("EnemyDeadSFX", true)
 		queue_free()

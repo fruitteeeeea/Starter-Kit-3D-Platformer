@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxgrdxibbb8wp"]
+[gd_scene load_steps=3 format=3 uid="uid://cxgrdxibbb8wp"]
 
+[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="1_84n5j"]
 [ext_resource type="Script" path="res://test/enemy/damage_number.gd" id="1_ndql8"]
 
 [node name="DamageNumber" type="Label3D"]
 pixel_size = 0.006
 billboard = 1
 text = "1"
+font = ExtResource("1_84n5j")
 font_size = 128
 outline_size = 32
 script = ExtResource("1_ndql8")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://dmhdh82n3210p"]
+[gd_scene load_steps=8 format=4 uid="uid://dmhdh82n3210p"]
 
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="1_gv8jf"]
 [ext_resource type="Script" path="res://test/follow_bot.gd" id="1_vi63o"]
+[ext_resource type="PackedScene" uid="uid://bqemx80esbtm3" path="res://test/enemy/bullet.tscn" id="2_m60ey"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o2gf"]
 resource_name = "colormap"
@@ -43,8 +44,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tw2yt")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0mssr"]
+radius = 4.0
+
 [node name="Follow Bot" type="Node3D"]
 script = ExtResource("1_vi63o")
+Bullet = ExtResource("2_m60ey")
 
 [node name="carrot2" type="Node3D" parent="."]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0.310563)
@@ -52,3 +57,18 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 [node name="carrot" type="MeshInstance3D" parent="carrot2"]
 mesh = SubResource("ArrayMesh_3oq66")
 skeleton = NodePath("")
+
+[node name="DetectEnemyArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectEnemyArea"]
+shape = SubResource("SphereShape3D_0mssr")
+
+[node name="BotFiringInterval" type="Timer" parent="."]
+autostart = true
+
+[node name="ShootPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.284457)
+
+[connection signal="timeout" from="BotFiringInterval" to="." method="_on_bot_firing_interval_timeout"]
