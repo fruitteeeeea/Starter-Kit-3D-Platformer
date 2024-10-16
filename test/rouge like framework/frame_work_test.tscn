@@ -147,12 +147,30 @@ offset_right = -24.0
 offset_bottom = 288.0
 text = "攻击玩家"
 
-[node name="Affix" type="Control" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EnemyDummy"]
+offset_left = 91.0
+offset_top = 121.0
+offset_right = 292.0
+offset_bottom = 166.0
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyDummy/HBoxContainer"]
+layout_mode = 2
+text = "DPS："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="Label2" type="Label" parent="CanvasLayer/EnemyDummy/HBoxContainer"]
+layout_mode = 2
+text = "00"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="Affix" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_37m2o")
+player = NodePath("../Player")
+enemy = NodePath("../EnemyDummy")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Affix"]
 layout_mode = 1
@@ -180,3 +198,22 @@ text = "Affix
 "
 label_settings = SubResource("LabelSettings_ba5si")
 horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Affix"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 630.0
+offset_right = 689.0
+offset_bottom = 841.0
+columns = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+layout_mode = 2
+text = "增加攻击伤害"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+layout_mode = 2
+text = "增加攻击速度"
+
+[connection signal="pressed" from="CanvasLayer/Player/Button" to="CanvasLayer/Player" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button" to="CanvasLayer/Affix" method="_on_button_pressed"]
