@@ -32,7 +32,7 @@ size = Vector3(20, 5, 18)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_grd4m"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai7ru"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1gag2"]
 texture = ExtResource("26_rvux6")
 texture_margin_left = 40.0
 texture_margin_top = 40.0
@@ -41,7 +41,7 @@ texture_margin_bottom = 40.0
 modulate_color = Color(0.203922, 0.6, 0.854902, 1)
 
 [sub_resource type="Theme" id="Theme_stvm6"]
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_ai7ru")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_1gag2")
 
 [sub_resource type="LabelSettings" id="LabelSettings_aif3r"]
 font = ExtResource("13_fsq1c")
@@ -73,7 +73,6 @@ autostart = true
 [node name="EnemySpwan2" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.63249, -15.9239)
 script = ExtResource("8_01ata")
-activate = false
 Enemy = ExtResource("10_ot1se")
 level_manager = NodePath("..")
 
@@ -572,6 +571,14 @@ offset_right = 1200.0
 offset_bottom = 904.0
 theme = SubResource("Theme_stvm6")
 
+[node name="PanelContainer4" type="PanelContainer" parent="HUD/LevelStatus"]
+layout_mode = 0
+offset_left = 1183.0
+offset_top = 769.0
+offset_right = 1289.0
+offset_bottom = 900.0
+theme = SubResource("Theme_stvm6")
+
 [node name="HBoxContainer" type="VBoxContainer" parent="HUD/LevelStatus"]
 layout_mode = 2
 offset_left = 1024.0
@@ -593,14 +600,82 @@ text = "00:17"
 horizontal_alignment = 1
 
 [node name="Loot" type="Label" parent="HUD/LevelStatus"]
-visible = false
 layout_mode = 0
-offset_left = 771.0
-offset_top = 59.0
-offset_right = 984.0
-offset_bottom = 134.0
-text = "Loot : 1"
+offset_left = 1216.0
+offset_top = 784.0
+offset_right = 1244.0
+offset_bottom = 840.0
+text = "6"
 label_settings = SubResource("LabelSettings_aif3r")
+
+[node name="LevelTimeLeft" type="Label" parent="HUD/LevelStatus/Loot"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 48.0
+offset_right = 53.0
+offset_bottom = 81.0
+theme_override_fonts/font = ExtResource("13_fsq1c")
+theme_override_font_sizes/font_size = 28
+text = "loots
+"
+horizontal_alignment = 1
+
+[node name="lootSelect" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/lootSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -374.0
+offset_right = 223.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_stvm6")
+
+[node name="PanelContainer2" type="PanelContainer" parent="HUD/lootSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -374.0
+offset_right = -255.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_stvm6")
+
+[node name="PanelContainer3" type="PanelContainer" parent="HUD/lootSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 258.0
+offset_top = -374.0
+offset_right = 703.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_stvm6")
 
 [node name="Baisc Item" parent="." instance=ExtResource("15_cvgpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)

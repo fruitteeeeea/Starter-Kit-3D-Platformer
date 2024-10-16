@@ -1,0 +1,182 @@
+[gd_scene load_steps=10 format=3 uid="uid://lmddst7kxa2m"]
+
+[ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="1_ahjft"]
+[ext_resource type="Script" path="res://test/rouge like framework/player.gd" id="1_ypv2l"]
+[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="2_p74ik"]
+[ext_resource type="LabelSettings" uid="uid://cg386lfs8ns0o" path="res://test/rouge like framework/label_font.tres" id="3_0s3o4"]
+[ext_resource type="Script" path="res://test/rouge like framework/enemy.gd" id="4_tjbor"]
+[ext_resource type="Script" path="res://test/rouge like framework/affix.gd" id="6_37m2o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai7ru"]
+texture = ExtResource("1_ahjft")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+modulate_color = Color(0.203922, 0.6, 0.854902, 1)
+
+[sub_resource type="Theme" id="Theme_jj5ui"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_ai7ru")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ba5si"]
+font = ExtResource("2_p74ik")
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.376471)
+shadow_offset = Vector2(2, 2)
+
+[node name="FrameWorkTest" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="manager" type="Node" parent="CanvasLayer"]
+
+[node name="Player" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ypv2l")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_right = 372.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_jj5ui")
+
+[node name="Label" type="Label" parent="CanvasLayer/Player"]
+layout_mode = 2
+offset_left = 63.0
+offset_top = 48.0
+offset_right = 371.0
+offset_bottom = 104.0
+text = "Player
+"
+label_settings = SubResource("LabelSettings_ba5si")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 112.0
+offset_right = 368.0
+offset_bottom = 488.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "攻击伤害："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "攻击速度："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "1.0s"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="Button" type="Button" parent="CanvasLayer/Player"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 144.0
+offset_right = 576.0
+offset_bottom = 192.0
+text = "攻击敌人"
+
+[node name="EnemyDummy" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Player")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 600.0
+offset_right = 640.0
+offset_bottom = 40.0
+script = ExtResource("4_tjbor")
+Player = NodePath("../Player")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_right = 372.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_jj5ui")
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 372.0
+offset_bottom = 104.0
+text = "Enemy
+"
+label_settings = SubResource("LabelSettings_ba5si")
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
+offset_left = -152.0
+offset_top = 240.0
+offset_right = -24.0
+offset_bottom = 288.0
+text = "攻击玩家"
+
+[node name="Affix" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_37m2o")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Affix"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 492.0
+offset_right = 228.0
+offset_bottom = 597.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_jj5ui")
+
+[node name="Label" type="Label" parent="CanvasLayer/Affix"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 536.0
+offset_right = 209.0
+offset_bottom = 592.0
+text = "Affix
+"
+label_settings = SubResource("LabelSettings_ba5si")
+horizontal_alignment = 1
