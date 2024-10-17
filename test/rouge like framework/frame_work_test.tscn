@@ -24,7 +24,7 @@ font_size = 48
 shadow_color = Color(0, 0, 0, 0.376471)
 shadow_offset = Vector2(2, 2)
 
-[node name="FrameWorkTest" type="Node3D"]
+[node name="FrameWorkTest" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -74,10 +74,18 @@ offset_bottom = 488.0
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "攻击伤害："
 label_settings = ExtResource("3_0s3o4")
+
+[node name="AttackDamageProgressbar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
 
 [node name="AttackDamageLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -87,12 +95,59 @@ label_settings = ExtResource("3_0s3o4")
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "攻击速度："
 label_settings = ExtResource("3_0s3o4")
 
+[node name="AttackSpeedProgressbar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
 [node name="AttackSpeedLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "1.0s"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "暴击概率："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="CritHitRateLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "1.0s"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4/VBoxContainer"]
+layout_mode = 2
+text = "暴击伤害："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="CritHitDamageLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "1.0s"
 label_settings = ExtResource("3_0s3o4")
@@ -185,9 +240,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 20.0
-offset_top = 492.0
+offset_top = 536.0
 offset_right = 228.0
-offset_bottom = 597.0
+offset_bottom = 641.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.988766)
@@ -196,9 +251,9 @@ theme = SubResource("Theme_jj5ui")
 [node name="Label" type="Label" parent="CanvasLayer/Affix"]
 layout_mode = 0
 offset_left = 72.0
-offset_top = 536.0
+offset_top = 580.0
 offset_right = 209.0
-offset_bottom = 592.0
+offset_bottom = 636.0
 text = "Affix
 "
 label_settings = SubResource("LabelSettings_ba5si")
@@ -207,9 +262,9 @@ horizontal_alignment = 1
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Affix"]
 layout_mode = 0
 offset_left = 51.0
-offset_top = 630.0
+offset_top = 674.0
 offset_right = 689.0
-offset_bottom = 841.0
+offset_bottom = 885.0
 columns = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/Affix/GridContainer"]
@@ -221,6 +276,8 @@ text = "增加攻击伤害"
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "增加攻击速度"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="pressed" from="CanvasLayer/Player/Button" to="CanvasLayer/Player" method="_on_button_pressed"]
 [connection signal="timeout" from="CanvasLayer/EnemyDummy/Timer" to="CanvasLayer/EnemyDummy" method="_on_timer_timeout"]
