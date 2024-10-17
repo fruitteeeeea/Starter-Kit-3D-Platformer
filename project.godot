@@ -72,7 +72,7 @@ movie_writer/movie_file="C:/Users/Kenney/Desktop/video-footage.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/dreadpon.spatial_gardener/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [filesystem]
 

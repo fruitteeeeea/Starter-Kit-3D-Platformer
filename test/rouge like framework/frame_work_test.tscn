@@ -30,12 +30,13 @@ shadow_offset = Vector2(2, 2)
 
 [node name="manager" type="Node" parent="CanvasLayer"]
 
-[node name="Player" type="Control" parent="CanvasLayer"]
+[node name="Player" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Enemy")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_ypv2l")
+Enemy = NodePath("../EnemyDummy")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Player"]
 layout_mode = 1
@@ -78,7 +79,7 @@ layout_mode = 2
 text = "攻击伤害："
 label_settings = ExtResource("3_0s3o4")
 
-[node name="Label2" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
+[node name="AttackDamageLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "10"
 label_settings = ExtResource("3_0s3o4")
@@ -91,7 +92,7 @@ layout_mode = 2
 text = "攻击速度："
 label_settings = ExtResource("3_0s3o4")
 
-[node name="Label2" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+[node name="AttackSpeedLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "1.0s"
 label_settings = ExtResource("3_0s3o4")
@@ -112,6 +113,9 @@ offset_right = 640.0
 offset_bottom = 40.0
 script = ExtResource("4_tjbor")
 Player = NodePath("../Player")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/EnemyDummy"]
+autostart = true
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/EnemyDummy"]
 layout_mode = 1
@@ -148,6 +152,7 @@ offset_bottom = 288.0
 text = "攻击玩家"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
 offset_left = 91.0
 offset_top = 121.0
 offset_right = 292.0
@@ -158,7 +163,7 @@ layout_mode = 2
 text = "DPS："
 label_settings = ExtResource("3_0s3o4")
 
-[node name="Label2" type="Label" parent="CanvasLayer/EnemyDummy/HBoxContainer"]
+[node name="DPSNumberLabel" type="Label" parent="CanvasLayer/EnemyDummy/HBoxContainer"]
 layout_mode = 2
 text = "00"
 label_settings = ExtResource("3_0s3o4")
@@ -208,12 +213,16 @@ offset_bottom = 841.0
 columns = 4
 
 [node name="Button" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "增加攻击伤害"
 
 [node name="Button2" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "增加攻击速度"
 
 [connection signal="pressed" from="CanvasLayer/Player/Button" to="CanvasLayer/Player" method="_on_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/EnemyDummy/Timer" to="CanvasLayer/EnemyDummy" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button" to="CanvasLayer/Affix" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button2" to="CanvasLayer/Affix" method="_on_button_2_pressed"]
