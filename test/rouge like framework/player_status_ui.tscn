@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm1vqakhfe0j2"]
+
+[ext_resource type="Script" path="res://test/rouge like framework/player_status_ui.gd" id="1_2kbcs"]
+[ext_resource type="LabelSettings" uid="uid://cg386lfs8ns0o" path="res://test/rouge like framework/label_font.tres" id="1_wpktx"]
+
+[node name="PlayerStatusUI" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2kbcs")
+
+[node name="VBoxContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "攻击伤害："
+label_settings = ExtResource("1_wpktx")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 88)
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "攻击伤害："
+label_settings = ExtResource("1_wpktx")

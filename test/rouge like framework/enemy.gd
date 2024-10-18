@@ -8,6 +8,9 @@ var damage_arry := []
 @onready var dps_number_label: Label = $HBoxContainer/DPSNumberLabel
 var dps_number := 0.0
 
+#伤害飘字
+@onready var damage_number: Label = $DamageNumber
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -24,6 +27,10 @@ func deal_damage(): #造成伤害
 
 func take_damage(damage01 : float): #接受伤害
 	damage_arry.append(damage01)
+	
+	#飘字相关
+	damage_number.position = Vector2(361, 243) + Vector2(randi_range(-40, 40), 0)
+	damage_number.fadetween(damage01)
 
 
 func _on_timer_timeout() -> void:

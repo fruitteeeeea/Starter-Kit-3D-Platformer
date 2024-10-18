@@ -47,8 +47,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 22.0
-offset_right = 378.0
-offset_bottom = 881.0
+offset_right = 372.0
+offset_bottom = 506.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.988766)
@@ -72,6 +72,87 @@ offset_top = 112.0
 offset_right = 368.0
 offset_bottom = 488.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "攻击伤害："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="AttackDamageProgressbar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+
+[node name="AttackDamageLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "攻击速度："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="AttackSpeedProgressbar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="AttackSpeedLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "1.0s"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "暴击概率："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="CritHitRateLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "1.0s"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Player/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4/VBoxContainer"]
+layout_mode = 2
+text = "暴击伤害："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="CritHitDamageLabel" type="Label" parent="CanvasLayer/Player/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "1.0s"
+label_settings = ExtResource("3_0s3o4")
+
 [node name="Button" type="Button" parent="CanvasLayer/Player"]
 layout_mode = 0
 offset_left = 448.0
@@ -79,15 +160,6 @@ offset_top = 144.0
 offset_right = 576.0
 offset_bottom = 192.0
 text = "攻击敌人"
-
-[node name="Reset" type="Button" parent="CanvasLayer/Player"]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 56.0
-offset_right = 75.0
-offset_bottom = 64.0
-text = "RESET
-"
 
 [node name="EnemyDummy" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Player")]
 layout_mode = 3
@@ -163,21 +235,11 @@ theme_override_font_sizes/font_size = 64
 text = "-191"
 script = ExtResource("6_24bdq")
 
-[node name="Reset" type="Button" parent="CanvasLayer/EnemyDummy"]
-offset_left = 67.0
-offset_top = 56.0
-offset_right = 75.0
-offset_bottom = 64.0
-text = "RESET
-"
-
 [node name="Affix" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 378.0
-offset_top = -152.0
-offset_right = 418.0
-offset_bottom = -112.0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("6_37m2o")
 player = NodePath("../Player")
 enemy = NodePath("../EnemyDummy")
@@ -213,7 +275,7 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_left = 51.0
 offset_top = 674.0
-offset_right = 663.0
+offset_right = 689.0
 offset_bottom = 885.0
 columns = 4
 
@@ -227,24 +289,9 @@ custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "增加攻击速度"
 
-[node name="Button3" type="Button" parent="CanvasLayer/Affix/GridContainer"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-text = "增加暴击概率
-"
-
-[node name="Button4" type="Button" parent="CanvasLayer/Affix/GridContainer"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-text = "增加暴击伤害
-"
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="pressed" from="CanvasLayer/Player/Button" to="CanvasLayer/Player" method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Player/Reset" to="CanvasLayer/Player" method="_on_reset_pressed"]
 [connection signal="timeout" from="CanvasLayer/EnemyDummy/Timer" to="CanvasLayer/EnemyDummy" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button" to="CanvasLayer/Affix" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button2" to="CanvasLayer/Affix" method="_on_button_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button3" to="CanvasLayer/Affix" method="_on_button_3_pressed"]
-[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button4" to="CanvasLayer/Affix" method="_on_button_4_pressed"]
