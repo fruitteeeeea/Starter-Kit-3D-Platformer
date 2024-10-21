@@ -44,7 +44,8 @@ func scan_enemy():
 			target_pos = enemy.global_position
 	
 	if target_pos: #如果存在目标打击点
-		attack_enemy(target_pos)
+		#attack_enemy(target_pos)
+		shot_gun(target_pos)
 
 #攻击最近的敌人
 func attack_enemy(pos01 : Vector3):
@@ -54,6 +55,12 @@ func attack_enemy(pos01 : Vector3):
 	bullet.position = shoot_point.global_position
 	var target_position = (pos01 - global_position).normalized() #记得归一化向量
 	bullet.direction = target_position
+	bullet.do_rotation()
+
+
+func shot_gun(pos01 : Vector3):
+	for i in range(10):
+		attack_enemy(pos01)
 
 #动画补间
 func bot_shoot():

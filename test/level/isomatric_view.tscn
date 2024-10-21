@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=33 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://test/level/level_status.gd" id="22_lfo0c"]
 [ext_resource type="PackedScene" uid="uid://b13rt3lc5uulx" path="res://test/level/LootPlatForm/loot_platform.tscn" id="25_ksjkp"]
 [ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="26_rvux6"]
+[ext_resource type="PackedScene" uid="uid://bho53njvwipfv" path="res://test/attack/interactive_comp[onent/dummy.tscn" id="27_0euas"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6lwo"]
 size = Vector3(20, 5, 18)
@@ -330,15 +331,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14223, 1.5, 6.87109)
 [node name="grass4" parent="World/Plants" instance=ExtResource("6_5repo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98367, 1.5, 2.67405)
 
-[node name="grass5" parent="World/Plants" instance=ExtResource("6_5repo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0163, 1.5, 8.67405)
-
-[node name="grass6" parent="World/Plants" instance=ExtResource("6_5repo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8076, 1.5, 3.54816)
-
-[node name="grass7" parent="World/Plants" instance=ExtResource("6_5repo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4338, 1.5, 2.4129)
-
 [node name="grass8" parent="World/Plants" instance=ExtResource("6_5repo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00484, 1.5, 3.82112)
 
@@ -387,7 +379,7 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8
 [node name="mouse position" type="Node3D" parent="."]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("10_g7m0e")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 17.8979, 3.05559, -11.6902)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.7577, 3.05559, 8.90413)
 view = NodePath("../View/Camera3D")
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -542,10 +534,10 @@ level_manager = NodePath("../../LevelManager")
 
 [node name="PanelContainer" type="PanelContainer" parent="HUD/LevelStatus"]
 layout_mode = 0
-offset_left = -1620.0
-offset_top = 352.0
-offset_right = 12.0
-offset_bottom = 488.0
+offset_left = -1619.0
+offset_top = 72.0
+offset_right = 13.0
+offset_bottom = 208.0
 theme = SubResource("Theme_stvm6")
 
 [node name="Level Complete" type="Label" parent="HUD/LevelStatus/PanelContainer"]
@@ -680,17 +672,14 @@ theme = SubResource("Theme_stvm6")
 [node name="Baisc Item" parent="." instance=ExtResource("15_cvgpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)
 
-[node name="Baisc Item2" parent="." instance=ExtResource("15_cvgpy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23452, 1.70519, 2.4316)
-
 [node name="LootPlatform" parent="." instance=ExtResource("25_ksjkp")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 18.1335, 1.61109, -18.2239)
 
-[node name="Baisc Item3" parent="." instance=ExtResource("15_cvgpy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05744, 1.70519, 2.36686)
+[node name="Dummy" parent="." instance=ExtResource("27_0euas")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61561, 1.61683, 4.02715)
 
-[node name="RandomBuff" parent="." instance=ExtResource("5_ohgqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1684, 1.59625, -0.954897)
+[node name="Dummy2" parent="." instance=ExtResource("27_0euas")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2481, 1.61683, -24.5038)
 
 [connection signal="timeout" from="LevelManager/StateTimer" to="LevelManager" method="_on_state_timer_timeout"]
 [connection signal="timeout" from="LevelManager/EnemySpwan/Timer" to="LevelManager/EnemySpwan" method="_on_timer_timeout"]

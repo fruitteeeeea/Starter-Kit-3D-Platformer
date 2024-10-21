@@ -13,6 +13,7 @@ size = Vector3(3.37781, 0.45752, 2.05176)
 size = Vector3(3.37781, 0.45752, 1.41815)
 
 [node name="LootPlatform" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22541, 0)
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -89,7 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1131, 0, 0.588379)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92033, 0, -0.380737)
 
 [node name="column2" parent="Model" instance=ExtResource("4_4o45x")]
-transform = Transform3D(1, -2.08722e-14, 3.10862e-15, 6.43929e-15, 2, 0, 1.77636e-15, 0, 1, -2.13116, -8.9407e-08, 0.712944)
+transform = Transform3D(1, -2.08722e-14, 3.10862e-15, 6.43929e-15, 2, 0, 1.77636e-15, 0, 1, -2.13116, -0.503672, 0.712944)
 
 [node name="column3" parent="Model" instance=ExtResource("4_4o45x")]
 transform = Transform3D(1, -2.08722e-14, 3.10862e-15, 6.43929e-15, 2, 0, 1.77636e-15, 0, 1, 1.53373, -2.08616e-07, -1.23859)

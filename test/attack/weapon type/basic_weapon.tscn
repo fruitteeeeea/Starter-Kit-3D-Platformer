@@ -16,6 +16,7 @@ stream_2/stream = ExtResource("7_40if5")
 
 [node name="Basic Weapon" type="Node3D"]
 script = ExtResource("1_hsfq8")
+main_weapon_multiplier = 5
 MainWeaponScene = ExtResource("2_uj8cy")
 SecoundaryWeaponScene = ExtResource("3_rwpb3")
 

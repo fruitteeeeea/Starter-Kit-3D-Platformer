@@ -29,8 +29,6 @@ shadow_offset = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="manager" type="Node" parent="CanvasLayer"]
-
 [node name="Player" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Enemy")]
 layout_mode = 3
 anchors_preset = 0
@@ -164,6 +162,7 @@ text = "-191"
 script = ExtResource("6_24bdq")
 
 [node name="Reset" type="Button" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
 offset_left = 67.0
 offset_top = 56.0
 offset_right = 75.0
@@ -238,6 +237,12 @@ custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "增加暴击伤害
 "
+
+[node name="test" type="Label" parent="CanvasLayer"]
+offset_left = 429.0
+offset_top = 610.0
+offset_right = 469.0
+offset_bottom = 633.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

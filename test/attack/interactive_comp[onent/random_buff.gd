@@ -16,12 +16,15 @@ var is_floting := true
 var up_tween : Tween
 var down_tween : Tween
 
+var is_randomdebuff := true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	do_born_tween()
 	
-	await get_tree().create_timer(randi_range(8, 12)).timeout
-	charge_complete()
+	if is_randomdebuff: #如果是战场上的随机 debuff
+		await get_tree().create_timer(randi_range(8, 12)).timeout
+		charge_complete()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
