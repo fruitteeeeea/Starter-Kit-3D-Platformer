@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=34 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://scripts/hud.gd" id="11_sen8d"]
 [ext_resource type="Script" path="res://test/level/fence.gd" id="13_f55vn"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="13_fsq1c"]
+[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://test/attack/turkey.tscn" id="14_vpctm"]
 [ext_resource type="PackedScene" uid="uid://cmsy3yogm81i2" path="res://test/attack/item/basic_item.tscn" id="15_cvgpy"]
 [ext_resource type="Script" path="res://test/level/luck_combo!!.gd" id="17_acph1"]
 [ext_resource type="Script" path="res://test/level/player_status.gd" id="21_t5yi6"]
@@ -158,8 +159,17 @@ script = ExtResource("1_3law7")
 
 [node name="truma_component" type="Node" parent="View/Camera3D"]
 script = ExtResource("3_qusnx")
-max_trauma = 0.6
+max_trauma = 0.4
 noise = ExtResource("4_lksb1")
+
+[node name="Turkey" parent="View/Camera3D/truma_component" instance=ExtResource("14_vpctm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12779, 3.08107, -17.5824)
+
+[node name="Turkey2" parent="View/Camera3D/truma_component" instance=ExtResource("14_vpctm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12779, 3.08107, -16.5824)
+
+[node name="Turkey3" parent="View/Camera3D/truma_component" instance=ExtResource("14_vpctm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57023, 3.08107, -16.5489)
 
 [node name="World" type="Node3D" parent="."]
 

@@ -2,24 +2,21 @@ extends HBoxContainer
 
 @onready var label_1: Label = $VBoxContainer/Label1
 @onready var color_rect: ColorRect = $VBoxContainer/ColorRect
-@onready var progress_bar: ProgressBar = $VBoxContainer/ProgressBar
 @onready var label_2: Label = $Label2
 
 var colorrect_tween : Tween
 
-#func updata_label(status_name : String, baisc_status : float, 
-#modify_status : float, tempo_additon : float ): #更新标签参数
-	#label_1.text = status_name
-	#label_2.text = str(baisc_status) + "/" + str(modify_status) + "/" + str(tempo_additon)
-
+#更新label文本
 func updata_label(status_name : String, modify_status : float): #更新标签参数
 	do_colorrect_tween()
 	label_1.text = status_name
 	label_2.text = str(modify_status)
 
-func update_progressbar(upgrade_progress : float):
-	progress_bar.value = upgrade_progress
+#更新label进度条
+#func update_progressbar(upgrade_progress : float):
+	#progress_bar.value = upgrade_progress
 
+#闪烁label
 func do_colorrect_tween():
 	if colorrect_tween:
 		colorrect_tween.kill()
