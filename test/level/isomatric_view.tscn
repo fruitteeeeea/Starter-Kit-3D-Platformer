@@ -35,7 +35,7 @@ size = Vector3(20, 5, 18)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_grd4m"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4mxv"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qupci"]
 texture = ExtResource("26_rvux6")
 texture_margin_left = 40.0
 texture_margin_top = 40.0
@@ -44,7 +44,7 @@ texture_margin_bottom = 40.0
 modulate_color = Color(0.203922, 0.6, 0.854902, 1)
 
 [sub_resource type="Theme" id="Theme_stvm6"]
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_w4mxv")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_qupci")
 
 [sub_resource type="LabelSettings" id="LabelSettings_aif3r"]
 font = ExtResource("13_fsq1c")
@@ -390,7 +390,7 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8
 [node name="mouse position" type="Node3D" parent="."]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("10_g7m0e")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 21.6481, 3.05559, -7.41901)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.2523, 3.05559, -14.8507)
 view = NodePath("../View/Camera3D")
 
 [node name="HUD" type="CanvasLayer" parent="."]
