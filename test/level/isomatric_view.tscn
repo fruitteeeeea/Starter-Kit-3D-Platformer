@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=35 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://test/level/player_status.gd" id="21_t5yi6"]
 [ext_resource type="Script" path="res://test/level/level_status.gd" id="22_lfo0c"]
 [ext_resource type="PackedScene" uid="uid://b13rt3lc5uulx" path="res://test/level/LootPlatForm/loot_platform.tscn" id="25_ksjkp"]
+[ext_resource type="PackedScene" uid="uid://bf24q80s6qohr" path="res://test/attack/select_your_loot.tscn" id="26_d0fky"]
 [ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="26_rvux6"]
 [ext_resource type="PackedScene" uid="uid://bho53njvwipfv" path="res://test/attack/interactive_comp[onent/dummy.tscn" id="27_0euas"]
 
@@ -34,7 +35,7 @@ size = Vector3(20, 5, 18)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_grd4m"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1gag2"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4mxv"]
 texture = ExtResource("26_rvux6")
 texture_margin_left = 40.0
 texture_margin_top = 40.0
@@ -43,7 +44,7 @@ texture_margin_bottom = 40.0
 modulate_color = Color(0.203922, 0.6, 0.854902, 1)
 
 [sub_resource type="Theme" id="Theme_stvm6"]
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_1gag2")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_w4mxv")
 
 [sub_resource type="LabelSettings" id="LabelSettings_aif3r"]
 font = ExtResource("13_fsq1c")
@@ -389,7 +390,7 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8
 [node name="mouse position" type="Node3D" parent="."]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("10_g7m0e")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -10.7577, 3.05559, 8.90413)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 21.6481, 3.05559, -7.41901)
 view = NodePath("../View/Camera3D")
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -679,11 +680,14 @@ grow_vertical = 2
 scale = Vector2(1, 0.988766)
 theme = SubResource("Theme_stvm6")
 
+[node name="SelectYourLoot" parent="." instance=ExtResource("26_d0fky")]
+
 [node name="Baisc Item" parent="." instance=ExtResource("15_cvgpy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)
 
-[node name="LootPlatform" parent="." instance=ExtResource("25_ksjkp")]
+[node name="LootPlatform" parent="." node_paths=PackedStringArray("loot_pannel") instance=ExtResource("25_ksjkp")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 18.1335, 1.61109, -18.2239)
+loot_pannel = NodePath("../SelectYourLoot")
 
 [node name="Dummy" parent="." instance=ExtResource("27_0euas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61561, 1.61683, 4.02715)

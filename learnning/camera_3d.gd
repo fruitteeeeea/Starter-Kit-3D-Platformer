@@ -11,6 +11,9 @@ var run_tween_time := 1.0 #等距相机奔跑 tween 执行时间
 var defult_tween_time := 5.0 #等距相机默认 tween 执行时间
 var zoom_tween : Tween
 
+var is_special_zoom := false #是否处于特殊缩放中
+var special_zoom_tween : Tween
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_right"):
 		do_zoom(run_zoom)
@@ -43,8 +46,21 @@ func add_trauma(trauma_amount : float):
 
 
 func do_zoom(zoom01 : float = 15.0, time01 : float = defult_tween_time):
+	if is_special_zoom: #如果被场景控制缩放 则跳过
+		return
+
 	if zoom_tween:
 		zoom_tween.kill()
 	
 	zoom_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	zoom_tween.tween_property(self, "size", zoom01, time01)
+
+
+func do_special_zoom(zoom01 : float = defult_zoom, is_special := false):
+	if special_zoom_tween:
+		special_zoom_tween.kill()
+	
+	special_zoom_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	special_zoom_tween.tween_property(self, "size", zoom01, .8)
+	
+	is_special_zoom = is_special

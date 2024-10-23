@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b13rt3lc5uulx"]
+[gd_scene load_steps=10 format=3 uid="uid://b13rt3lc5uulx"]
 
+[ext_resource type="Script" path="res://test/level/LootPlatForm/loot_platform.gd" id="1_mtesl"]
 [ext_resource type="PackedScene" uid="uid://bjgr70s00mh1p" path="res://test/level/LootPlatForm/GLB format/border-straight.glb" id="1_udnx2"]
 [ext_resource type="PackedScene" uid="uid://bke7od6sdjgvn" path="res://test/level/LootPlatForm/GLB format/stairs.glb" id="2_surss"]
 [ext_resource type="PackedScene" uid="uid://bj0vs8rk58oyg" path="res://test/level/LootPlatForm/GLB format/tree.glb" id="3_e1fln"]
@@ -12,8 +13,12 @@ size = Vector3(3.37781, 0.45752, 2.05176)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lseft"]
 size = Vector3(3.37781, 0.45752, 1.41815)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_20hbg"]
+size = Vector3(3.16095, 2.34473, 1.61389)
+
 [node name="LootPlatform" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22541, 0)
+script = ExtResource("1_mtesl")
 
 [node name="Model" type="Node3D" parent="."]
 
@@ -113,3 +118,14 @@ shape = SubResource("BoxShape3D_lseft")
 
 [node name="trophy2" parent="." instance=ExtResource("5_ppbs3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0041014, 0.782661, 0.130745)
+
+[node name="ZoomInArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoomInArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00527883, 1.50303, 0.216174)
+shape = SubResource("BoxShape3D_20hbg")
+
+[connection signal="body_entered" from="ZoomInArea" to="." method="_on_zoom_in_area_body_entered"]
+[connection signal="body_exited" from="ZoomInArea" to="." method="_on_zoom_in_area_body_exited"]
