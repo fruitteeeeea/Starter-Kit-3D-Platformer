@@ -55,10 +55,11 @@ func bomb_state():
 
 #直击检测
 func _on_direct_hit_detect_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Enemy") && IsHitExplode:
-		if JUMPDOUBLE && be_throw && first_collide:
+	if body.is_in_group("Enemy") && IsHitExplode: #直击炸弹
+		if JUMPDOUBLE && be_throw && first_collide: #跳投伤害
 			first_collide = false
 			ExplodeDamage *= 2
+			
 		explode()
 
 #爆炸

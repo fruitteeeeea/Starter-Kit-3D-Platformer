@@ -19,8 +19,8 @@ var player : CharacterBody3D
 @export var secondary_weapon_multiplier := 1 #副武器倍率
 
 #射击间隔
-@export var main_weapon_can_shoot := true #主武器射击间隔
-@export var secondary_weapon_can_shoot := true #副武器射击间隔
+var main_weapon_can_shoot := true #主武器射击间隔
+var secondary_weapon_can_shoot := true #副武器射击间隔
 @export var multiplier_timer := 0.1 #倍率武器发射间隔
 
 #射速相关
@@ -44,13 +44,28 @@ var player : CharacterBody3D
 @export var MainWeaponScene : PackedScene
 @export var SecoundaryWeaponScene : PackedScene
 
-@export_subgroup("Visual")
-@export var main_weapon_modle : Resource #主武器模型
-@export var secondary_weapon_modle : Resource #副武器模型
+#@export_subgroup("Visual")
+#@export var main_weapon_modle : Resource #主武器模型
+#@export var secondary_weapon_modle : Resource #副武器模型
+
+#获取武器方向
+var weapon_direction : Vector3
 
 func _ready() -> void:
 	await get_tree().create_timer(.01).timeout
 	player = get_tree().get_first_node_in_group("player") #获取玩家
+
+
+func _physics_process(delta: float) -> void:
+	face_to_mouse_cursor()
+
+#寻找鼠标位置
+func face_to_mouse_cursor():  
+	var camera = get_viewport().get_camera_3d()
+	if camera.has_method("shoot_ray"):
+		var mouse_pos = camera.shoot_ray()
+		if mouse_pos:
+			get_parent().look_at(Vector3(mouse_pos.x, global_position.y, mouse_pos.z)) #确保该节点处于 Weapon 节点下
 
 func _unhandled_input(event: InputEvent) -> void:
 	if !player:
