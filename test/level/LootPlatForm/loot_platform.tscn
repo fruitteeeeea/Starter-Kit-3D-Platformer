@@ -17,6 +17,7 @@ size = Vector3(3.37781, 0.45752, 1.41815)
 size = Vector3(3.16095, 2.34473, 1.61389)
 
 [node name="LootPlatform" type="Node3D"]
+process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.22541, 0)
 script = ExtResource("1_mtesl")
 

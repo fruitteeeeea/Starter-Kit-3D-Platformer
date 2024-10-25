@@ -17,6 +17,7 @@ modulate_color = Color(0.203922, 0.6, 0.854902, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_025lq")
 
 [node name="LootOptionPannel" type="PanelContainer"]
+process_mode = 3
 offset_left = 112.0
 offset_top = 104.0
 offset_right = 464.0

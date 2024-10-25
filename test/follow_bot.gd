@@ -19,6 +19,7 @@ var shoot_tween : Tween
 func _process(delta: float) -> void:
 	if player && follow_point:
 		global_position = global_position.lerp(follow_point.global_position, .1) #后面是跟随速度
+		
 
 	rotation.y = lerp_angle(rotation.y, player.rotation_direction, delta * 25) #跟随人物转身速度
 

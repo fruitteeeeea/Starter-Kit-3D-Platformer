@@ -26,7 +26,7 @@
 [ext_resource type="Script" path="res://test/level/player_status.gd" id="21_t5yi6"]
 [ext_resource type="Script" path="res://test/level/level_status.gd" id="22_lfo0c"]
 [ext_resource type="PackedScene" uid="uid://b13rt3lc5uulx" path="res://test/level/LootPlatForm/loot_platform.tscn" id="25_ksjkp"]
-[ext_resource type="PackedScene" uid="uid://bf24q80s6qohr" path="res://test/attack/select_your_loot.tscn" id="26_d0fky"]
+[ext_resource type="PackedScene" uid="uid://bf24q80s6qohr" path="res://test/scene/select_your_loot.tscn" id="26_d0fky"]
 [ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="26_rvux6"]
 [ext_resource type="PackedScene" uid="uid://bho53njvwipfv" path="res://test/attack/interactive_comp[onent/dummy.tscn" id="27_0euas"]
 [ext_resource type="Script" path="res://test/manager/shop_manager.gd" id="30_2wpb1"]
@@ -58,11 +58,12 @@ shadow_offset = Vector2(2, 2)
 
 [node name="isomatric_view" type="Node3D"]
 
-[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("LevelSizeTopLeft", "LevelSizeDownRight")]
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("LevelSizeTopLeft", "LevelSizeDownRight", "UI_Container")]
 script = ExtResource("1_od1ql")
 LevelSizeTopLeft = NodePath("LevelSizeTopLeft")
 LevelSizeDownRight = NodePath("LevelSizeDownRight")
 bgm = ExtResource("2_3warf")
+UI_Container = NodePath("../HUD")
 
 [node name="StateTimer" type="Timer" parent="LevelManager"]
 
@@ -688,14 +689,15 @@ theme = SubResource("Theme_stvm6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)
 
 [node name="LootPlatform" parent="." node_paths=PackedStringArray("loot_pannel") instance=ExtResource("25_ksjkp")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 18.1335, 1.61109, -18.2239)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 15.7313, 1.61109, -18.0563)
+loot_pannel = NodePath("../SelectYourLoot")
+
+[node name="LootPlatform2" parent="." node_paths=PackedStringArray("loot_pannel") instance=ExtResource("25_ksjkp")]
+transform = Transform3D(0.697378, 0, -0.716704, 0, 1, 0, 0.716704, 0, 0.697378, 26.0709, 1.61109, -17.9055)
 loot_pannel = NodePath("../SelectYourLoot")
 
 [node name="Dummy" parent="." instance=ExtResource("27_0euas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61561, 1.61683, 4.02715)
-
-[node name="Dummy2" parent="." instance=ExtResource("27_0euas")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2481, 1.61683, -24.5038)
 
 [node name="PlayerStatusManager" type="Node" parent="."]
 script = ExtResource("32_4qln1")

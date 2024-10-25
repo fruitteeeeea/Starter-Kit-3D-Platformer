@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7vmcit73xej5"]
+
+[ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="1_i8ipu"]
+[ext_resource type="Script" path="res://test/scene/select_your_merchan.gd" id="1_k0ef6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4mxv"]
+texture = ExtResource("1_i8ipu")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+modulate_color = Color(0.203922, 0.6, 0.854902, 1)
+
+[sub_resource type="Theme" id="Theme_gdino"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_w4mxv")
+
+[node name="SelectYourMerchan" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k0ef6")
+
+[node name="MerchanOptions" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 1216.0
+offset_bottom = 768.0
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 16.0
+offset_right = 744.0
+offset_bottom = 130.0
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_gdino")
+
+[node name="Label" type="Label" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "选择你的商品
+"
