@@ -24,6 +24,8 @@ Audio="*res://scripts/audio.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SoundManager="*res://test/autoload/sound_manager.tscn"
 LootOptionsManager="*res://test/manager/loot_options_manager.gd"
+ProjectileServer="*res://Servers/ProjectileServer.gd"
+WeaponServers="*res://Servers/WeaponServers.gd"
 
 [debug]
 
