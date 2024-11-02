@@ -5,7 +5,9 @@ signal coin_collected
 @export_subgroup("Components")
 @export var view: Node3D
 @export var specific_weapon : Node3D
+@export var activate_followbot := false
 @export var FollowBot : PackedScene
+
 
 @export_subgroup("Properties")
 @export var movement_speed = 300
@@ -35,7 +37,8 @@ var camera : Camera3D
 func _ready() -> void:
 	add_to_group("player")
 	camera = get_viewport().get_camera_3d()
-	add_bot()
+	if activate_followbot: #如果需要添加无人机
+		add_bot()
 
 func player():
 	pass

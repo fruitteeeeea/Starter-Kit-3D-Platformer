@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=40 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://learnning/truma_component.gd" id="3_qusnx"]
 [ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_lksb1"]
 [ext_resource type="PackedScene" uid="uid://crhujlo44n8ip" path="res://test/enemy/attack_tree.tscn" id="5_jv8au"]
+[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://test/enemy/rigid_enemy.tscn" id="5_nx8uh"]
 [ext_resource type="PackedScene" uid="uid://bfo5c2x5m4cgb" path="res://test/attack/interactive_comp[onent/random_buff.tscn" id="5_ohgqq"]
 [ext_resource type="PackedScene" uid="uid://c5wjln7xt883p" path="res://test/GLB format/grass.glb" id="6_5repo"]
 [ext_resource type="Script" path="res://test/level/enemy_spwan.gd" id="8_01ata"]
@@ -393,8 +394,17 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -9
 transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8.37312, 1.5, 2.33969)
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("10_g7m0e")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 18.7847, 3.05559, -14.5667)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.76243, 3.05559, 6.70168)
 view = NodePath("../View/Camera3D")
+
+[node name="RigidEnemy" parent="." instance=ExtResource("5_nx8uh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21721, 3.63249, 0.934228)
+
+[node name="RigidEnemy2" parent="." instance=ExtResource("5_nx8uh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96035, 3.63249, 2.15442)
+
+[node name="RigidEnemy3" parent="." instance=ExtResource("5_nx8uh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96035, 3.63249, 3.15442)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("11_sen8d")
