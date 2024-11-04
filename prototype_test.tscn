@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=14 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -6,9 +6,13 @@
 [ext_resource type="Script" path="res://learnning/truma_component.gd" id="3_182vw"]
 [ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_q7lpw"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="6_as5wp"]
-[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="7_8wb3t"]
 [ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://Unit/Enemy/rigid_enemy.tscn" id="8_k3d8s"]
 [ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="9_vokyu"]
+[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://Unit/Enemy/enemy_skeleton.tscn" id="10_liahp"]
+[ext_resource type="Script" path="res://test/test_manager.gd" id="11_en21h"]
+[ext_resource type="PackedScene" uid="uid://b3fibmjnlqia7" path="res://test/enemy/pizza.tscn" id="12_ufw74"]
+[ext_resource type="PackedScene" uid="uid://dornphy2q7xsd" path="res://Unit/Enemy/baisc_enemy_spwaner.tscn" id="13_ufkj2"]
+[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="13_ywdqq"]
 
 [node name="PrototypeTest" type="Node3D"]
 
@@ -28,10 +32,6 @@ script = ExtResource("2_ywrcx")
 script = ExtResource("3_182vw")
 max_trauma = 0.4
 noise = ExtResource("4_q7lpw")
-
-[node name="Basic Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("7_8wb3t")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.76243, 3.05559, 5.70168)
-view = NodePath("../View/Camera3D")
 
 [node name="World" type="Node3D" parent="."]
 
@@ -65,3 +65,137 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25117, 0)
 
 [node name="Turkey" parent="." instance=ExtResource("9_vokyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28586, 0.988752, 3.435)
+
+[node name="Enemy Skeleton" parent="." instance=ExtResource("10_liahp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61005, 1.98446, 2.81587)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TestManager" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_en21h")
+
+[node name="TestButton" type="Button" parent="CanvasLayer/TestManager"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 50.0
+text = "test"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TestManager"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 71.0
+offset_right = 226.0
+offset_bottom = 539.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TestManager/HBoxContainer"]
+layout_mode = 2
+
+[node name="CleanPlayerWeapon" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "清除玩家武器
+"
+
+[node name="SMG" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SMG"
+
+[node name="Shotgun" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Shotgun
+"
+
+[node name="Reolver" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reolver
+"
+
+[node name="Slugger" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Slugger"
+
+[node name="BombShooter" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "BombShooter
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/TestManager/HBoxContainer"]
+layout_mode = 2
+
+[node name="add1xenemy" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "add  1x enemy
+"
+
+[node name="add10xenemy" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "add  10x enemy
+"
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -415.0
+offset_top = -300.0
+offset_right = 415.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(415, 300)
+theme_override_constants/separation = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(250, 600)
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(250, 600)
+layout_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(250, 600)
+layout_mode = 2
+
+[node name="Pizza" parent="." instance=ExtResource("12_ufw74")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11019, 0.832638, 6.84001)
+
+[node name="BaiscEnemySpwaner" parent="." instance=ExtResource("13_ufkj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.620958, 2.03919, 0.72895)
+
+[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.66608, 2.03599, 6.70168)
+Camera = NodePath("../View/Camera3D")
+
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/Shotgun" to="CanvasLayer/TestManager" method="_on_shotgun_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/Reolver" to="CanvasLayer/TestManager" method="_on_reolver_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/Slugger" to="CanvasLayer/TestManager" method="_on_slugger_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/BombShooter" to="CanvasLayer/TestManager" method="_on_bomb_shooter_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer2/add1xenemy" to="CanvasLayer/TestManager" method="_on_add_1_xenemy_pressed"]
+[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer2/add10xenemy" to="CanvasLayer/TestManager" method="_on_add_10_xenemy_pressed"]

@@ -25,6 +25,9 @@ func _ready() -> void:
 	await get_tree().create_timer(.01).timeout
 	player = get_tree().get_first_node_in_group("player") #获取玩家
 
+#作为武器的标识
+func weapon():
+	pass
 
 func _physics_process(delta: float) -> void:
 	if !active:

@@ -384,9 +384,9 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -9
 [node name="grass22" parent="World/Plants" instance=ExtResource("6_5repo")]
 transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8.37312, 1.5, 2.33969)
 
-[node name="Basic Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("10_g7m0e")]
+[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("10_g7m0e")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.76243, 3.05559, 6.70168)
-view = NodePath("../View/Camera3D")
+Camera = NodePath("../View/Camera3D")
 
 [node name="RigidEnemy" parent="." instance=ExtResource("5_nx8uh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21721, 3.63249, 0.934228)
@@ -451,11 +451,10 @@ offset_bottom = 40.0
 
 [node name="PanelContainer" type="PanelContainer" parent="HUD/PlayerStatus/Weapon"]
 layout_mode = 0
-offset_left = 392.0
-offset_top = 760.0
-offset_right = 626.0
-offset_bottom = 858.0
-theme = SubResource("Theme_stvm6")
+offset_left = 408.0
+offset_top = 785.0
+offset_right = 600.0
+offset_bottom = 832.0
 
 [node name="PanelContainer2" type="PanelContainer" parent="HUD/PlayerStatus/Weapon"]
 layout_mode = 0
@@ -467,7 +466,7 @@ theme = SubResource("Theme_stvm6")
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD/PlayerStatus/Weapon"]
 layout_mode = 0
-offset_left = 496.0
+offset_left = 488.0
 offset_top = 792.0
 offset_right = 596.0
 offset_bottom = 825.0
@@ -488,8 +487,8 @@ value = 1.0
 layout_mode = 0
 offset_left = 416.0
 offset_top = 792.0
-offset_right = 547.0
-offset_bottom = 837.0
+offset_right = 488.0
+offset_bottom = 827.0
 theme_override_font_sizes/font_size = 24
 text = "主武器"
 

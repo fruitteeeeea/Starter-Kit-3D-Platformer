@@ -22,8 +22,18 @@ var direction = Vector3.ZERO
 
 var gravity = -25
 
+enum State {
+	CHASE,
+	KNOCKBACK
+}
+
 var player : CharacterBody3D
 var chase_player := true
+
+var knockback_strength := 20.0
+var current_state: State = State.CHASE
+var knockback_timer: float = 0.0
+@export var knockback_duration: float = 1.0
 
 #击中闪烁
 var body_parts = [ #身体部分
@@ -49,14 +59,11 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y = gravity
 
-	if is_instance_valid(player) && is_on_floor() && chase_player:
-		if do_navigate:
-			handle_navigation()
-		else :
-			direction = (player.global_position - global_position).normalized()
-		
-		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-		velocity = direction * speed
+	match current_state:
+		State.CHASE:
+			handle_chase_player()
+		State.KNOCKBACK:
+			handle_konckback(delta)
 	
 	if !chase_player:
 		velocity = Vector3.ZERO
@@ -72,6 +79,30 @@ func handle_navigation():
 	var local_destination = destination - global_position
 	direction = local_destination.normalized()
 
+#追逐玩家和被击退
+func handle_chase_player():
+	if is_instance_valid(player) && is_on_floor() && chase_player:
+		if do_navigate:
+			handle_navigation()
+		else :
+			direction = (player.global_position - global_position).normalized()
+		
+		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+		velocity = direction * speed
+
+
+func apply_knockback(from_position: Vector3) -> void:
+	current_state = State.KNOCKBACK
+	knockback_timer = knockback_duration
+	var knockback_direction = (global_position - from_position).normalized()
+	velocity = knockback_direction * knockback_strength
+
+#处理
+func handle_konckback(delta: float) -> void:
+	if knockback_timer > 0:
+		knockback_timer -= delta
+	else:
+		current_state = State.CHASE
 
 func take_damage(damge := 1.0):
 	$GPUParticles3D.emitting = true
@@ -95,12 +126,12 @@ func take_damage(damge := 1.0):
 		SoundManager.play_sfx("EnemyDeadSFX", true)
 		queue_free()
 
-#指定受击反馈物体
+#指定受击反馈物体 闪红
 func do_hit_flash():
 	for parts in body_parts:
 		hit_flash(parts)
 
-#具体操作
+#具体操作 闪红
 func hit_flash(part01 : MeshInstance3D):
 	part01.set_surface_override_material(0, hit_flash_material)
 	await get_tree().create_timer(.25).timeout

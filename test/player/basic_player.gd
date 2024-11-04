@@ -3,10 +3,12 @@ extends CharacterBody3D
 signal coin_collected
 
 @export_subgroup("Components")
-@export var view: Node3D
+@export var Camera: Camera3D
 @export var specific_weapon : Node3D
 @export var activate_followbot := false
 @export var FollowBot : PackedScene
+
+@onready var weapon: Node3D = $Weapon
 
 
 @export_subgroup("Properties")
@@ -36,6 +38,9 @@ var camera : Camera3D
 
 func _ready() -> void:
 	add_to_group("player")
+	
+	WeaponServers.Player = self
+	
 	camera = get_viewport().get_camera_3d()
 	if activate_followbot: #如果需要添加无人机
 		add_bot()
@@ -139,7 +144,7 @@ func handle_controls(delta):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 
-	input = input.rotated(Vector3.UP, view.rotation.y)
+	input = input.rotated(Vector3.UP, Camera.rotation.y)
 
 	if input.length() > 1:
 		input = input.normalized()
@@ -166,11 +171,11 @@ func handle_gravity(delta):
 
 # Jumping
 
-func jump():
+func jump(strength01 = jump_strength):
 
 	Audio.play("res://sounds/jump.ogg")
 
-	gravity = -jump_strength
+	gravity = -strength01
 
 	model.scale = Vector3(0.5, 1.5, 0.5)
 

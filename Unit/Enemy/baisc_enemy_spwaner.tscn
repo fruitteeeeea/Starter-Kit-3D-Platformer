@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dornphy2q7xsd"]
+
+[ext_resource type="Script" path="res://Unit/Enemy/baisc_enemy_spwaner.gd" id="1_nw6j5"]
+[ext_resource type="PackedScene" uid="uid://88om2cwr1ohh" path="res://Unit/Enemy/enemy_ghost.tscn" id="2_tlsa2"]
+
+[node name="BaiscEnemySpwaner" type="Marker3D"]
+script = ExtResource("1_nw6j5")
+enemy_scene = Array[PackedScene]([ExtResource("2_tlsa2")])

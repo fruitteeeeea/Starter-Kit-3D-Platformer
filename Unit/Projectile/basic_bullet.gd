@@ -3,10 +3,8 @@ extends CharacterBody3D
 
 
 @onready var model: Node3D = $Model
-
-const normal_radius_scale := .1
 @onready var collision_shape_3d: CollisionShape3D = $Area3D/CollisionShape3D
-
+const normal_radius_scale := .1
 
 var bullet_direction = Vector3.ZERO
 
@@ -26,7 +24,6 @@ func _ready() -> void:
 	model.scale *= bullet_scale
 	var new_radius = normal_radius_scale * bullet_scale
 	collision_shape_3d.shape.radius = new_radius
-	print(collision_shape_3d.shape.radius)
 	
 	if bullet_time:
 		if rand_time:
@@ -49,6 +46,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
 		body.take_damage(bullet_damage)
+		body.apply_knockback(global_position)
 		WeaponServers.hit_stop_short()
 		do_camerashake()
 		

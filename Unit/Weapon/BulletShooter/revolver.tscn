@@ -5,3 +5,4 @@
 [node name="Revolver" instance=ExtResource("1_30x73")]
 bullet_damage = 1.5
 bullet_scale = 1.8
+bullet_speed = 1.5

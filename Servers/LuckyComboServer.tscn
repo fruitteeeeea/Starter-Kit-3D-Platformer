@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://da3sy0khoff73"]
+
+[ext_resource type="Script" path="res://Servers/LuckyComboServer.gd" id="1_kgmy8"]
+
+[node name="LuckyComboServer" type="Node"]
+script = ExtResource("1_kgmy8")

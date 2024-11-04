@@ -83,6 +83,7 @@ func _on_timer_timeout() -> void:
 
 
 func take_damage(damge := 1.0):
+	$GPUParticles3D.emitting = true
 	SoundManager.play_sfx("EnemyHurtSFX", true)
 	damage_number_spawn_point.spwan_damage_number(damge)
 	

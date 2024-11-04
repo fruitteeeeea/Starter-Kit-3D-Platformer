@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="2_8875h"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_1bjfr"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
-[ext_resource type="PackedScene" uid="uid://drvpwuomxqk4t" path="res://Unit/Weapon/basic_weapon.tscn" id="8_ao2u2"]
+[ext_resource type="PackedScene" uid="uid://b7bv50a2vmfh6" path="res://Unit/Weapon/BulletShooter/shotgun.tscn" id="8_83fks"]
 [ext_resource type="Texture2D" uid="uid://b6g6xonw5fdb7" path="res://test/navigation_n.svg" id="9_gwjtp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pdyd2"]
@@ -74,6 +74,6 @@ transform = Transform3D(-3, -2.62268e-07, 1.14641e-14, 0, -1.31134e-07, -3, 2.62
 offset = Vector2(0, 45)
 texture = ExtResource("9_gwjtp")
 
-[node name="Basic Weapon" parent="Weapon" instance=ExtResource("8_ao2u2")]
+[node name="Shotgun" parent="Weapon" instance=ExtResource("8_83fks")]
 
 [editable path="Character"]

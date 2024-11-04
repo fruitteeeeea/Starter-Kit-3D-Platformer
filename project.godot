@@ -27,6 +27,7 @@ LootOptionsManager="*res://test/manager/loot_options_manager.gd"
 ProjectileServer="*res://Servers/ProjectileServer.gd"
 WeaponServers="*res://Servers/WeaponServers.gd"
 VisualServer="*res://Servers/VisualServer.gd"
+EnemyStatusServer="*res://Servers/EnemyStatusServer.tscn"
 
 [debug]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpgtjanqpsud6"]
 
 [ext_resource type="PackedScene" uid="uid://biiq1grdc7rpg" path="res://Unit/Projectile/baisc_bomb.tscn" id="1_542dr"]
-[ext_resource type="PackedScene" uid="uid://lnpn778gs3gm" path="res://Unit/Projectile/whole_ham_2.tscn" id="2_j6v44"]
+[ext_resource type="PackedScene" uid="uid://lnpn778gs3gm" path="res://Unit/Projectile/Bomb/whole_ham_2.tscn" id="2_j6v44"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mv6xa"]
 radius = 0.25

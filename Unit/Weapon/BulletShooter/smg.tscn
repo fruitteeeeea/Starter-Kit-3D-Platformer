@@ -4,4 +4,5 @@
 
 [node name="SMG" instance=ExtResource("1_wavax")]
 bullet_number = 5
+bullet_speed = 1.5
 bullet_interval = 0.1

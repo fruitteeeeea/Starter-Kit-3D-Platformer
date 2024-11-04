@@ -14,13 +14,6 @@ var zoom_tween : Tween
 var is_special_zoom := false #是否处于特殊缩放中
 var special_zoom_tween : Tween
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_right"):
-		do_zoom(run_zoom)
-	
-	if event.is_action_released("mouse_right"):
-		do_zoom(defult_zoom)
-
 func shoot_ray():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 1000
