@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dga6f00kip5v1"]
+
+[ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="1_11f7d"]
+[ext_resource type="Script" path="res://UI/loot_option_pannel.gd" id="2_i5pl6"]
+[ext_resource type="Texture2D" uid="uid://ch5n8djbgiul5" path="res://icon.svg" id="2_vwehu"]
+[ext_resource type="LabelSettings" uid="uid://cg386lfs8ns0o" path="res://test/rouge like framework/label_font.tres" id="3_8chid"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_025lq"]
+texture = ExtResource("1_11f7d")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+modulate_color = Color(0.203922, 0.6, 0.854902, 1)
+
+[sub_resource type="Theme" id="Theme_cxnlk"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_025lq")
+
+[node name="LootOptionPannel" type="PanelContainer"]
+process_mode = 3
+offset_left = 112.0
+offset_top = 104.0
+offset_right = 464.0
+offset_bottom = 773.0
+theme = SubResource("Theme_cxnlk")
+script = ExtResource("2_i5pl6")
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(272, 589)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+texture = ExtResource("2_vwehu")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "主武器"
+label_settings = ExtResource("3_8chid")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "主武器"
+
+[node name="Button" type="Button" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "选择
+"
+
+[connection signal="button_up" from="HBoxContainer2/Button" to="." method="_on_button_button_up"]

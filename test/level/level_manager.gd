@@ -12,6 +12,8 @@ signal add_combo_signal
 var level_pos_h : Vector2
 var level_pos_v : Vector2
 
+@export var playBGM := false
+
 #枚举游戏阶段a
 enum Phase {
 	SHOPPING,
@@ -43,7 +45,7 @@ func level_manager():
 	pass
 
 func state01(): #五秒预备阶段
-	if bgm:
+	if bgm && playBGM:
 		SoundManager.play_bgm(bgm) #播放背景音乐
 	
 	#await get_tree().create_timer(5).timeout

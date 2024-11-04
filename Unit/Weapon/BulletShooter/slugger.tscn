@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blyjaorpvur3u"]
+
+[ext_resource type="PackedScene" uid="uid://61q0pufptdqd" path="res://Unit/Weapon/basic_bullet_shooter.tscn" id="1_usc75"]
+
+[node name="Slugger" instance=ExtResource("1_usc75")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -0.8)
+bullet_damage = 3.0
+bullet_scale = 3.0

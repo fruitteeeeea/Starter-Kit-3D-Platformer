@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpm70a2bwxk3"]
+
+[ext_resource type="Script" path="res://Servers/VisualServer.gd" id="1_d8h7w"]
+
+[node name="VisualServer" type="Node"]
+script = ExtResource("1_d8h7w")

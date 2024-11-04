@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://begv2uphnjvod"]
+
+[ext_resource type="Texture2D" uid="uid://fqinsr4fopim" path="res://Unit/VisualEffect/blood_trail.png" id="1_qvnqg"]
+[ext_resource type="Script" path="res://Unit/VisualEffect/blood_taril.gd" id="2_h0xq5"]
+
+[node name="BloodTaril" type="Sprite3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+texture = ExtResource("1_qvnqg")
+hframes = 2
+vframes = 2
+script = ExtResource("2_h0xq5")

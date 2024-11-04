@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://6ssu1oboalq5"]
+
+[ext_resource type="PackedScene" uid="uid://61q0pufptdqd" path="res://Unit/Weapon/basic_bullet_shooter.tscn" id="1_wavax"]
+
+[node name="SMG" instance=ExtResource("1_wavax")]
+bullet_number = 5
+bullet_interval = 0.1

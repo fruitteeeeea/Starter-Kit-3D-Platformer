@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="1_7phms"]
 [ext_resource type="Script" path="res://test/scene/select_your_loot.gd" id="1_bbltw"]
-[ext_resource type="PackedScene" uid="uid://dga6f00kip5v1" path="res://test/stage/loot/loot_option_pannel.tscn" id="2_hlafp"]
+[ext_resource type="PackedScene" uid="uid://dga6f00kip5v1" path="res://UI/loot_option_pannel.tscn" id="2_hlafp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8a23k"]
 texture = ExtResource("1_7phms")

@@ -1,0 +1,140 @@
+[gd_scene load_steps=14 format=3 uid="uid://biiq1grdc7rpg"]
+
+[ext_resource type="Script" path="res://Unit/Projectile/baisc_bomb.gd" id="1_74mtl"]
+[ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="2_r80pg"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_skn54"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a2q2k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yx8nx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r5uha"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_r80pg")
+billboard_mode = 1
+billboard_keep_scale = true
+proximity_fade_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_yui4m"]
+
+[sub_resource type="Curve" id="Curve_qyfjf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_1uvo2"]
+colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j0pr"]
+diffuse_mode = 2
+specular_mode = 2
+albedo_color = Color(0.843137, 0.545098, 0.403922, 1)
+metallic_specular = 0.0
+backlight = Color(0, 0.521569, 0.709804, 1)
+billboard_keep_scale = true
+grow_amount = 1.882
+proximity_fade_distance = 0.25
+
+[sub_resource type="Curve" id="Curve_5ifah"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qeanf"]
+transparency = 1
+diffuse_mode = 2
+specular_mode = 2
+albedo_color = Color(1, 1, 1, 0.188235)
+metallic_specular = 0.0
+backlight = Color(0, 0.521569, 0.709804, 1)
+billboard_keep_scale = true
+grow_amount = 1.882
+proximity_fade_distance = 0.25
+
+[sub_resource type="Curve" id="Curve_nd88f"]
+_data = [Vector2(0, 0.512901), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(0.581333, 0.53186), 1.19322, 1.19322, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Baisc Bomb" type="RigidBody3D" node_paths=PackedStringArray("IdleParticle", "TrailParticle", "ExplodeParticle")]
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 3.0
+script = ExtResource("1_74mtl")
+IdleParticle = NodePath("IdleParticles")
+TrailParticle = NodePath("TrailParticles")
+ExplodeParticle = NodePath("ExplodeParticles")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_a2q2k")
+
+[node name="DirectHitDetect" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DirectHitDetect"]
+shape = SubResource("SphereShape3D_a2q2k")
+
+[node name="ExplodeRadius" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplodeRadius"]
+shape = SubResource("SphereShape3D_yx8nx")
+
+[node name="IdleParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221696, 0.113455)
+material_override = SubResource("StandardMaterial3D_r5uha")
+mesh = SubResource("QuadMesh_yui4m")
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_qyfjf")
+color_ramp = SubResource("Gradient_1uvo2")
+
+[node name="TrailParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.218407, 0.295299)
+material_override = SubResource("StandardMaterial3D_6j0pr")
+cast_shadow = 0
+amount = 45
+mesh = ExtResource("3_skn54")
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_5ifah")
+
+[node name="ExplodeParticles" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_qeanf")
+cast_shadow = 0
+gi_mode = 0
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.2
+explosiveness = 0.8
+randomness = 1.0
+mesh = ExtResource("3_skn54")
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0.2, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+angle_min = -15.0
+angle_max = 15.0
+scale_amount_min = 6.0
+scale_amount_max = 12.0
+scale_amount_curve = SubResource("Curve_nd88f")
+
+[connection signal="body_entered" from="DirectHitDetect" to="." method="_on_direct_hit_detect_body_entered"]

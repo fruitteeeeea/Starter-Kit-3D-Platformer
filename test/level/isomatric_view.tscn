@@ -8,20 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://b1fw18piq10vy" path="res://test/GLB format/tree.glb" id="3_elp3a"]
 [ext_resource type="Script" path="res://learnning/truma_component.gd" id="3_qusnx"]
 [ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_lksb1"]
-[ext_resource type="PackedScene" uid="uid://crhujlo44n8ip" path="res://test/enemy/attack_tree.tscn" id="5_jv8au"]
-[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://test/enemy/rigid_enemy.tscn" id="5_nx8uh"]
+[ext_resource type="PackedScene" uid="uid://crhujlo44n8ip" path="res://Unit/Enemy/attack_tree.tscn" id="5_jv8au"]
+[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://Unit/Enemy/rigid_enemy.tscn" id="5_nx8uh"]
 [ext_resource type="PackedScene" uid="uid://bfo5c2x5m4cgb" path="res://test/attack/interactive_comp[onent/random_buff.tscn" id="5_ohgqq"]
 [ext_resource type="PackedScene" uid="uid://c5wjln7xt883p" path="res://test/GLB format/grass.glb" id="6_5repo"]
-[ext_resource type="Script" path="res://test/level/enemy_spwan.gd" id="8_01ata"]
-[ext_resource type="PackedScene" uid="uid://88om2cwr1ohh" path="res://test/enemy/enemy_ghost.tscn" id="8_75gdi"]
+[ext_resource type="Script" path="res://Unit/Enemy/enemy_spwaner.gd" id="8_01ata"]
+[ext_resource type="PackedScene" uid="uid://88om2cwr1ohh" path="res://Unit/Enemy/enemy_ghost.tscn" id="8_75gdi"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="10_g7m0e"]
 [ext_resource type="MeshLibrary" uid="uid://cdrnv4trlxysk" path="res://test/floor/floor_2.tres" id="10_ngq57"]
-[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://test/enemy/enemy_skeleton.tscn" id="10_ot1se"]
+[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://Unit/Enemy/enemy_skeleton.tscn" id="10_ot1se"]
 [ext_resource type="MeshLibrary" uid="uid://c21j50ab73dxs" path="res://test/floor/floor_3.tres" id="11_esxq3"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="11_sen8d"]
 [ext_resource type="Script" path="res://test/level/fence.gd" id="13_f55vn"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="13_fsq1c"]
-[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://test/attack/turkey.tscn" id="14_vpctm"]
+[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="14_vpctm"]
 [ext_resource type="PackedScene" uid="uid://cmsy3yogm81i2" path="res://test/attack/item/basic_item.tscn" id="15_cvgpy"]
 [ext_resource type="Script" path="res://test/level/luck_combo!!.gd" id="17_acph1"]
 [ext_resource type="Script" path="res://test/level/player_status.gd" id="21_t5yi6"]
@@ -168,15 +168,6 @@ script = ExtResource("1_3law7")
 script = ExtResource("3_qusnx")
 max_trauma = 0.4
 noise = ExtResource("4_lksb1")
-
-[node name="Turkey" parent="View/Camera3D/truma_component" instance=ExtResource("14_vpctm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12779, 3.08107, -17.5824)
-
-[node name="Turkey2" parent="View/Camera3D/truma_component" instance=ExtResource("14_vpctm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12779, 3.08107, -16.5824)
-
-[node name="Turkey3" parent="View/Camera3D/truma_component" instance=ExtResource("14_vpctm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57023, 3.08107, -16.5489)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -399,12 +390,6 @@ view = NodePath("../View/Camera3D")
 
 [node name="RigidEnemy" parent="." instance=ExtResource("5_nx8uh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21721, 3.63249, 0.934228)
-
-[node name="RigidEnemy2" parent="." instance=ExtResource("5_nx8uh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96035, 3.63249, 2.15442)
-
-[node name="RigidEnemy3" parent="." instance=ExtResource("5_nx8uh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96035, 3.63249, 3.15442)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("11_sen8d")
@@ -708,6 +693,9 @@ loot_pannel = NodePath("../SelectYourLoot")
 
 [node name="Dummy" parent="." instance=ExtResource("27_0euas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61561, 1.61683, 4.02715)
+
+[node name="Turkey" parent="." instance=ExtResource("14_vpctm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12779, 3.08107, -17.5824)
 
 [node name="PlayerStatusManager" type="Node" parent="."]
 script = ExtResource("32_4qln1")

@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://cote2g2mk3obv" path="res://test/floor/floor.tres" id="1_k4w35"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_p1nlk"]
-[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://test/enemy/enemy_skeleton.tscn" id="3_kgy68"]
+[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://Unit/Enemy/enemy_skeleton.tscn" id="3_kgy68"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="3_pvdor"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="4_l06dd"]
 [ext_resource type="PackedScene" uid="uid://cyq8lfon4cta0" path="res://test/map/arrow.tscn" id="4_nw20x"]
@@ -14,10 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="8_yphjb"]
 [ext_resource type="PackedScene" uid="uid://ctowrhvd5o7df" path="res://test/GLB format/flowers-tall.glb" id="9_q38ir"]
 [ext_resource type="PackedScene" uid="uid://byi8n3vwlmppk" path="res://test/GLB format/rocks.glb" id="10_v8d3b"]
-[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://test/attack/turkey.tscn" id="13_58qoj"]
+[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="13_58qoj"]
 [ext_resource type="PackedScene" uid="uid://co3quursonq47" path="res://test/map/barrel.tscn" id="13_485hn"]
-[ext_resource type="Script" path="res://test/level/enemy_spwan.gd" id="15_a7f00"]
-[ext_resource type="PackedScene" uid="uid://bpiuanfjrb3aw" path="res://test/drop item/pineapple_2.tscn" id="15_uifax"]
+[ext_resource type="Script" path="res://Unit/Enemy/enemy_spwaner.gd" id="15_a7f00"]
+[ext_resource type="PackedScene" uid="uid://bpiuanfjrb3aw" path="res://Unit/DropItem/pineapple_2.tscn" id="15_uifax"]
 [ext_resource type="PackedScene" uid="uid://fg23drk7hoh8" path="res://test/drop item/soda_glass_2.tscn" id="16_byoej"]
 [ext_resource type="PackedScene" uid="uid://cc86kyivdtbjg" path="res://test/GLB format/platform-fortified.glb" id="17_5fw5x"]
 

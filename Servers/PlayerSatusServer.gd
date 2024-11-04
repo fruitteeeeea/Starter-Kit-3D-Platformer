@@ -1,4 +1,4 @@
-extends Node
+sextends Node
 
 #白字属性
 @export var BaiscSatus := {

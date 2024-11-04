@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_6tj76"]
 [ext_resource type="Script" path="res://test/player/basic_player.gd" id="1_b7nfu"]
-[ext_resource type="PackedScene" uid="uid://dmhdh82n3210p" path="res://test/follow_bot.tscn" id="2_5ukek"]
+[ext_resource type="PackedScene" uid="uid://dmhdh82n3210p" path="res://Unit/Drone/follow_bot.tscn" id="2_5ukek"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="2_8875h"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_1bjfr"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
-[ext_resource type="PackedScene" uid="uid://drvpwuomxqk4t" path="res://test/attack/weapon type/basic_weapon.tscn" id="8_fgm0e"]
+[ext_resource type="PackedScene" uid="uid://drvpwuomxqk4t" path="res://Unit/Weapon/basic_weapon.tscn" id="8_ao2u2"]
 [ext_resource type="Texture2D" uid="uid://b6g6xonw5fdb7" path="res://test/navigation_n.svg" id="9_gwjtp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pdyd2"]
@@ -26,10 +26,9 @@ proximity_fade_distance = 0.25
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Basic Player" type="CharacterBody3D" node_paths=PackedStringArray("specific_weapon")]
+[node name="Basic Player" type="CharacterBody3D"]
 collision_layer = 7
 script = ExtResource("1_b7nfu")
-specific_weapon = NodePath("Weapon/Basic Weapon")
 FollowBot = ExtResource("2_5ukek")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
@@ -70,13 +69,11 @@ autoplay = true
 [node name="Weapon" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, 0)
 
-[node name="Basic Weapon" parent="Weapon" instance=ExtResource("8_fgm0e")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0449612, 0, -0.818392)
-main_weapon_fire_rate = 0.5
-
 [node name="Sprite3D" type="Sprite3D" parent="Weapon"]
 transform = Transform3D(-3, -2.62268e-07, 1.14641e-14, 0, -1.31134e-07, -3, 2.62268e-07, -3, 1.31134e-07, 0, 0.0941321, 0)
 offset = Vector2(0, 45)
 texture = ExtResource("9_gwjtp")
+
+[node name="Basic Weapon" parent="Weapon" instance=ExtResource("8_ao2u2")]
 
 [editable path="Character"]

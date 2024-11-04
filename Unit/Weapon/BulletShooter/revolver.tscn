@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://obxjlxoggf5n"]
+
+[ext_resource type="PackedScene" uid="uid://61q0pufptdqd" path="res://Unit/Weapon/basic_bullet_shooter.tscn" id="1_30x73"]
+
+[node name="Revolver" instance=ExtResource("1_30x73")]
+bullet_damage = 1.5
+bullet_scale = 1.8

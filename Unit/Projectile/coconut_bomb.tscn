@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://da00be7g8nywg"]
+
+[ext_resource type="PackedScene" uid="uid://biiq1grdc7rpg" path="res://Unit/Projectile/baisc_bomb.tscn" id="1_ukw1x"]
+[ext_resource type="PackedScene" uid="uid://dgemcju4iko0u" path="res://Unit/Projectile/coconut_2.tscn" id="2_bhj5k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5oa5g"]
+radius = 0.15
+
+[node name="Coconut Bomb" instance=ExtResource("1_ukw1x")]
+IsHitExplode = true
+JUMPDOUBLE = true
+
+[node name="coconut2" parent="Model" index="0" instance=ExtResource("2_bhj5k")]
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113729, 0)
+shape = SubResource("SphereShape3D_5oa5g")
