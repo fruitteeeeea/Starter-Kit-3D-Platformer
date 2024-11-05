@@ -18,7 +18,7 @@ height = 0.75
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.685504, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_2m4sa"]
+[sub_resource type="CurveTexture" id="CurveTexture_hmyvg"]
 curve = SubResource("Curve_f38sn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fni4s"]
@@ -28,12 +28,12 @@ initial_velocity_min = 6.0
 initial_velocity_max = 12.0
 scale_min = 0.5
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_2m4sa")
+scale_curve = SubResource("CurveTexture_hmyvg")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfn2r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dvdt"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6bwnl"]
-material = SubResource("StandardMaterial3D_mfn2r")
+material = SubResource("StandardMaterial3D_8dvdt")
 top_radius = 0.1
 bottom_radius = 0.0
 height = 1.0

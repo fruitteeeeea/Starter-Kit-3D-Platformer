@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=3 uid="uid://rnj46otorcvu"]
+
+[ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_o4feg"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_30brg"]
+[ext_resource type="Script" path="res://test/enemy/enemy_state_test.gd" id="2_p4do8"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_x5oo1"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_jdf8o"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_3hx7d"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_75vg6"]
+radius = 0.25
+height = 0.75
+
+[sub_resource type="Curve" id="Curve_c7wj2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.685504, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2m4sa"]
+curve = SubResource("Curve_c7wj2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qeehs"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_2m4sa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfn2r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rihh6"]
+material = SubResource("StandardMaterial3D_mfn2r")
+top_radius = 0.1
+bottom_radius = 0.0
+height = 1.0
+
+[node name="EnemyStateTest" instance=ExtResource("1_o4feg")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_p4do8")
+
+[node name="leg-left" parent="character-skeleton/root" index="0"]
+transform = Transform3D(0.60698, -0.525661, 0.30349, 7.6747e-08, 0.4292, 0.743396, -0.606981, -0.52566, 0.30349, 0.074204, 0.223184, 0)
+
+[node name="leg-right" parent="character-skeleton/root" index="1"]
+transform = Transform3D(0.60698, 0.4292, -0.4292, 0, 0.60698, 0.606981, 0.606981, -0.4292, 0.4292, -0.074204, 0.223184, 0)
+
+[node name="arm-left" parent="character-skeleton/root/torso" index="0"]
+transform = Transform3D(0.836523, -0.258811, 0.482957, 0.224139, 0.965928, 0.129401, -0.499992, 2.29478e-06, 0.86603, 0.15, 0.225, 0.0025)
+
+[node name="arm-right" parent="character-skeleton/root/torso" index="1"]
+transform = Transform3D(0.836523, 0.258811, -0.482957, -0.224139, 0.965928, 0.129401, 0.499992, 2.27988e-06, 0.86603, -0.15, 0.225, 0.0025)
+
+[node name="head" parent="character-skeleton/root/torso" index="2"]
+transform = Transform3D(1, 9.88701e-11, 9.28781e-10, -1.75452e-11, 0.996195, -0.0871558, -9.33864e-10, 0.0871558, 0.996195, 0, 0.26, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
+shape = SubResource("CapsuleShape3D_75vg6")
+
+[node name="StateChart" type="Node" parent="." index="3"]
+script = ExtResource("2_30brg")
+
+[node name="CompoundState" type="Node" parent="StateChart" index="0"]
+script = ExtResource("3_x5oo1")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateChart/CompoundState" index="0"]
+script = ExtResource("4_jdf8o")
+
+[node name="to chase" type="Node" parent="StateChart/CompoundState/IDLE" index="0"]
+script = ExtResource("5_3hx7d")
+to = NodePath("../../CHASE")
+event = &"to_chase"
+delay_in_seconds = "0.0"
+
+[node name="CHASE" type="Node" parent="StateChart/CompoundState" index="1"]
+script = ExtResource("4_jdf8o")
+
+[node name="to_idle" type="Node" parent="StateChart/CompoundState/CHASE" index="0"]
+script = ExtResource("5_3hx7d")
+to = NodePath("../../IDLE")
+event = &"to_idle"
+delay_in_seconds = "0.0"
+
+[node name="to_hurt" type="Node" parent="StateChart/CompoundState/CHASE" index="1"]
+script = ExtResource("5_3hx7d")
+to = NodePath("../../HURT")
+event = &"to_hurt"
+delay_in_seconds = "0.0"
+
+[node name="HURT" type="Node" parent="StateChart/CompoundState" index="2"]
+script = ExtResource("4_jdf8o")
+
+[node name="to_idle" type="Node" parent="StateChart/CompoundState/HURT" index="0"]
+script = ExtResource("5_3hx7d")
+to = NodePath("../../IDLE")
+event = &"to_idle"
+delay_in_seconds = "0.0"
+
+[node name="DEAD" type="Node" parent="StateChart/CompoundState" index="3"]
+script = ExtResource("4_jdf8o")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430128, 0)
+emitting = false
+amount = 12
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.78
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qeehs")
+draw_pass_1 = SubResource("CylinderMesh_rihh6")
+
+[connection signal="state_physics_processing" from="StateChart/CompoundState/IDLE" to="." method="_on_idle_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/CompoundState/CHASE" to="." method="_on_chase_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/CHASE" to="." method="_on_chase_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/CompoundState/HURT" to="." method="_on_hurt_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/CompoundState/HURT" to="." method="_on_hurt_state_physics_processing"]

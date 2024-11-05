@@ -187,7 +187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11019, 0.832638, 6.84001)
 
 [node name="BaiscEnemySpwaner" parent="." instance=ExtResource("13_ufkj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.620958, 2.03919, 0.72895)
-enemy_scene = Array[PackedScene]([ExtResource("14_qr326")])
+enemy_scene = Array[PackedScene]([ExtResource("10_liahp")])
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.66608, 2.03599, 6.70168)
@@ -195,6 +195,7 @@ Camera = NodePath("../View/Camera3D")
 
 [node name="EnemyStateTest" parent="." instance=ExtResource("14_qr326")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25063, 4.74, 1.96915)
+knockback_recover = 0.5
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

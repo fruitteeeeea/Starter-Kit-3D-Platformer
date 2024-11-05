@@ -46,12 +46,19 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
 		body.take_damage(bullet_damage)
-		body.apply_knockback(global_position)
+		#body.apply_knockback(global_position)
 		WeaponServers.hit_stop_short()
 		do_camerashake()
 		
 		queue_free()
-		
+	
+	if body.has_method("state_enemy"):
+		var knockback_direction = (self.global_position - body.global_position).normalized()
+		body.take_damage(8)
+		WeaponServers.hit_stop_short()
+		do_camerashake()
+		queue_free()
+
 	if body.is_in_group("RigidEnemy"):
 		body.being_knockback(self, kockback_force)
 		WeaponServers.hit_stop_short()
