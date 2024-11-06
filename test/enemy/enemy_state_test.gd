@@ -9,6 +9,8 @@ var player : CharacterBody3D
 var direction := Vector3.ZERO
 var chase_speed := 1.2 #追逐玩家的速度
 
+var overall_strength : float #整体敌人强度
+
 @export var knockback_recover := .2 #击退中的恢复速度
 var knockback_direction : Vector3 #击退方向 相对于玩家的位置
 var knockback_strength : float #攻击来源的击退强度
@@ -69,7 +71,6 @@ func _on_hurt_state_physics_processing(delta: float) -> void:
 	velocity = knockback_direction * knockback_strength
 	
 	knockback_strength = lerpf(knockback_strength, 0, knockback_recover) #从击退中回复过来
-	print(knockback_strength)
 	
 	if knockback_strength < 0.1:
 		state_chart.send_event("to_idle")

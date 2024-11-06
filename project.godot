@@ -28,7 +28,7 @@ ProjectileServer="*res://Servers/ProjectileServer.gd"
 WeaponServers="*res://Servers/WeaponServers.gd"
 VisualServer="*res://Servers/VisualServer.gd"
 EnemyStatusServer="*res://Servers/EnemyStatusServer.tscn"
-LevelServer="*res://Servers/LevelServer.gd"
+LevelServer="*res://Servers/LevelServer.tscn"
 
 [debug]
 

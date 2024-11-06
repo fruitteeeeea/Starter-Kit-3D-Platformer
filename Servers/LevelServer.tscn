@@ -4,3 +4,7 @@
 
 [node name="LevelServer" type="Node"]
 script = ExtResource("1_ohdl0")
+
+[node name="LevelTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
