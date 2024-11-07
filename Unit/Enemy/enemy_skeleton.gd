@@ -22,26 +22,22 @@ var direction = Vector3.ZERO
 
 var gravity = -25
 
-enum State {
-	CHASE,
-	KNOCKBACK
-}
-
 var player : CharacterBody3D
 var chase_player := true
 
 var knockback_strength := 20.0
-var current_state: State = State.CHASE
 var knockback_timer: float = 0.0
 @export var knockback_duration: float = 1.0
 
-#击中闪烁
-var body_parts = [ #身体部分
+#击中闪烁 #身体部分
+var body_parts = [ 
 	$"character-skeleton/root/torso/head", $"character-skeleton/root/torso/arm-right",
 	$"character-skeleton/root/torso/arm-left", $"character-skeleton/root/torso", 
 	$"character-skeleton/root/leg-right", $"character-skeleton/root/leg-left"
 ]
-var hit_flash_material := preload("res://test/enemy/hit_flash_surface_material.tres")
+
+#var hit_flash_material := preload("res://test/enemy/hit_flash_surface_material.tres")
+@export var hit_flash_material : Material
 
 func _ready() -> void:
 	add_to_group("Enemy")
@@ -59,11 +55,7 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity.y = gravity
 
-	match current_state:
-		State.CHASE:
-			handle_chase_player()
-		State.KNOCKBACK:
-			handle_konckback(delta)
+	handle_chase_player()
 	
 	if !chase_player:
 		velocity = Vector3.ZERO
@@ -90,26 +82,13 @@ func handle_chase_player():
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		velocity = direction * speed
 
-
-func apply_knockback(from_position: Vector3) -> void:
-	current_state = State.KNOCKBACK
-	knockback_timer = knockback_duration
-	var knockback_direction = (global_position - from_position).normalized()
-	velocity = knockback_direction * knockback_strength
-
-#处理
-func handle_konckback(delta: float) -> void:
-	if knockback_timer > 0:
-		knockback_timer -= delta
-	else:
-		current_state = State.CHASE
-
 func take_damage(damge := 1.0):
 	$GPUParticles3D.emitting = true
 	
 	SoundManager.play_sfx("EnemyHurtSFX", true)
-	do_hit_flash() #受击反馈
+	#do_hit_flash(body_parts) #受击反馈
 	VisualServer.spwan_bloodtrail(BloodTrail, blood_taril_pos.global_position, global_rotation) #生成血迹
+	VisualServer.do_hit_flash(body_parts, hit_flash_material)
 	damage_number_spawn_point.spwan_damage_number(damge)
 	
 	if health_component:
@@ -125,14 +104,3 @@ func take_damage(damge := 1.0):
 		drop_item_point.add_pineapple()
 		SoundManager.play_sfx("EnemyDeadSFX", true)
 		queue_free()
-
-#指定受击反馈物体 闪红
-func do_hit_flash():
-	for parts in body_parts:
-		hit_flash(parts)
-
-#具体操作 闪红
-func hit_flash(part01 : MeshInstance3D):
-	part01.set_surface_override_material(0, hit_flash_material)
-	await get_tree().create_timer(.25).timeout
-	part01.set_surface_override_material(0, null)

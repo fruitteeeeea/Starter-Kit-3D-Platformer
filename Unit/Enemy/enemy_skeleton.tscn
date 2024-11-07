@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqjuw1d4d3rnx"]
+[gd_scene load_steps=17 format=3 uid="uid://dqjuw1d4d3rnx"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_0t6sv"]
 [ext_resource type="Script" path="res://Unit/Enemy/enemy_skeleton.gd" id="2_r0nd8"]
 [ext_resource type="PackedScene" uid="uid://begv2uphnjvod" path="res://Unit/VisualEffect/blood_taril.tscn" id="3_8wxq6"]
 [ext_resource type="Script" path="res://Unit/DropItem/drop_item_point.gd" id="3_wy335"]
+[ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/enemy/hit_flash_surface_material.tres" id="4_e5j83"]
 [ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/attack/components/health_component.tscn" id="4_ungiq"]
 [ext_resource type="PackedScene" uid="uid://cxgrdxibbb8wp" path="res://test/enemy/damage_number.tscn" id="5_w6d7j"]
 [ext_resource type="Script" path="res://test/enemy/damage_number_spawn_point.gd" id="6_pmj16"]
@@ -44,6 +45,7 @@ collision_mask = 3
 script = ExtResource("2_r0nd8")
 health_component = NodePath("HealthComponent")
 BloodTrail = ExtResource("3_8wxq6")
+hit_flash_material = ExtResource("4_e5j83")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="0"]
 

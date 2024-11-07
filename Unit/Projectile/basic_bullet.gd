@@ -17,7 +17,7 @@ var bullet_direction = Vector3.ZERO
 @export var bullet_time : float #子弹持续时间/射程
 @export var rand_time : float #子弹随机持续时间 
 
-@export var kockback_force := 1000 #子弹击退力度
+@export var kockback_force := 8 #子弹击退力度
 
 func _ready() -> void:
 	#设置属性
@@ -54,7 +54,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 	if body.has_method("state_enemy"):
 		var knockback_direction = (self.global_position - body.global_position).normalized()
-		body.take_damage(8)
+		body.take_damage(8, bullet_damage)
 		WeaponServers.hit_stop_short()
 		do_camerashake()
 		queue_free()

@@ -18,6 +18,14 @@ var knockback_strength : float #攻击来源的击退强度
 @onready var state_chart: StateChart = $StateChart
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+#生命值相关
+@export var health_component: Node
+
+#视觉效果
+@export var hurt_particle : GPUParticles3D #击中特效
+@export var blood_trail : PackedScene #死亡血迹
+@onready var blood_taril_pos: Marker3D = $BloodTarilPos
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
@@ -54,17 +62,23 @@ func chase_player():
 func attack_player():
 	pass
 
-#func _unhandled_input(event: InputEvent) -> void:
-	#if event.is_action_pressed("mouse_right"):
-		#take_damage(Vector3(-1, 0, -1), 5)
-
 #受到伤害
-func take_damage(knockback_strength01 : float):
+func take_damage(knockback_strength01 : float, damge : float):
 	$GPUParticles3D.emitting = true
+	
+	SoundManager.play_sfx("EnemyHurtSFX", true)
+	VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
+	
 	var player = get_tree().get_first_node_in_group("player")
 	knockback_direction = (global_position - player.global_position).normalized()
+	
+	#在这里结算生命值
+	if health_component:
+		health_component.damage(damge)
+	
 	knockback_strength  = knockback_strength01
 	state_chart.send_event("to_hurt")
+
 
 #进入到击退状态
 func _on_hurt_state_physics_processing(delta: float) -> void:
@@ -81,4 +95,7 @@ func _on_chase_state_entered() -> void:
 
 
 func _on_hurt_state_entered() -> void:
-	animation_player.play("fall")
+	if health_component.health <= 0: #如果没血了 直接进入死亡状态
+		state_chart.send_event("to_hurt")
+	else:
+		animation_player.play("fall")

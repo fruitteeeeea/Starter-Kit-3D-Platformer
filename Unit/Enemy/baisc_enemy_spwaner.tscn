@@ -6,9 +6,7 @@
 [node name="BaiscEnemySpwaner" type="Marker3D"]
 script = ExtResource("1_nw6j5")
 enemy_scene = ExtResource("2_f24l3")
-spwan_time = null
-enemy_power = null
-rand_range = null
+max_enemy_nb = 25
 
 [node name="SpwanTimer" type="Timer" parent="."]
 autostart = true

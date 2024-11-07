@@ -62,7 +62,7 @@ data = {
 [node name="RigidEnemyTest" type="Node3D" parent="."]
 
 [node name="RigidEnemy" parent="RigidEnemyTest" instance=ExtResource("8_k3d8s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25117, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.088437, 1.25117, 0.562213)
 
 [node name="Turkey" parent="." instance=ExtResource("9_vokyu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28586, 0.988752, 3.435)
@@ -139,7 +139,7 @@ layout_mode = 2
 text = "add  10x enemy
 "
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="LootOption" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -154,7 +154,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LootOption"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -170,15 +170,15 @@ grow_vertical = 2
 pivot_offset = Vector2(415, 300)
 theme_override_constants/separation = 30
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/LootOption/HBoxContainer"]
 custom_minimum_size = Vector2(250, 600)
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/LootOption/HBoxContainer"]
 custom_minimum_size = Vector2(250, 600)
 layout_mode = 2
 
-[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/LootOption/HBoxContainer"]
 custom_minimum_size = Vector2(250, 600)
 layout_mode = 2
 
@@ -197,6 +197,9 @@ horizontal_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11019, 0.832638, 6.84001)
 
 [node name="BaiscEnemySpwaner" parent="." instance=ExtResource("13_ufkj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.620958, 2.03919, 0.72895)
+
+[node name="BaiscEnemySpwaner2" parent="." instance=ExtResource("13_ufkj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.620958, 2.03919, 0.72895)
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
