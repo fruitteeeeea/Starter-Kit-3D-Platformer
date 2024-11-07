@@ -1,7 +1,13 @@
 extends Node
 
 
-#生成受击粒子
+#生成受击粒子 #粒子实例 #生成位置
+func hurt_particle(particle01 : PackedScene, pos : Vector3):
+	pass
+
+#生成伤害飘动文字
+func damage_float_nb():
+	pass
 
 #生成血迹 #血迹场景 #血迹位置 #血迹旋转
 func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3):
@@ -21,3 +27,4 @@ func hit_flash(part01 : MeshInstance3D, hit_flash_material):
 	part01.set_surface_override_material(0, hit_flash_material)
 	await get_tree().create_timer(.25).timeout
 	part01.set_surface_override_material(0, null)
+ 

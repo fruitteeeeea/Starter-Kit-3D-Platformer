@@ -83,16 +83,10 @@ func handle_chase_player():
 		velocity = direction * speed
 
 func take_damage(damge := 1.0):
-	$GPUParticles3D.emitting = true
-	
-	SoundManager.play_sfx("EnemyHurtSFX", true)
-	#do_hit_flash(body_parts) #受击反馈
-	VisualServer.spwan_bloodtrail(BloodTrail, blood_taril_pos.global_position, global_rotation) #生成血迹
-	VisualServer.do_hit_flash(body_parts, hit_flash_material)
-	damage_number_spawn_point.spwan_damage_number(damge)
-	
 	if health_component:
 		health_component.damage(damge)
+		
+	hurt_effect(damge)
 	
 	if health_component.health <= 0:
 		enemy_dead.emit(self) #先发送信号到生成节点
@@ -104,3 +98,14 @@ func take_damage(damge := 1.0):
 		drop_item_point.add_pineapple()
 		SoundManager.play_sfx("EnemyDeadSFX", true)
 		queue_free()
+
+		
+func hurt_effect(damge):
+	if health_component.health <= 0:
+		return
+	
+	$GPUParticles3D.emitting = true
+	SoundManager.play_sfx("EnemyHurtSFX", true)
+	VisualServer.spwan_bloodtrail(BloodTrail, blood_taril_pos.global_position, global_rotation) #生成血迹
+	VisualServer.do_hit_flash(body_parts, hit_flash_material)
+	damage_number_spawn_point.spwan_damage_number(damge)

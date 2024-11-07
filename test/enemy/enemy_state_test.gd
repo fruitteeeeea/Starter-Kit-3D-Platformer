@@ -26,6 +26,15 @@ var knockback_strength : float #攻击来源的击退强度
 @export var blood_trail : PackedScene #死亡血迹
 @onready var blood_taril_pos: Marker3D = $BloodTarilPos
 
+#击中闪烁 #身体部分
+var body_parts = [ 
+	$"character-skeleton/root/torso/head", $"character-skeleton/root/torso/arm-right",
+	$"character-skeleton/root/torso/arm-left", $"character-skeleton/root/torso", 
+	$"character-skeleton/root/leg-right", $"character-skeleton/root/leg-left"
+]
+
+@export var hit_flash_material : Material #受击时显示的材质
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
@@ -65,7 +74,7 @@ func attack_player():
 #受到伤害
 func take_damage(knockback_strength01 : float, damge : float):
 	$GPUParticles3D.emitting = true
-	
+	VisualServer.do_hit_flash(body_parts, hit_flash_material)
 	SoundManager.play_sfx("EnemyHurtSFX", true)
 	VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
 	
