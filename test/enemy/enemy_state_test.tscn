@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://rnj46otorcvu"]
+[gd_scene load_steps=16 format=3 uid="uid://rnj46otorcvu"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_o4feg"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_30brg"]
 [ext_resource type="Script" path="res://test/enemy/enemy_state_test.gd" id="2_p4do8"]
+[ext_resource type="PackedScene" uid="uid://dusiu08hxrxug" path="res://Unit/VisualEffect/hurt_particle_01.tscn" id="3_76eqb"]
 [ext_resource type="PackedScene" uid="uid://begv2uphnjvod" path="res://Unit/VisualEffect/blood_taril.tscn" id="3_wnfx3"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_x5oo1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_jdf8o"]
@@ -17,7 +18,7 @@ height = 0.75
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.685504, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_2m4sa"]
+[sub_resource type="CurveTexture" id="CurveTexture_fpkrl"]
 curve = SubResource("Curve_c7wj2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qeehs"]
@@ -27,12 +28,12 @@ initial_velocity_min = 6.0
 initial_velocity_max = 12.0
 scale_min = 0.5
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_2m4sa")
+scale_curve = SubResource("CurveTexture_fpkrl")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfn2r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g35tk"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rihh6"]
-material = SubResource("StandardMaterial3D_mfn2r")
+material = SubResource("StandardMaterial3D_g35tk")
 top_radius = 0.1
 bottom_radius = 0.0
 height = 1.0
@@ -42,6 +43,7 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("2_p4do8")
 health_component = NodePath("HealthComponent")
+hurt_particle = ExtResource("3_76eqb")
 blood_trail = ExtResource("3_wnfx3")
 
 [node name="torso" parent="character-skeleton/root" index="2"]

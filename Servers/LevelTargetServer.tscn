@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu7t81hkhscwh"]
+
+[ext_resource type="Script" path="res://Servers/LevelTargetServer.gd" id="1_4lssy"]
+
+[node name="LevelTargetServer" type="Node"]
+script = ExtResource("1_4lssy")

@@ -22,7 +22,7 @@ var knockback_strength : float #攻击来源的击退强度
 @export var health_component: Node
 
 #视觉效果
-@export var hurt_particle : GPUParticles3D #击中特效
+@export var hurt_particle : PackedScene #击中特效
 @export var blood_trail : PackedScene #死亡血迹
 @onready var blood_taril_pos: Marker3D = $BloodTarilPos
 
@@ -73,7 +73,8 @@ func attack_player():
 
 #受到伤害
 func take_damage(knockback_strength01 : float, damge : float):
-	$GPUParticles3D.emitting = true
+	#effect
+	VisualServer.spwan_hurt_particle(hurt_particle, global_position)
 	VisualServer.do_hit_flash(body_parts, hit_flash_material)
 	SoundManager.play_sfx("EnemyHurtSFX", true)
 	VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
@@ -100,7 +101,7 @@ func _on_hurt_state_physics_processing(delta: float) -> void:
 
 
 func _on_chase_state_entered() -> void:
-	animation_player.play("sprint")
+	animation_player.play("walk")
 
 
 func _on_hurt_state_entered() -> void:

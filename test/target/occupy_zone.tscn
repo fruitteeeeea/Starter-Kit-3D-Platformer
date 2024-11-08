@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://cys28ci6xn58s"]
+[gd_scene load_steps=4 format=3 uid="uid://cys28ci6xn58s"]
+
+[ext_resource type="Script" path="res://test/target/occupy_zone.gd" id="1_v3sxe"]
+[ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="2_0tgqy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqjs4"]
+size = Vector3(2, 0.5, 2)
 
 [node name="OccupyZone" type="Node3D"]
+script = ExtResource("1_v3sxe")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.293981, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_rqjs4")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.52, 0)
+mesh_library = ExtResource("2_0tgqy")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(0, 65535, 3, 65535, 65535, 3, 65535, 0, 3, 0, 0, 3)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

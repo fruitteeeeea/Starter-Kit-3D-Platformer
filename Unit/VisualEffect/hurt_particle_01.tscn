@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dusiu08hxrxug"]
+
+[ext_resource type="Script" path="res://Unit/VisualEffect/hurt_particle_01.gd" id="1_3w0io"]
+
+[sub_resource type="Curve" id="Curve_inu85"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.685504, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2m4sa"]
+curve = SubResource("Curve_inu85")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ujwt"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_2m4sa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfn2r"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q217d"]
+material = SubResource("StandardMaterial3D_mfn2r")
+top_radius = 0.1
+bottom_radius = 0.0
+height = 1.0
+
+[node name="HurtParticle01" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430128, 0)
+emitting = false
+amount = 12
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.78
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_7ujwt")
+draw_pass_1 = SubResource("CylinderMesh_q217d")
+script = ExtResource("1_3w0io")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

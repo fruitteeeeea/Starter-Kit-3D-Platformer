@@ -29,6 +29,7 @@ WeaponServers="*res://Servers/WeaponServers.gd"
 VisualServer="*res://Servers/VisualServer.gd"
 EnemyStatusServer="*res://Servers/EnemyStatusServer.tscn"
 LevelServer="*res://Servers/LevelServer.tscn"
+LevelTargetServer="*res://Servers/LevelTargetServer.gd"
 
 [debug]
 

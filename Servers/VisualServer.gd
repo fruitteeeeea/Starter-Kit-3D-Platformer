@@ -2,7 +2,10 @@ extends Node
 
 
 #生成受击粒子 #粒子实例 #生成位置
-func hurt_particle(particle01 : PackedScene, pos : Vector3):
+func spwan_hurt_particle(particle01 : PackedScene, pos01 : Vector3):
+	var hurt_particle = particle01.instantiate()
+	get_tree().root.add_child(hurt_particle)
+	hurt_particle.global_position = pos01
 	pass
 
 #生成伤害飘动文字

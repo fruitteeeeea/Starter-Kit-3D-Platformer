@@ -21,46 +21,25 @@ var level_information := {
 
 #关卡开始
 func level_start():
-	#启动机计时器
-	level_timer.wait_time = level_information["level_time"]
-	level_timer.start()
-
 	#启动刷怪点
 	for spwaner in level_information["enemy_spwan_point_pool"]:
 		EnemyStatusServer.add_enemy_spwaner(spwaner)
 	
-	#启动 debuff 生成
+	#启动任务目标
+	for target in level_information["level_target_pool"]:
+		LevelTargetServer.add_level_target(target)
 	
-	pass
+	#启动 debuff 生成
+
+
+	#启动机计时器
+	level_timer.wait_time = level_information["level_time"]
+	level_timer.start()
 
 #关卡完成
 func level_complete():
 	#展示战利品结算界面
 	#展示商店？
-	pass
-
-#玩家摧毁怪物生成点
-func enemy_spwan_destory():
-	pass
-
-#目标物被击杀
-func target_enemy_dead():
-	pass
-
-#玩家进入占领空间
-func player_enter_occupy_zone():
-	pass
-
-#玩家离开占领空间
-func player_exit_occupy_zone():
-	pass
-
-#推车关卡
-func push_car():
-	pass
-
-#推测关卡完成
-func complete_push_car():
 	pass
 
 
