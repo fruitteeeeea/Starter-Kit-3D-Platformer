@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://41djtag6dbvs"]
+[gd_scene load_steps=17 format=4 uid="uid://41djtag6dbvs"]
 
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_jvdpr"]
 
@@ -125,6 +125,44 @@ shadow_mesh = SubResource("ArrayMesh_rw25j")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_skcj0"]
 data = PackedVector3Array(0.1, 1, 0.5, 0.1, 1, -0.5, 0.1, 0, -0.5, 0.1, 0, -0.5, 0.1, 0, 0.5, 0.1, 1, 0.5, -0.1, 1, -0.5, -0.1, 0, -0.5, 0.1, 0, -0.5, 0.1, 0, -0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 0, 0.5, -0.1, 0, -0.5, -0.1, 1, -0.5, -0.1, 1, -0.5, -0.1, 1, 0.5, -0.1, 0, 0.5, 0.1, 1, 0.5, 0.1, 0, 0.5, -0.1, 0, 0.5, -0.1, 0, 0.5, -0.1, 1, 0.5, 0.1, 1, 0.5, -0.1, 0, 0.5, 0.1, 0, 0.5, 0.1, 0, -0.5, 0.1, 0, -0.5, -0.1, 0, -0.5, -0.1, 0, 0.5, -0.1, 1, -0.5, 0.1, 1, -0.5, 0.1, 1, 0.5, 0.1, 1, 0.5, -0.1, 1, 0.5, -0.1, 1, -0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5j40r"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("1_jvdpr")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a3vx6"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYABwAIAAYABwAJAAgADAAKAAsACwANAAwAEAAOAA8ADwARABAAFAASABMAEwAVABQAGAAWABcAFwAZABgAHAAaABsAGwAdABwA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("mcoAAAAAAAAAAAAAmcoAAGWmAAAAAAAAAAAAAGWmAAD//wAAAAAAAP//AAACEwAAze4AAAAAAAACEwAA//8AAAAAAADN7gAAAAAAAP//AAD//wAANjcAAP//AABqWwAANjcAAP//AABqWwAA//8AAMk5AAAAAAAAAAAAAMk5AACVFQAAAAAAAAAAAACVFQAAMYIAAAAAAAAAAAAAMYIAAP1dAAAAAAAAAAAAAP1dAAD//wAAB8gAAP//AAA77AAAB8gAAP//AAA77AAA//8AAP//AACffwAA//8AANOjAACffwAA//8AANOjAAD//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_41blj"]
+resource_name = "indicator-special-lines_indicator-special-lines"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray("/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYABwAIAAYABwAJAAgADAAKAAsACwANAAwAEAAOAA8ADwARABAAFAASABMAEwAVABQAGAAWABcAFwAZABgAHAAaABsAGwAdABwA"),
+"material": SubResource("StandardMaterial3D_5j40r"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("mcoAAAAA//8AAAAAmcr//2WmAAAAAP//AAAAAGWm/////wAAAAD/////AAACE///ze4AAAAA//8CEwAA/////wAAAADN7v//AAAAAP///////wAANjf/////AABqW///NjcAAP////9qWwAA/////8k5AAAAAP//AAAAAMk5//+VFQAAAAD//wAAAACVFf//MYIAAAAA//8AAAAAMYL///1dAAAAAP//AAAAAP1d/////wAAB8j/////AAA77P//B8gAAP////877AAA////////AACff/////8AANOj//+ffwAA/////9OjAAD//////3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a3vx6")
+
 [node name="PrototypeGridMap" type="Node3D"]
 
 [node name="floor-square" type="MeshInstance3D" parent="."]
@@ -155,3 +193,8 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_skcj0")
+
+[node name="indicator-special-lines" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00735624, 0)
+mesh = SubResource("ArrayMesh_41blj")
+skeleton = NodePath("")

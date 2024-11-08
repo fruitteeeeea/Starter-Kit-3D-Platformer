@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://ercle1g605m2"]
+[gd_scene load_steps=18 format=4 uid="uid://ercle1g605m2"]
 
 [ext_resource type="Script" path="res://test/target/move_payload.gd" id="1_dkk21"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_y72r8"]
@@ -217,6 +217,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x246l")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gr8dg"]
+size = Vector3(1, 0.729126, 1.33496)
+
 [node name="MovePayload" type="PathFollow3D"]
 script = ExtResource("1_dkk21")
 
@@ -260,6 +263,12 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.632, 0.0395, -0.395)
 mesh = SubResource("ArrayMesh_rce0w")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385071, 0)
+shape = SubResource("BoxShape3D_gr8dg")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
