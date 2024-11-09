@@ -89,22 +89,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.620958, 2.03919, 0.72895)
 [node name="EnemyStateTest" parent="RigidEnemyTest" instance=ExtResource("14_qr326")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25063, 4.74, 1.96915)
 
-[node name="OccupyZone" parent="." instance=ExtResource("16_14lsc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999659, 0.564809, 0.494062)
-
-[node name="PathTest" type="Node3D" parent="."]
-
-[node name="Path3D" type="Path3D" parent="PathTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89075, 0.61439, -5.16268)
-curve = SubResource("Curve3D_4ktqu")
-
-[node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("15_m2k6f")]
-transform = Transform3D(-0.570608, 0, -0.82122, 0, 1, 0, 0.82122, 0, -0.570608, 4.47608, -1.93119e-05, 0.649296)
-
-[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.66608, 2.03599, 6.70168)
-Camera = NodePath("../View/Camera3D")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TestManager" type="Control" parent="CanvasLayer"]
@@ -323,6 +307,22 @@ text = "目标进度"
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/LevelTargetTest/VBoxContainer/TargetEnemy/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+
+[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.66608, 2.03599, 6.70168)
+Camera = NodePath("../View/Camera3D")
+
+[node name="PathTest" type="Node3D" parent="."]
+
+[node name="Path3D" type="Path3D" parent="PathTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89075, 0.61439, -5.16268)
+curve = SubResource("Curve3D_4ktqu")
+
+[node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("15_m2k6f")]
+transform = Transform3D(-0.570608, 0, -0.82122, 0, 1, 0, 0.82122, 0, -0.570608, 4.47608, -1.93119e-05, 0.649296)
+
+[node name="OccupyZone" parent="." instance=ExtResource("16_14lsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.148, 0.564809, 0.534)
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

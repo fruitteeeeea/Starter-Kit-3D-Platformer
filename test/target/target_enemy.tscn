@@ -1,6 +1,10 @@
-[gd_scene load_steps=25 format=4 uid="uid://c3ndpg12bjjp3"]
+[gd_scene load_steps=29 format=4 uid="uid://c3ndpg12bjjp3"]
 
+[ext_resource type="Script" path="res://test/target/target_enemy.gd" id="1_4w63p"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_mf7xx"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_yft5c"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_pj25f"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_habar"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwr2x"]
 resource_name = "colormap"
@@ -529,6 +533,7 @@ radius = 0.245103
 height = 0.760571
 
 [node name="Target_Enemy" type="CharacterBody3D"]
+script = ExtResource("1_4w63p")
 
 [node name="animal-dog2" type="Node3D" parent="."]
 
@@ -584,3 +589,19 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.253979, 0)
 shape = SubResource("CapsuleShape3D_hacnr")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("2_yft5c")
+
+[node name="CompoundState" type="Node" parent="StateChart"]
+script = ExtResource("3_pj25f")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("4_habar")
+
+[node name="ESCAPE" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("4_habar")
+
+[node name="HURT" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("4_habar")

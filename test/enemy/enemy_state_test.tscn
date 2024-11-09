@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://rnj46otorcvu"]
+[gd_scene load_steps=12 format=3 uid="uid://rnj46otorcvu"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_o4feg"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_30brg"]
@@ -8,35 +8,12 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_x5oo1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_jdf8o"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_3hx7d"]
+[ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/enemy/hit_flash_surface_material.tres" id="5_8k0hw"]
 [ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/attack/components/health_component.tscn" id="7_mejp8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_75vg6"]
 radius = 0.25
 height = 0.75
-
-[sub_resource type="Curve" id="Curve_c7wj2"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.685504, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_fpkrl"]
-curve = SubResource("Curve_c7wj2")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qeehs"]
-particle_flag_align_y = true
-spread = 180.0
-initial_velocity_min = 6.0
-initial_velocity_max = 12.0
-scale_min = 0.5
-scale_max = 1.5
-scale_curve = SubResource("CurveTexture_fpkrl")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g35tk"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_rihh6"]
-material = SubResource("StandardMaterial3D_g35tk")
-top_radius = 0.1
-bottom_radius = 0.0
-height = 1.0
 
 [node name="EnemyStateTest" node_paths=PackedStringArray("health_component") instance=ExtResource("1_o4feg")]
 collision_layer = 2
@@ -45,6 +22,7 @@ script = ExtResource("2_p4do8")
 health_component = NodePath("HealthComponent")
 hurt_particle = ExtResource("3_76eqb")
 blood_trail = ExtResource("3_wnfx3")
+hit_flash_material = ExtResource("5_8k0hw")
 
 [node name="torso" parent="character-skeleton/root" index="2"]
 transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.223184, 0)
@@ -111,20 +89,9 @@ delay_in_seconds = "0.0"
 [node name="DEAD" type="Node" parent="StateChart/CompoundState" index="3"]
 script = ExtResource("4_jdf8o")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.430128, 0)
-emitting = false
-amount = 12
-lifetime = 0.2
-one_shot = true
-explosiveness = 0.78
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_qeehs")
-draw_pass_1 = SubResource("CylinderMesh_rihh6")
+[node name="HealthComponent" parent="." index="4" instance=ExtResource("7_mejp8")]
 
-[node name="HealthComponent" parent="." index="5" instance=ExtResource("7_mejp8")]
-
-[node name="BloodTarilPos" type="Marker3D" parent="." index="6"]
+[node name="BloodTarilPos" type="Marker3D" parent="." index="5"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.0245163, 0.337645)
 
 [connection signal="state_physics_processing" from="StateChart/CompoundState/IDLE" to="." method="_on_idle_state_physics_processing"]

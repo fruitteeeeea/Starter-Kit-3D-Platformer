@@ -81,14 +81,20 @@ func take_damage(knockback_strength01 : float, damge : float):
 	
 	var player = get_tree().get_first_node_in_group("player")
 	knockback_direction = (global_position - player.global_position).normalized()
+	knockback_strength  = knockback_strength01
 	
 	#在这里结算生命值
 	if health_component:
 		health_component.damage(damge)
 	
-	knockback_strength  = knockback_strength01
-	state_chart.send_event("to_hurt")
+	if health_component.health <= 0:
+		die()
+	else:
+		state_chart.send_event("to_hurt")
 
+#怪物受到致命伤害
+func die():
+	pass
 
 #进入到击退状态
 func _on_hurt_state_physics_processing(delta: float) -> void:

@@ -5,8 +5,9 @@ var current_payload := {
 	#payload #progress
 }
 
+@export var current_occupy_zone_node := []
 @export var current_occupy_zone := {
-	#occupy_zone #occupy_time #compelte_occupy_time
+	#occupy_zone #occupy_time #complete_occupy_time
 }
 
 #添加当前关卡任务目标
