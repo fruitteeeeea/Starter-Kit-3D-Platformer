@@ -35,6 +35,8 @@ var body_parts = [
 
 @export var hit_flash_material : Material #受击时显示的材质
 
+var is_dying := false #处于这个状态的不在执行任何操作
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
@@ -49,12 +51,16 @@ func _on_idle_state_physics_processing(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 
+#进入追逐状态
+func _on_chase_state_entered() -> void:
+	animation_player.play("walk")
+
+
 func _on_chase_state_physics_processing(delta: float) -> void:
 	if is_on_floor():
 		chase_player()
 	else :
 		state_chart.send_event("to_idle")
-
 
 #追逐玩家
 func chase_player():
@@ -73,11 +79,8 @@ func attack_player():
 
 #受到伤害
 func take_damage(knockback_strength01 : float, damge : float):
-	#effect
-	VisualServer.spwan_hurt_particle(hurt_particle, global_position)
-	VisualServer.do_hit_flash(body_parts, hit_flash_material)
-	SoundManager.play_sfx("EnemyHurtSFX", true)
-	VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
+	if is_dying:
+		return
 	
 	var player = get_tree().get_first_node_in_group("player")
 	knockback_direction = (global_position - player.global_position).normalized()
@@ -88,13 +91,19 @@ func take_damage(knockback_strength01 : float, damge : float):
 		health_component.damage(damge)
 	
 	if health_component.health <= 0:
-		die()
+		queue_free()
 	else:
 		state_chart.send_event("to_hurt")
 
-#怪物受到致命伤害
-func die():
-	pass
+#进入受伤状态
+func _on_hurt_state_entered() -> void:
+	#effect
+	#VisualServer.spwan_hurt_particle(hurt_particle, global_position)
+	#VisualServer.do_hit_flash(body_parts, hit_flash_material)
+	#SoundManager.play_sfx("EnemyHurtSFX", true)
+	#VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
+
+	animation_player.play("fall")
 
 #进入到击退状态
 func _on_hurt_state_physics_processing(delta: float) -> void:
@@ -105,13 +114,13 @@ func _on_hurt_state_physics_processing(delta: float) -> void:
 	if knockback_strength < 0.1:
 		state_chart.send_event("to_idle")
 
+#进入死亡状态
+func _on_dead_state_entered() -> void:
+	animation_player.play("die")
+	await animation_player.animation_finished
+	
+	queue_free()
 
-func _on_chase_state_entered() -> void:
-	animation_player.play("walk")
-
-
-func _on_hurt_state_entered() -> void:
-	if health_component.health <= 0: #如果没血了 直接进入死亡状态
-		state_chart.send_event("to_hurt")
-	else:
-		animation_player.play("fall")
+#死亡状态期间的击退
+func _on_dead_state_physics_processing(delta: float) -> void:
+	pass # Replace with function body.

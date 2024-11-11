@@ -1,7 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://ercle1g605m2"]
+[gd_scene load_steps=31 format=4 uid="uid://ercle1g605m2"]
 
 [ext_resource type="Script" path="res://test/target/move_payload.gd" id="1_dkk21"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_y72r8"]
+[ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/target/alert_material.tres" id="2_4yq1u"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="4_cp4bh"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_8tmjh"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="6_33xnh"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_5h37r"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7k04d"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_nrg2q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofvd0"]
 radius = 1.2
@@ -217,17 +224,72 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x246l")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcxwe"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("1_y72r8")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m7k0v"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AgAAAAEAAAADAAEAAgABAAQABQABAAMABAAGAAIABQADAAcABgAFAAcABwACAAYA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mRkAAJkZAAAAAAAAAAAAAGXmAACZGQAAmRkAAGXmAAD//wAAAAAAAAAAAAD//wAA//8AAP//AABl5gAAZeYAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jitsk"]
+resource_name = "indicator-square-a_indicator-square-a"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray("/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/58="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("AgAAAAEAAAADAAEAAgABAAQABQABAAMABAAGAAIABQADAAcABgAFAAcABwACAAYA"),
+"material": SubResource("StandardMaterial3D_hcxwe"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mRkAAJkZ//8AAAAAAAD//2XmAACZGf//mRkAAGXm/////wAAAAD//wAAAAD///////8AAP////9l5gAAZeb///9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_m7k0v")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_81vj2"]
+size = Vector3(4.09595, 2.08252, 4.0752)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us12q"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+backlight = Color(0, 0.521569, 0.709804, 1)
+billboard_keep_scale = true
+grow_amount = 1.882
+proximity_fade_distance = 0.25
+
+[sub_resource type="Curve" id="Curve_no4tm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_gr8dg"]
 size = Vector3(1, 0.729126, 1.33496)
 
 [node name="MovePayload" type="PathFollow3D"]
 script = ExtResource("1_dkk21")
+alert_color = ExtResource("2_4yq1u")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="CheckPlayer" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckPlayer"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.348837, 0)
 shape = SubResource("CapsuleShape3D_ofvd0")
 
@@ -264,11 +326,83 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.632, 0.0395, -0.395)
 mesh = SubResource("ArrayMesh_rce0w")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="indicator-square-a" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+mesh = SubResource("ArrayMesh_jitsk")
+skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CheckEnemy" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CheckEnemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03795, 0)
+shape = SubResource("BoxShape3D_81vj2")
+
+[node name="ParticlesTrail" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.506176)
+material_override = SubResource("StandardMaterial3D_us12q")
+cast_shadow = 0
+amount = 6
+mesh = ExtResource("4_cp4bh")
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_amount_min = 0.75
+scale_amount_curve = SubResource("Curve_no4tm")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("5_8tmjh")
+
+[node name="ParallelState" type="Node" parent="StateChart"]
+script = ExtResource("6_33xnh")
+
+[node name="PayloadState" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("7_5h37r")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateChart/ParallelState/PayloadState"]
+script = ExtResource("8_7k04d")
+
+[node name="to move" type="Node" parent="StateChart/ParallelState/PayloadState/IDLE"]
+script = ExtResource("9_nrg2q")
+to = NodePath("../../MOVE")
+event = &"to_move"
+delay_in_seconds = "0.0"
+
+[node name="MOVE" type="Node" parent="StateChart/ParallelState/PayloadState"]
+script = ExtResource("8_7k04d")
+
+[node name="to idle" type="Node" parent="StateChart/ParallelState/PayloadState/MOVE"]
+script = ExtResource("9_nrg2q")
+to = NodePath("../../IDLE")
+event = &"to_idle"
+delay_in_seconds = "0.0"
+
+[node name="EnemyState" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("7_5h37r")
+initial_state = NodePath("NONEDETCETED")
+
+[node name="NONEDETCETED" type="Node" parent="StateChart/ParallelState/EnemyState"]
+script = ExtResource("8_7k04d")
+
+[node name="DETCETED" type="Node" parent="StateChart/ParallelState/EnemyState"]
+script = ExtResource("8_7k04d")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.385071, 0)
 shape = SubResource("BoxShape3D_gr8dg")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../AnimatableBody3D")
+
+[connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
+[connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/PayloadState/IDLE" to="." method="_on_idle_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/PayloadState/MOVE" to="." method="_on_move_state_physics_processing"]

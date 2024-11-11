@@ -66,6 +66,13 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		
 		queue_free()
 
+	if body.has_method("target_enemy_spwaner"):
+		body.get_hit(1)
+		do_camerashake()
+		WeaponServers.hit_stop_short()
+		queue_free()
+
+
 func do_camerashake():
 	var camera = get_viewport().get_camera_3d()
 	if camera.has_method("add_trauma"):
