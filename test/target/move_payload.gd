@@ -13,6 +13,8 @@ var current_move_speed := 0.0
 @onready var indicator_square_a: MeshInstance3D = $"indicator-square-a"
 @export var alert_color : Material
 
+@export var rigid_items_spwaner : Marker3D
+
 func _physics_process(delta: float) -> void:
 	progress_ratio += delta * current_move_speed
 
@@ -20,11 +22,13 @@ func _physics_process(delta: float) -> void:
 func _on_check_player_body_entered(body: Node3D) -> void:
 	player_near = true
 	state_chart.send_event("to_move")
+	rigid_items_spwaner.timer.start()
 
 
 func _on_check_player_body_exited(body: Node3D) -> void:
 	player_near = false
 	state_chart.send_event("to_idle")
+	rigid_items_spwaner.timer.stop()
 
 
 func _on_timer_timeout() -> void:
