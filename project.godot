@@ -30,6 +30,7 @@ VisualServer="*res://Servers/VisualServer.gd"
 EnemyStatusServer="*res://Servers/EnemyStatusServer.tscn"
 LevelServer="*res://Servers/LevelServer.tscn"
 LevelTargetServer="*res://Servers/LevelTargetServer.gd"
+Hud="*res://Servers/hud.tscn"
 
 [debug]
 

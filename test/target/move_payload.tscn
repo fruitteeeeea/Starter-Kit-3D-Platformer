@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=4 uid="uid://ercle1g605m2"]
+[gd_scene load_steps=34 format=4 uid="uid://ercle1g605m2"]
 
 [ext_resource type="Script" path="res://test/target/move_payload.gd" id="1_dkk21"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_y72r8"]
 [ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/target/alert_material.tres" id="2_4yq1u"]
+[ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="3_1er2x"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="4_cp4bh"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_8tmjh"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="6_33xnh"]
@@ -287,6 +288,7 @@ size = Vector3(1, 0.729126, 1.33496)
 script = ExtResource("1_dkk21")
 alert_color = ExtResource("2_4yq1u")
 rigid_items_spwaner = NodePath("RigidItemSpwaner")
+label = ExtResource("3_1er2x")
 
 [node name="CheckPlayer" type="Area3D" parent="."]
 collision_layer = 0
@@ -335,9 +337,10 @@ mesh = SubResource("ArrayMesh_jitsk")
 skeleton = NodePath("")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="CheckEnemy" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckEnemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03795, 0)
@@ -405,7 +408,7 @@ shape = SubResource("BoxShape3D_gr8dg")
 remote_path = NodePath("../AnimatableBody3D")
 
 [node name="RigidItemSpwaner" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04159, -0.00388497)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39751, -0.00388497)
 script = ExtResource("10_dbemg")
 RigidItems = Array[PackedScene]([ExtResource("11_2rh5g")])
 
@@ -414,6 +417,8 @@ RigidItems = Array[PackedScene]([ExtResource("11_2rh5g")])
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="state_entered" from="StateChart/ParallelState/PayloadState/IDLE" to="." method="_on_idle_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/ParallelState/PayloadState/IDLE" to="." method="_on_idle_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/ParallelState/PayloadState/MOVE" to="." method="_on_move_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/ParallelState/PayloadState/MOVE" to="." method="_on_move_state_physics_processing"]
 [connection signal="timeout" from="RigidItemSpwaner/Timer" to="RigidItemSpwaner" method="_on_timer_timeout"]

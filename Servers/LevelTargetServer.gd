@@ -1,7 +1,7 @@
 extends Node
 #这个服务器管理所有的玩家关卡内目标活动
 
-var current_payload := {
+@export var current_payload := {
 	#payload #progress
 }
 
@@ -27,6 +27,18 @@ func target_enemy_dead():
 #玩家完成任务点占领
 func complete_occupy_zone(occupy_zone01 : Node):
 	pass
+
+
+#===推车相关===
+func add_payload(payload01 : PathFollow3D):
+	current_payload[payload01] = 0.0 #登记车子
+	
+	var label = payload01.label.instantiate()
+	label.payload = payload01
+	payload01.payload_move.connect(label._payload_move)
+	payload01.payload_stop.connect(label._payload_stop)
+	Hud.add_child(label)
+
 
 #推车关卡完成
 func complete_push_car():

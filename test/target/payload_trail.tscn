@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7d2novitwdmp"]
+[gd_scene load_steps=3 format=3 uid="uid://c7d2novitwdmp"]
+
+[ext_resource type="Script" path="res://test/target/payload_trail.gd" id="1_vthd1"]
 
 [sub_resource type="Curve3D" id="Curve3D_lmhdh"]
 _data = {
@@ -10,3 +12,4 @@ point_count = 8
 [node name="PayloadTrail" type="Path3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89075, 0.61439, -5.16268)
 curve = SubResource("Curve3D_lmhdh")
+script = ExtResource("1_vthd1")

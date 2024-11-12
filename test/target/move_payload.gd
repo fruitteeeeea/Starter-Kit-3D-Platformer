@@ -1,5 +1,9 @@
 extends PathFollow3D
 
+signal payload_move #车子启动
+signal payload_stop #车子停下
+signal payload_complete #当到达终点时发出信号
+
 var player_near := false
 var enemy_near := false
 
@@ -9,11 +13,16 @@ var current_move_speed := 0.0
 
 @onready var check_player: Area3D = $CheckPlayer
 @onready var check_enemy: Area3D = $CheckEnemy
+@onready var timer: Timer = $Timer
 
 @onready var indicator_square_a: MeshInstance3D = $"indicator-square-a"
 @export var alert_color : Material
 
 @export var rigid_items_spwaner : Marker3D
+@export var label : PackedScene
+
+func _ready() -> void:
+	LevelTargetServer.add_payload(self)
 
 func _physics_process(delta: float) -> void:
 	progress_ratio += delta * current_move_speed
@@ -32,27 +41,55 @@ func _on_check_player_body_exited(body: Node3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if !player_near: #如果玩家不在的话 就跳过
-		return
-	
+	#if !player_near: #如果玩家不在的话 就跳过
+		#return
+	#
 	check_enenmy()
 
 #检查车子黄圈区域内是否有敌人
 func check_enenmy():
-	enemy_near = false #重置状态
 	for body in check_enemy.get_overlapping_bodies():
 		if body.has_method("state_enemy"):
 			enemy_near = true
-			do_alert()
+			change_to_alert_state(true)
+		
+		else :
+			enemy_near = false #重置状态
+			change_to_alert_state(false)
 
 
-func do_alert():
-	indicator_square_a.set_surface_override_material(0, alert_color)
-	pass
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_right"):
+		change_to_alert_state(true)
+	if event.is_action_released("mouse_right"):
+		change_to_alert_state()
+
+#更改车子敌人检测区指示
+func change_to_alert_state(state01 := false):
+	if state01 == true:
+		indicator_square_a.set_surface_override_material(0, alert_color)
+	else :
+		indicator_square_a.set_surface_override_material(0, null)
+
+
+func _on_move_state_entered() -> void:
+	payload_move.emit()
+	timer.start()
+	indicator_square_a.show()
 
 #处于移动状态的时候
 func _on_move_state_physics_processing(delta: float) -> void:
+	if enemy_near: #如果敌人在附近的话 就没事儿了
+		current_move_speed = lerpf(current_move_speed, 0.0, 0.1)
+		return
+	
 	current_move_speed = lerpf(current_move_speed, max_move_speed, 0.1)
+	LevelTargetServer.current_payload[self] = progress_ratio
+
+func _on_idle_state_entered() -> void:
+	payload_stop.emit()
+	timer.stop()
+	indicator_square_a.hide()
 
 #处于闲置状态的时候
 func _on_idle_state_physics_processing(delta: float) -> void:
