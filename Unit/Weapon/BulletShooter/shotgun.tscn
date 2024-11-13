@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7bv50a2vmfh6"]
+[gd_scene load_steps=3 format=3 uid="uid://b7bv50a2vmfh6"]
 
 [ext_resource type="PackedScene" uid="uid://61q0pufptdqd" path="res://Unit/Weapon/basic_bullet_shooter.tscn" id="1_r7msq"]
+[ext_resource type="PackedScene" uid="uid://rol0nltgapig" path="res://Unit/DropItem/bullet_shell.tscn" id="2_thv3c"]
 
 [node name="Shotgun" instance=ExtResource("1_r7msq")]
 bullet_number = 3
 bullet_scale = 1.5
 spread_angle = 15.0
+random_speed_scale = [0.7, 1.3]
 bullet_interval = 0.01
+BulletShell = ExtResource("2_thv3c")

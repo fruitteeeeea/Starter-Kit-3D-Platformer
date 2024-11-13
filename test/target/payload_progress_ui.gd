@@ -4,9 +4,6 @@ class_name PayloadLabel
 @onready var panel_container: PanelContainer = $PanelContainer #标签本身
 @onready var progress_bar: ProgressBar = $PanelContainer/MarginContainer/HBoxContainer/ProgressBar
 
-@onready var marker_2d: Marker2D = $Marker2D
-@onready var marker_2d_2: Marker2D = $Marker2D2
-
 var payload : PathFollow3D #车子节点
 var payload_moving := false #是否在移动
 

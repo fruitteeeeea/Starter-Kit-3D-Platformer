@@ -14,9 +14,13 @@ extends Node3D
 @export var bullet_scale := 1.0 #子弹体积
 @export var spread_angle = 5.0 # 偏离的最大角度，以度数表示
 @export var bullet_speed := 1.0 #子弹速度加成
+@export var random_speed_scale := [0.9, 1.1] #随机速度（射程）加成 0是最低 1是最高
 @export var bullet_interval : float #多发子弹枪之间的间隔
  
 @export var fire_rate := 0.5 #开火间隔
+
+@export var BulletShell : PackedScene #弹壳场景
+@onready var rigid_item_spwaner: Marker3D = $RigidItemSpwaner
 
 #确认玩家
 var player : CharacterBody3D
@@ -57,12 +61,14 @@ func _unhandled_input(event: InputEvent) -> void:
 #射击子弹
 func shoot_bullet():
 	fire_sfx.play()
+	add_bullet_shell()
 	
 	var bullet = Bullet.instantiate()
 	
 	bullet.bullet_damage = bullet_damage #设置伤害
 	bullet.bullet_scale *= bullet_scale #设置体积
-	bullet.bullet_speed *= bullet_speed #设置设置速度
+	var random_speed = randf_range(random_speed_scale[0], random_speed_scale[1]) #随机射程
+	bullet.bullet_speed *= bullet_speed * random_speed #设置设置速度
 	
 	get_tree().root.add_child(bullet)
 	bullet.position = marker_3d_2.global_position 
@@ -87,3 +93,10 @@ func apply_horizontal_spread(base_direction: Vector3) -> Vector3:
 	var rotated_direction = base_direction.rotated(Vector3.UP, angle_offset)
 	
 	return rotated_direction.normalized()
+
+#生成弹壳
+func add_bullet_shell():
+	if BulletShell == null:
+		return
+	
+	rigid_item_spwaner.spwan_rigid_item(BulletShell)

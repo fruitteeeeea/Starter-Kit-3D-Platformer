@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ercle1g605m2"]
+[gd_scene load_steps=33 format=4 uid="uid://ercle1g605m2"]
 
 [ext_resource type="Script" path="res://test/target/move_payload.gd" id="1_dkk21"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_y72r8"]
@@ -10,12 +10,11 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_5h37r"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7k04d"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_nrg2q"]
-[ext_resource type="Script" path="res://test/target/rigid_item_spwaner.gd" id="10_dbemg"]
 [ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://test/drop_rigid_item.tscn" id="11_2rh5g"]
+[ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="11_kdktq"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofvd0"]
-radius = 1.2
-height = 2.8
+[sub_resource type="BoxShape3D" id="BoxShape3D_81vj2"]
+size = Vector3(4.09595, 2.08252, 4.0752)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atn3y"]
 resource_name = "colormap"
@@ -265,9 +264,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m7k0v")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_81vj2"]
-size = Vector3(4.09595, 2.08252, 4.0752)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us12q"]
 diffuse_mode = 2
 specular_mode = 2
@@ -284,19 +280,19 @@ point_count = 3
 [sub_resource type="BoxShape3D" id="BoxShape3D_gr8dg"]
 size = Vector3(1, 0.729126, 1.33496)
 
-[node name="MovePayload" type="PathFollow3D" node_paths=PackedStringArray("rigid_items_spwaner")]
+[node name="MovePayload" type="PathFollow3D"]
 script = ExtResource("1_dkk21")
 alert_color = ExtResource("2_4yq1u")
-rigid_items_spwaner = NodePath("RigidItemSpwaner")
 label = ExtResource("3_1er2x")
+RigidItems = Array[PackedScene]([ExtResource("11_2rh5g")])
 
 [node name="CheckPlayer" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckPlayer"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.348837, 0)
-shape = SubResource("CapsuleShape3D_ofvd0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03795, 0)
+shape = SubResource("BoxShape3D_81vj2")
 
 [node name="vehicle" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -408,12 +404,9 @@ shape = SubResource("BoxShape3D_gr8dg")
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
 remote_path = NodePath("../AnimatableBody3D")
 
-[node name="RigidItemSpwaner" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39751, -0.00388497)
-script = ExtResource("10_dbemg")
-RigidItems = Array[PackedScene]([ExtResource("11_2rh5g")])
+[node name="RigidItemSpwaner" parent="." instance=ExtResource("11_kdktq")]
 
-[node name="Timer" type="Timer" parent="RigidItemSpwaner"]
+[node name="RigidItemSpwanTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]
@@ -422,4 +415,4 @@ RigidItems = Array[PackedScene]([ExtResource("11_2rh5g")])
 [connection signal="state_physics_processing" from="StateChart/ParallelState/PayloadState/IDLE" to="." method="_on_idle_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/ParallelState/PayloadState/MOVE" to="." method="_on_move_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/ParallelState/PayloadState/MOVE" to="." method="_on_move_state_physics_processing"]
-[connection signal="timeout" from="RigidItemSpwaner/Timer" to="RigidItemSpwaner" method="_on_timer_timeout"]
+[connection signal="timeout" from="RigidItemSpwanTimer" to="." method="_on_rigid_item_spwan_tiemr_timeout"]

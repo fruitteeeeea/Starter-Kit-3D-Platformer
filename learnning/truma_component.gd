@@ -6,7 +6,7 @@ extends Node
 @export var max_y := 5.0
 @export var max_z := 5.0
 
-@export var max_trauma := 1.0 #限制最大抖动
+@export var max_trauma := .6 #限制最大抖动
 
 @export var noise : FastNoiseLite
 @export var noise_speed := 50.0

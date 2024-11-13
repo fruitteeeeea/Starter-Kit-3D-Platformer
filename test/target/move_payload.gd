@@ -18,11 +18,19 @@ var current_move_speed := 0.0
 @onready var indicator_square_a: MeshInstance3D = $"indicator-square-a"
 @export var alert_color : Material
 
-@export var rigid_items_spwaner : Marker3D
+@onready var rigid_item_spwaner: Marker3D = $RigidItemSpwaner
 @export var label : PackedScene
+
+@export var RigidItem : PackedScene #车子生成物品
+@export var RigidItems : Array[PackedScene] #列表
+@onready var rigid_item_spwan_timer: Timer = $RigidItemSpwanTimer
+@export var spwan_time := 2.0 #掉落时间
+@export var spwan_time_min := 1.0
+@export var spwan_time_max := 3.0
 
 func _ready() -> void:
 	LevelTargetServer.add_payload(self)
+	rigid_item_spwan_timer.wait_time = spwan_time
 
 func _physics_process(delta: float) -> void:
 	progress_ratio += delta * current_move_speed
@@ -31,13 +39,13 @@ func _physics_process(delta: float) -> void:
 func _on_check_player_body_entered(body: Node3D) -> void:
 	player_near = true
 	state_chart.send_event("to_move")
-	rigid_items_spwaner.timer.start()
+	rigid_item_spwan_timer.start()
 
 
 func _on_check_player_body_exited(body: Node3D) -> void:
 	player_near = false
 	state_chart.send_event("to_idle")
-	rigid_items_spwaner.timer.stop()
+	rigid_item_spwan_timer.stop()
 
 
 func _on_timer_timeout() -> void:
@@ -94,3 +102,9 @@ func _on_idle_state_entered() -> void:
 #处于闲置状态的时候
 func _on_idle_state_physics_processing(delta: float) -> void:
 	current_move_speed = lerpf(current_move_speed, 0.0, 0.1)
+
+
+func _on_rigid_item_spwan_tiemr_timeout() -> void:
+	rigid_item_spwan_timer.wait_time = randf_range(spwan_time_min, spwan_time_max)
+	var item01 = RigidItems.pick_random()
+	rigid_item_spwaner.spwan_rigid_item(item01)
