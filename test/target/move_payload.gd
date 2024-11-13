@@ -41,9 +41,9 @@ func _on_check_player_body_exited(body: Node3D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	#if !player_near: #如果玩家不在的话 就跳过
-		#return
-	#
+	if !player_near: #如果玩家不在的话 就跳过
+		return
+	
 	check_enenmy()
 
 #检查车子黄圈区域内是否有敌人

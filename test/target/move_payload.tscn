@@ -337,6 +337,7 @@ mesh = SubResource("ArrayMesh_jitsk")
 skeleton = NodePath("")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 
 [node name="CheckEnemy" type="Area3D" parent="."]
 collision_layer = 0

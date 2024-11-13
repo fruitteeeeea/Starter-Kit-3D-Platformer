@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ymcgmgl1d3e"]
+
+[ext_resource type="Texture2D" uid="uid://ch5n8djbgiul5" path="res://icon.svg" id="1_gtehm"]
+
+[node name="LootOptionPannelTest" type="PanelContainer"]
+offset_left = 448.0
+offset_top = 128.0
+offset_right = 663.0
+offset_bottom = 629.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+texture = ExtResource("1_gtehm")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "主武器"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "属性+20
+属性+20"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "描述
+"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "选择
+"
