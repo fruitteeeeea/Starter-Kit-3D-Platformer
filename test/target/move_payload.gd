@@ -28,12 +28,19 @@ var current_move_speed := 0.0
 @export var spwan_time_min := 1.0
 @export var spwan_time_max := 3.0
 
+@onready var movement_indicator: Node3D = $MovementIndicator #移动指示器模型
+@export var max_rotate_speed := 4.0
+var current_rotate_speed := 0.0
+
+
 func _ready() -> void:
 	LevelTargetServer.add_payload(self)
 	rigid_item_spwan_timer.wait_time = spwan_time
 
 func _physics_process(delta: float) -> void:
 	progress_ratio += delta * current_move_speed
+	
+	movement_indicator.rotation.y += delta * current_rotate_speed
 
 
 func _on_check_player_body_entered(body: Node3D) -> void:
@@ -92,6 +99,8 @@ func _on_move_state_physics_processing(delta: float) -> void:
 		return
 	
 	current_move_speed = lerpf(current_move_speed, max_move_speed, 0.1)
+	current_rotate_speed = lerpf(current_rotate_speed, max_rotate_speed, 0.1)
+	
 	LevelTargetServer.current_payload[self] = progress_ratio
 
 func _on_idle_state_entered() -> void:
@@ -102,6 +111,7 @@ func _on_idle_state_entered() -> void:
 #处于闲置状态的时候
 func _on_idle_state_physics_processing(delta: float) -> void:
 	current_move_speed = lerpf(current_move_speed, 0.0, 0.1)
+	current_rotate_speed = lerpf(current_rotate_speed, 0, 0.1)
 
 
 func _on_rigid_item_spwan_tiemr_timeout() -> void:

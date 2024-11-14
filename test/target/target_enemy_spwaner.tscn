@@ -47,7 +47,7 @@ cull_mode = 2
 albedo_texture = ExtResource("1_4md0k")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_4vc8h"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2f0av"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 0.2, 1),
 "format": 34896613377,
@@ -79,7 +79,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("fSUAAH0l/9++UgAAvhL/730l//99JfbfvlKbfr4S/+//fwAAAAD///9///8AAPb/fSX//30lAAC+UgAAvhIAAH0lAAB9JQAAvlKbfr4SAAD/fwAAAAAAAP9///8AAAAAgdr//30l/9+B2gAAfSX/30Dt/3++Uv/PQO0AAL5S/8///////3//v///AAD/f/+/QO3/f75SAACB2gAAfSUAAIHa//99JQAAQO0AAL5SAAD//////38AAP//AAD/fwAA//////9//7///wAA/3//v0Dt/39Arf+vQO0AAECt/6+B2v//gdr/n4HaAACB2v+fQO3/f0CtAAD//wAA/38AAP//////fwAAQO0AAECtAACB2v//gdoAAIHaAACB2gAAfSUAAH0l/999Jf//fSX2374SAAC+Uv/PvhL/f75S/88AAAAA/3//vwAA////f/+/vhIAAL5SAAB9Jf//fSUAAH0lAAB9JQAAvhL/f75SAAAAAAAA/38AAAAA////fwAAgdoAAIHa/59ArQAAQO3/j4Ha//+B2v+f/38AAP//AIBArf9/QO3/j/9//////wCAgdr//4HaAABArQAAQO0AAIHaAACB2gAA/38AAP//AABArf9/QO0AAP9//////wAAAAAAAP9//78AAP///3//v74SAABArf+vvhL/f0Ct/699JQAAgdr/n30l//+B2v+fvhIAAECtAAAAAP///38AAAAAAAD/fwAAvhL/f0CtAAB9JQAAgdoAAH0l//+B2gAA/38AAAAA//9ArQAAvhL/7/9///8AAPb/gdoAAH0l/99Arf9/vhL/74Ha//99Jf/f/3///wAAAABArQAAvhIAAP9/AAAAAAAAgdoAAH0lAABArf9/vhIAAIHa//99JQAA/38AAP//AIC+UgAAQO3/j/9//////wCAfSUAAIHa/5++Uv9/QO3/j30l//+B2v+f/3//////AAC+UgAAQO0AAP9/AAD//wAAfSUAAIHaAAC+Uv9/QO0AAH0l//+B2gAAAAD///9/E7f/f/////8bir5SAAC+Eo30vlIAAL4SJuZ9Jf//fSV32P//AAD/f3K+gdr//4HaPab/fwAA//9Mhn0lAACB2tuWfSUAAIHaAAD/f////3////9/////f////3////9/AACFpf9/O5X/f3yl/387lf9//3//f/F//3//fwAA/38AAP9/AAD/fwAA/38AAP9/AAC6TP9/glr/f4Ja/3+6TP9//z//f/8//3//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD//0Sz/z//f/8//3///0Sz//98pf//fKX/f////3////9/////f////3////9///9Es/9/haX/f3yl/39Es/9//7//f/+//3//fwAA/38AAP9/AAD/f////38AAP9//////3yl//87lf//fKX///9///87lf///3//f////3////9/////f////3////9///+6zP9//7//f/+//3+6zP9/gdr/f4Ha/3//f////38AAP9/AAD/fwAA/38AAP9/AADxf/9/w2r/f/9//3+CWv9/w2r/f4Ja/3//f////3////9/////f////3////9///////9/wur/f////3+B2v9/wur/f4Ha/3//f////3////9/////f////3////9/AAD/fwAA/38AAP9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_4vc8h")
+shadow_mesh = SubResource("ArrayMesh_2f0av")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e75qv"]
 
