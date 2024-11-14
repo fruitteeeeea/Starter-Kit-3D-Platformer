@@ -7,7 +7,7 @@ signal payload_complete #当到达终点时发出信号
 var player_near := false
 var enemy_near := false
 
-var max_move_speed := 0.05
+var max_move_speed := 2.5
 var current_move_speed := 0.0
 @onready var state_chart: StateChart = $StateChart
 
@@ -38,7 +38,8 @@ func _ready() -> void:
 	rigid_item_spwan_timer.wait_time = spwan_time
 
 func _physics_process(delta: float) -> void:
-	progress_ratio += delta * current_move_speed
+	#progress_ratio += delta * current_move_speed
+	progress += delta * current_move_speed
 	
 	movement_indicator.rotation.y += delta * current_rotate_speed
 
@@ -99,7 +100,7 @@ func _on_move_state_physics_processing(delta: float) -> void:
 		return
 	
 	current_move_speed = lerpf(current_move_speed, max_move_speed, 0.1)
-	current_rotate_speed = lerpf(current_rotate_speed, max_rotate_speed, 0.1)
+	current_rotate_speed = lerpf(current_rotate_speed, max_rotate_speed, 0.1)  #指示器旋转
 	
 	LevelTargetServer.current_payload[self] = progress_ratio
 
@@ -110,8 +111,8 @@ func _on_idle_state_entered() -> void:
 
 #处于闲置状态的时候
 func _on_idle_state_physics_processing(delta: float) -> void:
-	current_move_speed = lerpf(current_move_speed, 0.0, 0.1)
-	current_rotate_speed = lerpf(current_rotate_speed, 0, 0.1)
+	current_move_speed = lerpf(current_move_speed, 0.0, 0.1) 
+	current_rotate_speed = lerpf(current_rotate_speed, 0, 0.1) #指示器旋转
 
 
 func _on_rigid_item_spwan_tiemr_timeout() -> void:
