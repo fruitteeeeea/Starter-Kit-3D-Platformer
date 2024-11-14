@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtmo8ea1rypjl"]
+
+[ext_resource type="Script" path="res://Unit/DropItem/payload_rigids.gd" id="1_rqpu2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jtfey"]
+radius = 0.3
+
+[node name="PayloadRigids" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 2.755
+script = ExtResource("1_rqpu2")
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257974, 0)
+shape = SubResource("SphereShape3D_jtfey")

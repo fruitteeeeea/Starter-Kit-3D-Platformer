@@ -1,7 +1,5 @@
 extends CharacterBody3D
 
-
-
 @onready var model: Node3D = $Model
 @onready var collision_shape_3d: CollisionShape3D = $Area3D/CollisionShape3D
 const normal_radius_scale := .1
