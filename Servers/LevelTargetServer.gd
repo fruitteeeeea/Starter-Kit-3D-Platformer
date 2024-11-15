@@ -4,6 +4,7 @@ extends Node
 @export var current_payload := {
 	#payload #progress
 }
+var current_actived_payloads := [] #当前活跃的车子
 
 @export var current_occupy_zone_node := []
 @export var current_occupy_zone := {
@@ -32,6 +33,8 @@ func complete_occupy_zone(occupy_zone01 : Node):
 #===推车相关===
 func add_payload(payload01 : PathFollow3D):
 	current_payload[payload01] = 0.0 #登记车子
+	payload01.payload_move.connect(_payload_move) #管理器信号链接
+	payload01.payload_stop.connect(_payload_stop)
 	
 	var label = payload01.label.instantiate()
 	label.payload = payload01
@@ -39,6 +42,15 @@ func add_payload(payload01 : PathFollow3D):
 	payload01.payload_stop.connect(label._payload_stop)
 	Hud.add_child(label)
 
+
+func _payload_move(payload01):
+	current_actived_payloads.append(payload01)
+	pass
+
+
+func _payload_stop(payload01):
+	current_actived_payloads.clear()
+	pass
 
 #推车关卡完成
 func complete_push_car():

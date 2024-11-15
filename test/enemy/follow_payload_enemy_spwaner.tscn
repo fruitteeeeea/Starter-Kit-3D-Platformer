@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3t7v6y2v4y6w"]
+
+[ext_resource type="PackedScene" uid="uid://dornphy2q7xsd" path="res://Unit/Enemy/baisc_enemy_spwaner.tscn" id="1_2q7s0"]
+[ext_resource type="Script" path="res://test/enemy/follow_payload_enemy_spwaner.gd" id="1_jdse6"]
+
+[node name="FollowPayloadEnemySpwaner" type="Node3D"]
+script = ExtResource("1_jdse6")
+
+[node name="BaiscEnemySpwaner" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.31126, 2.91825, -7.07167)
+
+[node name="BaiscEnemySpwaner2" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75142, 2.91825, -6.21566)
+
+[node name="BaiscEnemySpwaner3" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4907, 2.91825, 9.0974)
+
+[node name="BaiscEnemySpwaner4" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.98788, 2.91825, 6.98591)
+
+[node name="BaiscEnemySpwaner5" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.91223, 2.91825, 9.11642)
+
+[node name="BaiscEnemySpwaner6" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5183, 2.91825, 6.60546)
+
+[node name="BaiscEnemySpwaner7" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.91223, 2.91825, -6.78634)
+
+[node name="BaiscEnemySpwaner8" parent="." instance=ExtResource("1_2q7s0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9096, 2.91825, -4.4656)

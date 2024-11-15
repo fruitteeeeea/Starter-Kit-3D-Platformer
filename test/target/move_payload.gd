@@ -1,8 +1,8 @@
 extends PathFollow3D
 class_name MovePayload
 
-signal payload_move #车子启动
-signal payload_stop #车子停下
+signal payload_move (payload01) #车子启动
+signal payload_stop (payload01) #车子停下
 signal payload_complete #当到达终点时发出信号
 
 var player_near := false
@@ -95,7 +95,7 @@ func change_to_alert_state(state01 := false):
 
 
 func _on_move_state_entered() -> void:
-	payload_move.emit()
+	payload_move.emit(self)
 	timer.start()
 	indicator_square_a.show()
 
@@ -111,7 +111,7 @@ func _on_move_state_physics_processing(delta: float) -> void:
 	LevelTargetServer.current_payload[self] = progress_ratio
 
 func _on_idle_state_entered() -> void:
-	payload_stop.emit()
+	payload_stop.emit(self)
 	timer.stop()
 	indicator_square_a.hide()
 
@@ -144,7 +144,7 @@ func _on_deactivated_state_entered() -> void:
 	if overall_speed > 0 :
 		return
 	
-	payload_stop.emit()
+	payload_stop.emit(self)
 	timer.stop()
 	indicator_square_a.hide()
 

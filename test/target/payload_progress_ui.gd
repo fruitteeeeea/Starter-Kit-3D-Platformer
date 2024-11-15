@@ -16,13 +16,13 @@ func _process(delta: float) -> void:
 		progress_bar.value = LevelTargetServer.current_payload[payload]
 
 
-func _payload_move():
+func _payload_move(payload01):
 	payload_moving = true
 	change_visual_state(true)
 	pass
 
 
-func _payload_stop():
+func _payload_stop(payload01):
 	payload_moving = false
 	change_visual_state()
 	pass
