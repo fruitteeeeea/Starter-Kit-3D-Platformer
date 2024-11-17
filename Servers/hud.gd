@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var debug: VBoxContainer = $Debug
+@export var DebugLabel : PackedScene
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func add_debuglabel():
+	var label01 = DebugLabel.instantiate()
+	debug.add_child(label01)
+	return  label01
 	pass

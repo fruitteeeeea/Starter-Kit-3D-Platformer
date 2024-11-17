@@ -616,6 +616,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.4, 0)
 mesh = SubResource("ArrayMesh_i7m6k")
 skeleton = NodePath("")
 
+[node name="PayloadSurroundPosition" type="Node3D" parent="."]
+
+[node name="SurroundPos01" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.178589, -15)
+
+[node name="Marker3D2" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.178589, 15)
+
+[node name="Marker3D3" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.178589, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.178589, 0)
+
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

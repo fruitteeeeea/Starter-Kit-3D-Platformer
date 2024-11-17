@@ -1,9 +1,10 @@
 extends CharacterBody3D
 
 
+signal enemy_dead (enenmy01 : CharacterBody3D)
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
 
 var player : CharacterBody3D
 var direction := Vector3.ZERO
@@ -11,7 +12,7 @@ var chase_speed := 1.2 #追逐玩家的速度
 
 var overall_strength : float #整体敌人强度
 
-@export var knockback_recover := .2 #击退中的恢复速度
+@export var knockback_recover := .1 * 2 #击退中的恢复速度
 var knockback_direction : Vector3 #击退方向 相对于玩家的位置
 var knockback_strength : float #攻击来源的击退强度
 
@@ -38,6 +39,9 @@ var body_parts = [
 var is_dying := false #处于这个状态的不在执行任何操作
 
 func _physics_process(delta: float) -> void:
+	if !is_on_floor():
+		velocity.y -= 25 * delta
+	
 	move_and_slide()
 
 
@@ -47,8 +51,9 @@ func state_enemy():
 func _on_idle_state_physics_processing(delta: float) -> void:
 	if is_on_floor():
 		state_chart.send_event("to_chase")
-	else:
-		velocity += get_gravity() * delta
+	#else:
+		#velocity += get_gravity() * delta
+		#velocity.y -= 25 * delta
 
 
 #进入追逐状态
@@ -83,7 +88,7 @@ func take_damage(knockback_strength01 : float, damge : float):
 		return
 	
 	var player = get_tree().get_first_node_in_group("player")
-	knockback_direction = (global_position - player.global_position).normalized()
+	knockback_direction = (global_position - player.global_position).normalized() * 3 + Vector3(0, 3, 0) #加一个向上的力
 	knockback_strength  = knockback_strength01
 	
 	#在这里结算生命值
@@ -91,6 +96,8 @@ func take_damage(knockback_strength01 : float, damge : float):
 		health_component.damage(damge)
 	
 	if health_component.health <= 0:
+		#state_chart.send_event("to_dead")
+		enemy_dead.emit(self)
 		queue_free()
 	else:
 		state_chart.send_event("to_hurt")
@@ -108,6 +115,8 @@ func _on_hurt_state_entered() -> void:
 #进入到击退状态
 func _on_hurt_state_physics_processing(delta: float) -> void:
 	velocity = knockback_direction * knockback_strength
+	if !is_on_floor():
+		velocity.y -= 25 * delta
 	
 	knockback_strength = lerpf(knockback_strength, 0, knockback_recover) #从击退中回复过来
 	
@@ -116,6 +125,7 @@ func _on_hurt_state_physics_processing(delta: float) -> void:
 
 #进入死亡状态
 func _on_dead_state_entered() -> void:
+	enemy_dead.emit(self)
 	animation_player.play("die")
 	await animation_player.animation_finished
 	

@@ -41,8 +41,15 @@ var overall_speed := 0.0
 @export var max_rotate_speed := 4.0
 var current_rotate_speed := 0.0
 
+#车子周遭位置
+var surround_position := []
+@onready var payload_surround_position: Node3D = $PayloadSurroundPosition
+@onready var surround_pos_01: Marker3D = $PayloadSurroundPosition/SurroundPos01
 
 func _ready() -> void:
+	for marker in payload_surround_position.get_children():
+		surround_position.append(marker)
+	
 	LevelTargetServer.add_payload(self)
 	rigid_item_spwan_timer.wait_time = spwan_time
 

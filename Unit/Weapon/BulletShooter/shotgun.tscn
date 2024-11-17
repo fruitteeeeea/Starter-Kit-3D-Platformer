@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://rol0nltgapig" path="res://Unit/DropItem/bullet_shell.tscn" id="2_thv3c"]
 
 [node name="Shotgun" instance=ExtResource("1_r7msq")]
-bullet_number = 3
+bullet_number = 5
 bullet_scale = 1.5
 spread_angle = 15.0
 random_speed_scale = [0.7, 1.3]

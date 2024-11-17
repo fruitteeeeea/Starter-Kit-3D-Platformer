@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr64grqi6yu8m"]
+
+[ext_resource type="Script" path="res://Unit/DropItem/normal_item_spwaner.gd" id="1_3hfdo"]
+
+[node name="NormalItemSpwaner" type="Marker3D"]
+script = ExtResource("1_3hfdo")

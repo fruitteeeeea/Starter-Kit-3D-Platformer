@@ -26,6 +26,8 @@ func add_enemy(spwaner01 : Marker3D): #选择要生成怪物的敌人
 	
 	enemy_in_scene.append(enemy) #添加总敌人列表中
 	spwaner01.current_enemy_in_scene.append(enemy) #添加到敌人列表中
+	enemy.enemy_dead.connect(remove_enemy) #链接消除敌人信号
+	enemy.enemy_dead.connect(spwaner01.remove_enemy) #生成节点链接消除敌人信号
 	
 	enemy.overall_strength = spwaner01.enemy_power #设置怪物强度
 	
@@ -35,10 +37,17 @@ func add_enemy(spwaner01 : Marker3D): #选择要生成怪物的敌人
 	#只会在水平方向上进行位置随机
 	#理论上在地图范围内选择随机位置是生成敌人会非常好
 
-
 func remove_enemy(enemy01 : CharacterBody3D):
+	enemy_in_scene.erase(enemy01)
 	pass
 
+#删除离车子远的敌人
+func remove_enemy_from_distance():
+	if !LevelTargetServer.current_actived_payloads: #有没有车子 没车子就算了
+		return
+	
+	
+	pass
 
 #删除敌人生成器
 func remove_enemy_spwaner(spwaner01 : Marker3D):

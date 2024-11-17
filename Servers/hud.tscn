@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bslygqfdfikr"]
+[gd_scene load_steps=3 format=3 uid="uid://bslygqfdfikr"]
 
 [ext_resource type="Script" path="res://Servers/hud.gd" id="1_cbi3n"]
+[ext_resource type="PackedScene" uid="uid://brka2x5msdmt5" path="res://UI/debug_label.tscn" id="2_6h6sb"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_cbi3n")
+DebugLabel = ExtResource("2_6h6sb")
+
+[node name="Debug" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_bottom = 386.0
+grow_horizontal = 0

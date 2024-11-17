@@ -1,8 +1,9 @@
-extends HBoxContainer
+extends PanelContainer
 
-@onready var label_1: Label = $VBoxContainer/Label1
-@onready var color_rect: ColorRect = $VBoxContainer/ColorRect
-@onready var label_2: Label = $Label2
+
+@onready var label_1: Label = $HBoxContainer/Label1
+@onready var label_2: Label = $HBoxContainer/Label2
+@onready var color_rect: ColorRect = $ColorRect
 
 var colorrect_tween : Tween
 
@@ -11,7 +12,6 @@ func updata_label(status_name : String, modify_status : float): #更新标签参
 	do_colorrect_tween()
 	label_1.text = status_name
 	label_2.text = str(modify_status)
-
 
 #闪烁label
 func do_colorrect_tween():
@@ -23,4 +23,3 @@ func do_colorrect_tween():
 	colorrect_tween.tween_property(color_rect, "modulate:a", .1, .5)
 	await colorrect_tween.finished
 	print(color_rect.color.a)
-	

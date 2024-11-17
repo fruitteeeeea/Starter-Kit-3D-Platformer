@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dknht2bov7s7k"]
+[gd_scene load_steps=11 format=3 uid="uid://dknht2bov7s7k"]
 
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_6tj76"]
 [ext_resource type="Script" path="res://test/player/basic_player.gd" id="1_b7nfu"]
-[ext_resource type="PackedScene" uid="uid://dmhdh82n3210p" path="res://Unit/Drone/follow_bot.tscn" id="2_5ukek"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="2_8875h"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_1bjfr"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
@@ -29,7 +28,6 @@ point_count = 3
 [node name="Basic Player" type="CharacterBody3D"]
 collision_layer = 7
 script = ExtResource("1_b7nfu")
-FollowBot = ExtResource("2_5ukek")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)

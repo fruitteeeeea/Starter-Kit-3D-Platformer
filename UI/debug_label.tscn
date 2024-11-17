@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://brka2x5msdmt5"]
+
+[ext_resource type="Script" path="res://UI/debug_label.gd" id="1_880vs"]
+
+[node name="DebugLabel" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_880vs")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "name"
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = ": "
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "data
+"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2

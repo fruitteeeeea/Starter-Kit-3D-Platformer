@@ -2,8 +2,8 @@
 
 [resource]
 noise_type = 0
-frequency = 0.28
+frequency = 0.3
 fractal_octaves = 1
-fractal_lacunarity = 1.2
+fractal_lacunarity = 0.8
 fractal_gain = 0.1
 fractal_weighted_strength = 0.25

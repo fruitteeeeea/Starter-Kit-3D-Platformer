@@ -15,7 +15,7 @@ var bullet_direction = Vector3.ZERO
 @export var bullet_time : float #子弹持续时间/射程
 @export var rand_time : float #子弹随机持续时间 
 
-@export var kockback_force := 8 #子弹击退力度
+@export var kockback_force := 20 * 40 #子弹击退力度
 
 func _ready() -> void:
 	#设置属性

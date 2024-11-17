@@ -12,12 +12,38 @@ extends Marker3D
 @export var max_enemy_nb : int #限制能生成敌人的最大数量
 var current_enemy_in_scene := [] #当前场景存在的该类型敌人
 
+@export var auto_spwan := false
+
+var debuglabel : Node
+
 func _ready() -> void:
 	EnemyStatusServer.enemy_spwaner.append(self)
-	spwan_timer.wait_time = spwan_time
+	
+	if auto_spwan:
+		spwan_timer.wait_time = spwan_time #如果启用自动生成 计时器开始
+		spwan_timer.start()
+
+#调试 debug
+func update_debuglabel():
+	if !debuglabel:
+		debuglabel = Hud.add_debuglabel()
+
+	debuglabel.updata_label(name, current_enemy_in_scene.size())
+
+func spwan_enemy():
+	if current_enemy_in_scene.size() >= max_enemy_nb: #限制生成最大数量敌人
+		return
+	
+	EnemyStatusServer.add_enemy(self)
+	update_debuglabel()
+
+
+func  remove_enemy(enemy01 : CharacterBody3D):
+	current_enemy_in_scene.erase(enemy01)
+	update_debuglabel()
 
 
 func _on_spwan_timer_timeout() -> void:
-	if current_enemy_in_scene.size() >= max_enemy_nb: #如果达到可生成敌人的上限
+	if current_enemy_in_scene.size() >= max_enemy_nb or !auto_spwan: #如果达到可生成敌人的上限
 		return
-	EnemyStatusServer.add_enemy(self)
+	spwan_enemy()

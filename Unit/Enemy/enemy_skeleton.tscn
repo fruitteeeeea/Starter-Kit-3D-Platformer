@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Unit/Enemy/enemy_skeleton.gd" id="2_r0nd8"]
 [ext_resource type="PackedScene" uid="uid://begv2uphnjvod" path="res://Unit/VisualEffect/blood_taril.tscn" id="3_8wxq6"]
 [ext_resource type="Script" path="res://Unit/DropItem/drop_item_point.gd" id="3_wy335"]
-[ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/enemy/hit_flash_surface_material.tres" id="4_e5j83"]
+[ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/target/alert_material.tres" id="4_e5j83"]
 [ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/attack/components/health_component.tscn" id="4_ungiq"]
 [ext_resource type="PackedScene" uid="uid://cxgrdxibbb8wp" path="res://test/enemy/damage_number.tscn" id="5_w6d7j"]
 [ext_resource type="Script" path="res://test/enemy/damage_number_spawn_point.gd" id="6_pmj16"]
