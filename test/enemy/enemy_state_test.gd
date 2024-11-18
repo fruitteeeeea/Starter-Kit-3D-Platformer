@@ -96,21 +96,25 @@ func take_damage(knockback_strength01 : float, damge : float):
 		health_component.damage(damge)
 	
 	if health_component.health <= 0:
+		is_dying = true
 		#state_chart.send_event("to_dead")
-		enemy_dead.emit(self)
-		queue_free()
-	else:
-		state_chart.send_event("to_hurt")
+		#enemy_dead.emit(self)
+		#queue_free()
+
+	state_chart.send_event("to_hurt")
 
 #进入受伤状态
 func _on_hurt_state_entered() -> void:
 	#effect
-	#VisualServer.spwan_hurt_particle(hurt_particle, global_position)
-	#VisualServer.do_hit_flash(body_parts, hit_flash_material)
-	#SoundManager.play_sfx("EnemyHurtSFX", true)
-	#VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
+	VisualServer.spwan_hurt_particle(hurt_particle, global_position)
+	VisualServer.do_hit_flash(body_parts, hit_flash_material)
+	SoundManager.play_sfx("EnemyHurtSFX", true)
+	VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
 
-	animation_player.play("fall")
+	if is_dying:
+		animation_player.play("die")
+	else:
+		animation_player.play("fall")
 
 #进入到击退状态
 func _on_hurt_state_physics_processing(delta: float) -> void:
@@ -121,7 +125,10 @@ func _on_hurt_state_physics_processing(delta: float) -> void:
 	knockback_strength = lerpf(knockback_strength, 0, knockback_recover) #从击退中回复过来
 	
 	if knockback_strength < 0.1:
-		state_chart.send_event("to_idle")
+		if is_dying:
+			state_chart.send_event("to_dead")
+		else:
+			state_chart.send_event("to_idle")
 
 #进入死亡状态
 func _on_dead_state_entered() -> void:

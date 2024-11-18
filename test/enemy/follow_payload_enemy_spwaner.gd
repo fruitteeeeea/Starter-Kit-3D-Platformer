@@ -4,7 +4,8 @@ extends Node3D
 var enemy_spwaner := []
 
 @export var spwaner_number : int #生成器数量
-@export var spwaner_timer := .5 #生成时间
+@export var spwaner_timer := 1.5 #生成时间
+@export var enemy_number := 3 #生成敌人数量
 @onready var enemy_spwan_timer: Timer = $EnemySpwanTimer
 
 @export var enemy_strengeth_value := 100 #生成一定伤害值数量的敌人
@@ -21,8 +22,9 @@ func _ready() -> void:
 
 
 func _on_enemy_spwan_timer_timeout() -> void:
-	spwan_enemy()
-	pass
+	for i in range(enemy_number): #集束式生成敌人
+		spwan_enemy()
+		await get_tree().create_timer(.01).timeout
 
 
 func spwan_enemy():

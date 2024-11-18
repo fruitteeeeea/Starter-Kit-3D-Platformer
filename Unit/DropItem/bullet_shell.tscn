@@ -48,6 +48,7 @@ height = 0.6
 radius = 0.1
 
 [node name="BulletShell" type="RigidBody3D"]
+collision_layer = 0
 gravity_scale = 2.755
 script = ExtResource("1_2274v")
 vanished_time = 3.0

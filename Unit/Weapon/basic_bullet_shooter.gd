@@ -20,6 +20,7 @@ extends Node3D
 @export var fire_rate := 0.5 #开火间隔
 
 @export var BulletShell : PackedScene #弹壳场景
+@export var spwan_shell_change := .3
 @onready var rigid_item_spwaner: Marker3D = $RigidItemSpwaner
 
 #确认玩家
@@ -98,5 +99,9 @@ func apply_horizontal_spread(base_direction: Vector3) -> Vector3:
 func add_bullet_shell():
 	if BulletShell == null:
 		return
+	
+	var random_nb = randf_range(0.0, 1.0)
+	if random_nb > spwan_shell_change:
+		return #生成弹壳几率
 	
 	rigid_item_spwaner.spwan_rigid_item(BulletShell)
