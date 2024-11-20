@@ -17,7 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="11_kdktq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81vj2"]
-size = Vector3(4.09595, 2.08252, 4.0752)
+custom_solver_bias = 1.0
+size = Vector3(5, 2.083, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atn3y"]
 resource_name = "colormap"
@@ -619,16 +620,13 @@ skeleton = NodePath("")
 [node name="PayloadSurroundPosition" type="Node3D" parent="."]
 
 [node name="SurroundPos01" type="Marker3D" parent="PayloadSurroundPosition"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.178589, -15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179, 10)
 
-[node name="Marker3D2" type="Marker3D" parent="PayloadSurroundPosition"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.178589, 15)
+[node name="Marker3D5" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.179, 10)
 
-[node name="Marker3D3" type="Marker3D" parent="PayloadSurroundPosition"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.178589, 0)
-
-[node name="Marker3D4" type="Marker3D" parent="PayloadSurroundPosition"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.178589, 0)
+[node name="Marker3D6" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.179, 10)
 
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]

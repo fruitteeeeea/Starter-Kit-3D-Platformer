@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://btdyurpc7itrw"]
+[gd_scene load_steps=12 format=4 uid="uid://btdyurpc7itrw"]
 
 [ext_resource type="Script" path="res://Unit/DropItem/drop_normal_item.gd" id="1_p4qjh"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="2_88nph"]
@@ -61,7 +61,10 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_auogq"]
 colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
 
-[node name="DropNormalItem" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_soje3"]
+radius = 3.0
+
+[node name="Node3D" type="Node3D"]
 script = ExtResource("1_p4qjh")
 
 [node name="Model" type="Node3D" parent="."]
@@ -85,3 +88,13 @@ scale_amount_min = 0.15
 scale_amount_max = 0.15
 scale_amount_curve = SubResource("Curve_uwo36")
 color_ramp = SubResource("Gradient_auogq")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390971, 0)
+shape = SubResource("SphereShape3D_soje3")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

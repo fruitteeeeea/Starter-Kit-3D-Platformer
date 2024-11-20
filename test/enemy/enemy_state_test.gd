@@ -6,6 +6,9 @@ signal enemy_dead (enenmy01 : CharacterBody3D)
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@export var LifeTime := 30.0 #生命时间
+@onready var lifetime: Timer = $Lifetime
+
 var player : CharacterBody3D
 var direction := Vector3.ZERO
 var chase_speed := 1.2 #追逐玩家的速度
@@ -37,6 +40,12 @@ var body_parts = [
 @export var hit_flash_material : Material #受击时显示的材质
 
 var is_dying := false #处于这个状态的不在执行任何操作
+@onready var normal_item_spwaner: Marker3D = $NormalItemSpwaner #死亡掉落物
+
+func _ready() -> void:
+	if LifeTime: #自动销毁敌人
+		lifetime.start(LifeTime)
+
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
@@ -97,6 +106,7 @@ func take_damage(knockback_strength01 : float, damge : float):
 	
 	if health_component.health <= 0:
 		is_dying = true
+		normal_item_spwaner.spwan_normal_item()
 		#state_chart.send_event("to_dead")
 		#enemy_dead.emit(self)
 		#queue_free()
@@ -132,7 +142,15 @@ func _on_hurt_state_physics_processing(delta: float) -> void:
 
 #进入死亡状态
 func _on_dead_state_entered() -> void:
+	die()
+
+#死亡方法
+func die(drop_item := true):
 	enemy_dead.emit(self)
+	
+	#if drop_item:
+		#normal_item_spwaner.spwan_normal_item()
+	
 	animation_player.play("die")
 	await animation_player.animation_finished
 	
@@ -141,3 +159,7 @@ func _on_dead_state_entered() -> void:
 #死亡状态期间的击退
 func _on_dead_state_physics_processing(delta: float) -> void:
 	pass # Replace with function body.
+
+
+func _on_lifetime_timeout() -> void:
+	pass

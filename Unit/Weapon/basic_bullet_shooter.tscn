@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://61q0pufptdqd"]
+[gd_scene load_steps=10 format=3 uid="uid://61q0pufptdqd"]
 
 [ext_resource type="Script" path="res://Unit/Weapon/basic_bullet_shooter.gd" id="1_6rus7"]
 [ext_resource type="PackedScene" uid="uid://cgtrpk7koy71t" path="res://test/attack/food model/GLB format/hot-dog-raw.glb" id="1_kn0jf"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dfxr4isijglmi" path="res://test/SFX/Punch Heavy B.wav" id="3_pdggb"]
 [ext_resource type="AudioStream" uid="uid://1r2ih5v5h5lh" path="res://test/SFX/Punch Heavy C.wav" id="4_sbldi"]
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="7_r3x6b"]
+[ext_resource type="Texture2D" uid="uid://dsng3qsq77tne" path="res://test/cross_small.png" id="8_d11x0"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_doxwc"]
 streams_count = 3
@@ -36,3 +37,7 @@ pitch_scale = 1.25
 
 [node name="RigidItemSpwaner" parent="." instance=ExtResource("7_r3x6b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0716902, -0.00388497)
+
+[node name="Cursor" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+texture = ExtResource("8_d11x0")

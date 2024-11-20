@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_6tj76"]
 [ext_resource type="Script" path="res://test/player/basic_player.gd" id="1_b7nfu"]
-[ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="2_8875h"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_1bjfr"]
+[ext_resource type="Texture2D" uid="uid://dsng3qsq77tne" path="res://test/cross_small.png" id="3_grx73"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
 [ext_resource type="PackedScene" uid="uid://b7bv50a2vmfh6" path="res://Unit/Weapon/BulletShooter/shotgun.tscn" id="8_83fks"]
 [ext_resource type="Texture2D" uid="uid://b6g6xonw5fdb7" path="res://test/navigation_n.svg" id="9_gwjtp"]
@@ -35,13 +35,22 @@ shape = SubResource("CapsuleShape3D_pdyd2")
 
 [node name="Character" parent="." instance=ExtResource("1_6tj76")]
 
+[node name="leg-left" parent="Character/character/root" index="0"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.125, 0.17625, -0.02375)
+
+[node name="leg-right" parent="Character/character/root" index="1"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.125, 0.17625, -0.02375)
+
+[node name="torso" parent="Character/character/root" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.996194, 0.0871556, 0, -0.0871556, 0.996194, -1.80478e-15, 0.17625, -0.02375)
+
 [node name="FollowPoint" type="Marker3D" parent="Character"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.565477, 1.26363, 0.542291)
 
 [node name="Shadow" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.9, 0)
 size = Vector3(1, 2, 1)
-texture_albedo = ExtResource("2_8875h")
+texture_albedo = ExtResource("3_grx73")
 modulate = Color(1, 1, 1, 0.705882)
 normal_fade = 0.5
 

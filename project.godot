@@ -32,10 +32,6 @@ LevelServer="*res://Servers/LevelServer.tscn"
 LevelTargetServer="*res://Servers/LevelTargetServer.gd"
 Hud="*res://Servers/hud.tscn"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [dialogic]
 
 directories/dch_directory={}

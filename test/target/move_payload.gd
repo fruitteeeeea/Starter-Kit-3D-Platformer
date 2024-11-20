@@ -59,9 +59,18 @@ func _physics_process(delta: float) -> void:
 	movement_indicator.rotation.y += delta * current_rotate_speed
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug"):
-		car_get_hit()
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debug"):
+		#car_get_hit()
+
+#获取车子附近位置的重要方法
+func get_surrounding_position(distance_factor := 1.0) -> Vector3:
+	if !surround_position:
+		return Vector3.ZERO
+	
+	var target_pos = surround_position.pick_random().position * distance_factor
+	print(target_pos)
+	return global_position + target_pos
 
 
 func _on_check_player_body_entered(body: Node3D) -> void:

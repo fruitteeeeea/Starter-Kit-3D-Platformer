@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://rnj46otorcvu"]
+[gd_scene load_steps=14 format=3 uid="uid://rnj46otorcvu"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_o4feg"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_30brg"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_3hx7d"]
 [ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/target/alert_material.tres" id="5_8k0hw"]
 [ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/attack/components/health_component.tscn" id="7_mejp8"]
+[ext_resource type="PackedScene" uid="uid://dr64grqi6yu8m" path="res://Unit/DropItem/normal_item_spwaner.tscn" id="11_kyhln"]
+[ext_resource type="PackedScene" uid="uid://uhrre7e7bf2s" path="res://Unit/DropItem/drop_normal_item_coins.tscn" id="12_jf0kl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_75vg6"]
 radius = 0.25
@@ -94,6 +96,11 @@ script = ExtResource("4_jdf8o")
 [node name="BloodTarilPos" type="Marker3D" parent="." index="5"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.0245163, 0.337645)
 
+[node name="NormalItemSpwaner" parent="." index="6" instance=ExtResource("11_kyhln")]
+Item = ExtResource("12_jf0kl")
+
+[node name="Lifetime" type="Timer" parent="." index="7"]
+
 [connection signal="state_physics_processing" from="StateChart/CompoundState/IDLE" to="." method="_on_idle_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/CompoundState/CHASE" to="." method="_on_chase_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/CompoundState/CHASE" to="." method="_on_chase_state_physics_processing"]
@@ -101,3 +108,4 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 [connection signal="state_physics_processing" from="StateChart/CompoundState/HURT" to="." method="_on_hurt_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/CompoundState/DEAD" to="." method="_on_dead_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/CompoundState/DEAD" to="." method="_on_dead_state_physics_processing"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
