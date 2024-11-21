@@ -3,6 +3,11 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $chest2/AnimationPlayer
 @onready var chest_2: Node3D = $chest2
 @onready var normal_item_spwaner: Marker3D = $NormalItemSpwaner
+@export var life_time := 7.7
+
+func _ready() -> void:
+	await get_tree().create_timer(life_time).timeout
+	queue_free()
 
 func get_open():
 	normal_item_spwaner.spwan_normal_item()

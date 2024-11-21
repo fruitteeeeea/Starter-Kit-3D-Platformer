@@ -628,6 +628,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.179, 10)
 [node name="Marker3D6" type="Marker3D" parent="PayloadSurroundPosition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.179, 10)
 
+[node name="SurroundPos02" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179, 0)
+
+[node name="Marker3D7" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.179, 0)
+
+[node name="Marker3D8" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.179, 0)
+
+[node name="SurroundPos03" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179, -10)
+
+[node name="Marker3D9" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.179, -10)
+
+[node name="Marker3D10" type="Marker3D" parent="PayloadSurroundPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.179, -10)
+
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

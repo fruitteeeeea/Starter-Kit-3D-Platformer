@@ -385,7 +385,7 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -9
 transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8.37312, 1.5, 2.33969)
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("10_g7m0e")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.76243, 3.05559, 6.70168)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 18.1047, 3.05559, -15.6581)
 Camera = NodePath("../View/Camera3D")
 
 [node name="RigidEnemy" parent="." instance=ExtResource("5_nx8uh")]

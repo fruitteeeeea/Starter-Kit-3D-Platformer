@@ -21,6 +21,7 @@ height = 0.75
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("2_p4do8")
+LifeTime = 10.0
 health_component = NodePath("HealthComponent")
 hurt_particle = ExtResource("3_76eqb")
 blood_trail = ExtResource("3_wnfx3")
@@ -101,6 +102,8 @@ Item = ExtResource("12_jf0kl")
 
 [node name="Lifetime" type="Timer" parent="." index="7"]
 
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." index="8"]
+
 [connection signal="state_physics_processing" from="StateChart/CompoundState/IDLE" to="." method="_on_idle_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/CompoundState/CHASE" to="." method="_on_chase_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/CompoundState/CHASE" to="." method="_on_chase_state_physics_processing"]
@@ -109,3 +112,4 @@ Item = ExtResource("12_jf0kl")
 [connection signal="state_entered" from="StateChart/CompoundState/DEAD" to="." method="_on_dead_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/CompoundState/DEAD" to="." method="_on_dead_state_physics_processing"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

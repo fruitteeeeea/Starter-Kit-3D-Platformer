@@ -162,4 +162,16 @@ func _on_dead_state_physics_processing(delta: float) -> void:
 
 
 func _on_lifetime_timeout() -> void:
+	die()
+
+
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	#die()
 	pass
+
+#超出车子一定范围后 死亡
+func detect_distance_to_activated_payload():
+	var payload = LevelTargetServer.current_actived_payloads
+	if payload:
+		if global_position.distance_to(payload.global_position) > 10:
+			die()
