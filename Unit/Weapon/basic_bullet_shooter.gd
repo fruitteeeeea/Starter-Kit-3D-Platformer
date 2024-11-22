@@ -59,10 +59,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			if bullet_interval: #如果有开火间隔
 				await get_tree().create_timer(bullet_interval).timeout
 
-#射击子弹
+#射击子弹 #后期使用 ProjectileServer
 func shoot_bullet():
 	fire_sfx.play()
-	add_bullet_shell()
+	add_bullet_shell() #添加弹壳
 	
 	var bullet = Bullet.instantiate()
 	
@@ -74,10 +74,8 @@ func shoot_bullet():
 	get_tree().root.add_child(bullet)
 	bullet.position = marker_3d_2.global_position 
 	var target_position = (marker_3d_2.global_position - marker_3d.global_position).normalized() #记得归一化向量
-	bullet.bullet_direction = target_position
 
 
-	
 	#设置散射范围
 	var random_direction = apply_horizontal_spread(target_position)
 	bullet.bullet_direction = random_direction

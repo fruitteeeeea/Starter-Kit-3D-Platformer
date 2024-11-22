@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=30 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dornphy2q7xsd" path="res://Unit/Enemy/baisc_enemy_spwaner.tscn" id="13_ufkj2"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="13_ywdqq"]
 [ext_resource type="Script" path="res://test/level_target_test.gd" id="14_os0rd"]
-[ext_resource type="PackedScene" uid="uid://rnj46otorcvu" path="res://test/enemy/enemy_state_test.tscn" id="14_qr326"]
 [ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://test/target/move_payload.tscn" id="15_m2k6f"]
 [ext_resource type="PackedScene" uid="uid://cys28ci6xn58s" path="res://test/target/occupy_zone.tscn" id="16_14lsc"]
 [ext_resource type="PackedScene" uid="uid://c3t7v6y2v4y6w" path="res://test/enemy/follow_payload_enemy_spwaner.tscn" id="16_jido0"]
@@ -26,8 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://4ymcgmgl1d3e" path="res://UI/loot_option_pannel_test.tscn" id="23_id5wl"]
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://test/drop item/ground_button.tscn" id="24_0an6w"]
 [ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://test/chest.tscn" id="26_iyaov"]
-[ext_resource type="PackedScene" uid="uid://btdyurpc7itrw" path="res://Unit/DropItem/drop_normal_item.tscn" id="26_n34n8"]
 [ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/spwaner/follow_payload_chest_spwaner.tscn" id="27_emk3l"]
+[ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="28_m5bpb"]
 
 [sub_resource type="Curve3D" id="Curve3D_4ktqu"]
 _data = {
@@ -38,7 +37,7 @@ point_count = 9
 
 [sub_resource type="Curve3D" id="Curve3D_oeb3s"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.168566, 0, -0.741693, -1.47074, -2.5332e-05, -2.76238, 1.47074, 2.5332e-05, 2.76238, 4.08687, 0, 7.09491, -0.0263386, 7.15256e-07, -3.16852, 0.0263386, -7.15256e-07, 3.16852, 0.140409, 0, 17.5175, -0.147655, 7.15256e-07, -3.32954, 0.147655, -7.15256e-07, 3.32954, 3.88169, 0, 21.108, -2.59817, -2.46167e-05, -2.05333, 2.59817, 2.46167e-05, 2.05333, 3.41829, 7.15256e-07, 37.3986, 0, 0, 0, 0, 0, 0, 0.210455, 2.5332e-05, 47.1933, 0, 0, 0, 0, 0, 0, -5.14914, 2.5332e-05, 42.1422, 0, 0, 0, 0, 0, 0, -2.4646, 2.5332e-05, 33.618, 0, 0, 0, 0, 0, 0, -4.78332, 2.5332e-05, 5.51491, 0, 0, 0, 0, 0, 0, 0.168566, 0, -0.741693),
+"points": PackedVector3Array(-1.47074, -2.5332e-05, -2.76238, 0, 0, 0, 0.168566, 0, -0.741693, -1.47074, -2.5332e-05, -2.76238, 1.47074, 2.5332e-05, 2.76238, 4.08687, 0, 7.09491, -0.0263386, 7.15256e-07, -3.16852, 0.0263386, -7.15256e-07, 3.16852, 0.140409, 0, 17.5175, -0.147655, 7.15256e-07, -3.32954, 0.147655, -7.15256e-07, 3.32954, 3.88169, 0, 21.108, -4.54121, -2.46167e-05, -4.36439, 4.54121, 2.46167e-05, 4.36439, 3.41829, 7.15256e-07, 37.3986, 0, 0, 0, 0, 0, 0, -0.514523, 2.5332e-05, 44.3741, 0, 0, 0, 0, 0, 0, -5.14914, 2.5332e-05, 42.1422, 0, 0, 0, 0, 0, 0, -2.4646, 2.5332e-05, 33.618, 0, 0, 0, 0, 0, 0, 0.168566, 0, -0.741693, 0, 0, 0, 0, 0, 0, 0.168566, 0, -0.741693),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 10
@@ -99,9 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11019, 0.832638, 6.84001)
 [node name="BaiscEnemySpwaner" parent="RigidEnemyTest" instance=ExtResource("13_ufkj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8948, 2.03919, -4.84904)
 visible = false
-
-[node name="EnemyStateTest" parent="RigidEnemyTest" instance=ExtResource("14_qr326")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25063, 4.74, 1.96915)
 
 [node name="TargetEnemySpwanerTest" type="Node3D" parent="."]
 
@@ -165,6 +161,12 @@ curve = SubResource("Curve3D_oeb3s")
 transform = Transform3D(-0.886959, -2.36083e-06, -0.46184, 4.26467e-08, 1, -5.19366e-06, 0.46184, -4.6263e-06, -0.886959, 3.73214, -4.97601e-06, 6.42062)
 progress = 8.0
 
+[node name="MovingPlatform" parent="PathTest" instance=ExtResource("18_dpal6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.463373, 0.987252, -3.92974)
+
+[node name="DropRigidItem" parent="PathTest/MovingPlatform" instance=ExtResource("19_ygwm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39317, 0.456356, 5.90125)
+
 [node name="OccupyZoneTest" type="Node3D" parent="."]
 
 [node name="OccupyZone" parent="OccupyZoneTest" instance=ExtResource("16_14lsc")]
@@ -180,7 +182,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47555, 0.564809, -7.94014)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9722, 0.564809, 3.5196)
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 16.6814, 2.03599, -3.48976)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 29.0845, 2.03599, -7.5018)
 Camera = NodePath("../View/Camera3D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -196,18 +198,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("11_en21h")
 
-[node name="TestButton" type="Button" parent="CanvasLayer/TestManager"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 50.0
-text = "test"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TestManager"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 71.0
-offset_right = 226.0
-offset_bottom = 539.0
+layout_mode = 1
+offset_right = 330.0
+offset_bottom = 468.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TestManager/HBoxContainer"]
 layout_mode = 2
@@ -286,6 +280,7 @@ text = "add  1x enemy
 "
 
 [node name="UpgradChosen" type="Control" parent="CanvasLayer/TestManager"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -368,49 +363,6 @@ layout_mode = 2
 text = "下一页
 "
 
-[node name="LootOption" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LootOption"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -415.0
-offset_top = -300.0
-offset_right = 415.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(415, 300)
-theme_override_constants/separation = 30
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/LootOption/HBoxContainer"]
-custom_minimum_size = Vector2(250, 600)
-layout_mode = 2
-
-[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/LootOption/HBoxContainer"]
-custom_minimum_size = Vector2(250, 600)
-layout_mode = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/LootOption/HBoxContainer"]
-custom_minimum_size = Vector2(250, 600)
-layout_mode = 2
-
 [node name="LevelTimer" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 912.0
 offset_top = 856.0
@@ -429,26 +381,24 @@ layout_mode = 2
 text = "TimeLeft 00:00"
 horizontal_alignment = 1
 
-[node name="MovingPlatform" parent="CanvasLayer/LevelTimer" instance=ExtResource("18_dpal6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.463373, 0.987252, -3.92974)
-
-[node name="DropRigidItem" parent="CanvasLayer/LevelTimer/MovingPlatform" instance=ExtResource("19_ygwm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39317, 0.456356, 5.90125)
-
 [node name="LevelTargetTest" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
 offset_bottom = 40.0
+grow_horizontal = 0
 script = ExtResource("14_os0rd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelTargetTest"]
-layout_mode = 0
-offset_left = 1379.0
-offset_top = 70.0
-offset_right = 1597.0
-offset_bottom = 171.0
-theme_override_constants/separation = 10
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -218.0
+offset_bottom = 101.0
+grow_horizontal = 0
 
 [node name="Payload" type="PanelContainer" parent="CanvasLayer/LevelTargetTest/VBoxContainer"]
 layout_mode = 2
@@ -505,24 +455,12 @@ offset_bottom = 824.0
 [node name="GroundButton" parent="." instance=ExtResource("24_0an6w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0707, 0.479797, 1.06228)
 
-[node name="DropNormalItem" parent="." instance=ExtResource("26_n34n8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0886, 0.525254, -1.03544)
-
-[node name="Chest" parent="." instance=ExtResource("26_iyaov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3341, 0.710744, -8.91152)
-
-[node name="Chest2" parent="." instance=ExtResource("26_iyaov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2774, 0.710744, -9.38132)
-
-[node name="Chest3" parent="." instance=ExtResource("26_iyaov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7325, 0.710744, -7.24588)
-
-[node name="Chest4" parent="." instance=ExtResource("26_iyaov")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4193, 0.710744, -5.85785)
-
 [node name="follow_payload_chest_spwaner" parent="." instance=ExtResource("27_emk3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 Chest = ExtResource("26_iyaov")
+
+[node name="EnemyStateTest02" parent="." instance=ExtResource("28_m5bpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4378, 1.54611, -6.45642)
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

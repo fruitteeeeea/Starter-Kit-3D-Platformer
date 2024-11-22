@@ -15,9 +15,14 @@ var target : Node3D #目标位置
 var is_floting := true
 var time := 0.0
 
+@export var vanish_time := 10.0 #消失时间
+
 func _ready() -> void:
+
 	model.scale = Vector3.ONE * randf_range(.8, 1.2) #随机大小
 	bounce_to_random_pos()
+	await get_tree().create_timer(vanish_time).timeout
+	queue_free() #到点自动消失
 
 
 func _physics_process(delta: float) -> void:

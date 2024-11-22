@@ -8,6 +8,14 @@ var is_guided_projectile := false #是否为跟踪子弹
 
 var projecttile_arry := [] #子弹生成的时候添加到数组
 
+#计算子弹各项属性
+func calculate_bullet_properties():
+	pass
+
+#计算炸弹各项属性
+func calculate_bomb_properties():
+	pass
+
 #发射子弹 #子弹场景 #生成数量 #生成位置 # 目标位置 #子弹散射
 func spwan_bullet(projectile01 : PackedScene, spwan_nb : int, spwan_pos : Vector3, target_pos : Vector3, spare01 : float): 
 	for i in spwan_nb: #根据子弹数量

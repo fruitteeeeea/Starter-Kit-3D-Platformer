@@ -23,6 +23,12 @@ func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3
 func hit_stop():
 	pass
 
+#屏幕抖动
+func do_camerashake(shake_factor := 0.5):
+	var camera = get_viewport().get_camera_3d()
+	if camera.has_method("add_trauma"):
+		camera.add_trauma(shake_factor)
+
 #指定受击反馈物体 闪红 #传递身体组件 #传递闪红材质
 func do_hit_flash(body_parts01 : Array, hit_flash_material : Material):
 	for parts in body_parts01:

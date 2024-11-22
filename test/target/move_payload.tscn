@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://ercle1g605m2"]
+[gd_scene load_steps=49 format=4 uid="uid://ercle1g605m2"]
 
 [ext_resource type="Script" path="res://test/target/move_payload.gd" id="1_dkk21"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_y72r8"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_nrg2q"]
 [ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://test/drop_rigid_item.tscn" id="11_2rh5g"]
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="11_kdktq"]
+[ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://test/payload arms/payload_arms.tscn" id="16_426xa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81vj2"]
 custom_solver_bias = 1.0
@@ -645,6 +646,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.179, -10)
 
 [node name="Marker3D10" type="Marker3D" parent="PayloadSurroundPosition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.179, -10)
+
+[node name="PayloadArms3" parent="." instance=ExtResource("16_426xa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391443, 0)
+
+[node name="PayloadArms4" parent="." instance=ExtResource("16_426xa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391443, 0)
+weapon_type = 1
+fire_colddown = 3.0
 
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]

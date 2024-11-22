@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtv8m7dx730kh"]
+
+[ext_resource type="Script" path="res://test/StateTest/test_pallerate_state.gd" id="1_7fc8b"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_qp8lr"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="2_y5kpj"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="3_3jfx3"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_4d4n3"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_lg5cx"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="7_r2p08"]
+
+[node name="TestParallelState" type="Node2D"]
+script = ExtResource("1_7fc8b")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("1_qp8lr")
+
+[node name="ParallelState" type="Node" parent="StateChart"]
+script = ExtResource("3_3jfx3")
+
+[node name="CompoundState" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("2_y5kpj")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateChart/ParallelState/CompoundState"]
+script = ExtResource("4_4d4n3")
+
+[node name="to chase" type="Node" parent="StateChart/ParallelState/CompoundState/IDLE"]
+script = ExtResource("6_lg5cx")
+to = NodePath("../../CHASE")
+event = &"to_chase"
+delay_in_seconds = "0.0"
+
+[node name="CHASE" type="Node" parent="StateChart/ParallelState/CompoundState"]
+script = ExtResource("4_4d4n3")
+
+[node name="to idle" type="Node" parent="StateChart/ParallelState/CompoundState/CHASE"]
+script = ExtResource("6_lg5cx")
+to = NodePath("../../IDLE")
+event = &"to_idle"
+delay_in_seconds = "0.0"
+
+[node name="CompoundState2" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("2_y5kpj")
+initial_state = NodePath("NORMAL")
+
+[node name="NORMAL" type="Node" parent="StateChart/ParallelState/CompoundState2"]
+script = ExtResource("4_4d4n3")
+
+[node name="to hurt" type="Node" parent="StateChart/ParallelState/CompoundState2/NORMAL"]
+script = ExtResource("6_lg5cx")
+to = NodePath("../../HURT")
+event = &"to_hurt"
+delay_in_seconds = "0.0"
+
+[node name="HURT" type="Node" parent="StateChart/ParallelState/CompoundState2"]
+script = ExtResource("4_4d4n3")
+
+[node name="to normal" type="Node" parent="StateChart/ParallelState/CompoundState2/HURT"]
+script = ExtResource("6_lg5cx")
+to = NodePath("../../NORMAL")
+event = &"to_normal"
+delay_in_seconds = "0.0"
+
+[node name="to dead" type="Node" parent="StateChart/ParallelState/CompoundState2/HURT"]
+script = ExtResource("6_lg5cx")
+to = NodePath("../../DEAD")
+event = &"to_dead"
+delay_in_seconds = "0.0"
+
+[node name="DEAD" type="Node" parent="StateChart/ParallelState/CompoundState2"]
+script = ExtResource("4_4d4n3")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 128.0
+offset_top = 192.0
+offset_right = 458.0
+offset_bottom = 318.0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+offset_left = 128.0
+offset_top = 56.0
+offset_right = 458.0
+offset_bottom = 182.0
+
+[node name="Label" type="Label" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+
+[node name="StateChartDebugger" parent="." instance=ExtResource("7_r2p08")]
+offset_left = 576.0
+offset_top = 24.0
+offset_right = 952.0
+offset_bottom = 408.0
+initial_node_to_watch = NodePath("../StateChart")
+
+[connection signal="state_entered" from="StateChart/ParallelState/CompoundState/IDLE" to="." method="_on_idle_state_entered"]
+[connection signal="state_entered" from="StateChart/ParallelState/CompoundState/CHASE" to="." method="_on_chase_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/CompoundState/CHASE" to="." method="_on_chase_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/ParallelState/CompoundState2/NORMAL" to="." method="_on_normal_state_entered"]
+[connection signal="state_entered" from="StateChart/ParallelState/CompoundState2/HURT" to="." method="_on_hurt_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/CompoundState2/HURT" to="." method="_on_hurt_state_physics_processing"]
