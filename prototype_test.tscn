@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=31 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ndpg12bjjp3" path="res://test/target/target_enemy.tscn" id="19_2r0lr"]
 [ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://test/drop_rigid_item.tscn" id="19_ygwm6"]
 [ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="20_gavum"]
+[ext_resource type="Texture2D" uid="uid://ch5n8djbgiul5" path="res://icon.svg" id="23_3hi5j"]
 [ext_resource type="PackedScene" uid="uid://4ymcgmgl1d3e" path="res://UI/loot_option_pannel_test.tscn" id="23_id5wl"]
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://test/drop item/ground_button.tscn" id="24_0an6w"]
 [ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://test/chest.tscn" id="26_iyaov"]
@@ -449,6 +450,43 @@ offset_left = 696.0
 offset_top = 824.0
 offset_right = 696.0
 offset_bottom = 824.0
+
+[node name="BuffIndiactorTest" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BuffIndiactorTest"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 630.0
+offset_top = 636.0
+offset_right = 1232.0
+offset_bottom = 804.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BuffIndiactorTest/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BuffIndiactorTest/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("23_3hi5j")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/BuffIndiactorTest/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("23_3hi5j")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/BuffIndiactorTest/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("23_3hi5j")
 
 [node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("16_jido0")]
 
