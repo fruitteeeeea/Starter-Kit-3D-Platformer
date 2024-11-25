@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca3e2ugg0i0xw"]
+
+[ext_resource type="Script" path="res://Unit/Object/basic_buff.gd" id="1_rmscx"]
+
+[node name="BasicBuff" type="Node"]
+script = ExtResource("1_rmscx")

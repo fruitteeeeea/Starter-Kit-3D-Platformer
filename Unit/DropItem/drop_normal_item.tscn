@@ -64,7 +64,7 @@ colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_soje3"]
 radius = 3.0
 
-[node name="Node3D" type="Node3D"]
+[node name="DropNormalItem" type="Node3D"]
 script = ExtResource("1_p4qjh")
 
 [node name="Model" type="Node3D" parent="."]

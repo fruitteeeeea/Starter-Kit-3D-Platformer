@@ -1,0 +1,2 @@
+extends DropNormalItem
+class_name BuffItem

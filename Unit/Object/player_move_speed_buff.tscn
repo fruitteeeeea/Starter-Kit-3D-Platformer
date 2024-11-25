@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b37bl7hcdpp6b"]
+
+[ext_resource type="PackedScene" uid="uid://ca3e2ugg0i0xw" path="res://Unit/Object/basic_buff.tscn" id="1_mccrx"]
+[ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="2_ucx1s"]
+
+[node name="PlayerMoveSpeedBuff" instance=ExtResource("1_mccrx")]
+buff_property = "player_move_speed"
+buff_value = 10.0
+buff_duration = 5.1
+buff_icon = ExtResource("2_ucx1s")

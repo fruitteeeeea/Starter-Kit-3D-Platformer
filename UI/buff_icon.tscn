@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://be1ruxyjak0wo"]
+
+[ext_resource type="Texture2D" uid="uid://ch5n8djbgiul5" path="res://icon.svg" id="1_5mond"]
+[ext_resource type="Script" path="res://UI/buff_icon.gd" id="1_j4pkx"]
+
+[node name="BuffIcon" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+script = ExtResource("1_j4pkx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_5mond")

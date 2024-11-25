@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_6tj76"]
 [ext_resource type="Script" path="res://test/player/basic_player.gd" id="1_b7nfu"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_1bjfr"]
-[ext_resource type="Texture2D" uid="uid://dsng3qsq77tne" path="res://test/cross_small.png" id="3_grx73"]
+[ext_resource type="Texture2D" uid="uid://dsng3qsq77tne" path="res://UI/cross_small.png" id="3_grx73"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
 [ext_resource type="PackedScene" uid="uid://b7bv50a2vmfh6" path="res://Unit/Weapon/BulletShooter/shotgun.tscn" id="8_83fks"]
 [ext_resource type="Texture2D" uid="uid://b6g6xonw5fdb7" path="res://test/navigation_n.svg" id="9_gwjtp"]

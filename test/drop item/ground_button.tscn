@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_7kgrs"]
 [ext_resource type="Script" path="res://test/drop item/ground_button.gd" id="1_kccom"]
-[ext_resource type="PackedScene" uid="uid://btdyurpc7itrw" path="res://Unit/DropItem/drop_normal_item.tscn" id="2_rokrb"]
 [ext_resource type="PackedScene" uid="uid://dr64grqi6yu8m" path="res://Unit/DropItem/normal_item_spwaner.tscn" id="4_2ta6u"]
+[ext_resource type="PackedScene" uid="uid://qj53g8mjss2u" path="res://Unit/DropItem/buff_item.tscn" id="4_rvjd3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm1ov"]
 resource_name = "colormap"
@@ -150,7 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.131898, 0)
 shape = SubResource("BoxShape3D_pijxt")
 
 [node name="NormalItemSpwaner" parent="." instance=ExtResource("4_2ta6u")]
-Item = ExtResource("2_rokrb")
+Item = ExtResource("4_rvjd3")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
