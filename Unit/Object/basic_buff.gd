@@ -3,6 +3,15 @@ class_name Buff
 
 signal buff_finish
 
+enum BuffType {
+	Player,
+	Weapon,
+	Enemy,
+	Other
+}
+
+@export var buff_type := BuffType.Player  #buff的种类
+
 @export var buff_property : String #具体属性
 @export var buff_value : float #具体数值
 @export var buff_duration : float #持续时间

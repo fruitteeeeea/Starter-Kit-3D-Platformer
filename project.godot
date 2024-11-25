@@ -32,6 +32,7 @@ LevelServer="*res://Servers/LevelServer.tscn"
 LevelTargetServer="*res://Servers/LevelTargetServer.gd"
 Hud="*res://Servers/hud.tscn"
 BuffServer="*res://Servers/BuffServer.tscn"
+PlayerSatusServer="*res://Servers/PlayerSatusServer.gd"
 
 [dialogic]
 

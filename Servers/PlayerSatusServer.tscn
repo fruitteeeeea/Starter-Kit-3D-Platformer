@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chbaeye8eke7w"]
+
+[ext_resource type="Script" path="res://Servers/PlayerSatusServer.gd" id="1_yjdmq"]
+
+[node name="PlayerSatusServer" type="Node"]
+script = ExtResource("1_yjdmq")
