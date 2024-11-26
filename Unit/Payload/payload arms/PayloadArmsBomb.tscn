@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://bysf6jlwdebvw"]
 
-[ext_resource type="Script" path="res://test/payload arms/payload_arms_bomb.gd" id="1_a1xbk"]
+[ext_resource type="Script" path="res://Unit/Payload/payload arms/payload_arms_bomb.gd" id="1_a1xbk"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="2_o3gyy"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_j1h01"]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=49 format=4 uid="uid://ercle1g605m2"]
+[gd_scene load_steps=52 format=4 uid="uid://ercle1g605m2"]
 
-[ext_resource type="Script" path="res://test/target/move_payload.gd" id="1_dkk21"]
+[ext_resource type="Script" path="res://Unit/Payload/move_payload.gd" id="1_dkk21"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_y72r8"]
 [ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://test/target/alert_material.tres" id="2_4yq1u"]
 [ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="3_1er2x"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_nrg2q"]
 [ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://test/drop_rigid_item.tscn" id="11_2rh5g"]
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="11_kdktq"]
-[ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://test/payload arms/payload_arms.tscn" id="16_426xa"]
+[ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://Unit/Payload/payload arms/payload_arms.tscn" id="16_426xa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81vj2"]
 custom_solver_bias = 1.0
@@ -441,6 +441,103 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_emews")
 
+[sub_resource type="Animation" id="Animation_04afr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("vehicle:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("vehicle:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_47lhi"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vehicle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.5, 0.533333, 0.566667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(-0.0872664, -1.5708, 0), Vector3(0.0349066, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("vehicle:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.07, 0), Vector3(0, 0, 0), Vector3(0, 0.06, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_768r8"]
+_data = {
+"RESET": SubResource("Animation_04afr"),
+"new_animation": SubResource("Animation_47lhi")
+}
+
 [node name="MovePayload" type="PathFollow3D"]
 script = ExtResource("1_dkk21")
 alert_color = ExtResource("2_4yq1u")
@@ -459,7 +556,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03795, 0)
 shape = SubResource("BoxShape3D_81vj2")
 
 [node name="vehicle" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, 0, 0)
 
 [node name="wheel-back-left" type="MeshInstance3D" parent="vehicle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31972, 0.18328, 0.32311)
@@ -581,6 +678,22 @@ to = NodePath("../../ACTIVATED")
 event = &"to_activated"
 delay_in_seconds = "0.0"
 
+[node name="ProcesState" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("7_5h37r")
+initial_state = NodePath("NOTCOMPLETE")
+
+[node name="NOTCOMPLETE" type="Node" parent="StateChart/ParallelState/ProcesState"]
+script = ExtResource("8_7k04d")
+
+[node name="to complete" type="Node" parent="StateChart/ParallelState/ProcesState/NOTCOMPLETE"]
+script = ExtResource("9_nrg2q")
+to = NodePath("../../COMPLETE")
+event = &"to_complete"
+delay_in_seconds = "0.0"
+
+[node name="COMPLETE" type="Node" parent="StateChart/ParallelState/ProcesState"]
+script = ExtResource("8_7k04d")
+
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
@@ -655,6 +768,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391443, 0)
 weapon_type = 1
 fire_colddown = 3.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_768r8")
+}
+autoplay = "new_animation"
+
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
@@ -665,4 +784,6 @@ fire_colddown = 3.0
 [connection signal="state_entered" from="StateChart/ParallelState/PayloadStateShoot/ACTIVATED" to="." method="_on_activated_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/ParallelState/PayloadStateShoot/ACTIVATED" to="." method="_on_activated_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/ParallelState/PayloadStateShoot/DEACTIVATED" to="." method="_on_deactivated_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/ProcesState/NOTCOMPLETE" to="." method="_on_notcomplete_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/ParallelState/ProcesState/COMPLETE" to="." method="_on_complete_state_entered"]
 [connection signal="timeout" from="RigidItemSpwanTimer" to="." method="_on_rigid_item_spwan_tiemr_timeout"]

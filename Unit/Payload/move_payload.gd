@@ -3,7 +3,7 @@ class_name MovePayload
 
 signal payload_move (payload01) #车子启动
 signal payload_stop (payload01) #车子停下
-signal payload_complete #当到达终点时发出信号
+signal payload_complete (payload01) #当到达终点时发出信号
 
 var player_near := false
 var enemy_near := false
@@ -17,6 +17,9 @@ var current_energy := 0.0
 var recover_speed := 1.0
 
 var overall_speed := 0.0
+
+@export var is_loop_payload := false #是否为无限循环的车子
+var is_payload_complete := false #载具是否完成
 
 @onready var state_chart: StateChart = $StateChart
 
@@ -47,6 +50,8 @@ var surround_position := []
 @onready var surround_pos_01: Marker3D = $PayloadSurroundPosition/SurroundPos01
 
 func _ready() -> void:
+	loop = is_loop_payload #根据车子的循环状况来决定 pathfollower3d 时候循环
+	
 	for marker in payload_surround_position.get_children():
 		surround_position.append(marker)
 	
@@ -111,6 +116,7 @@ func change_to_alert_state(state01 := false):
 
 
 func _on_move_state_entered() -> void:
+	$AnimationPlayer.play("new_animation")
 	payload_move.emit(self)
 	timer.start()
 	indicator_square_a.show()
@@ -127,6 +133,7 @@ func _on_move_state_physics_processing(delta: float) -> void:
 	LevelTargetServer.current_payload[self] = progress_ratio
 
 func _on_idle_state_entered() -> void:
+	$AnimationPlayer.play("RESET")
 	payload_stop.emit(self)
 	timer.stop()
 	indicator_square_a.hide()
@@ -169,3 +176,13 @@ func _on_rigid_item_spwan_tiemr_timeout() -> void:
 	rigid_item_spwan_timer.wait_time = randf_range(spwan_time_min, spwan_time_max)
 	var item01 = RigidItems.pick_random()
 	rigid_item_spwaner.spwan_rigid_item(item01)
+
+
+func _on_notcomplete_state_physics_processing(delta: float) -> void:
+	if progress_ratio == 1:
+		state_chart.send_event("to_complete")
+
+
+func _on_complete_state_entered() -> void:
+	payload_complete.emit(self) #车子到达终点 发出信号
+	hide()

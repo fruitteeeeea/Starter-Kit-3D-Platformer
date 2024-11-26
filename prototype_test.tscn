@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dornphy2q7xsd" path="res://Unit/Enemy/baisc_enemy_spwaner.tscn" id="13_ufkj2"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="13_ywdqq"]
 [ext_resource type="Script" path="res://test/level_target_test.gd" id="14_os0rd"]
-[ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://test/target/move_payload.tscn" id="15_m2k6f"]
+[ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://Unit/Payload/move_payload.tscn" id="15_m2k6f"]
 [ext_resource type="PackedScene" uid="uid://cys28ci6xn58s" path="res://test/target/occupy_zone.tscn" id="16_14lsc"]
 [ext_resource type="PackedScene" uid="uid://c3t7v6y2v4y6w" path="res://test/enemy/follow_payload_enemy_spwaner.tscn" id="16_jido0"]
 [ext_resource type="PackedScene" uid="uid://di0n76sqbueep" path="res://test/target/target_enemy_spwaner.tscn" id="18_d5vjn"]
@@ -129,42 +129,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00902, 0.61439, -8.13595)
 curve = SubResource("Curve3D_4ktqu")
 
 [node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("15_m2k6f")]
-transform = Transform3D(-0.52745, -1.91193e-06, -0.849583, 0, 1, -2.25042e-06, 0.849583, -1.18699e-06, -0.52745, 4.47608, -1.93119e-05, 0.649296)
 
 [node name="Path3D2" type="Path3D" parent="PathTest"]
 transform = Transform3D(0.756322, -2.8596e-08, -0.6542, 2.8596e-08, 1, -1.06515e-08, 0.6542, -1.06515e-08, 0.756322, 6.96295, 0.61439, -4.7166)
 curve = SubResource("Curve3D_4ktqu")
 
 [node name="MovePayload" parent="PathTest/Path3D2" instance=ExtResource("15_m2k6f")]
-transform = Transform3D(-0.52745, -1.91193e-06, -0.849583, 0, 1, -2.25042e-06, 0.849583, -1.18699e-06, -0.52745, 4.47608, -1.93119e-05, 0.649296)
 
 [node name="Path3D3" type="Path3D" parent="PathTest"]
 transform = Transform3D(0.121506, -1.40472e-08, -0.992591, 2.8596e-08, 1, -1.06515e-08, 0.992591, -2.70899e-08, 0.121506, 9.94698, 0.61439, 2.80669)
 curve = SubResource("Curve3D_4ktqu")
 
 [node name="MovePayload" parent="PathTest/Path3D3" instance=ExtResource("15_m2k6f")]
-transform = Transform3D(-0.52745, -1.91193e-06, -0.849583, 0, 1, -2.25042e-06, 0.849583, -1.18699e-06, -0.52745, 4.47608, -1.93119e-05, 0.649296)
 
 [node name="Path3D4" type="Path3D" parent="PathTest"]
 transform = Transform3D(-0.745941, 1.42369e-08, -0.666012, 2.8596e-08, 1, -1.06515e-08, 0.666012, -2.69907e-08, -0.745941, 4.11552, 0.61439, 7.45779)
 curve = SubResource("Curve3D_4ktqu")
 
 [node name="MovePayload" parent="PathTest/Path3D4" instance=ExtResource("15_m2k6f")]
-transform = Transform3D(-0.52745, -1.91193e-06, -0.849583, 0, 1, -2.25042e-06, 0.849583, -1.18699e-06, -0.52745, 4.47608, -1.93119e-05, 0.649296)
 
 [node name="Path3D5" type="Path3D" parent="PathTest"]
 transform = Transform3D(-0.969235, 3.0338e-08, 0.246136, 2.8596e-08, 1, -1.06515e-08, -0.246136, -3.28531e-09, -0.969235, -2.73637, 0.61439, 6.86253)
 curve = SubResource("Curve3D_4ktqu")
 
 [node name="MovePayload" parent="PathTest/Path3D5" instance=ExtResource("15_m2k6f")]
-transform = Transform3D(-0.52745, -1.91193e-06, -0.849583, 0, 1, -2.25042e-06, 0.849583, -1.18699e-06, -0.52745, 4.47608, -1.93119e-05, 0.649296)
 
 [node name="Path3D6" type="Path3D" parent="PathTest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6099, 0.535253, -13.6276)
 curve = SubResource("Curve3D_oeb3s")
 
 [node name="MovePayload" parent="PathTest/Path3D6" instance=ExtResource("15_m2k6f")]
-transform = Transform3D(-0.886959, -2.36083e-06, -0.46184, 4.26467e-08, 1, -5.19366e-06, 0.46184, -4.6263e-06, -0.886959, 3.73214, -4.97601e-06, 6.42062)
 progress = 8.0
 
 [node name="MovingPlatform" parent="PathTest" instance=ExtResource("18_dpal6")]
@@ -404,7 +398,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="UpgradChosen" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -716,6 +709,10 @@ metadata/_tab_index = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0707, 0.479797, 1.06228)
 
 [node name="follow_payload_chest_spwaner" parent="." instance=ExtResource("27_emk3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+Chest = ExtResource("26_iyaov")
+
+[node name="follow_payload_chest_spwaner2" parent="." instance=ExtResource("27_emk3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 Chest = ExtResource("26_iyaov")
 

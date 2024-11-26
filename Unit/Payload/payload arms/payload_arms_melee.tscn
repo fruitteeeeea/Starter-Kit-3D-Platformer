@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://y8ilfrynjwnk"]
 
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="1_a3a53"]
-[ext_resource type="Script" path="res://test/payload arms/payload_arms_melee.gd" id="1_c0bi8"]
+[ext_resource type="Script" path="res://Unit/Payload/payload arms/payload_arms_melee.gd" id="1_c0bi8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkl4g"]
 size = Vector3(0.261719, 0.195312, 0.779297)

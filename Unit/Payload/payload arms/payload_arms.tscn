@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://co00qighsmlg6"]
 
-[ext_resource type="Script" path="res://test/payload arms/payload_arms.gd" id="1_8bfru"]
+[ext_resource type="Script" path="res://Unit/Payload/payload arms/payload_arms.gd" id="1_8bfru"]
 [ext_resource type="PackedScene" uid="uid://bs1y3y8kpdu1n" path="res://Unit/Projectile/basic_bullet.tscn" id="2_l0ikx"]
-[ext_resource type="PackedScene" uid="uid://y8ilfrynjwnk" path="res://test/payload arms/payload_arms_melee.tscn" id="3_b2fr1"]
-[ext_resource type="PackedScene" uid="uid://bysf6jlwdebvw" path="res://test/payload arms/PayloadArmsBomb.tscn" id="4_jmddd"]
+[ext_resource type="PackedScene" uid="uid://y8ilfrynjwnk" path="res://Unit/Payload/payload arms/payload_arms_melee.tscn" id="3_b2fr1"]
+[ext_resource type="PackedScene" uid="uid://bysf6jlwdebvw" path="res://Unit/Payload/payload arms/PayloadArmsBomb.tscn" id="4_jmddd"]
 
 [node name="PayloadArms" type="Node3D"]
 script = ExtResource("1_8bfru")
