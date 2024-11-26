@@ -128,9 +128,10 @@ anchor_right = 1.0
 offset_left = -250.0
 offset_bottom = 650.0
 grow_horizontal = 0
-current_tab = 0
+current_tab = 4
 
 [node name="A" type="TabBar" parent="Debug2/DebugInformation"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -217,7 +218,6 @@ text = "BuffServer
 "
 
 [node name="E" type="TabBar" parent="Debug2/DebugInformation"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=36 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -22,13 +22,17 @@
 [ext_resource type="PackedScene" uid="uid://c3ndpg12bjjp3" path="res://test/target/target_enemy.tscn" id="19_2r0lr"]
 [ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://test/drop_rigid_item.tscn" id="19_ygwm6"]
 [ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="20_gavum"]
-[ext_resource type="Script" path="res://test/buff_indiactor_test.gd" id="23_hcfg3"]
+[ext_resource type="Script" path="res://UI/buff_indiactor_test.gd" id="23_hcfg3"]
 [ext_resource type="PackedScene" uid="uid://4ymcgmgl1d3e" path="res://UI/loot_option_pannel_test.tscn" id="23_id5wl"]
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://test/drop item/ground_button.tscn" id="24_0an6w"]
 [ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="24_i10lm"]
+[ext_resource type="PackedScene" uid="uid://bcujtvdkfajgo" path="res://UI/gear_option_pannel.tscn" id="25_j4dfd"]
+[ext_resource type="Script" path="res://UI/ready_to_start.gd" id="25_t7dui"]
 [ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://test/chest.tscn" id="26_iyaov"]
+[ext_resource type="Script" path="res://UI/pause_menu.gd" id="27_aljt4"]
 [ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/spwaner/follow_payload_chest_spwaner.tscn" id="27_emk3l"]
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="28_m5bpb"]
+[ext_resource type="PackedScene" uid="uid://c6f40e58mcty7" path="res://UI/gameplay_option.tscn" id="28_wlhu6"]
 
 [sub_resource type="Curve3D" id="Curve3D_4ktqu"]
 _data = {
@@ -281,90 +285,6 @@ layout_mode = 2
 text = "add  1x enemy
 "
 
-[node name="UpgradChosen" type="Control" parent="CanvasLayer/TestManager"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TestManager/UpgradChosen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TestManager/UpgradChosen/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TestManager/UpgradChosen/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/TestManager/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "选择你的战利品
-"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TestManager/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="LootOptionPannelTest" parent="CanvasLayer/TestManager/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("23_id5wl")]
-layout_mode = 2
-
-[node name="LootOptionPannelTest2" parent="CanvasLayer/TestManager/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("23_id5wl")]
-layout_mode = 2
-
-[node name="LootOptionPannelTest3" parent="CanvasLayer/TestManager/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("23_id5wl")]
-layout_mode = 2
-
-[node name="NextPage" type="PanelContainer" parent="CanvasLayer/TestManager/UpgradChosen"]
-layout_mode = 2
-offset_left = 319.0
-offset_top = 167.0
-offset_right = 563.0
-offset_bottom = 286.0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TestManager/UpgradChosen/NextPage"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TestManager/UpgradChosen/NextPage/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/TestManager/UpgradChosen/NextPage/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "剩余战利品数量"
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="CanvasLayer/TestManager/UpgradChosen/NextPage/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "下一页
-"
-
 [node name="LevelTimer" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 912.0
 offset_top = 856.0
@@ -483,6 +403,313 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="UpgradChosen" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UpgradChosen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UpgradChosen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UpgradChosen/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "选择你的战利品
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LootOptionPannelTest" parent="CanvasLayer/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("23_id5wl")]
+layout_mode = 2
+
+[node name="LootOptionPannelTest2" parent="CanvasLayer/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("23_id5wl")]
+layout_mode = 2
+
+[node name="LootOptionPannelTest3" parent="CanvasLayer/UpgradChosen/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("23_id5wl")]
+layout_mode = 2
+
+[node name="NextPage" type="PanelContainer" parent="CanvasLayer/UpgradChosen"]
+layout_mode = 2
+offset_left = 319.0
+offset_top = 167.0
+offset_right = 563.0
+offset_bottom = 286.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UpgradChosen/NextPage"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UpgradChosen/NextPage/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradChosen/NextPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "剩余战利品数量"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/UpgradChosen/NextPage/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "下一页
+"
+
+[node name="Button" type="Button" parent="CanvasLayer/UpgradChosen"]
+layout_mode = 2
+offset_left = 330.0
+offset_top = -272.0
+offset_right = 416.0
+offset_bottom = -219.0
+theme_override_font_sizes/font_size = 32
+text = "关闭"
+
+[node name="ReadyToStart" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_t7dui")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ReadyToStart"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ReadyToStart/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "选择你的初始装备
+"
+horizontal_alignment = 1
+
+[node name="GearOptionPannel" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("25_j4dfd")]
+layout_mode = 2
+
+[node name="GearOptionPannel2" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("25_j4dfd")]
+layout_mode = 2
+
+[node name="GearOptionPannel3" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("25_j4dfd")]
+layout_mode = 2
+
+[node name="Confirm" type="PanelContainer" parent="CanvasLayer/ReadyToStart"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 316.0
+offset_top = 226.0
+offset_right = 560.0
+offset_bottom = 356.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ReadyToStart/Confirm"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ReadyToStart/Confirm/MarginContainer"]
+layout_mode = 2
+
+[node name="Randomize" type="Button" parent="CanvasLayer/ReadyToStart/Confirm/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "随机选择"
+
+[node name="Done" type="Button" parent="CanvasLayer/ReadyToStart/Confirm/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "确认"
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("27_aljt4")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PauseMenu"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -72.0
+offset_right = 106.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "暂停菜单
+"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "继续游戏"
+
+[node name="Button2" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "重新开始
+"
+
+[node name="Button3" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "选项
+"
+
+[node name="Button4" type="Button" parent="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "返回标题
+"
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -252.0
+offset_right = 304.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="游戏" type="TabBar" parent="CanvasLayer/PauseMenu/TabContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/TabContainer/游戏"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu/TabContainer/游戏/MarginContainer"]
+layout_mode = 2
+
+[node name="GameplayOption" parent="CanvasLayer/PauseMenu/TabContainer/游戏/MarginContainer/HBoxContainer" instance=ExtResource("28_wlhu6")]
+layout_mode = 2
+
+[node name="GameplayOption2" parent="CanvasLayer/PauseMenu/TabContainer/游戏/MarginContainer/HBoxContainer" instance=ExtResource("28_wlhu6")]
+layout_mode = 2
+
+[node name="GameplayOption3" parent="CanvasLayer/PauseMenu/TabContainer/游戏/MarginContainer/HBoxContainer" instance=ExtResource("28_wlhu6")]
+layout_mode = 2
+
+[node name="显示" type="TabBar" parent="CanvasLayer/PauseMenu/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+metadata/_tab_index = 1
+
+[node name="声音" type="TabBar" parent="CanvasLayer/PauseMenu/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+metadata/_tab_index = 2
+
 [node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("16_jido0")]
 
 [node name="GroundButton" parent="." instance=ExtResource("24_0an6w")]
@@ -502,3 +729,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4378, 1.54611, -6.45642)
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/Slugger" to="CanvasLayer/TestManager" method="_on_slugger_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/BombShooter" to="CanvasLayer/TestManager" method="_on_bomb_shooter_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer2/add1xenemy" to="CanvasLayer/TestManager" method="_on_add_1_xenemy_pressed"]
+[connection signal="pressed" from="CanvasLayer/ReadyToStart/Confirm/MarginContainer/VBoxContainer/Done" to="CanvasLayer/ReadyToStart" method="_on_done_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Continue" to="CanvasLayer/PauseMenu" method="_on_continue_pressed"]

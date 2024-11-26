@@ -2,7 +2,7 @@ extends Control
 
 @export var SMG : PackedScene
 
-@onready var upgrad_chosen: Control = $UpgradChosen
+@onready var upgrad_chosen: Control = $"../UpgradChosen"
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
