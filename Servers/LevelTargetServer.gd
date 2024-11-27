@@ -35,6 +35,7 @@ func add_payload(payload01 : PathFollow3D):
 	current_payload[payload01] = 0.0 #登记车子
 	payload01.payload_move.connect(_payload_move) #管理器信号链接
 	payload01.payload_stop.connect(_payload_stop)
+	payload01.payload_complete.connect(_payload_complete)
 	
 	var label = payload01.label.instantiate()
 	label.payload = payload01
@@ -52,6 +53,6 @@ func _payload_stop(payload01):
 	current_actived_payloads.clear()
 	pass
 
-#推车关卡完成
-func complete_push_car():
-	pass
+#完成推车
+func _payload_complete(payload01):
+	LootServer.show_loot_panel()

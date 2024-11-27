@@ -1,0 +1,220 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyq0wdh3sf28v"]
+
+[ext_resource type="Script" path="res://Servers/DebugServer.gd" id="1_vynj8"]
+[ext_resource type="PackedScene" uid="uid://brka2x5msdmt5" path="res://UI/debug_label.tscn" id="2_rup12"]
+
+[node name="DebugServer" type="CanvasLayer"]
+script = ExtResource("1_vynj8")
+DebugLabel = ExtResource("2_rup12")
+
+[node name="debug" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DebugButton" type="TabContainer" parent="."]
+visible = false
+offset_right = 250.0
+offset_bottom = 650.0
+current_tab = 2
+
+[node name="A" type="TabBar" parent="DebugButton"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugButton/A"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugButton/A/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugButton/A/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "PlayerWeapons
+"
+
+[node name="B" type="TabBar" parent="DebugButton"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugButton/B"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugButton/B/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugButton/B/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Levels"
+
+[node name="C" type="TabBar" parent="DebugButton"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugButton/C"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugButton/C/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugButton/C/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Enemies"
+
+[node name="Tempo" type="TabBar" parent="DebugButton"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugButton/Tempo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugButton/Tempo/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugButton/Tempo/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Tempo"
+
+[node name="DebugInformation" type="TabContainer" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.756863)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 650.0
+grow_horizontal = 0
+current_tab = 4
+
+[node name="A" type="TabBar" parent="DebugInformation"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugInformation/A"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugInformation/A/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugInformation/A/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "PlayerStatus
+"
+
+[node name="B" type="TabBar" parent="DebugInformation"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugInformation/B"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugInformation/B/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugInformation/B/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Enemies
+"
+
+[node name="C" type="TabBar" parent="DebugInformation"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugInformation/C"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugInformation/C/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugInformation/C/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Payloads"
+
+[node name="D" type="TabBar" parent="DebugInformation"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugInformation/D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugInformation/D/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugInformation/D/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "BuffServer
+"
+
+[node name="E" type="TabBar" parent="DebugInformation"]
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugInformation/E"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DebugInformation/E/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DebugInformation/E/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "LevelServer"

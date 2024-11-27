@@ -26,7 +26,7 @@ func _ready() -> void:
 #调试 debug
 func update_debuglabel():
 	if !debuglabel:
-		debuglabel = Hud.add_debuglabel()
+		debuglabel = DebugServer.add_debuglabel()
 
 	debuglabel.updata_label(name, current_enemy_in_scene.size())
 

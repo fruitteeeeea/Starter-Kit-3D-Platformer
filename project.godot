@@ -31,7 +31,9 @@ EnemyStatusServer="*res://Servers/EnemyStatusServer.tscn"
 LevelServer="*res://Servers/LevelServer.tscn"
 LevelTargetServer="*res://Servers/LevelTargetServer.gd"
 Hud="*res://Servers/hud.tscn"
+DebugServer="*res://Servers/debug_server.tscn"
 BuffServer="*res://Servers/BuffServer.tscn"
+LootServer="*res://Servers/LootServer.tscn"
 PlayerSatusServer="*res://Servers/PlayerSatusServer.gd"
 
 [dialogic]

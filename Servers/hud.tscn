@@ -1,19 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bslygqfdfikr"]
+[gd_scene load_steps=4 format=3 uid="uid://bslygqfdfikr"]
 
 [ext_resource type="Script" path="res://Servers/hud.gd" id="1_cbi3n"]
-[ext_resource type="PackedScene" uid="uid://brka2x5msdmt5" path="res://UI/debug_label.tscn" id="2_6h6sb"]
+[ext_resource type="Script" path="res://UI/pause_menu.gd" id="2_j0p27"]
+[ext_resource type="PackedScene" uid="uid://c6f40e58mcty7" path="res://UI/gameplay_option.tscn" id="3_kiah5"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_cbi3n")
-DebugLabel = ExtResource("2_6h6sb")
-
-[node name="Debug" type="VBoxContainer" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -170.0
-offset_bottom = 386.0
-grow_horizontal = 0
 
 [node name="BuffIcon" type="HBoxContainer" parent="."]
 anchors_preset = 7
@@ -27,212 +19,153 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 
-[node name="Debug2" type="Node" parent="."]
+[node name="LootPanelPos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="DebugButton" type="TabContainer" parent="Debug2"]
-visible = false
-offset_right = 250.0
-offset_bottom = 650.0
-current_tab = 2
+[node name="PauseMenuPos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="A" type="TabBar" parent="Debug2/DebugButton"]
+[node name="PauseMenu" type="Control" parent="PauseMenuPos"]
 visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_j0p27")
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenuPos/PauseMenu"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -162.5
+offset_right = 175.0
+offset_bottom = 162.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuPos/PauseMenu/PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "暂停菜单
+"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "继续游戏"
+
+[node name="Button2" type="Button" parent="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "重新开始
+"
+
+[node name="Button3" type="Button" parent="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "选项
+"
+
+[node name="Button4" type="Button" parent="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "返回标题
+"
+
+[node name="TabContainer" type="TabContainer" parent="PauseMenuPos/PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -252.0
+offset_right = 304.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="游戏" type="TabBar" parent="PauseMenuPos/PauseMenu/TabContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugButton/A"]
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuPos/PauseMenu/TabContainer/游戏"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugButton/A/VBoxContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="PauseMenuPos/PauseMenu/TabContainer/游戏/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Debug2/DebugButton/A/VBoxContainer/PanelContainer"]
+[node name="GameplayOption" parent="PauseMenuPos/PauseMenu/TabContainer/游戏/MarginContainer/HBoxContainer" instance=ExtResource("3_kiah5")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "PlayerWeapons
-"
 
-[node name="B" type="TabBar" parent="Debug2/DebugButton"]
+[node name="GameplayOption2" parent="PauseMenuPos/PauseMenu/TabContainer/游戏/MarginContainer/HBoxContainer" instance=ExtResource("3_kiah5")]
+layout_mode = 2
+
+[node name="GameplayOption3" parent="PauseMenuPos/PauseMenu/TabContainer/游戏/MarginContainer/HBoxContainer" instance=ExtResource("3_kiah5")]
+layout_mode = 2
+
+[node name="显示" type="TabBar" parent="PauseMenuPos/PauseMenu/TabContainer"]
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugButton/B"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugButton/B/VBoxContainer"]
+[node name="声音" type="TabBar" parent="PauseMenuPos/PauseMenu/TabContainer"]
+visible = false
 layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugButton/B/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Levels"
-
-[node name="C" type="TabBar" parent="Debug2/DebugButton"]
-layout_mode = 2
+theme_override_font_sizes/font_size = 32
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugButton/C"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugButton/C/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugButton/C/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Enemies"
-
-[node name="Tempo" type="TabBar" parent="Debug2/DebugButton"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugButton/Tempo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugButton/Tempo/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugButton/Tempo/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Tempo"
-
-[node name="DebugInformation" type="TabContainer" parent="Debug2"]
-visible = false
-modulate = Color(1, 1, 1, 0.756863)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -250.0
-offset_bottom = 650.0
-grow_horizontal = 0
-current_tab = 4
-
-[node name="A" type="TabBar" parent="Debug2/DebugInformation"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugInformation/A"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugInformation/A/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugInformation/A/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "PlayerStatus
-"
-
-[node name="B" type="TabBar" parent="Debug2/DebugInformation"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugInformation/B"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugInformation/B/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugInformation/B/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Enemies
-"
-
-[node name="C" type="TabBar" parent="Debug2/DebugInformation"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugInformation/C"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugInformation/C/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugInformation/C/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Payloads"
-
-[node name="D" type="TabBar" parent="Debug2/DebugInformation"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugInformation/D"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugInformation/D/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugInformation/D/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "BuffServer
-"
-
-[node name="E" type="TabBar" parent="Debug2/DebugInformation"]
-layout_mode = 2
-metadata/_tab_index = 4
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug2/DebugInformation/E"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Debug2/DebugInformation/E/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Debug2/DebugInformation/E/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "LevelServer"
+[connection signal="pressed" from="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Continue" to="PauseMenuPos/PauseMenu" method="_on_continue_pressed"]

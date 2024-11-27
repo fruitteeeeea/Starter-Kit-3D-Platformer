@@ -186,3 +186,4 @@ func _on_notcomplete_state_physics_processing(delta: float) -> void:
 func _on_complete_state_entered() -> void:
 	payload_complete.emit(self) #车子到达终点 发出信号
 	hide()
+	queue_free()

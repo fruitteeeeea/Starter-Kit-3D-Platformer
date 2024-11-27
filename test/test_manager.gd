@@ -2,11 +2,9 @@ extends Control
 
 @export var SMG : PackedScene
 
-@onready var upgrad_chosen: Control = $"../UpgradChosen"
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
-		upgrad_chosen.visible = !upgrad_chosen.visible
+		LootServer.show_loot_panel()
 
 func _on_clean_player_weapon_pressed() -> void:
 	WeaponServers.remove_weapon()

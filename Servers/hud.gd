@@ -1,12 +1,9 @@
 extends CanvasLayer
 
-@onready var debug: VBoxContainer = $Debug
-@export var DebugLabel : PackedScene
-
 @onready var buff_icon: HBoxContainer = $BuffIcon
 
-func add_debuglabel():
-	var label01 = DebugLabel.instantiate()
-	debug.add_child(label01)
-	return  label01
-	pass
+var current_pauseUI : Control #当前的暂停菜单
+var current_Bufficon : Control #当前Buff栏位
+
+@onready var loot_panel_pos: Control = $LootPanelPos
+var current_LootUI : Control #当前的战利品选择UI
