@@ -1,6 +1,12 @@
 extends Node
 #管理玩家的战利品的服务
 
+#所有的词条用数组管理
+@export var all_loots_option := [] #所有战利品池子 
+@export var level1_loot := [] #等级1战利品
+@export var level2_loot := [] #等级2战利品
+@export var level3_loot := [] #等级3战利品 
+
 var current_loot_pool := [] #当前可选择战利品的池子
 var current_selected_loot := [] #当前已选择的战利品
 
