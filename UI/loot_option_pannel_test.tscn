@@ -27,19 +27,32 @@ layout_mode = 2
 texture = ExtResource("1_gtehm")
 expand_mode = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LootName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "loot name"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+color = Color(0.988235, 0.407843, 0.231373, 1)
+
+[node name="LootTag" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "主武器"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LootPorperty" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "属性+20
 属性+20"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LootDescrption" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "描述
@@ -51,11 +64,19 @@ layout_mode = 2
 text = "选择
 "
 
-[node name="Selected" type="PanelContainer" parent="MarginContainer"]
+[node name="Selected" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Selected"]
+[node name="ColorRect" type="ColorRect" parent="Selected"]
+modulate = Color(1, 1, 1, 0.807843)
+layout_mode = 2
+color = Color(0.466667, 0.501961, 0.603922, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="Selected"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Selected/PanelContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "已选择

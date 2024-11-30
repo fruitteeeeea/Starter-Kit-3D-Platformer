@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw020b8cqqi2q"]
+
+[ext_resource type="Script" path="res://test/Loot/loot_test.gd" id="1_s012r"]
+
+[node name="LootTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s012r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 384.0
+offset_right = 512.0
+offset_bottom = 452.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="add_10x_loot" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "生成 10个战利品选择
+"
+
+[node name="random_pick_loot" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "随机选择1个战利品
+"
+
+[node name="apply_selected_loot" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "应用选择战利品"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="clear_picked_loot" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "清空所有生成战利品
+"
+
+[node name="clear_selected_loot" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "清空所有选择战利品"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 384.0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "当前生成战利品"
+
+[node name="Label2" type="Label" parent="HBoxContainer2/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+autowrap_mode = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer2/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "当前选择战利品"
+
+[node name="Label4" type="Label" parent="HBoxContainer2/PanelContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+autowrap_mode = 1
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/add_10x_loot" to="." method="_on_add_10x_loot_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/random_pick_loot" to="." method="_on_random_pick_loot_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/apply_selected_loot" to="." method="_on_apply_selected_loot_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/clear_picked_loot" to="." method="_on_clear_picked_loot_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/clear_selected_loot" to="." method="_on_clear_selected_loot_pressed"]

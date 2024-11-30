@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d33dl742ix1a6"]
+
+[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://test/drop item/basic_ground_button.tscn" id="1_wb60o"]
+[ext_resource type="Script" path="res://test/drop item/select_loot.gd" id="2_ficmw"]
+
+[node name="LootTestGroundButton" instance=ExtResource("1_wb60o")]
+text = "Loot Test"
+
+[node name="SelectLoot" type="Node" parent="Method" index="0"]
+script = ExtResource("2_ficmw")

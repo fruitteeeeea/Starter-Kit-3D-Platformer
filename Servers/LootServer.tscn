@@ -1,8 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1tgys8u82kui"]
+[gd_scene load_steps=4 format=3 uid="uid://d1tgys8u82kui"]
 
 [ext_resource type="Script" path="res://Servers/LootServer.gd" id="1_csddo"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="2_d413k"]
+[ext_resource type="PackedScene" uid="uid://bwjgmmvsfmyx2" path="res://Unit/Loots/Level1Loot/level_1_loot_01.tscn" id="3_x0raw"]
 
 [node name="LootServer" type="Node"]
 script = ExtResource("1_csddo")
 loot_panel = ExtResource("2_d413k")
+
+[node name="level1_loot" type="Node" parent="."]
+
+[node name="Level1Loot01" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot02" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot03" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot04" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot05" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot06" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot07" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot08" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot09" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot10" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot11" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot12" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot13" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="Level1Loot14" parent="level1_loot" instance=ExtResource("3_x0raw")]
+
+[node name="level2_loot" type="Node" parent="."]
+
+[node name="level3_loot" type="Node" parent="."]

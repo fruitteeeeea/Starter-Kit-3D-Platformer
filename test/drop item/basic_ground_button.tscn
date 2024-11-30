@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://c7vf8dwe3tj4"]
+[gd_scene load_steps=13 format=4 uid="uid://c7vf8dwe3tj4"]
 
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_7kgrs"]
-[ext_resource type="Script" path="res://test/drop item/ground_button.gd" id="1_kccom"]
-[ext_resource type="PackedScene" uid="uid://dr64grqi6yu8m" path="res://Unit/DropItem/normal_item_spwaner.tscn" id="4_2ta6u"]
-[ext_resource type="PackedScene" uid="uid://qj53g8mjss2u" path="res://Unit/DropItem/buff_item.tscn" id="4_rvjd3"]
+[ext_resource type="Script" path="res://test/drop item/basic_ground_button.gd" id="1_kccom"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm1ov"]
 resource_name = "colormap"
@@ -122,7 +120,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_pijxt"]
 size = Vector3(1, 0.2, 1)
 
-[node name="GroundButton" type="Node3D"]
+[node name="BasicGroundButton" type="Node3D"]
 script = ExtResource("1_kccom")
 
 [node name="button-floor-square2" type="Node3D" parent="."]
@@ -149,8 +147,14 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.131898, 0)
 shape = SubResource("BoxShape3D_pijxt")
 
-[node name="NormalItemSpwaner" parent="." instance=ExtResource("4_2ta6u")]
-Item = ExtResource("4_rvjd3")
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+pixel_size = 0.01
+billboard = 1
+text = "Button Test
+"
+
+[node name="Method" type="Node3D" parent="."]
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
