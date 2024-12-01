@@ -4,7 +4,8 @@ extends Control
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
-		LootServer.show_loot_panel()
+		pass
+
 
 func _on_clean_player_weapon_pressed() -> void:
 	WeaponServers.remove_weapon()

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwjgmmvsfmyx2"]
-
-[ext_resource type="PackedScene" uid="uid://dwbta6jj3baax" path="res://Unit/Loots/basic_loot.tscn" id="1_sgr6v"]
-
-[node name="Level1Loot01" instance=ExtResource("1_sgr6v")]
-modify_property = "move speed"
-modify_value = 20.0

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtx0srteju7gi"]
+
+[ext_resource type="PackedScene" uid="uid://dwbta6jj3baax" path="res://Unit/Loots/basic_loot.tscn" id="1_5wmir"]
+
+[node name="BasicPlayerLoot" instance=ExtResource("1_5wmir")]
+loot_tag = "玩家"
+tag_color = Color(0.713726, 0.835294, 0.235294, 1)

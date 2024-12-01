@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctixeywsjcpfc"]
+
+[ext_resource type="PackedScene" uid="uid://dwbta6jj3baax" path="res://Unit/Loots/basic_loot.tscn" id="1_k7nq5"]
+
+[node name="BasicWeaponLoot" instance=ExtResource("1_k7nq5")]
+Type = 1
+Tag = 1
+loot_tag = "武器"
+tag_color = Color(0.988235, 0.407843, 0.231373, 1)

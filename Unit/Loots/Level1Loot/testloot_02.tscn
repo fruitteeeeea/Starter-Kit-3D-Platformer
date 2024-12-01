@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4a5s305748k0"]
+
+[ext_resource type="PackedScene" uid="uid://ctixeywsjcpfc" path="res://Unit/Loots/basic_weapon_loot.tscn" id="1_d8yfu"]
+
+[node name="testloot02" instance=ExtResource("1_d8yfu")]

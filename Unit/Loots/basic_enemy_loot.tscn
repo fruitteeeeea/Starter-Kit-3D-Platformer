@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqec07d47ha6e"]
+
+[ext_resource type="PackedScene" uid="uid://dwbta6jj3baax" path="res://Unit/Loots/basic_loot.tscn" id="1_87j4y"]
+
+[node name="BasicEnemyLoot" instance=ExtResource("1_87j4y")]
+loot_tag = "敌人"
+tag_color = Color(1, 0.741176, 0.121569, 1)

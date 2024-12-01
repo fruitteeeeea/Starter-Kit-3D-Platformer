@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=34 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -33,19 +33,12 @@
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="28_m5bpb"]
 [ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://test/drop item/loot_test_ground_button.tscn" id="31_uxoeo"]
 
-[sub_resource type="Curve3D" id="Curve3D_4ktqu"]
+[sub_resource type="Curve3D" id="Curve3D_sl32q"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4.47608, -1.93119e-05, 0.649296, -0.379909, -1.00044e-11, -3.75034, 0.379909, 1.00044e-11, 3.75034, 7.94139, -1.01328e-05, 2.80068, 0, 0, 0, 0, 0, 0, 6.4842, -1.01328e-05, 7.46602, 0, 0, 0, 0, 0, 0, 7.10933, -1.01328e-05, 9.7518, 0, 0, 0, 0, 0, 0, 9.06415, -1.93119e-05, 10.7271, 0, 0, 0, 0, 0, 0, 8.46985, -1.93119e-05, 14.6349, 0, 0, 0, 0, 0, 0, 4.0409, -1.93119e-05, 16.677, 0, 0, 0, 0, 0, 0, -3.27138, -1.01328e-05, 15.0265, 0, 0, 0, 0, 0, 0, 4.47608, -1.93119e-05, 0.649296),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.84861, -1.01328e-05, 1.81104, -3.16804, 0, -1.75695, 3.16804, 0, 1.75695, 11.3112, -1.01328e-05, 1.8387, 1.57711, 0, -1.46643, -1.57711, 0, 1.46643, 11.3666, -1.01328e-05, 11.6956, 4.42004, 0, 2.03364, -4.42004, 0, -2.03364, 1.88319, -1.01328e-05, 11.6956, 0, 0, 0, 0, 0, 0, 1.84861, -1.01328e-05, 1.81104),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
-point_count = 9
-
-[sub_resource type="Curve3D" id="Curve3D_oeb3s"]
-_data = {
-"points": PackedVector3Array(-1.47074, -2.5332e-05, -2.76238, 0, 0, 0, 0.168566, 0, -0.741693, -1.47074, -2.5332e-05, -2.76238, 1.47074, 2.5332e-05, 2.76238, 4.08687, 0, 7.09491, -0.0263386, 7.15256e-07, -3.16852, 0.0263386, -7.15256e-07, 3.16852, 0.140409, 0, 17.5175, -0.147655, 7.15256e-07, -3.32954, 0.147655, -7.15256e-07, 3.32954, 3.88169, 0, 21.108, -4.54121, -2.46167e-05, -4.36439, 4.54121, 2.46167e-05, 4.36439, 3.41829, 7.15256e-07, 37.3986, 0, 0, 0, 0, 0, 0, -0.514523, 2.5332e-05, 44.3741, 0, 0, 0, 0, 0, 0, -5.14914, 2.5332e-05, 42.1422, 0, 0, 0, 0, 0, 0, -2.4646, 2.5332e-05, 33.618, 0, 0, 0, 0, 0, 0, 0.168566, 0, -0.741693, 0, 0, 0, 0, 0, 0, 0.168566, 0, -0.741693),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 10
+point_count = 5
 
 [node name="PrototypeTest" type="Node3D"]
 
@@ -109,59 +102,31 @@ visible = false
 [node name="TargetEnemySpwaner" parent="TargetEnemySpwanerTest" instance=ExtResource("18_d5vjn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86424, 0.630728, 5.00555)
 
-[node name="TargetEnemySpwaner2" parent="TargetEnemySpwanerTest" instance=ExtResource("18_d5vjn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73789, 0.630728, 1.34987)
-
-[node name="TargetEnemySpwaner3" parent="TargetEnemySpwanerTest" instance=ExtResource("18_d5vjn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57202, 0.630728, 2.29438)
-
-[node name="TargetEnemySpwaner4" parent="TargetEnemySpwanerTest" instance=ExtResource("18_d5vjn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1371, 0.630728, -4.94307)
-
 [node name="Target_Enemy" parent="TargetEnemySpwanerTest" instance=ExtResource("19_2r0lr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63193, 0.630728, 4.98824)
 
 [node name="PathTest" type="Node3D" parent="."]
 
 [node name="Path3D" type="Path3D" parent="PathTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00902, 0.61439, -8.13595)
-curve = SubResource("Curve3D_4ktqu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82323, 0.61439, -6.90137)
+curve = SubResource("Curve3D_sl32q")
 
 [node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("15_m2k6f")]
 
 [node name="Path3D2" type="Path3D" parent="PathTest"]
-transform = Transform3D(0.756322, -2.8596e-08, -0.6542, 2.8596e-08, 1, -1.06515e-08, 0.6542, -1.06515e-08, 0.756322, 6.96295, 0.61439, -4.7166)
-curve = SubResource("Curve3D_4ktqu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36741, 0.61439, -3.24376)
+curve = SubResource("Curve3D_sl32q")
 
 [node name="MovePayload" parent="PathTest/Path3D2" instance=ExtResource("15_m2k6f")]
 
 [node name="Path3D3" type="Path3D" parent="PathTest"]
-transform = Transform3D(0.121506, -1.40472e-08, -0.992591, 2.8596e-08, 1, -1.06515e-08, 0.992591, -2.70899e-08, 0.121506, 9.94698, 0.61439, 2.80669)
-curve = SubResource("Curve3D_4ktqu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3579, 0.61439, 2.29682)
+curve = SubResource("Curve3D_sl32q")
 
 [node name="MovePayload" parent="PathTest/Path3D3" instance=ExtResource("15_m2k6f")]
 
-[node name="Path3D4" type="Path3D" parent="PathTest"]
-transform = Transform3D(-0.745941, 1.42369e-08, -0.666012, 2.8596e-08, 1, -1.06515e-08, 0.666012, -2.69907e-08, -0.745941, 4.11552, 0.61439, 7.45779)
-curve = SubResource("Curve3D_4ktqu")
-
-[node name="MovePayload" parent="PathTest/Path3D4" instance=ExtResource("15_m2k6f")]
-
-[node name="Path3D5" type="Path3D" parent="PathTest"]
-transform = Transform3D(-0.969235, 3.0338e-08, 0.246136, 2.8596e-08, 1, -1.06515e-08, -0.246136, -3.28531e-09, -0.969235, -2.73637, 0.61439, 6.86253)
-curve = SubResource("Curve3D_4ktqu")
-
-[node name="MovePayload" parent="PathTest/Path3D5" instance=ExtResource("15_m2k6f")]
-
-[node name="Path3D6" type="Path3D" parent="PathTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6099, 0.535253, -13.6276)
-curve = SubResource("Curve3D_oeb3s")
-
-[node name="MovePayload" parent="PathTest/Path3D6" instance=ExtResource("15_m2k6f")]
-progress = 8.0
-
 [node name="MovingPlatform" parent="PathTest" instance=ExtResource("18_dpal6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.463373, 0.987252, -3.92974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744117, 0.987252, -3.05875)
 
 [node name="DropRigidItem" parent="PathTest/MovingPlatform" instance=ExtResource("19_ygwm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39317, 0.456356, 5.90125)

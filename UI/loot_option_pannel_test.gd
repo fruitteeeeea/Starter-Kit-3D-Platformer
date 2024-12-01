@@ -5,7 +5,7 @@ signal loot_option_selected (loot01)
 var loot_manager : Node #节点管理器
 @onready var loot_option_pannel: PanelContainer = $"." #选项本身
 @onready var selected: PanelContainer = $Selected
-
+@onready var tag_color: ColorRect = $MarginContainer/VBoxContainer/PanelContainer2/TagColor
 
 var target : Node #修改目标
 var property : String #修改属性
@@ -22,6 +22,7 @@ func _ready() -> void:
 		return
 	
 	#设定好标签属性
+	tag_color.color = loot.tag_color
 	loot_name.text = loot.loot_name
 	loot_tag.text = loot.loot_tag
 	loot_porperty.text = loot.loot_porperty

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://48sbxxru5moe"]
+
+[ext_resource type="PackedScene" uid="uid://befmub7uf3vqh" path="res://Unit/Loots/basic_payload_loot.tscn" id="1_lckim"]
+
+[node name="testloot03" instance=ExtResource("1_lckim")]

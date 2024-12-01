@@ -27,6 +27,9 @@ enum LootTag {
 @export var loot_porperty : = "战利品属性"
 @export var loot_descrption : String = "战利品描述"
 
+@export var tag_color : Color #标签颜色
+@export var tag_color_array : Array[Color] = [] #分别是玩家 武器 载具 敌人 
+
 var test_type : String
 var test_id : int
 

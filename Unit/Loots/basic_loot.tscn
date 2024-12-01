@@ -4,3 +4,4 @@
 
 [node name="BasicLoot" type="Node"]
 script = ExtResource("1_8vc35")
+tag_color_array = Array[Color]([Color(0.713726, 0.835294, 0.235294, 1), Color(0.988235, 0.407843, 0.231373, 1), Color(0.172549, 0.772549, 0.964706, 1), Color(1, 0.741176, 0.121569, 1)])
