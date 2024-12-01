@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal loot_option_selected (loot01)
+
 var loot_manager : Node #节点管理器
 @onready var loot_option_pannel: PanelContainer = $"." #选项本身
 @onready var selected: PanelContainer = $Selected
@@ -16,6 +18,9 @@ var property : String #修改属性
 var loot : Loot
 
 func _ready() -> void:
+	if !loot:
+		return
+	
 	#设定好标签属性
 	loot_name.text = loot.loot_name
 	loot_tag.text = loot.loot_tag
@@ -24,4 +29,5 @@ func _ready() -> void:
 
 func _on_button_button_up() -> void:
 	selected.show()
+	loot_option_selected.emit(loot)
 	LootServer.select_loot(loot) #向 server 添加当前词条

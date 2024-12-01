@@ -49,6 +49,8 @@ var surround_position := []
 @onready var payload_surround_position: Node3D = $PayloadSurroundPosition
 @onready var surround_pos_01: Marker3D = $PayloadSurroundPosition/SurroundPos01
 
+var complete_debuff := [] #已完成的debuff挑战
+
 func _ready() -> void:
 	loop = is_loop_payload #根据车子的循环状况来决定 pathfollower3d 时候循环
 	
@@ -116,7 +118,7 @@ func change_to_alert_state(state01 := false):
 
 
 func _on_move_state_entered() -> void:
-	$AnimationPlayer.play("new_animation")
+	$AnimationPlayer.play("moving")
 	payload_move.emit(self)
 	timer.start()
 	indicator_square_a.show()
@@ -185,5 +187,6 @@ func _on_notcomplete_state_physics_processing(delta: float) -> void:
 
 func _on_complete_state_entered() -> void:
 	payload_complete.emit(self) #车子到达终点 发出信号
-	hide()
+	$AnimationPlayer.play("complete")
+	await $AnimationPlayer.animation_finished
 	queue_free()

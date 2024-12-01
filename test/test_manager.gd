@@ -39,3 +39,8 @@ func _on_add_1_xenemy_pressed() -> void:
 	var spwaner = EnemyStatusServer.enemy_spwaner.pick_random() #随机选择一个来生成敌人
 	EnemyStatusServer.add_enemy(spwaner)
 	$HBoxContainer/VBoxContainer2/add1xenemy.focus_mode = Control.FOCUS_NONE
+
+
+func _on_add_loot_pressed() -> void:
+	LootServer.update_loot_status(1)
+	$HBoxContainer/VBoxContainer2/add1xenemy.focus_mode = Control.FOCUS_NONE

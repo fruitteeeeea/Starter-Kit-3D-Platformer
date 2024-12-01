@@ -22,10 +22,10 @@ enum LootTag {
 @export var modify_value : float #具体数值
 
 #用于 UI 展示
-@export var loot_name : String #战利品名字
-@export var loot_tag : String #战利品标签
-@export var loot_porperty : String #战利品属性
-@export var loot_descrption : String #战利品描述
+@export var loot_name : String = "战利品名字"
+@export var loot_tag : String = "战利品标签"
+@export var loot_porperty : = "战利品属性"
+@export var loot_descrption : String = "战利品描述"
 
 var test_type : String
 var test_id : int

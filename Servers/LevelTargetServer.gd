@@ -55,4 +55,8 @@ func _payload_stop(payload01):
 
 #完成推车
 func _payload_complete(payload01):
-	LootServer.show_loot_panel()
+	var loot_nb01 = 1 #完成推车增加1个战利品 
+	for i in range(payload01.complete_debuff.size()):
+		loot_nb01 += 1 #每个完成的debuff挑战增加1个战利品
+	
+	LootServer.update_loot_status(loot_nb01, 1)

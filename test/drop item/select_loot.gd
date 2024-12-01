@@ -2,4 +2,4 @@ extends Node
 
 
 func do_stuff():
-	LootServer.show_loot_panel()
+	LootServer.add_loots(LootServer.level_1_loot_list)
