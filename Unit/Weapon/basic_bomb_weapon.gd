@@ -4,7 +4,7 @@ signal ui_main_weapon_fire_rate(time : float) #向ui发送射击冷却信号
 signal ui_secondary_weapon_fire_rate(time : float) #向ui发送射击冷却信号
 
 #发射子弹位置
-@onready var marker_3d: Marker3D = $Marker3D
+@onready var marker_3d: Marker3D = $Marker3D #发射子弹位置
 @onready var marker_3d_2: Marker3D = $Marker3D2
 
 #音效节点

@@ -20,10 +20,10 @@ func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3
 	blood_trail.global_rotation = rotate01 #设置方向
 	blood_trail.rotation_degrees.x = 90
 
+#打击停顿
 func hit_stop_medium():
-	print(name, "hit_stop_medium")
 	Engine.time_scale = 0.85
-	await get_tree().create_timer(0.1, true, false, true).timeout
+	await get_tree().create_timer(0.05, true, false, true).timeout
 	Engine.time_scale = 1
 
 #屏幕抖动

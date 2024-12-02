@@ -48,7 +48,7 @@ func explode():
 		if enemy.has_method("state_enemy"):
 			var knockback_direction = (self.global_position - enemy.global_position).normalized()
 			enemy.take_damage(kockback_force, bomb_damge)
-			#WeaponServers.hit_stop_short()
+			VisualServer.hit_stop_medium()
 
 	await explode_particles.finished
 	queue_free()

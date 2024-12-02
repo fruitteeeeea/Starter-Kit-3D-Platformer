@@ -50,33 +50,27 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
 		body.take_damage(bullet_damage)
 		#body.apply_knockback(global_position)
-		WeaponServers.hit_stop_short()
-		do_camerashake()
+		VisualServer.hit_stop_medium()
+		VisualServer.do_camerashake()
 		
 		queue_free()
 	
 	if body.has_method("state_enemy"):
 		var knockback_direction = (self.global_position - body.global_position).normalized()
 		body.take_damage(kockback_force, bullet_damage)
-		WeaponServers.hit_stop_short()
-		do_camerashake()
+		VisualServer.hit_stop_medium()
+		VisualServer.do_camerashake()
 		queue_free()
 
 	if body.is_in_group("RigidEnemy"):
 		body.being_knockback(self, kockback_force)
-		WeaponServers.hit_stop_short()
-		do_camerashake()
+		VisualServer.hit_stop_medium()
+		VisualServer.do_camerashake()
 		
 		queue_free()
 
 	if body.has_method("target_enemy_spwaner"):
 		body.get_hit(1)
-		do_camerashake()
-		WeaponServers.hit_stop_short()
+		VisualServer.do_camerashake()
+		VisualServer.hit_stop_medium()
 		queue_free()
-
-
-func do_camerashake():
-	var camera = get_viewport().get_camera_3d()
-	if camera.has_method("add_trauma"):
-		camera.add_trauma(.5)

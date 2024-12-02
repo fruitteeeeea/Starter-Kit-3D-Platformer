@@ -28,7 +28,7 @@ func _ready() -> void:
 	loot_rarity.text = loot.Rarity
 	loot_tag.text = loot.Tag
 	
-	loot_porperty.text = loot.Property
+	loot_porperty.text = loot.text_display
 	loot_descrption.text = loot.Description
 
 func _on_button_button_up() -> void:

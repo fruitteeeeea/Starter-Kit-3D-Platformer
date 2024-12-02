@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://drvpwuomxqk4t"]
+
+[ext_resource type="Script" path="res://Unit/Weapon/basic_bomb_weapon.gd" id="1_10ccm"]
+[ext_resource type="PackedScene" uid="uid://da00be7g8nywg" path="res://Unit/Projectile/Bomb/coconut_bomb.tscn" id="2_3lpna"]
+[ext_resource type="PackedScene" uid="uid://bpgtjanqpsud6" path="res://Unit/Projectile/Bomb/whole_ham_bomb.tscn" id="3_hef8j"]
+[ext_resource type="PackedScene" uid="uid://cgtrpk7koy71t" path="res://test/attack/food model/GLB format/hot-dog-raw.glb" id="4_w672h"]
+[ext_resource type="AudioStream" uid="uid://x3l6b80xft2y" path="res://test/SFX/Punch Heavy A.wav" id="5_33ycq"]
+[ext_resource type="AudioStream" uid="uid://dfxr4isijglmi" path="res://test/SFX/Punch Heavy B.wav" id="6_qnpws"]
+[ext_resource type="AudioStream" uid="uid://1r2ih5v5h5lh" path="res://test/SFX/Punch Heavy C.wav" id="7_7wgbu"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1erx3"]
+streams_count = 3
+stream_0/stream = ExtResource("5_33ycq")
+stream_1/stream = ExtResource("6_qnpws")
+stream_2/stream = ExtResource("7_7wgbu")
+
+[node name="BasicBombWeapon" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -0.8)
+script = ExtResource("1_10ccm")
+MainWeaponScene = ExtResource("2_3lpna")
+SecoundaryWeaponScene = ExtResource("3_hef8j")
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="hot-dog-raw2" parent="model" instance=ExtResource("4_w672h")]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275916, 0.0502615, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.276299, 0.0502615, 0)
+
+[node name="FireSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_1erx3")
+volume_db = -15.0
+pitch_scale = 1.25

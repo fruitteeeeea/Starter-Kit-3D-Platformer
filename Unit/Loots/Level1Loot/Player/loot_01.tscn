@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b14wc0uq1xy4j"]
+
+[ext_resource type="PackedScene" uid="uid://dtx0srteju7gi" path="res://Unit/Loots/basic_player_loot.tscn" id="1_wum7k"]
+
+[node name="loot01" instance=ExtResource("1_wum7k")]
+text_display = "+部分移动速度"

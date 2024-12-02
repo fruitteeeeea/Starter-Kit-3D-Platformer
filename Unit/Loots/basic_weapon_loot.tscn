@@ -4,6 +4,6 @@
 
 [node name="BasicWeaponLoot" instance=ExtResource("1_k7nq5")]
 Type = 1
-Tag = 1
-loot_tag = "武器"
+Tag = "武器"
+Property = "WeaponStatus"
 tag_color = Color(0.988235, 0.407843, 0.231373, 1)

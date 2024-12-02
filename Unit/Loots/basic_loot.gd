@@ -18,6 +18,7 @@ enum LootType {
 @export var modify_property : String #具体属性
 @export_enum("增加", "减少") var modify_method : String = "增加"
 @export var modify_value : float #具体数值
+@export var text_display : String
 
 @export_multiline var Description : String #战利品描述
 
