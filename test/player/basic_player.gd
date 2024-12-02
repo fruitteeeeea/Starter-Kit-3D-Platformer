@@ -12,7 +12,7 @@ signal coin_collected
 
 
 @export_subgroup("Properties")
-@export var movement_speed = 300
+#@export var movement_speed = 300
 @export var jump_strength = 7
 
 var movement_velocity: Vector3
@@ -113,7 +113,8 @@ func handle_effects(delta):
 
 	if is_on_floor():
 		var horizontal_velocity = Vector2(velocity.x, velocity.z)
-		var speed_factor = horizontal_velocity.length() / movement_speed / delta
+		#var speed_factor = horizontal_velocity.length() / movement_speed / delta
+		var speed_factor = horizontal_velocity.length() / PlayerSatusServer.get_player_status("move_speed") / delta
 		if speed_factor > 0.05:
 			if animation.current_animation != "walk":
 				animation.play("walk", 0.1)
@@ -149,7 +150,8 @@ func handle_controls(delta):
 	if input.length() > 1:
 		input = input.normalized()
 
-	movement_velocity = input * movement_speed * delta
+	#movement_velocity = input * movement_speed * delta
+	movement_velocity = input * PlayerSatusServer.get_player_status("move_speed") * delta
 
 	# Jumping
 
@@ -175,7 +177,8 @@ func jump(strength01 = jump_strength):
 
 	Audio.play("res://sounds/jump.ogg")
 
-	gravity = -strength01
+	#gravity = -strength01
+	gravity = - PlayerSatusServer.get_player_status("jump_hight")
 
 	model.scale = Vector3(0.5, 1.5, 0.5)
 
@@ -192,8 +195,3 @@ func collect_coin():
 	coins += 1
 
 	coin_collected.emit(coins)
-
-
-func increas_power(value := 1.0):
-	movement_speed += movement_speed * value
-	pass

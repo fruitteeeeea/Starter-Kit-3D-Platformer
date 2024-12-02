@@ -3,3 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dqec07d47ha6e" path="res://Unit/Loots/basic_enemy_loot.tscn" id="1_pi70r"]
 
 [node name="testloot04" instance=ExtResource("1_pi70r")]
+Type = 3
+Rarity = "传奇"
+Tag = "敌人"
+Property = "EnemyStatus"
+rarity_color = Color(0.552941, 0.368627, 0.831373, 1)

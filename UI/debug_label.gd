@@ -22,4 +22,3 @@ func do_colorrect_tween():
 	colorrect_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	colorrect_tween.tween_property(color_rect, "modulate:a", .1, .5)
 	await colorrect_tween.finished
-	print(color_rect.color.a)

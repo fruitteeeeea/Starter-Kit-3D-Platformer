@@ -12,6 +12,7 @@ extends Node3D
 var player : CharacterBody3D
 var player_inside := false
 
+var property : String = "move_speed"
 var increase_value := 0.1
 
 func _ready() -> void:
@@ -26,7 +27,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") && player_inside:
 		player_accept_power()
 		SoundManager.play_sfx("SodaGlassSFX")
-		print("1")
 		queue_free()
 
 func _on_detect_player_area_body_entered(body: Node3D) -> void:
@@ -44,4 +44,5 @@ func _on_detect_player_area_body_exited(body: Node3D) -> void:
 
 #角色应用buff
 func player_accept_power():
-	player.increas_power(increase_value)
+	var modify_value = PlayerSatusServer.BasicStatus[property] * increase_value #获取增加量
+	PlayerSatusServer.ModifyStatus[property] += modify_value #增加修改值

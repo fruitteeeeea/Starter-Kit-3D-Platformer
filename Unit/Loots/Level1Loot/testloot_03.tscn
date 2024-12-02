@@ -3,3 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://befmub7uf3vqh" path="res://Unit/Loots/basic_payload_loot.tscn" id="1_lckim"]
 
 [node name="testloot03" instance=ExtResource("1_lckim")]
+Type = 2
+Rarity = "稀有"
+Tag = "载具"
+Property = "PayloadStatus"
+rarity_color = Color(0.552941, 0.368627, 0.831373, 0.6)

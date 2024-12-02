@@ -2,31 +2,34 @@ extends PanelContainer
 
 signal loot_option_selected (loot01)
 
-var loot_manager : Node #节点管理器
-@onready var loot_option_pannel: PanelContainer = $"." #选项本身
-@onready var selected: PanelContainer = $Selected
-@onready var tag_color: ColorRect = $MarginContainer/VBoxContainer/PanelContainer2/TagColor
-
 var target : Node #修改目标
 var property : String #修改属性
 
-@onready var loot_name: Label = $MarginContainer/VBoxContainer/LootName
+var loot : Loot
+
+@onready var loot_rarity: Label = $MarginContainer/VBoxContainer/PanelContainer/LootRarity
+@onready var tag_color: ColorRect = $MarginContainer/VBoxContainer/PanelContainer2/TagColor
 @onready var loot_tag: Label = $MarginContainer/VBoxContainer/PanelContainer2/LootTag
+@onready var rarity_color: ColorRect = $MarginContainer/VBoxContainer/PanelContainer/RarityColor
 @onready var loot_porperty: Label = $MarginContainer/VBoxContainer/LootPorperty
 @onready var loot_descrption: Label = $MarginContainer/VBoxContainer/LootDescrption
 
-var loot : Loot
+@onready var selected: PanelContainer = $Selected
+
+
 
 func _ready() -> void:
 	if !loot:
 		return
 	
-	#设定好标签属性
+	rarity_color.color = loot.rarity_color
 	tag_color.color = loot.tag_color
-	loot_name.text = loot.loot_name
-	loot_tag.text = loot.loot_tag
-	loot_porperty.text = loot.loot_porperty
-	loot_descrption.text = loot.loot_descrption
+	
+	loot_rarity.text = loot.Rarity
+	loot_tag.text = loot.Tag
+	
+	loot_porperty.text = loot.Property
+	loot_descrption.text = loot.Description
 
 func _on_button_button_up() -> void:
 	selected.show()

@@ -342,7 +342,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="ReadyToStart" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

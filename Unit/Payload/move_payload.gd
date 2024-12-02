@@ -76,7 +76,6 @@ func get_surrounding_position(distance_factor := 1.0) -> Vector3:
 		return Vector3.ZERO
 	
 	var target_pos = surround_position.pick_random().position * distance_factor
-	print(target_pos)
 	return global_position + target_pos
 
 

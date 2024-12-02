@@ -3,3 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ctixeywsjcpfc" path="res://Unit/Loots/basic_weapon_loot.tscn" id="1_d8yfu"]
 
 [node name="testloot02" instance=ExtResource("1_d8yfu")]
+Rarity = "稀有"
+Tag = "武器"
+Property = "WeaponStatus"
+rarity_color = Color(0.552941, 0.368627, 0.831373, 0.6)

@@ -2,40 +2,27 @@ extends Node
 class_name Loot #战利品
 
 enum LootType {
-	Player, #用于玩家的战利品
-	Weapon, #用于武器的战利品
-	Payload,
-	Enemy
-}
-
-enum LootTag {
 	PlayerStatus,
 	WeaponStatus,
+	PayloadStatus,
+	EnemyStatus
 }
 
-@export var Type := LootType.Player #战利品种类
-@export var Tag := LootTag.PlayerStatus #战利品标签
-
-@export_enum("1:1", "2", "3") var Level: int = 1
-
-@export var modify_property : String #具体属性
-@export var modify_value : float #具体数值
+@export var Type := LootType.PlayerStatus
 
 #用于 UI 展示
-@export var loot_name : String = "战利品名字"
-@export var loot_tag : String = "战利品标签"
-@export var loot_porperty : = "战利品属性"
-@export var loot_descrption : String = "战利品描述"
+@export_enum("普通", "稀有", "传奇") var Rarity : String = "普通" #战利品稀有度
+@export_enum("玩家", "武器", "载具", "敌人") var Tag : String = "玩家" #战利品标签
+@export_enum("PlayerStatus", "WeaponStatus", "PayloadStatus", "EnemyStatus") var Property : String = "PlayerStatus" #战利品属性
 
+@export var modify_property : String #具体属性
+@export_enum("增加", "减少") var modify_method : String = "增加"
+@export var modify_value : float #具体数值
+
+@export_multiline var Description : String #战利品描述
+
+#稀有度和标签颜色
+@export var rarity_color : Color #稀有度颜色
+@export var rarity_color_array : Array[Color] = []
 @export var tag_color : Color #标签颜色
 @export var tag_color_array : Array[Color] = [] #分别是玩家 武器 载具 敌人 
-
-var test_type : String
-var test_id : int
-
-#debug 用
-func _ready() -> void:
-	test_type = ["player", "weapon", "payload", "enemy"].pick_random()
-	test_id = [1, 2, 3].pick_random()
-	name = str(test_type, test_id)
-	Type = [LootType.Player, LootType.Weapon, LootType.Payload, LootType.Enemy].pick_random()

@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bs6pvrsihta2v"]
+
+[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_alrhj"]
+[ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="2_g33mi"]
+[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://test/drop item/basic_ground_button.tscn" id="3_c68f3"]
+[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="3_orvv1"]
+[ext_resource type="Script" path="res://learnning/view.gd" id="4_gneit"]
+[ext_resource type="Script" path="res://learnning/camera_3d.gd" id="5_ssa7v"]
+[ext_resource type="Script" path="res://learnning/truma_component.gd" id="6_qkbxv"]
+[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="7_gpm26"]
+
+[node name="TransitionLevel" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Environment" type="WorldEnvironment" parent="World"]
+environment = ExtResource("1_alrhj")
+
+[node name="Sun" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.990024, 0.122024, -0.0704506, 0, 0.5, 0.866025, 0.140901, -0.857386, 0.495012, -23.5194, 9.37435, -3.25129)
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="GridMap" type="GridMap" parent="World"]
+mesh_library = ExtResource("2_g33mi")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65531, 65531, 0, 65531, 65532, 0, 65531, 65533, 0, 65531, 65534, 0, 65531, 65535, 0, 65531, 0, 0, 65531, 1, 0, 65531, 2, 0, 65531, 3, 0, 65531, 4, 0, 65532, 65531, 0, 65532, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 65532, 3, 0, 65532, 4, 0, 65533, 65531, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65533, 3, 0, 65533, 4, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 65531, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 65531, 0, 2, 65532, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 4, 65531, 0, 4, 65532, 0, 4, 65533, 0, 4, 65534, 0, 4, 65535, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="BasicGroundButton" parent="World/GridMap" instance=ExtResource("3_c68f3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51658, 0.506439, 1.98721)
+text = "战利品兑换"
+
+[node name="BasicGroundButton2" parent="World/GridMap" instance=ExtResource("3_c68f3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50864, 0.506439, -2.05018)
+text = "商店"
+
+[node name="BasicGroundButton3" parent="World/GridMap" instance=ExtResource("3_c68f3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89921, 0.506439, -2.95342)
+text = "前往下一关"
+
+[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("3_orvv1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0856705, 2.03599, -0.0677251)
+Camera = NodePath("../View/Camera3D")
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10846, 1.48326, 1.26512)
+script = ExtResource("4_gneit")
+target = NodePath("../Basic Player")
+
+[node name="Camera3D" type="Camera3D" parent="View"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, -4.5292, 8.51674, 3.69911)
+projection = 1
+size = 12.0
+far = 40.0
+script = ExtResource("5_ssa7v")
+
+[node name="truma_component" type="Node" parent="View/Camera3D"]
+script = ExtResource("6_qkbxv")
+max_x = 2.0
+max_y = 2.0
+max_z = 2.0
+max_trauma = 0.4
+noise = ExtResource("7_gpm26")

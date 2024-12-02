@@ -3,3 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dtx0srteju7gi" path="res://Unit/Loots/basic_player_loot.tscn" id="1_fhjja"]
 
 [node name="testloot01" instance=ExtResource("1_fhjja")]
+modify_property = "move_speed"
+modify_value = 0.1
+rarity_color = Color(0.552941, 0.368627, 0.831373, 0.301961)
+rarity_color_array = Array[Color]([Color(0.552941, 0.368627, 0.831373, 0.301961), Color(0.552941, 0.368627, 0.831373, 0.6), Color(0.552941, 0.368627, 0.831373, 1)])
