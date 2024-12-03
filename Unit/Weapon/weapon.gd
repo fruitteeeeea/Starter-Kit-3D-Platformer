@@ -6,13 +6,6 @@ class_name Weapon
 
 @export_enum("Bullet", "Bomb") var WeaponType := "Bullet" #武器种类
 
-@export var ProjectileScene : PackedScene #弹药场景
-@export var projectile_number := 3 #弹药数量
-@export var projectile_damage := 1.0 #弹药伤害加成
-@export var fire_colddown := 0.5 #射击冷却
-@export var fire_interval := 0.1 #射击间隔
-
-
 func _physics_process(delta: float) -> void:
 	if !active:
 		hide()

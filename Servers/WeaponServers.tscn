@@ -4,3 +4,5 @@
 
 [node name="WeaponServers" type="Node"]
 script = ExtResource("1_8hj02")
+
+[node name="FireColdown" type="Timer" parent="."]

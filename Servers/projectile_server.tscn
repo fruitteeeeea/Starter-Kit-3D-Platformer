@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://xjnqxtynpmyl"]
-
-[ext_resource type="Script" path="res://Servers/ProjectileServer.gd" id="1_5si4k"]
-
-[node name="ProjectileServer" type="Node"]
-script = ExtResource("1_5si4k")

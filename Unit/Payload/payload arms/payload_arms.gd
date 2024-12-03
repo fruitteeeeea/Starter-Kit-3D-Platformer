@@ -79,7 +79,7 @@ func do_fire():
 	var bullet = Bullet.instantiate()
 	get_tree().root.add_child(bullet)
 	bullet.position = global_position 
-	bullet.bullet_direction = random_direction
+	bullet.direction = random_direction
 
 #炸弹武器就会
 func do_throw():

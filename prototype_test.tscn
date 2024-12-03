@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=35 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://UI/ready_to_start.gd" id="25_t7dui"]
 [ext_resource type="Script" path="res://test/loot_number.gd" id="26_asoyu"]
 [ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://test/chest.tscn" id="26_iyaov"]
+[ext_resource type="Script" path="res://firerate.gd" id="27_55q85"]
 [ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/spwaner/follow_payload_chest_spwaner.tscn" id="27_emk3l"]
 [ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://test/drop item/buff_test_ground_button.tscn" id="28_5bxip"]
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="28_m5bpb"]
@@ -444,7 +445,7 @@ layout_mode = 2
 text = "Loot : 0/0"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="WeaponStatus" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -457,62 +458,42 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/WeaponStatus"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -372.0
-offset_top = -92.0
+offset_top = -52.0
 offset_right = -152.0
-offset_bottom = -14.0
+offset_bottom = -15.0
 grow_vertical = 0
 
-[node name="WeaponStatus" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="WeaponStatus" type="PanelContainer" parent="CanvasLayer/WeaponStatus/HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/WeaponStatus/HBoxContainer/WeaponStatus"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus/MarginContainer"]
+[node name="Firerate" type="HBoxContainer" parent="CanvasLayer/WeaponStatus/HBoxContainer/WeaponStatus/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
+script = ExtResource("27_55q85")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/WeaponStatus/HBoxContainer/WeaponStatus/MarginContainer/Firerate"]
 layout_mode = 2
 text = "main weapon"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus/MarginContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/WeaponStatus/HBoxContainer/WeaponStatus/MarginContainer/Firerate"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-
-[node name="WeaponStatus2" type="PanelContainer" parent="CanvasLayer/Control/HBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus2"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus2/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus2/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "main weapon"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/HBoxContainer/WeaponStatus2/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
+max_value = 1.0
+value = 1.0
 
 [node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("16_jido0")]
 

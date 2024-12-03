@@ -1,33 +1,22 @@
 extends Node
 
-var spwan_pos : Vector3 #发射位置
-var target_pos : Vector3 #目标位置
-
 var is_crit_hit := false #是否为暴击
 var is_guided_projectile := false #是否为跟踪子弹
 
 var projecttile_arry := [] #子弹生成的时候添加到数组
 
-#计算子弹各项属性
-func calculate_bullet_properties():
-	pass
-
-#计算炸弹各项属性
-func calculate_bomb_properties():
-	pass
-
-#发射子弹 #子弹场景 #生成数量 #生成位置 # 目标位置 #子弹散射
-func spwan_bullet(projectile01 : PackedScene, spwan_nb : int, spwan_pos : Vector3, target_pos : Vector3, spare01 : float): 
-	for i in spwan_nb: #根据子弹数量
-		var projectile = projectile01.instantiate()
-		get_tree().root.add_child(projectile)
-		
-		projectile.position = spwan_pos
-		var target_position = (target_pos - spwan_pos).normalized() #记得归一化向量
-		
-		projectile.direction = target_position
-		
-		projectile.spread
+##发射子弹 #子弹场景  #生成位置 #子弹方向 #子弹属性
+func spwan_bullet(bullet01 : PackedScene, pos01 : Vector3, direction01 : Vector3, \
+damge01 : float, scale01 : float, speed01 : float):
+	var bullet = bullet01.instantiate()
+	
+	bullet.damage = damge01
+	bullet.volume *= scale01
+	bullet.speed *= speed01
+	
+	get_tree().root.add_child(bullet)
+	bullet.global_position = pos01
+	bullet.direction = direction01
 
 #发射炸弹
 func spwan_bomb(weapon01 : Node3D, bullet_scene : PackedScene):
