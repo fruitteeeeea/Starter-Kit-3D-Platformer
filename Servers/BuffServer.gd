@@ -28,7 +28,15 @@ func add_buff(buff : PackedScene):
 #修改 buff 数值
 func apply_buff(buff01 : Buff, value01 : float):
 	#match buff01.BuffType: #按照 Buff 的种类对 Buff 进行应用 例如玩家状态 武器 敌人
-	PlayerSatusServer.BuffStatus[buff01.buff_property] += value01
+	match buff01.buff_type:
+		buff01.BuffType.Player:
+			print("添加 PlayerSatus buff")
+			PlayerSatusServer.BuffStatus[buff01.buff_property] += value01
+		buff01.BuffType.Weapon:
+			print("添加 WeaponSatus buff")
+			WeaponServers.buff_info[buff01.buff_property] += value01
+	
+
 
 #移除buff
 func remove_buff(buff01 : Buff):

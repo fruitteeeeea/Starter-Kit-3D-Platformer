@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlyma8im5aq5e"]
+
+[ext_resource type="PackedScene" uid="uid://ca3e2ugg0i0xw" path="res://Unit/Object/basic_buff.tscn" id="1_kcma6"]
+
+[node name="WeaponFirecolddownBuff" instance=ExtResource("1_kcma6")]
+buff_type = 1
+buff_property = "fire_colddown"
+buff_value = -0.2
+buff_duration = 3.14

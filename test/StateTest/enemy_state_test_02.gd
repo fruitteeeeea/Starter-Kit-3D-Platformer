@@ -26,10 +26,10 @@ var knockback_strength : float #攻击来源的击退强度
 @onready var blood_taril_pos: Marker3D = $BloodTarilPos
 
 #击中闪烁 #身体部分
-var body_parts = [ 
+var body_parts = [
 	$"character-skeleton/root/torso/head", $"character-skeleton/root/torso/arm-right",
 	$"character-skeleton/root/torso/arm-left", $"character-skeleton/root/torso", 
-	$"character-skeleton/root/leg-right", $"character-skeleton/root/leg-left"
+	$"character-skeleton/root/leg-right", $"character-skeleton/root/leg-left",
 ]
 
 @export var hit_flash_material : Material #受击时显示的材质

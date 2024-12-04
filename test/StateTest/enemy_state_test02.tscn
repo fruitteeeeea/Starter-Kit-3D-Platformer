@@ -15,10 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://uhrre7e7bf2s" path="res://Unit/DropItem/drop_normal_item_coins.tscn" id="12_vl4jd"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="14_24n2q"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_75vg6"]
-radius = 0.25
-height = 0.75
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xru77"]
 resource_name = "colormap"
 cull_mode = 2
@@ -59,6 +55,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2awyu")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_75vg6"]
+radius = 0.25
+height = 0.75
+
 [node name="EnemyStateTest02" instance=ExtResource("1_2xcuc")]
 collision_layer = 2
 collision_mask = 3
@@ -68,18 +68,29 @@ hurt_particle = ExtResource("3_ijtr6")
 blood_trail = ExtResource("4_6fqyk")
 hit_flash_material = ExtResource("5_nnl5c")
 
-[node name="torso" parent="character-skeleton/root" index="2"]
-transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.223184, 0)
+[node name="character-skeleton" parent="." index="0"]
+transform = Transform3D(-0.999753, 0, 0.0222194, 0, 1, 0, -0.0222194, 0, -0.999753, 0, 0, 0)
+
+[node name="leg-left" parent="character-skeleton/root" index="0"]
+transform = Transform3D(0.8584, 9.31324e-10, -7.14628e-10, -9.31322e-10, 0.22217, -0.829151, -7.1463e-10, 0.829151, 0.22217, 0.0791, 0.221, -0.0867)
+
+[node name="leg-right" parent="character-skeleton/root" index="1"]
+transform = Transform3D(0.8584, -4.65661e-10, -1.92883e-10, 4.65661e-10, 0.606981, 0.60698, -1.92883e-10, -0.606981, 0.60698, -0.0761, 0.22, -0.009)
 
 [node name="arm-left" parent="character-skeleton/root/torso" index="0"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.225, 0.0025)
+transform = Transform3D(0.965926, -0.258819, 9.0067e-10, 0.258819, 0.965926, 3.55442e-10, -9.61975e-10, -1.1022e-10, 1, 0.15, 0.225, 0.0025)
 
 [node name="arm-right" parent="character-skeleton/root/torso" index="1"]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 0.225, 0.0025)
+transform = Transform3D(0.965926, 0.258819, 9.0067e-10, -0.258819, 0.965926, -3.55442e-10, -9.61975e-10, 1.1022e-10, 1, -0.15, 0.225, 0.0025)
 
 [node name="head" parent="character-skeleton/root/torso" index="2"]
 transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
 visible = false
+
+[node name="tomato" type="MeshInstance3D" parent="character-skeleton/root/torso" index="3"]
+transform = Transform3D(-2.99926, 0, -0.0666582, 0, 3, 0, 0.0666582, 0, -2.99926, 0, 0.29926, 0)
+mesh = SubResource("ArrayMesh_dukcy")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
@@ -160,11 +171,6 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 Item = ExtResource("12_vl4jd")
 
 [node name="Lifetimer" type="Timer" parent="." index="7"]
-
-[node name="tomato" type="MeshInstance3D" parent="." index="8"]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.522444, 0)
-mesh = SubResource("ArrayMesh_dukcy")
-skeleton = NodePath("")
 
 [connection signal="state_physics_processing" from="StateChart/ParallelState/Movement/IDLE" to="." method="_on_idle_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/ParallelState/Movement/CHASE" to="." method="_on_chase_state_entered"]

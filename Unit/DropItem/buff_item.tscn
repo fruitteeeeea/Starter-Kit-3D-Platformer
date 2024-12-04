@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://btdyurpc7itrw" path="res://Unit/DropItem/drop_normal_item.tscn" id="1_yvh2g"]
 [ext_resource type="Script" path="res://Unit/DropItem/buff_item.gd" id="2_y7ryh"]
-[ext_resource type="PackedScene" uid="uid://b37bl7hcdpp6b" path="res://Unit/Object/player_move_speed_buff.tscn" id="3_ys5mu"]
+[ext_resource type="PackedScene" uid="uid://dlyma8im5aq5e" path="res://Unit/Object/weapon_firecolddown_buff.tscn" id="4_18f0k"]
 [ext_resource type="Script" path="res://Unit/DropItem/little_buff.gd" id="4_ee1si"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="5_msd28"]
 
@@ -49,7 +49,7 @@ script = ExtResource("2_y7ryh")
 
 [node name="LittleBuff" type="Node" parent="." index="0"]
 script = ExtResource("4_ee1si")
-BuffScene = ExtResource("3_ys5mu")
+BuffScene = ExtResource("4_18f0k")
 
 [node name="orange" parent="Model" index="0"]
 visible = false

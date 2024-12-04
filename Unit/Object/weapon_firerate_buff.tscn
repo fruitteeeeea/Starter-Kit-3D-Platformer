@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://maykopluc5qo"]
+
+[ext_resource type="PackedScene" uid="uid://ca3e2ugg0i0xw" path="res://Unit/Object/basic_buff.tscn" id="1_egpc4"]
+
+[node name="WeaponFirerateBuff" instance=ExtResource("1_egpc4")]
+buff_type = 1
+buff_property = "bullet_speed"
+buff_value = 0.2

@@ -226,9 +226,9 @@ text = "add  1x enemy
 
 [node name="LevelTimer" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 912.0
-offset_top = 856.0
+offset_top = 816.0
 offset_right = 1036.0
-offset_bottom = 889.0
+offset_bottom = 849.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LevelTimer"]
 layout_mode = 2
@@ -428,9 +428,9 @@ text = "确认"
 
 [node name="LootNumber" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 912.0
-offset_top = 816.0
+offset_top = 856.0
 offset_right = 1036.0
-offset_bottom = 849.0
+offset_bottom = 889.0
 script = ExtResource("26_asoyu")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LootNumber"]
@@ -496,10 +496,6 @@ max_value = 1.0
 value = 1.0
 
 [node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("16_jido0")]
-
-[node name="FollowPayloadEnemySpwaner2" parent="." instance=ExtResource("16_jido0")]
-
-[node name="FollowPayloadEnemySpwaner3" parent="." instance=ExtResource("16_jido0")]
 
 [node name="follow_payload_chest_spwaner" parent="." instance=ExtResource("27_emk3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)

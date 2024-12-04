@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca3e2ugg0i0xw"]
+[gd_scene load_steps=3 format=3 uid="uid://ca3e2ugg0i0xw"]
 
 [ext_resource type="Script" path="res://Unit/Object/basic_buff.gd" id="1_rmscx"]
+[ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="2_gtlnh"]
 
 [node name="BasicBuff" type="Node"]
 script = ExtResource("1_rmscx")
+buff_duration = 10.0
+buff_icon = ExtResource("2_gtlnh")

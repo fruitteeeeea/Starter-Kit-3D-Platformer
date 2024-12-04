@@ -23,6 +23,14 @@ var modify_info := {
 }
 
 var buff_info := {
+	"bullet_number" : 0,
+	"bullet_damage" : 0.0,
+	"bullet_scale" : 0.0,
+	"bullet_speed" : 0.0,
+	"spread_angle" : 0.0,
+	"random_speed" : 0.0,
+	"fire_colddown" : 0.0,
+	"bullet_interval" : 0.0
 }
 
 #====节点====
@@ -39,6 +47,8 @@ func WeaponInfo(value01 : String) -> float:
 #==发射子弹 #子弹数量 #散射
 func shoot_bullet(bullet01 : PackedScene, pos01 : Vector3, drection01 : Vector3):
 	#收到玩家武器节点
+	VisualServer.do_camerashake()
+	
 	for i in range(WeaponInfo("bullet_number")): #子弹数量
 		var damage01 = WeaponInfo("bullet_damage")
 		var scale01 = WeaponInfo("bullet_scale")
@@ -52,8 +62,9 @@ func shoot_bullet(bullet01 : PackedScene, pos01 : Vector3, drection01 : Vector3)
 	
 	#这里处理武器冷却
 	can_shoot = false
-	weapon_fire.emit(WeaponInfo("fire_colddown")) #发送新号
-	await get_tree().create_timer(WeaponInfo("fire_colddown")).timeout
+	var fire_colddown = max(WeaponInfo("fire_colddown"), 0.01) #限定最低冷却为 0.01
+	weapon_fire.emit(fire_colddown) #发送新号
+	await get_tree().create_timer(fire_colddown).timeout
 	can_shoot = true
 
 # 给定方向添加水平偏移
