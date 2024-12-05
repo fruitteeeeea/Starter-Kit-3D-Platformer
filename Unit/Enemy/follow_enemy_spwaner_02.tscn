@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf2tuy0g8hnxr"]
+
+[ext_resource type="Script" path="res://Unit/Enemy/follow_enemy_spwaner_02.gd" id="1_4mx06"]
+[ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="2_iqecm"]
+
+[node name="FollowEnemySpwaner02" type="Node3D"]
+script = ExtResource("1_4mx06")
+enemy_scene = ExtResource("2_iqecm")
+spwan_range = 8.0
+spwan_high = Vector3(0, 2.5, 0)
+spwan_angle = 90.0
+angle_bais = 0.75
+
+[node name="EnemySpwanTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EnemySpwanTimer" to="." method="_on_enemy_spwan_timer_timeout"]

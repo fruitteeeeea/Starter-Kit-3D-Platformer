@@ -71,20 +71,26 @@ hit_flash_material = ExtResource("5_nnl5c")
 [node name="character-skeleton" parent="." index="0"]
 transform = Transform3D(-0.999753, 0, 0.0222194, 0, 1, 0, -0.0222194, 0, -0.999753, 0, 0, 0)
 
+[node name="root" parent="character-skeleton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00242963)
+
 [node name="leg-left" parent="character-skeleton/root" index="0"]
-transform = Transform3D(0.8584, 9.31324e-10, -7.14628e-10, -9.31322e-10, 0.22217, -0.829151, -7.1463e-10, 0.829151, 0.22217, 0.0791, 0.221, -0.0867)
+transform = Transform3D(0.8584, -2.91038e-11, -6.48035e-13, 2.91038e-11, 0.857549, 0.0382078, -6.48035e-13, -0.0382078, 0.857549, 0.074204, 0.223184, 0)
 
 [node name="leg-right" parent="character-skeleton/root" index="1"]
-transform = Transform3D(0.8584, -4.65661e-10, -1.92883e-10, 4.65661e-10, 0.606981, 0.60698, -1.92883e-10, -0.606981, 0.60698, -0.0761, 0.22, -0.009)
+transform = Transform3D(0.8584, 0, 0, 0, 0.858331, -0.0109198, 0, 0.0109199, 0.85833, -0.074204, 0.223184, 0)
+
+[node name="torso" parent="character-skeleton/root" index="2"]
+transform = Transform3D(1, -5.924e-12, 9.31323e-10, -5.924e-12, 0.999919, 0.0127212, -9.31323e-10, -0.0127212, 0.999919, 0, 0.223184, 0)
 
 [node name="arm-left" parent="character-skeleton/root/torso" index="0"]
-transform = Transform3D(0.965926, -0.258819, 9.0067e-10, 0.258819, 0.965926, 3.55442e-10, -9.61975e-10, -1.1022e-10, 1, 0.15, 0.225, 0.0025)
+transform = Transform3D(0.707107, 0.707107, -2.99886e-07, -0.706191, 0.706192, -0.050864, -0.035966, 0.0359665, 0.998706, 0.15, 0.225, 0.0025)
 
 [node name="arm-right" parent="character-skeleton/root/torso" index="1"]
-transform = Transform3D(0.965926, 0.258819, 9.0067e-10, -0.258819, 0.965926, -3.55442e-10, -9.61975e-10, 1.1022e-10, 1, -0.15, 0.225, 0.0025)
+transform = Transform3D(0.707107, -0.707107, -3.86499e-08, 0.707093, 0.707092, 0.0063607, -0.00449767, -0.00449772, 0.99998, -0.15, 0.225, 0.0025)
 
 [node name="head" parent="character-skeleton/root/torso" index="2"]
-transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
+transform = Transform3D(1, 6.32514e-11, 1.86211e-09, 5.04376e-12, 0.999328, -0.0366534, -1.86318e-09, 0.0366534, 0.999328, 0, 0.26, 0)
 visible = false
 
 [node name="tomato" type="MeshInstance3D" parent="character-skeleton/root/torso" index="3"]

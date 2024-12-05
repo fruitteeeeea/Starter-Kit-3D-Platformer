@@ -45,6 +45,7 @@ var is_payload_complete := false #载具是否完成
 var current_rotate_speed := 0.0
 
 #车子周遭位置
+@onready var anchor: Node3D = $Anchor #锚点 帮助其他单位获取 payload 周遭位置
 var surround_position := []
 @onready var payload_surround_position: Node3D = $PayloadSurroundPosition
 @onready var surround_pos_01: Marker3D = $PayloadSurroundPosition/SurroundPos01

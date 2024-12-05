@@ -4,7 +4,7 @@ extends Node3D
 @export var Chest : PackedScene
 var chest_list := []
 
-@export var distance_to_payload := 0.3 
+@export var distance_to_payload := .3
 
 @export var spwaner_number : int #生成器数量
 @export var spwaner_timer := 5.0 #生成时间
@@ -35,6 +35,7 @@ func spwan_chest():
 	
 	#var pos = current_payload.surround_position.pick_random().global_position #随机寻找车子周围的一个位置
 	var pos = current_payload.get_surrounding_position(distance_to_payload)
+	#var pos = PayloadServer.GetPayloadAroundPos(distance_to_payload, 0, 0)
 	
 	pos += Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)) #进一步加工位置信息
 	

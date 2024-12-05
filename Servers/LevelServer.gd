@@ -9,15 +9,23 @@ var level_information := {
 	"level_target_pool" : [], #任务目标池子
 	
 	"enemy_spwaner" : 0, #怪物生成点数量
-	"enemy_spwaner_posy" : 0.0, #怪物生成y 坐标
-	"enemy_spwaner_pos_limit" : [], #怪物生成坐标限制
 	"enemy_spwan_point_pool" : [], #怪物生成点池子
+	
+	#"enemy_spwaner_posy" : 0.0, #怪物生成y 坐标
+	#"enemy_spwaner_pos_limit" : [], #怪物生成坐标限制
+
 	"enemy_power" : 0.0, #怪物强度
 	
 	"dynamic_difficulty" : false #动态难度
 }
 
+@export var level_time := 45.0 #任务时间
+@export var enemy_spwaner : Array[PackedScene] #怪物生成器
+
+
 @onready var level_timer: Timer = $LevelTimer
+
+
 
 var LevelList := [] #任务列表
 var current_level := Node #当前关卡
@@ -30,7 +38,8 @@ var current_level := Node #当前关卡
 func level_start():
 	#启动刷怪点
 	for spwaner in level_information["enemy_spwan_point_pool"]:
-		EnemyStatusServer.add_enemy_spwaner(spwaner)
+		EnemySpwanerServer.add_enemy_spwaner(spwaner)
+		pass
 	
 	#启动任务目标
 	for target in level_information["level_target_pool"]:

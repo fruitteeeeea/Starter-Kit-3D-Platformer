@@ -3,7 +3,7 @@ extends Node3D
 @export var EnemySpwanerList : Array[PackedScene] #生成器类型
 var enemy_spwaner := []
 
-@export var distance_to_payload := 1.0 #距离车子的距离 #这个值超过1就很难看清了 0.1就会离车子非常近
+@export var distance_to_payload := 5.0 #距离车子的距离 #这个值超过1就很难看清了 0.1就会离车子非常近
 
 @export var spwaner_number : int #生成器数量
 @export var spwaner_timer := 1.5 #生成时间
@@ -36,9 +36,10 @@ func spwan_enemy():
 		return
 	
 	#var pos = current_payload.surround_position.pick_random().global_position #随机寻找车子周围的一个位置
-	var pos = current_payload.get_surrounding_position(distance_to_payload)
+	#var pos = current_payload.get_surrounding_position(distance_to_payload)
+	var pos = PayloadServer.GetPayloadAroundPos(distance_to_payload, 0, 0)
 	
-	pos += Vector3(randf_range(-1, 1), 3.77, randf_range(-1, 1)) #进一步加工位置信息
+	pos += Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)) #进一步加工位置信息
 	
 	var spwaner = enemy_spwaner.pick_random()
 	spwaner.global_position = pos

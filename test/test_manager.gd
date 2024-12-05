@@ -32,7 +32,7 @@ func _on_slugger_pressed() -> void:
 
 
 func _on_bomb_shooter_pressed() -> void:
-	var bomb_shooter = load("res://Unit/Weapon/basic_weapon.tscn") as PackedScene
+	var bomb_shooter = load("res://Unit/Weapon/basic_bomb_weapon.tscn") as PackedScene
 	WeaponServers.add_weapon(bomb_shooter)
 
 

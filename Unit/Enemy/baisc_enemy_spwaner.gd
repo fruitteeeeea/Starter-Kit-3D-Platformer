@@ -18,6 +18,7 @@ var debuglabel : Node
 
 func _ready() -> void:
 	EnemyStatusServer.enemy_spwaner.append(self)
+	EnemyStatusServer.spwaner_info[self] = [max_enemy_nb, 0] #添加字典信息 最大敌人数 当前敌人数量 
 	
 	if auto_spwan:
 		spwan_timer.wait_time = spwan_time #如果启用自动生成 计时器开始
@@ -46,4 +47,4 @@ func  remove_enemy(enemy01 : CharacterBody3D):
 func _on_spwan_timer_timeout() -> void:
 	if current_enemy_in_scene.size() >= max_enemy_nb or !auto_spwan: #如果达到可生成敌人的上限
 		return
-	spwan_enemy()
+	spwan_enemy()                      

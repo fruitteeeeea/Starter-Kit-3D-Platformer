@@ -15,4 +15,4 @@ cell_size = Vector3(1, 1, 1)
 data = {
 "cells": PackedInt32Array(-1, 0, 0, -65536, 0, 0, -1, 65535, 0, -65536, 65535, 0)
 }
-metadata/_editor_floor_ = Vector3(0, -1, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)

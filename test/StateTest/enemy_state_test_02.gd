@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 signal enemy_dead (enenmy01 : CharacterBody3D)
 
+var spwaner : Node #生成器节点
+var overall_strength : float #整体敌人强度
+
 var direction := Vector3.ZERO
 var chase_speed := 1.2 #追逐玩家的速度
 
@@ -33,8 +36,6 @@ var body_parts = [
 ]
 
 @export var hit_flash_material : Material #受击时显示的材质
-
-var overall_strength : float #整体敌人强度
 
 func _ready() -> void:
 	if LifeTime:
@@ -133,7 +134,7 @@ func _on_hurt_state_physics_processing(delta: float) -> void:
 func _on_dead_state_entered() -> void:
 	die()
 
-#死亡方法
+#死亡方法 以及掉落
 func die(drop_item := true):
 	is_dying = true
 	enemy_dead.emit(self)

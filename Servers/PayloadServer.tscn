@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbdgojau0x6pe"]
+
+[ext_resource type="Script" path="res://Servers/PayloadServer.gd" id="1_kqw7k"]
+[ext_resource type="PackedScene" uid="uid://bf8sd5gv0me4w" path="res://test/random_around_pos_test.tscn" id="2_8mpff"]
+
+[node name="PayloadServer" type="Node"]
+script = ExtResource("1_kqw7k")
+
+[node name="random_around_pos_test" parent="." instance=ExtResource("2_8mpff")]

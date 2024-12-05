@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=36 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://test/level_target_test.gd" id="14_os0rd"]
 [ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://Unit/Payload/move_payload.tscn" id="15_m2k6f"]
 [ext_resource type="PackedScene" uid="uid://cys28ci6xn58s" path="res://test/target/occupy_zone.tscn" id="16_14lsc"]
-[ext_resource type="PackedScene" uid="uid://c3t7v6y2v4y6w" path="res://test/enemy/follow_payload_enemy_spwaner.tscn" id="16_jido0"]
 [ext_resource type="PackedScene" uid="uid://di0n76sqbueep" path="res://test/target/target_enemy_spwaner.tscn" id="18_d5vjn"]
 [ext_resource type="PackedScene" uid="uid://bo33wyc3v2qxj" path="res://test/moving_platform.tscn" id="18_dpal6"]
 [ext_resource type="PackedScene" uid="uid://c3ndpg12bjjp3" path="res://test/target/target_enemy.tscn" id="19_2r0lr"]
@@ -33,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://test/drop item/buff_test_ground_button.tscn" id="28_5bxip"]
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="28_m5bpb"]
 [ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://test/drop item/loot_test_ground_button.tscn" id="31_uxoeo"]
+[ext_resource type="PackedScene" uid="uid://c3t7v6y2v4y6w" path="res://test/enemy/follow_payload_enemy_spwaner.tscn" id="34_74pvn"]
+[ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="34_ubop2"]
 
 [sub_resource type="Curve3D" id="Curve3D_sl32q"]
 _data = {
@@ -495,8 +496,6 @@ layout_mode = 2
 max_value = 1.0
 value = 1.0
 
-[node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("16_jido0")]
-
 [node name="follow_payload_chest_spwaner" parent="." instance=ExtResource("27_emk3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 Chest = ExtResource("26_iyaov")
@@ -509,6 +508,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.997, 0.479797, 3.49732)
 
 [node name="LootTestGroundButton" parent="." instance=ExtResource("31_uxoeo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.997, 0.479797, 7.45875)
+
+[node name="FollowEnemySpwaner02" parent="." instance=ExtResource("34_ubop2")]
+
+[node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("34_74pvn")]
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

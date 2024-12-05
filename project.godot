@@ -27,14 +27,16 @@ LootOptionsManager="*res://test/manager/loot_options_manager.gd"
 ProjectileServer="*res://Servers/ProjectileServer.gd"
 WeaponServers="*res://Servers/WeaponServers.gd"
 VisualServer="*res://Servers/VisualServer.gd"
+PlayerSatusServer="*res://Servers/PlayerSatusServer.gd"
+EnemySpwanerServer="*res://Servers/EnemySpwanerServer.tscn"
 EnemyStatusServer="*res://Servers/EnemyStatusServer.tscn"
 LevelServer="*res://Servers/LevelServer.tscn"
 LevelTargetServer="*res://Servers/LevelTargetServer.gd"
+PayloadServer="*res://Servers/PayloadServer.tscn"
 Hud="*res://Servers/hud.tscn"
 DebugServer="*res://Servers/debug_server.tscn"
 BuffServer="*res://Servers/BuffServer.tscn"
 LootServer="*res://Servers/LootServer.tscn"
-PlayerSatusServer="*res://Servers/PlayerSatusServer.gd"
 
 [dialogic]
 

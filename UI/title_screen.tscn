@@ -11,45 +11,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2gy3x")
 
-[node name="Label" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -706.0
-offset_top = -268.0
-offset_right = 300.0
-offset_bottom = -136.0
-grow_horizontal = 2
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 268.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 96
-text = "UNTITLE BOMB GAME"
+theme_override_constants/margin_left = 100
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_left = 1126.0
-offset_right = 1395.0
-offset_bottom = 899.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_left = 1124.0
-offset_top = 472.0
-offset_right = 1393.0
-offset_bottom = 577.0
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "开始游戏"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "选项
 "
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "选项
-"
+theme_override_font_sizes/font_size = 32
+text = "关于"
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "UNTITLE 
+Payload
+ GAME"
