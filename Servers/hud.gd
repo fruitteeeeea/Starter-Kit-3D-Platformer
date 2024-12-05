@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var buff_icon: HBoxContainer = $BuffIcon
+@onready var transition_screen: Control = $TransitionScreen
 
 var current_pauseUI : Control #当前的暂停菜单
 var current_Bufficon : Control #当前Buff栏位

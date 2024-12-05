@@ -82,5 +82,15 @@ offset = Vector2(0, 45)
 texture = ExtResource("9_gwjtp")
 
 [node name="Shotgun" parent="Weapon" instance=ExtResource("8_83fks")]
+weapon_info = {
+"bullet_damage": 1.0,
+"bullet_interval": 0.01,
+"bullet_number": 5,
+"bullet_scale": 1.5,
+"bullet_speed": 1.0,
+"fire_colddown": 0.3,
+"random_speed": 0.3,
+"spread_angle": 15.0
+}
 
 [editable path="Character"]
