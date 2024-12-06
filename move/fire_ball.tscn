@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpqho2l136ob1"]
+
+[ext_resource type="ArrayMesh" uid="uid://eq4cvr5nxorh" path="res://move/fireball_shell_mesh.obj" id="1_5tlyw"]
+[ext_resource type="Shader" path="res://move/fireball_shell.gdshader" id="1_dk3fm"]
+[ext_resource type="Texture2D" uid="uid://dry8481qydwcp" path="res://move/gradient_texture_1d.tres" id="2_nxksl"]
+[ext_resource type="Texture2D" uid="uid://q2y3kscm0kmv" path="res://move/voronoi_noise_texture_2d.tres" id="3_1gncs"]
+[ext_resource type="Material" uid="uid://b8xvvvhrucd8b" path="res://move/fireball_firetrail_particles_process.tres" id="5_f6l1d"]
+[ext_resource type="Shader" path="res://move/fireball_particles.gdshader" id="5_wwr6q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7n5a"]
+render_priority = 0
+shader = ExtResource("1_dk3fm")
+shader_parameter/def_x = 0.0
+shader_parameter/def_z = 0.0
+shader_parameter/voronoi_sampler = ExtResource("3_1gncs")
+shader_parameter/gradient_sampler = ExtResource("2_nxksl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2v63"]
+render_priority = 0
+shader = ExtResource("5_wwr6q")
+shader_parameter/uv_scale = 0.5
+shader_parameter/voronoi_sampler = ExtResource("3_1gncs")
+shader_parameter/gradient_sampler = ExtResource("2_nxksl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_p5gb3"]
+size = Vector2(0.5, 0.5)
+
+[node name="FireBall" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74228e-09, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_y7n5a")
+mesh = ExtResource("1_5tlyw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.362602)
+material_override = SubResource("ShaderMaterial_x2v63")
+amount = 16
+lifetime = 0.4
+process_material = ExtResource("5_f6l1d")
+draw_pass_1 = SubResource("QuadMesh_p5gb3")

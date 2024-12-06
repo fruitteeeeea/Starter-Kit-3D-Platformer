@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://bs1y3y8kpdu1n"]
+[gd_scene load_steps=13 format=4 uid="uid://bs1y3y8kpdu1n"]
 
 [ext_resource type="Texture2D" uid="uid://c10wr12hm64hl" path="res://test/enemy/model/Textures/colormap.png" id="1_tjchl"]
 [ext_resource type="Script" path="res://Unit/Projectile/basic_bullet.gd" id="1_x3kqn"]
+[ext_resource type="PackedScene" uid="uid://dpqho2l136ob1" path="res://move/fire_ball.tscn" id="3_1ien4"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_rm7rh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1aoc"]
@@ -76,10 +77,14 @@ speed_damp = 0.2
 
 [node name="pumpkin-carved2" type="Node3D" parent="Model"]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.0473925, 0)
+visible = false
 
 [node name="pumpkin-carved" type="MeshInstance3D" parent="Model/pumpkin-carved2"]
 mesh = SubResource("ArrayMesh_45ieg")
 skeleton = NodePath("")
+
+[node name="FireBall" parent="Model" instance=ExtResource("3_1ien4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
@@ -95,6 +100,7 @@ shape = SubResource("SphereShape3D_d0hcp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0758698, 0)
 material_override = SubResource("StandardMaterial3D_63loj")
 cast_shadow = 0
+emitting = false
 amount = 45
 mesh = ExtResource("3_rm7rh")
 emission_shape = 1
