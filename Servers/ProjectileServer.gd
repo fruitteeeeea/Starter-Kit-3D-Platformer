@@ -11,7 +11,7 @@ damge01 : float, scale01 : float, speed01 : float):
 	var bullet = bullet01.instantiate()
 	
 	bullet.damage = damge01
-	bullet.volume *= scale01
+	bullet.scale01 *= scale01
 	bullet.speed *= speed01
 	
 	get_tree().root.add_child(bullet)

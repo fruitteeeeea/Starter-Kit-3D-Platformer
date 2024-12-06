@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=37 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://test/drop item/loot_test_ground_button.tscn" id="31_uxoeo"]
 [ext_resource type="PackedScene" uid="uid://c3t7v6y2v4y6w" path="res://test/enemy/follow_payload_enemy_spwaner.tscn" id="34_74pvn"]
 [ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="34_ubop2"]
+[ext_resource type="PackedScene" uid="uid://bcd5hlwjw6ovp" path="res://test/tempo.tscn" id="35_n65uo"]
 
 [sub_resource type="Curve3D" id="Curve3D_sl32q"]
 _data = {
@@ -512,6 +513,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.997, 0.479797, 7.45875)
 [node name="FollowEnemySpwaner02" parent="." instance=ExtResource("34_ubop2")]
 
 [node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("34_74pvn")]
+
+[node name="tempo" parent="." instance=ExtResource("35_n65uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7139, 0.936073, 5.26171)
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

@@ -16,6 +16,6 @@ weapon_info = {
 "bullet_scale": 1.5,
 "bullet_speed": 1.0,
 "fire_colddown": 0.5,
-"random_speed": 0.3,
+"random_speed": 0.1,
 "spread_angle": 15.0
 }

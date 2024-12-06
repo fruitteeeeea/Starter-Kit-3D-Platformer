@@ -8,12 +8,12 @@ var hide_pos2 := Vector2(0, 900.0)
 
 var move_tween : Tween
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug"):
-		show_colorrect()
-	
-	if event.is_action_pressed("debug2"):
-		hide_colorrect()
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debug"):
+		#show_colorrect()
+	#
+	#if event.is_action_pressed("debug2"):
+		#hide_colorrect()
 
 func show_colorrect():
 	if move_tween:

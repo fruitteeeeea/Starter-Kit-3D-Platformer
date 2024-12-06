@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuuudnpf5ufo0"]
+
+[ext_resource type="PackedScene" uid="uid://dpqho2l136ob1" path="res://move/fire_ball.tscn" id="1_57yb5"]
+[ext_resource type="Script" path="res://test/fireball_test.gd" id="1_osnxl"]
+
+[sub_resource type="Curve" id="Curve_xvw3x"]
+_data = [Vector2(0, 0.867052), 0.0, 1.21979, 0, 0, Vector2(1, 0.0751445), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_c7w13"]
+max_value = 2.0
+_data = [Vector2(0, 0.620142), 0.0, 0.0, 0, 0, Vector2(0.424084, 1.90221), 0.0, 0.0, 0, 0, Vector2(0.740838, 0.0497284), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fdukh"]
+radius = 0.1
+
+[node name="FireballTest" type="CharacterBody3D"]
+script = ExtResource("1_osnxl")
+speed_curve = SubResource("Curve_xvw3x")
+volume_curve = SubResource("Curve_c7w13")
+
+[node name="FireBall" parent="." instance=ExtResource("1_57yb5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fdukh")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcd5hlwjw6ovp"]
+
+[ext_resource type="Script" path="res://tempo.gd" id="1_fyyac"]
+[ext_resource type="PackedScene" uid="uid://cuuudnpf5ufo0" path="res://test/fireball_test.tscn" id="2_u6xop"]
+
+[node name="tempo" type="Node3D"]
+script = ExtResource("1_fyyac")
+test_scene = ExtResource("2_u6xop")
