@@ -9,7 +9,7 @@ point_count = 3
 
 [sub_resource type="Curve" id="Curve_2gows"]
 max_value = 2.0
-_data = [Vector2(0, 0.620142), 0.0, 0.0, 0, 0, Vector2(0.424084, 1.90221), 0.0, 0.0, 0, 0, Vector2(0.740838, 0.0497284), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.620142), 0.0, 0.0, 0, 0, Vector2(0.424084, 1.90221), 0.0, 0.0, 0, 0, Vector2(0.899755, 0.0573483), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nc27b"]

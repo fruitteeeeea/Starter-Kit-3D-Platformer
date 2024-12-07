@@ -13,7 +13,7 @@ var elapsed_time: float = 0.0 #经过时间
 
 @export var damage := 1.0 #子弹伤害
 @export var scale01 := 1.0 #子弹的体积 
-@export var speed = 38.0 #子弹速度 子弹的持续时间由子弹速度和阻力决定
+@export var speed = 48.0 #子弹速度 子弹的持续时间由子弹速度和阻力决定
 @export var volume := 1.0 #变化体积
 @export var speed_damp := -0.3 #子弹阻力 
 
@@ -89,5 +89,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		VisualServer.do_camerashake()
 		is_hit = true
 		$Area3D.queue_free()
-		await get_tree().create_timer(.4).timeout
+		await get_tree().create_timer(.6).timeout
 		queue_free()

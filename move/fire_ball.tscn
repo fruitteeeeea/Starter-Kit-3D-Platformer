@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://eq4cvr5nxorh" path="res://move/fireball_shell_mesh.obj" id="1_5tlyw"]
 [ext_resource type="Shader" path="res://move/fireball_shell.gdshader" id="1_dk3fm"]
-[ext_resource type="Texture2D" uid="uid://dry8481qydwcp" path="res://move/gradient_texture_1d.tres" id="2_nxksl"]
+[ext_resource type="Texture2D" uid="uid://by78fnk50qx6t" path="res://move/gradient_texture_1d2.tres" id="2_n4arr"]
 [ext_resource type="Texture2D" uid="uid://q2y3kscm0kmv" path="res://move/voronoi_noise_texture_2d.tres" id="3_1gncs"]
 [ext_resource type="Material" uid="uid://b8xvvvhrucd8b" path="res://move/fireball_firetrail_particles_process.tres" id="5_f6l1d"]
 [ext_resource type="Shader" path="res://move/fireball_particles.gdshader" id="5_wwr6q"]
@@ -13,14 +13,14 @@ shader = ExtResource("1_dk3fm")
 shader_parameter/def_x = 0.0
 shader_parameter/def_z = 0.0
 shader_parameter/voronoi_sampler = ExtResource("3_1gncs")
-shader_parameter/gradient_sampler = ExtResource("2_nxksl")
+shader_parameter/gradient_sampler = ExtResource("2_n4arr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x2v63"]
 render_priority = 0
 shader = ExtResource("5_wwr6q")
 shader_parameter/uv_scale = 0.5
 shader_parameter/voronoi_sampler = ExtResource("3_1gncs")
-shader_parameter/gradient_sampler = ExtResource("2_nxksl")
+shader_parameter/gradient_sampler = ExtResource("2_n4arr")
 
 [sub_resource type="QuadMesh" id="QuadMesh_p5gb3"]
 size = Vector2(0.5, 0.5)
