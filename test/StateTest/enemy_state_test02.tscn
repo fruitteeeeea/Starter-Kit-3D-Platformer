@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://csb3rp0raacor"]
+[gd_scene load_steps=20 format=4 uid="uid://csb3rp0raacor"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_2xcuc"]
 [ext_resource type="Script" path="res://test/StateTest/enemy_state_test_02.gd" id="2_ughar"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dr64grqi6yu8m" path="res://Unit/DropItem/normal_item_spwaner.tscn" id="11_va31a"]
 [ext_resource type="PackedScene" uid="uid://uhrre7e7bf2s" path="res://Unit/DropItem/drop_normal_item_coins.tscn" id="12_vl4jd"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="14_24n2q"]
+[ext_resource type="PackedScene" uid="uid://tpmr0gct8ek1" path="res://test/VFX/floting_text.tscn" id="15_pgy62"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xru77"]
 resource_name = "colormap"
@@ -177,6 +178,9 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 Item = ExtResource("12_vl4jd")
 
 [node name="Lifetimer" type="Timer" parent="." index="7"]
+
+[node name="FlotingText" parent="." index="8" instance=ExtResource("15_pgy62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23733, 0)
 
 [connection signal="state_physics_processing" from="StateChart/ParallelState/Movement/IDLE" to="." method="_on_idle_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/ParallelState/Movement/CHASE" to="." method="_on_chase_state_entered"]
