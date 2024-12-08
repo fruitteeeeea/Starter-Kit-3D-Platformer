@@ -1,0 +1,90 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqnnjulwhqvee"]
+
+[ext_resource type="Script" path="res://UI/ready_to_start.gd" id="1_eejoe"]
+[ext_resource type="PackedScene" uid="uid://bcujtvdkfajgo" path="res://UI/gear_option_pannel.tscn" id="2_75ph7"]
+
+[node name="ReadyToStart" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eejoe")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "选择你的初始装备
+"
+horizontal_alignment = 1
+
+[node name="GearOptionPannel" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_75ph7")]
+layout_mode = 2
+
+[node name="GearOptionPannel2" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_75ph7")]
+layout_mode = 2
+
+[node name="GearOptionPannel3" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_75ph7")]
+layout_mode = 2
+
+[node name="Confirm" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 316.0
+offset_top = 226.0
+offset_right = 560.0
+offset_bottom = 356.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Confirm"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Confirm/MarginContainer"]
+layout_mode = 2
+
+[node name="Randomize" type="Button" parent="Confirm/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "随机选择"
+
+[node name="Done" type="Button" parent="Confirm/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "确认"
+
+[connection signal="pressed" from="Confirm/MarginContainer/VBoxContainer/Done" to="." method="_on_done_pressed"]

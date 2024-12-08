@@ -889,7 +889,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391443, 0)
 
 [node name="PayloadArms4" parent="." instance=ExtResource("16_426xa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391443, 0)
-weapon_type = 1
+weapon_type = 0
 fire_colddown = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

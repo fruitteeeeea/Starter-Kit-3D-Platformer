@@ -74,6 +74,8 @@ text/autoadvance_enabled=false
 window/size/viewport_width=1600
 window/size/viewport_height=900
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="res://UI/cross_small.png"
+mouse_cursor/custom_image_hotspot=Vector2(32, 32)
 
 [editor]
 

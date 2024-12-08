@@ -1,10 +1,12 @@
-[gd_scene load_steps=55 format=4 uid="uid://svpgxw2bs4im"]
+[gd_scene load_steps=57 format=4 uid="uid://svpgxw2bs4im"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_qmp8d"]
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="2_flxed"]
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://test/drop item/basic_ground_button.tscn" id="3_s7eay"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="4_5shkc"]
 [ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="4_6rtxr"]
+[ext_resource type="Script" path="res://Unit/Level/change_weapon_layout.gd" id="4_ihqmw"]
+[ext_resource type="PackedScene" uid="uid://cqnnjulwhqvee" path="res://UI/ready_to_start.tscn" id="5_cgh0a"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="5_xk4p2"]
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="6_iaxpq"]
 [ext_resource type="Script" path="res://learnning/truma_component.gd" id="7_nglqw"]
@@ -1930,17 +1932,30 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="BasicGroundButton" parent="World/GridMap" instance=ExtResource("3_s7eay")]
+[node name="TopButton" parent="World/GridMap" instance=ExtResource("3_s7eay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89921, 0.506439, -2.95342)
+text = "进入关卡"
+
+[node name="Label3D" parent="World/GridMap/TopButton" index="2"]
+text = "进入关卡"
+
+[node name="MiddleLeftButton" parent="World/GridMap" instance=ExtResource("3_s7eay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46664, 0.506439, 1.02079)
 text = "更改武器配置"
 
-[node name="BasicGroundButton2" parent="World/GridMap" instance=ExtResource("3_s7eay")]
+[node name="Label3D" parent="World/GridMap/MiddleLeftButton" index="2"]
+text = "更改武器配置"
+
+[node name="ChangeWeaponLayout" type="Node" parent="World/GridMap/MiddleLeftButton/Method" index="0"]
+script = ExtResource("4_ihqmw")
+UI = ExtResource("5_cgh0a")
+
+[node name="MiddleRightButton" parent="World/GridMap" instance=ExtResource("3_s7eay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4766, 0.506439, -1.53714)
 text = "更改游戏难度"
 
-[node name="BasicGroundButton3" parent="World/GridMap" instance=ExtResource("3_s7eay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89921, 0.506439, -2.95342)
-text = "进入关卡"
+[node name="Label3D" parent="World/GridMap/MiddleRightButton" index="2"]
+text = "更改游戏难度"
 
 [node name="Facility01" type="Node3D" parent="World"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.50006, 0.572344, 0.945248)
@@ -2030,3 +2045,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57257, 0)
 pixel_size = 0.01
 billboard = 1
 text = "Dummy"
+
+[editable path="World/GridMap/TopButton"]
+[editable path="World/GridMap/MiddleLeftButton"]
+[editable path="World/GridMap/MiddleRightButton"]

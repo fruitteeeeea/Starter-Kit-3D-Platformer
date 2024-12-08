@@ -1,8 +1,8 @@
 extends Control
 class_name PayloadLabel
 
-@onready var panel_container: PanelContainer = $PanelContainer #标签本身
-@onready var progress_bar: ProgressBar = $PanelContainer/MarginContainer/HBoxContainer/ProgressBar
+@onready var panel_container: PanelContainer = $MarginContainer/PanelContainer
+@onready var progress_bar: ProgressBar = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ProgressBar
 
 var payload : PathFollow3D #车子节点
 var payload_moving := false #是否在移动

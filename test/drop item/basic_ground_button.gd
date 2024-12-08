@@ -15,12 +15,16 @@ func _ready() -> void:
 	for i in method.get_children():
 		todo_list.append(i) #将所有方法子节点加入到数组中
 
+#执行进入按钮后的方法
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	animation_player.play("toggle-on")
 	for i in todo_list:
 		if i.has_method("do_stuff"):
 			i.do_stuff()
 
-
+#执行离开按钮后的方法
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	animation_player.play("toggle-off")
+	for i in todo_list:
+		if i.has_method("unddo_stuff"):
+			i.unddo_stuff()

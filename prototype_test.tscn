@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=35 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="1_ri7xe"]
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
@@ -23,8 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="20_gavum"]
 [ext_resource type="Script" path="res://UI/buff_indiactor_test.gd" id="23_hcfg3"]
 [ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="24_i10lm"]
-[ext_resource type="PackedScene" uid="uid://bcujtvdkfajgo" path="res://UI/gear_option_pannel.tscn" id="25_j4dfd"]
-[ext_resource type="Script" path="res://UI/ready_to_start.gd" id="25_t7dui"]
 [ext_resource type="Script" path="res://test/loot_number.gd" id="26_asoyu"]
 [ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://test/chest.tscn" id="26_iyaov"]
 [ext_resource type="Script" path="res://firerate.gd" id="27_55q85"]
@@ -344,90 +342,6 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ReadyToStart" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("25_t7dui")
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ReadyToStart"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ReadyToStart/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "选择你的初始装备
-"
-horizontal_alignment = 1
-
-[node name="GearOptionPannel" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("25_j4dfd")]
-layout_mode = 2
-
-[node name="GearOptionPannel2" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("25_j4dfd")]
-layout_mode = 2
-
-[node name="GearOptionPannel3" parent="CanvasLayer/ReadyToStart/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("25_j4dfd")]
-layout_mode = 2
-
-[node name="Confirm" type="PanelContainer" parent="CanvasLayer/ReadyToStart"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 316.0
-offset_top = 226.0
-offset_right = 560.0
-offset_bottom = 356.0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ReadyToStart/Confirm"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ReadyToStart/Confirm/MarginContainer"]
-layout_mode = 2
-
-[node name="Randomize" type="Button" parent="CanvasLayer/ReadyToStart/Confirm/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "随机选择"
-
-[node name="Done" type="Button" parent="CanvasLayer/ReadyToStart/Confirm/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "确认"
-
 [node name="LootNumber" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 912.0
 offset_top = 856.0
@@ -525,4 +439,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7139, 0.936073, 5.26171)
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/BombShooter" to="CanvasLayer/TestManager" method="_on_bomb_shooter_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer3/add loot" to="CanvasLayer/TestManager" method="_on_add_loot_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer2/add1xenemy" to="CanvasLayer/TestManager" method="_on_add_1_xenemy_pressed"]
-[connection signal="pressed" from="CanvasLayer/ReadyToStart/Confirm/MarginContainer/VBoxContainer/Done" to="CanvasLayer/ReadyToStart" method="_on_done_pressed"]
