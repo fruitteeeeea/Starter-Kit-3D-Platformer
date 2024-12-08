@@ -6,8 +6,5 @@
 script = ExtResource("1_nrbfx")
 
 [node name="Label3D" type="Label3D" parent="."]
+pixel_size = 0.01
 billboard = 1
-fixed_size = true
-text = "null"
-font_size = 16
-outline_size = 11

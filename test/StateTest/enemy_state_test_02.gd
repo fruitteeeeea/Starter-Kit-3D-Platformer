@@ -36,6 +36,8 @@ var body_parts = [
 ]
 
 @export var hit_flash_material : Material #受击时显示的材质
+@onready var floating_text_pos: Marker3D = $FloatingTextPos
+@export var FloatingText : PackedScene
 
 func _ready() -> void:
 	if LifeTime:
@@ -96,6 +98,7 @@ func take_damage(knockback_strength01 : float, damge : float):
 	VisualServer.do_hit_flash(body_parts, hit_flash_material)
 	SoundManager.play_sfx("EnemyHurtSFX", true)
 	VisualServer.spwan_bloodtrail(blood_trail, blood_taril_pos.global_position, global_rotation) #生成血迹
+	VisualServer.spwan_floating_text(FloatingText, floating_text_pos.global_position, damge)
 	
 	var player = get_tree().get_first_node_in_group("player")
 	knockback_direction = (global_position - player.global_position).normalized() * 3 + Vector3(0, 3, 0) #加一个向上的力

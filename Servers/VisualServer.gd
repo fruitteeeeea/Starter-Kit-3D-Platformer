@@ -8,12 +8,11 @@ func spwan_hurt_particle(particle01 : PackedScene, pos01 : Vector3):
 	hurt_particle.global_position = pos01
 	pass
 
-#生成伤害飘动文字
-func damage_float_nb():
-	pass
-
 #生成血迹 #血迹场景 #血迹位置 #血迹旋转
-func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3):
+func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3, change01 := 1/3):
+	if randf_range(0.0, 1.0) > change01:
+		return
+	
 	var blood_trail = blood01.instantiate()
 	get_tree().root.add_child(blood_trail)
 	blood_trail.global_position = pos01 #设置位置
@@ -25,6 +24,13 @@ func hit_stop_medium():
 	Engine.time_scale = 0.85
 	await get_tree().create_timer(0.05, true, false, true).timeout
 	Engine.time_scale = 1
+
+#生成飘字
+func spwan_floating_text(text01 : PackedScene, pos01 : Vector3, damage01 : float):
+	var text = text01.instantiate()
+	get_tree().root.add_child(text)
+	text.global_position = pos01 + Vector3.ONE * randf_range(-0.2, 0.2) #随机位置偏移
+	text.floating_tween(damage01)
 
 #屏幕抖动
 func do_camerashake(shake_factor := 0.5):
