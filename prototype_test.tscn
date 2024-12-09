@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=43 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="2_ywrcx"]
@@ -33,7 +33,6 @@
 [ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://test/drop item/buff_test_ground_button.tscn" id="28_5bxip"]
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="28_m5bpb"]
 [ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://test/drop item/loot_test_ground_button.tscn" id="31_uxoeo"]
-[ext_resource type="PackedScene" uid="uid://c3t7v6y2v4y6w" path="res://test/enemy/follow_payload_enemy_spwaner.tscn" id="34_74pvn"]
 [ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="34_ubop2"]
 [ext_resource type="PackedScene" uid="uid://tpmr0gct8ek1" path="res://test/VFX/floting_text.tscn" id="34_yvir7"]
 [ext_resource type="PackedScene" uid="uid://bcd5hlwjw6ovp" path="res://test/tempo.tscn" id="35_n65uo"]
@@ -68,7 +67,7 @@ point_count = 5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4rlnw"]
 render_priority = 0
 shader = ExtResource("17_jjg2f")
-shader_parameter/ColorParameter = Color(0.722024, 0.548765, 0.157949, 1)
+shader_parameter/ColorParameter = Color(1, 0.827451, 0.388235, 1)
 shader_parameter/Vector2Parameter = Vector2(-0.5, 0)
 shader_parameter/FloatParameter = 0.05
 shader_parameter/main_texture = ExtResource("18_a510i")
@@ -189,10 +188,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47555, 0.564809, -7.94014)
 
 [node name="OccupyZone4" parent="OccupyZoneTest" instance=ExtResource("16_14lsc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9722, 0.564809, 3.5196)
-
-[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.9322, 2.03599, -10.1557)
-Camera = NodePath("../View/Camera3D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -470,11 +465,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.997, 0.479797, 7.45875)
 
 [node name="FollowEnemySpwaner02" parent="." instance=ExtResource("34_ubop2")]
 
-[node name="FollowPayloadEnemySpwaner" parent="." instance=ExtResource("34_74pvn")]
+[node name="FollowEnemySpwaner03" parent="." instance=ExtResource("34_ubop2")]
 
 [node name="tempo" parent="." instance=ExtResource("35_n65uo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7139, 0.936073, 5.26171)
 test_scene = ExtResource("34_yvir7")
+
+[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.9236, 3.05559, -11.7724)
+Camera = NodePath("../View/Camera3D")
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

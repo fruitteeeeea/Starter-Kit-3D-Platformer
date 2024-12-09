@@ -89,7 +89,7 @@ func _physics_process(delta):
 
 	# Falling/respawning
 
-	if position.y < -10:
+	if position.y < -10: #掉出地图区域
 		get_tree().reload_current_scene()
 
 	# Animation for scale (jumping and landing)
@@ -99,7 +99,7 @@ func _physics_process(delta):
 	# Animation when landing
 
 	if is_on_floor() and gravity > 2 and !previously_floored:
-		model.scale = Vector3(1.25, 0.75, 1.25)
+		model.scale = Vector3(1.25, 0.75, 1.25) #掉落地板之前的缓冲
 		Audio.play("res://sounds/land.ogg")
 
 	previously_floored = is_on_floor()

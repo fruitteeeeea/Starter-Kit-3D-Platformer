@@ -52,6 +52,7 @@ func _add_enemy(spwaner01 : EnemySpawner, enemy01 : PackedScene, enemy_strength 
 	enemy_in_scene.append(enemy) #添加总敌人列表中
 	EnemySpwanerServer.spwaner_info[spwaner01].append(enemy)
 	enemy.enemy_dead.connect(remove_enemy) #链接消除敌人信号
+	enemy.scale = Vector3.ONE * randf_range(.8, 1.5)
 	
 	enemy.global_position = enemy_pos01 #随机位置
 

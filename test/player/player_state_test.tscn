@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpjkb6t4dkxe"]
+
+[ext_resource type="Script" path="res://test/player/player_state_test.gd" id="1_8nsfh"]
+[ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="1_a43a1"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_y6ftl"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="3_0yqxj"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_yrhlp"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_4n8wr"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_xbpfd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eq6qc"]
+radius = 0.3
+height = 1.0
+
+[node name="PlayerStateTest" type="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_layer = 7
+script = ExtResource("1_8nsfh")
+
+[node name="Character" parent="." instance=ExtResource("1_a43a1")]
+
+[node name="leg-left" parent="Character/character/root" index="0"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.125, 0.17625, -0.02375)
+
+[node name="leg-right" parent="Character/character/root" index="1"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.125, 0.17625, -0.02375)
+
+[node name="torso" parent="Character/character/root" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.996194, 0.0871557, 0, -0.0871557, 0.996194, -1.80478e-15, 0.17625, -0.02375)
+
+[node name="arm-left" parent="Character/character/root/torso" index="0"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.175, 0)
+
+[node name="arm-right" parent="Character/character/root/torso" index="1"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.3, 0.1195, 0)
+
+[node name="FollowPoint" type="Marker3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.565477, 1.26363, 0.542291)
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CapsuleShape3D_eq6qc")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("2_y6ftl")
+
+[node name="ParallelState" type="Node" parent="StateChart"]
+script = ExtResource("3_0yqxj")
+
+[node name="Movement" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("4_yrhlp")
+initial_state = NodePath("Grounded")
+
+[node name="Grounded" type="Node" parent="StateChart/ParallelState/Movement"]
+script = ExtResource("5_4n8wr")
+
+[node name="Airborne" type="Node" parent="StateChart/ParallelState/Movement"]
+script = ExtResource("4_yrhlp")
+initial_state = NodePath("CanJump")
+
+[node name="to grounded" type="Node" parent="StateChart/ParallelState/Movement/Airborne"]
+script = ExtResource("7_xbpfd")
+to = NodePath("../../Grounded")
+event = &"to_grounded"
+delay_in_seconds = "0.0"
+
+[node name="CanJump" type="Node" parent="StateChart/ParallelState/Movement/Airborne"]
+script = ExtResource("5_4n8wr")
+
+[node name="CannotJump" type="Node" parent="StateChart/ParallelState/Movement/Airborne"]
+script = ExtResource("5_4n8wr")
+
+[node name="Health" type="Node" parent="StateChart/ParallelState"]
+script = ExtResource("4_yrhlp")
+initial_state = NodePath("Unhurt")
+
+[node name="Unhurt" type="Node" parent="StateChart/ParallelState/Health"]
+script = ExtResource("5_4n8wr")
+
+[node name="hurt" type="Node" parent="StateChart/ParallelState/Health"]
+script = ExtResource("5_4n8wr")
+
+[node name="Dead" type="Node" parent="StateChart/ParallelState/Health"]
+script = ExtResource("5_4n8wr")
+
+[editable path="Character"]

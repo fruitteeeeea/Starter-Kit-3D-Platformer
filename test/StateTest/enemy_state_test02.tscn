@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://csb3rp0raacor"]
+[gd_scene load_steps=22 format=4 uid="uid://csb3rp0raacor"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_2xcuc"]
 [ext_resource type="Script" path="res://test/StateTest/enemy_state_test_02.gd" id="2_ughar"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dr64grqi6yu8m" path="res://Unit/DropItem/normal_item_spwaner.tscn" id="11_va31a"]
 [ext_resource type="PackedScene" uid="uid://uhrre7e7bf2s" path="res://Unit/DropItem/drop_normal_item_coins.tscn" id="12_vl4jd"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="14_24n2q"]
+[ext_resource type="Texture2D" uid="uid://dyjllxgpbhgll" path="res://test/enemy/caution_sign.png" id="16_neymm"]
+[ext_resource type="Script" path="res://test/StateTest/enemy_attack.gd" id="17_vsrh3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xru77"]
 resource_name = "colormap"
@@ -65,7 +67,6 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("2_ughar")
 LifeTime = 30.0
-knockback_recover = null
 hurt_particle = ExtResource("3_ijtr6")
 blood_trail = ExtResource("4_6fqyk")
 hit_flash_material = ExtResource("5_nnl5c")
@@ -74,26 +75,23 @@ FloatingText = ExtResource("6_2x2sf")
 [node name="character-skeleton" parent="." index="0"]
 transform = Transform3D(-0.999753, 0, 0.0222194, 0, 1, 0, -0.0222194, 0, -0.999753, 0, 0, 0)
 
-[node name="root" parent="character-skeleton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00242963)
-
 [node name="leg-left" parent="character-skeleton/root" index="0"]
-transform = Transform3D(0.8584, -2.91038e-11, -6.48035e-13, 2.91038e-11, 0.857549, 0.0382078, -6.48035e-13, -0.0382078, 0.857549, 0.074204, 0.223184, 0)
+transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, 0.074204, 0.223184, 0)
 
 [node name="leg-right" parent="character-skeleton/root" index="1"]
-transform = Transform3D(0.8584, 0, 0, 0, 0.858331, -0.0109198, 0, 0.0109199, 0.85833, -0.074204, 0.223184, 0)
+transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.858399, -0.074204, 0.223184, 0)
 
 [node name="torso" parent="character-skeleton/root" index="2"]
-transform = Transform3D(1, -5.924e-12, 9.31323e-10, -5.924e-12, 0.999919, 0.0127212, -9.31323e-10, -0.0127212, 0.999919, 0, 0.223184, 0)
+transform = Transform3D(1, 0, 1.86264e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.223184, 0)
 
 [node name="arm-left" parent="character-skeleton/root/torso" index="0"]
-transform = Transform3D(0.707107, 0.707107, -2.99886e-07, -0.706191, 0.706192, -0.050864, -0.035966, 0.0359665, 0.998706, 0.15, 0.225, 0.0025)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.225, 0.0025)
 
 [node name="arm-right" parent="character-skeleton/root/torso" index="1"]
-transform = Transform3D(0.707107, -0.707107, -3.86499e-08, 0.707093, 0.707092, 0.0063607, -0.00449767, -0.00449772, 0.99998, -0.15, 0.225, 0.0025)
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 0.225, 0.0025)
 
 [node name="head" parent="character-skeleton/root/torso" index="2"]
-transform = Transform3D(1, 6.32514e-11, 1.86211e-09, 5.04376e-12, 0.999328, -0.0366534, -1.86318e-09, 0.0366534, 0.999328, 0, 0.26, 0)
+transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
 visible = false
 
 [node name="tomato" type="MeshInstance3D" parent="character-skeleton/root/torso" index="3"]
@@ -130,6 +128,21 @@ script = ExtResource("8_1qtkq")
 [node name="to idle" type="Node" parent="StateChart/ParallelState/Movement/CHASE" index="0"]
 script = ExtResource("9_uv1e1")
 to = NodePath("../../IDLE")
+event = &"to_idle"
+delay_in_seconds = "0.0"
+
+[node name="to attack" type="Node" parent="StateChart/ParallelState/Movement/CHASE" index="1"]
+script = ExtResource("9_uv1e1")
+to = NodePath("../../ATTACK")
+event = &"to_attack"
+delay_in_seconds = "0.1"
+
+[node name="ATTACK" type="Node" parent="StateChart/ParallelState/Movement" index="2"]
+script = ExtResource("8_1qtkq")
+
+[node name="to idle" type="Node" parent="StateChart/ParallelState/Movement/ATTACK" index="0"]
+script = ExtResource("9_uv1e1")
+to = NodePath("../../CHASE")
 event = &"to_idle"
 delay_in_seconds = "0.0"
 
@@ -184,9 +197,26 @@ Item = ExtResource("12_vl4jd")
 [node name="FloatingTextPos" type="Marker3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08912, 0)
 
+[node name="AlertMarker" type="Sprite3D" parent="." index="9"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.233, 0)
+visible = false
+billboard = 1
+texture_filter = 2
+texture = ExtResource("16_neymm")
+
+[node name="EnemyAttack" type="Node3D" parent="." index="10"]
+script = ExtResource("17_vsrh3")
+
+[node name="RayCast3D" type="RayCast3D" parent="EnemyAttack" index="0"]
+transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, -0.6, 0, 0.6, -2.62268e-08, 0, 0.14102, 0)
+enabled = false
+
 [connection signal="state_physics_processing" from="StateChart/ParallelState/Movement/IDLE" to="." method="_on_idle_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/ParallelState/Movement/CHASE" to="." method="_on_chase_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/ParallelState/Movement/CHASE" to="." method="_on_chase_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/ParallelState/Movement/ATTACK" to="." method="_on_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/ParallelState/Movement/ATTACK" to="." method="_on_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/ParallelState/Movement/ATTACK" to="." method="_on_attack_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/ParallelState/Health/UNHURT" to="." method="_on_unhurt_state_entered"]
 [connection signal="state_entered" from="StateChart/ParallelState/Health/HURT" to="." method="_on_hurt_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/ParallelState/Health/HURT" to="." method="_on_hurt_state_physics_processing"]

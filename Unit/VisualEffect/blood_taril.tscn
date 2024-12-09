@@ -5,6 +5,7 @@
 
 [node name="BloodTaril" type="Sprite3D"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+transparency = 0.8
 texture = ExtResource("1_qvnqg")
 hframes = 2
 vframes = 2

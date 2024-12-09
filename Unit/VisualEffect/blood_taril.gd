@@ -5,7 +5,6 @@ func _ready() -> void:
 	do_fade()
 	#do_splash()
 
-
 func do_splash():
 	var target_position = self.position
 	target_position.x += .5
@@ -20,6 +19,6 @@ func do_splash():
 func do_fade():
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(self, "transparency", 1.0, 5.0)
+	tween.tween_property(self, "transparency", 1.0, 3.0)
 	await tween.finished
 	queue_free()

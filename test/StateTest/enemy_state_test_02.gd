@@ -65,7 +65,10 @@ func chase_player():
 	direction = (player.global_position - global_position).normalized() #获取玩家方向
 	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP) #朝向玩家
 	velocity = direction * chase_speed #追逐方向和追逐速度
-
+	
+	if global_position.distance_to(player.global_position) < .8:
+		state_chart.send_event("to_attack")
+	
 #闲置状态
 func _on_idle_state_physics_processing(delta: float) -> void:
 	if is_hurt or is_dying:
@@ -153,3 +156,23 @@ func die(drop_item := true):
 
 func _on_lifetime_timeout() -> void:
 	die(false)
+
+#进入攻击状态
+func _on_attack_state_entered() -> void:
+	$AlertMarker.show()
+	$EnemyAttack/RayCast3D.enabled = true
+	animation_player.play("attack-melee-left")
+	await animation_player.animation_finished
+	state_chart.send_event("to_idle")
+
+
+func _on_attack_state_physics_processing(delta: float) -> void:
+	if is_hurt or is_dying:
+		return
+	
+	velocity = Vector3.ZERO #进行攻击的时候 停止移动
+
+
+func _on_attack_state_exited() -> void:
+	$AlertMarker.hide()
+	$EnemyAttack/RayCast3D.enabled = false

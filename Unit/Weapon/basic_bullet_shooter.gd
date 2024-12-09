@@ -7,32 +7,20 @@ extends Weapon
 
 @onready var fire_sfx: AudioStreamPlayer = $FireSFX #音效节点
 
-@export var bullet_damage := 1.0 #子弹伤害
-@export var bullet_number := 1 #子弹倍率
-@export var bullet_scale := 1.0 #子弹体积
-@export var bullet_speed := 1.0 #子弹速度加成
-
-@export var spread_angle = 5.0 # 偏离的最大角度，以度数表示
-
-@export var random_speed := 0.3 #随机速度（射程）
-@export var bullet_interval : float #多发子弹枪之间的间隔
+@export var weapon_info := {
+	"bullet_number" : 1, #子弹倍率
+	"bullet_damage" : 1.0, #子弹伤害
+	"bullet_scale" : 1.0, #子弹体积
+	"bullet_speed" : 1.0, #子弹速度加成
+	"spread_angle" : 5.0, # 偏离的最大角度，以度数表示
+	"random_speed" : 0.1, #随机速度（射程）
+	"fire_colddown" : 1.0, #开火间隔
+	"bullet_interval" : 0.1 #多发子弹枪之间的间隔
+}
 
 @export var BulletShell : PackedScene #弹壳场景
 @export var spwan_shell_change := .66
 @onready var rigid_item_spwaner: Marker3D = $RigidItemSpwaner
-
-@export var weapon_info := {
-	"bullet_number" : 1,
-	"bullet_damage" : 1.0,
-	"bullet_scale" : 1.0,
-	"bullet_speed" : 1.0,
-	"spread_angle" : 5.0,
-	"random_speed" : 0.1,
-	"fire_colddown" : 1.0,
-	"bullet_interval" : 0.1
-}
-
-var MainWeaponProjectile : PackedScene
 
 #确认玩家
 var player : CharacterBody3D

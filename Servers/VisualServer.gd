@@ -9,7 +9,7 @@ func spwan_hurt_particle(particle01 : PackedScene, pos01 : Vector3):
 	pass
 
 #生成血迹 #血迹场景 #血迹位置 #血迹旋转
-func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3, change01 := 1/3):
+func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3, change01 := .3):
 	if randf_range(0.0, 1.0) > change01:
 		return
 	
@@ -20,9 +20,9 @@ func spwan_bloodtrail(blood01 : PackedScene, pos01 : Vector3, rotate01 : Vector3
 	blood_trail.rotation_degrees.x = 90
 
 #打击停顿
-func hit_stop_medium():
-	Engine.time_scale = 0.85
-	await get_tree().create_timer(0.05, true, false, true).timeout
+func hit_stop_medium(scale01 := .85, time01 := 0.05):
+	Engine.time_scale = scale01
+	await get_tree().create_timer(time01, true, false, true).timeout
 	Engine.time_scale = 1
 
 #生成飘字

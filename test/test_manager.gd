@@ -6,7 +6,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
 		pass
 
-
 func _on_clean_player_weapon_pressed() -> void:
 	WeaponServers.remove_weapon()
 
