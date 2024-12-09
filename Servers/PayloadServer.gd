@@ -23,24 +23,13 @@ func GetPayloadAroundPos(distance01 : float, angle01 : float, bais01 : float,) -
 	
 	return final_pos
 
-#func apply_ramdompos(node01 : Node, distance01 : float = 3, preferred_angle : float = 0, bias : float = 0):
-	#
-	##var preferred_angle = 180.0
-	##var bias = 0.1 # 偏好程度：75% 倾向于 180 度
-	#var result_angle = get_biased_angle(preferred_angle, bias)
-	#print("Resulting angle: ", result_angle)
-	#spwaner.rotation_degrees.y = result_angle
-	#
-	##spwaner.rotate_y(randf_range(0, TAU)) #设定角度
-	#var marker01 = Marker3D.new()
-	#spwaner.add_child(marker01)
-	#marker01.position.x = distance01 #设定距离
-	#
-	#node01.global_position = marker01.global_position
-	#node01.global_rotation = marker01.global_rotation
-	#
-	#marker01.queue_free()
+#获取圆周长上面的一个随机点
+func get_random_point_on_circle(center: Vector2, radius: float = 1.0) -> Vector2:
+	var theta = randf() * TAU  # 随机角度
+	var point = Vector2(cos(theta), sin(theta)) * radius  # 圆周上的点
+	return center + point  # 平移到圆心
 
+#偏好角度
 func get_biased_angle(preferred_angle: float, bias: float) -> float:
 	# preferred_angle: 偏好角度（例如 180）
 	# bias: 偏好系数（0 完全随机，1 完全偏向 preferred_angle）

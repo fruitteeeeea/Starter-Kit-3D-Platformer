@@ -465,8 +465,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.997, 0.479797, 7.45875)
 
 [node name="FollowEnemySpwaner02" parent="." instance=ExtResource("34_ubop2")]
 
-[node name="FollowEnemySpwaner03" parent="." instance=ExtResource("34_ubop2")]
-
 [node name="tempo" parent="." instance=ExtResource("35_n65uo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7139, 0.936073, 5.26171)
 test_scene = ExtResource("34_yvir7")

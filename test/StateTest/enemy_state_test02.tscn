@@ -24,7 +24,7 @@ cull_mode = 2
 albedo_texture = ExtResource("14_24n2q")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2awyu"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2rcrt"]
 _surfaces = [{
 "aabb": AABB(-0.084846, 0, -0.084846, 0.169692, 0.142664, 0.169692),
 "format": 34896613377,
@@ -56,7 +56,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("QuvfIv9/L8bXy98iJzQE34HHAAD/f//Tj7IAAG9N6N1vTQAAb03o3Sc03yInNATffTgAAP9//9O8FN8i/38vxm9NAACPsvG9fTgAAP9/DsYnNN8i18tPqrwU3yL/f0PB/3/fIkLrI5n/fwAAgcfwsCc03yLXyymmb00AAI+yerRC698i/39DwYHHAAD/fw7G18vfItfLT6qPsgAAj7LxvdfL3yLXyymmj7IAAI+yerT/f98iQusjmf9/AACBx/Cw18vfIic0HuT/f98ivBRt/Y+yAABvTXzt/38AAH04//eBxwAA/3/CwY+yAABvTQ7Nj7IAAI+yvbT/fwAAgcfurv9/AAB9OBDRb00AAI+yvbRvTQAAb00OzX04AAD/f8LB/3/fIrwUbf0nNN8iJzQe5P9/AAB9OP/3b00AAG9NfO1C698i/39DwdfL3yLXy0+q//+daP9//7+B2p1ogdr/n/9/3yK8FG3918vfIic0HuT/f51oAAD//4HanWh9Jf/fgdqdaH0l/9/Xy98iJzQE3///nWj/f/+/QuvfIv9/L8YnNN8iJzQe5P9/3yK8FG39fSWdaH0l/9//f51oAAD//9fL3yLXyymm/3/fIkLrI5mB2p1ogdr/n/9/nWj//wCAfSWdaH0l/98AAJ1o/3//vyc03yInNATfvBTfIv9/L8a8FN8i/39DwQAAnWj/f/+/JzTfItfLT6p9JZ1ogdr/n/9/3yJC6yOZJzTfItfLKab/f51o//8AgH0lnWiB2v+ffSWdaH0l/9//f51oAAD//yc0XK4nNB7k/39crrwUbf3/f51o//8AgH0lnWiB2v+f/39crkLrI5knNFyu18spprwUXK7/f0PBJzRcrtfLT6oAAJ1o/3//v30lnWiB2v+f18tcrtfLKab/f1yuQusjmY+yO9GPsnq0/3870YHH8LDXy1yuJzQe5I+yO9FvTXzt/39crrwUbf3/fzvRfTj/9/9/XK68FG39/3870X04//cnNFyuJzQe5G9NO9FvTXztQutcrv9/Q8HXy1yu18tPqoHHO9H/fw7Gj7I70Y+y8b1C61yu/38vxoHHO9H/f//T18tcric0BN+PsjvRb03o3W9NO9GPsvG9JzRcrtfLT6p9ODvR/38OxrwUXK7/f0PBfSWdaH0l/98nNFyuJzQE3wAAnWj/f/+/vBRcrv9/L8ZvTTvRb03o3X04O9H/f//TJzRcric0BN+8FFyu/38vxoHanWiB2v+f/3+daP//AIDXy1yu18sppv9/XK5C6yOZ/39crkLrI5knNFyu18sppv9/O9GBx/Cwb0070Y+yerSB2p1ofSX/3///nWj/f/+/18tcric0BN9C61yu/38vxkLrXK7/f0PB//+daP9//7/Xy1yu18tPqoHanWiB2v+f/3+daAAA//+B2p1ofSX/3/9/XK68FG3918tcric0HuSBxzvR/3/584+yO9GPsvv4j7I70W9NbPb/fzvRfTj//9+RO9Efbv//H2470R9u///fkTvR35H///9/O9GBx///b0070W9NbPYfbjvR35H//29NO9GPsvv4fTg70f9/+fOjwf///39qxQSsIuQndGnKBKwi5NeLacoErCLk14ufHQSsIuQndJ8do8H///9/OBXXiyLkBKzvqid0IuQErO+q/3///6PBXp7/f///o8FeHid0IuQErO8q14si5ASs7yondCLk+lP//9eLIuT6U////3///1s+////f///Wz4AANeLIuT6UwAAJ3Qi5PpTAAD6UyLkJ3Rpyls+////f2rF+lMi5NeLacr6UyLk14ufHVs+////fzgV+lMi5Cd0nx3fkTvR35H/nx9uO9Hfkf+f35E02t+R/58fbjTa35H/n9+RNNofbv/f35E70R9u/9/fkTTa35H/n9+RO9Hfkf+fH2470R9u/9/fkTvRH27/3x9uNNofbv/f35E02h9u/98fbjvRH27/3x9uNNofbv/fH2470d+R/58fbjTa35H/n3WKNNp1im+hiXU02nWKb6FhhqL3YYZvoZ15ovdhhm+hdYo02ol1Y991ijTadYpfo2GGovedeWPfYYai92GGX6OJdTTaiXV14XWKNNqJdXXhnXmi9515deFhhqL3nXl14Yl1NNqJdWPfnXmi9515Y9+JdTTadYpfo515ovdhhl+jYYai9515//9hhqL3YYb//515ovedef//nXmi92GG//8fbjTa35F5zh9uNNofbnnO+lMi5NeLacr6UyLkJ3RpyvpTIuTXi58dH2402h9uDiMfbjTa35EOI/pTIuQndJ8dBKwi5NeLacoErCLkJ3Rpyt+RNNrfkXnO35E02h9uec7fkTTa35EOIwSsIuQndJ8dBKwi5NeLnx3fkTTaH24OI9+RNNofbv//14si5PpT//8fbjTaH27//yd0IuT6U///H2402h9uAADXiyLk+lMAAN+RNNofbgAAJ3Qi5PpTAADfkTTa35Fnsx9uNNrfkWez14si5ASs76ondCLkBKzvqteLIuQErO8qH2402t+RaDPfkTTa35FoMyd0IuQErO8qiXU02ol1//8fbjTaH27//3WKNNqJdf//iXU02nWK///fkTTaH27//x9uNNrfkf//35E02t+R//91ijTadYr//wSsIuQndO4t14si5ASsEkXXiyLk+lM+APpTIuTXi6gt35E02t+REC3fkTTaH24RK4l1NNp1iqr/iXU02nWK///fkTTaH25L/9+RNNrfkf//gccAAP9/L9SBxwAA/38h4YHHAAD/f2zJ/3/fIkLrM7P/f98iQusbrP9/3yJC63WW/3/fIkLrnZf/f98ivBSZ7P9/3yK8FP///3/fIrwUHPP/f98ivBR/8P//nWj/f9HJ//+daP9/Zbv//51o/399uf//nWj/f8LNAACdaP9/bswAAJ1o/38dtAAAnWj/fy7TAACdaP9/iMMnNFyu18vgnyc0XK7Xy9yvJzRcrtfL96PfkTvRH26U9N+RO9Efbv//35E70R9unu8fbjvRH25y8h9uO9Efbsr9H2470d+R//8ErCLkJ3QSLteLIuQErFBE14si5PpTAAD6UyLk14uFLd+RNNrfkd/M35E02h9u7yqJdTTadYqI/4l1NNp1iv//35E02h9u+f+BxwAA/3/u0YHHAAD/f2zPgccAAP9/ZOAnNN8iJzTy3ic03yInNNXXfTgAAP9/3tB9OAAA/3+k2/9/3yJC6yue/3/fIkLrZKz/f98iQuszif9/3yJC63iW/3/fIrwUy+n/f98ivBT///9/3yK8FHD4/3/fIrwUZPn//51o/38Vyv//nWj/f+q6//+daP9/VsP//51o/39ytQAAnWj/f4jCAACdaP9/rLUAAJ1o/3/zwCc0XK4nNIrlJzRcric0NuEnNFyuJzRe6ic0XK7Xy/6eJzRcrtfLYLUnNFyu18sItic0XK7Xy4mYj7I70Y+y/b6PsjvRj7I0mI+yO9GPsqer18tcric0seXXy1yuJzQX4f9/O9F9OMv4BKwi5NeLUjEErCLkJ3SZL/9///+jwT05J3Qi5ASsmUnXiyLkBKxySP9///9bPgAA14si5PpTBQAndCLk+lMaAPpTIuTXi5MwWz7///9/bzb6UyLkJ3QmMol1NNp1ilO4YYai92GGN8d1ijTaiXUA4515ovedeQHsH2402h9ueCrfkTTa35HpLd+RNNofbk8rH2402h9u+PN1ijTaiXW2+XWKNNqJdeb7iXU02nWKOfeJdTTadYr//21xsi6ZazAqTGfERLtia0KUPbvizlWZ6zs7S+dMUWzxxSvh0L0zIc9qPZrdUU+B3pkJ8qn7D5ioVUJPxCsiIKyBXq4wIU9CTJpdlULiUDlUT0SpPSEs013zKWZ2mCgDcO9+JSHbdRslEnrQNzlzJDoXE9FZ/goEZgYTA18AAP9/AAD/f/wgBpP6Gf2KLiYWk+Na2/XZXu/+20U48y5IEvqBXq4wml2VQv9/AAD/fwAA23UbJe9+JSH/f////38AAP9/AACZazAq/38AAG1xsi7ZXu/+41rb9f9/////f///T0SpPfMpZnb/fwAA/3////9/////f///zlWZ60xRbPFRT4He/3///2o9mt3/f///mQnyqVVCT8T/f////3////9/////f///D4HZ3iOK49r/f////3///wvWmImvu1XCfaFQz2Siab3/f////3///6m9rztl9gxW093eUwPwZlcloQ8B0LfsBRulIwojusYMI4rj2sWM2sUPgdne7IUuyK2wfSGUwmQiQczdMDnUHS+yrpIOw8SzGDCqZRRqwkMdHK/Fq2Siab3dsLyzfaFQz/9///9llM7V/3///5GOTNFDnZO9spg6u2WUztWRjkzR/38AAP9///+pva87ZfYMVgvWmImvu1XCZtf7j93TK6L/fwAA/38AADCqZRSyrpIOrbB9If9/AACUwmQi/38AAP9/////fwAAG6UjCiWhDwHZOUsM7jH/CYNFfQf/f5nN/3//v/9//7//f/+//39ksoF4g8X/f/+//3XusbNz2bnqYyo4lF3WRJRd1kQm45MxJuOTMRDriDUAAP9/AAD/fwAA/3////9/////f////38Tr///E6////mj////f/mj/38Tr/9/E68oO5Pd1Efp4yg7k92TsdeciLXtlJOx15z/fwAA/3////9/AAD/f////38AAP9/AAD/fwAA/38AAP9/////fwAA/3////9/AAD/f////3////9/////f///86AbLhuuCt/zoBsuG64K3+aXuBCYrGUN5pe4EJisZQ1LeYHogmizBkt5geiCaLMGuJAY6LiQGOhljWbTZY1m0/9//7//f/+//3//v/9//78DNADaAzQA2ig7k90oO5Pdk7HXnOCuPaLgrj2ik7HXnJRd1kSUXdZEAVr8SwFa/EvB3eAuJuOTMSbjkzHB3eAuB7b//xOv//8Htv//E6////9/B7b/fxOv/38Htv9/E68AAP9/AAD/fwAA/38AAP9/////f////3////9/////f/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/ENAFKP///3+cfmMBqaiqronTwCkt044pcXxx/M90MAubemMFY3qcBcdt4TYtXrtX9m9AOsMONKHGGoZQvz7x3z7q8k/qhCMKMaBw7HybB+uIZagS8WhfL/FoHzDUtB8YC6OgD043ptvbc4v6vpCD1AiczsdcpJ7tPLvEvZ7OW6qWc5Xz1W8pELttRBJodGj0MGov6l9lXuUz0Bgoqf+qf/F/DgCvqJ6uf1c/VJLTwinBecD5O3/EAMF/PgCscYQu+mh/RcdhiFGeVYfrNHMl8AhGdewsL2HhDjBryW0LH1+A4EveOjq0GRN4jAwflfHnbKDP1K9oJQrJcgQcKGnwLxqqCRVVkIQHT2As8NBzWvoSkdfddXm57FmE1c7Di2a+458h9wjAObUezQSkdMSKxzrn/lkC035YzMT8QE5pBAQNrPkCLaheBQLO+iaEzkInoP+hf9//HoCr/6x/xH/D/+V/5f+Df4P/bKYiszehjr28pHy2LMVGrerfBEyVt/wXSJJsraGpnKyZ0kcpp9PRKelo6Oh5cXnxI13bIn9cftzydAwL")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_2awyu")
+shadow_mesh = SubResource("ArrayMesh_2rcrt")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_75vg6"]
 radius = 0.25
@@ -75,23 +75,26 @@ FloatingText = ExtResource("6_2x2sf")
 [node name="character-skeleton" parent="." index="0"]
 transform = Transform3D(-0.999753, 0, 0.0222194, 0, 1, 0, -0.0222194, 0, -0.999753, 0, 0, 0)
 
+[node name="root" parent="character-skeleton" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16415e-11, 0, 0.00857987)
+
 [node name="leg-left" parent="character-skeleton/root" index="0"]
-transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, 0.074204, 0.223184, 0)
+transform = Transform3D(0.8584, 0, 0, 0, 0.857533, 0.0385764, 0, -0.0385764, 0.857533, 0.074204, 0.223184, 0)
 
 [node name="leg-right" parent="character-skeleton/root" index="1"]
 transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.858399, -0.074204, 0.223184, 0)
 
 [node name="torso" parent="character-skeleton/root" index="2"]
-transform = Transform3D(1, 0, 1.86264e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.223184, 0)
+transform = Transform3D(1, 3.35167e-11, 1.49087e-09, 3.35167e-11, 0.99899, -0.0449398, -1.49087e-09, 0.0449398, 0.99899, 0, 0.223184, 0)
 
 [node name="arm-left" parent="character-skeleton/root/torso" index="0"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.225, 0.0025)
+transform = Transform3D(0.714145, 0.697672, 0.0570186, -0.699129, 0.714945, 0.00845936, -0.0348634, -0.0459046, 0.998337, 0.15, 0.225, 0.0025)
 
 [node name="arm-right" parent="character-skeleton/root/torso" index="1"]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 0.225, 0.0025)
+transform = Transform3D(0.615298, -0.783631, -0.0856223, 0.786471, 0.602858, 0.134265, -0.0535964, -0.149953, 0.987239, -0.15, 0.225, 0.0025)
 
 [node name="head" parent="character-skeleton/root/torso" index="2"]
-transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0.26, 0)
+transform = Transform3D(1, -3.35167e-11, 1.49087e-09, -3.35167e-11, 0.99899, 0.0449398, -1.49087e-09, -0.0449398, 0.99899, 0, 0.26, 0)
 visible = false
 
 [node name="tomato" type="MeshInstance3D" parent="character-skeleton/root/torso" index="3"]
