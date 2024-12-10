@@ -1,11 +1,8 @@
-extends Node3D
+extends RayCast3D
 
-@onready var ray_cast_3d: RayCast3D = $RayCast3D
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if ray_cast_3d.is_colliding():
-		var obj = ray_cast_3d.get_collider()
+	if is_colliding():
+		var obj = get_collider()
 		if obj.has_method("player"):
 			object_get_hit(obj)
 

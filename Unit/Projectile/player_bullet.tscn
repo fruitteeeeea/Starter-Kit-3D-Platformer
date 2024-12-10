@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://q41jpxmfryp3"]
+
+[ext_resource type="PackedScene" uid="uid://bs1y3y8kpdu1n" path="res://Unit/Projectile/basic_bullet.tscn" id="1_3u4m4"]
+[ext_resource type="PackedScene" uid="uid://dpqho2l136ob1" path="res://move/fire_ball.tscn" id="2_wtr34"]
+
+[node name="PlayerBullet" instance=ExtResource("1_3u4m4")]
+
+[node name="FireBall" parent="Model" index="0" instance=ExtResource("2_wtr34")]

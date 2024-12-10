@@ -7,7 +7,7 @@ var projecttile_arry := [] #子弹生成的时候添加到数组
 
 ##发射子弹 #子弹场景  #生成位置 #子弹方向 #子弹属性
 func spwan_bullet(bullet01 : PackedScene, pos01 : Vector3, direction01 : Vector3, \
-damge01 : float, scale01 : float, speed01 : float):
+damge01 : float = 1.0, scale01 : float = 1.0, speed01 : float = 1.0):
 	var bullet = bullet01.instantiate()
 	
 	bullet.damage = damge01

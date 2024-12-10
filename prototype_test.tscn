@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=44 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
 [ext_resource type="Script" path="res://learnning/camera_3d.gd" id="2_ywrcx"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="34_ubop2"]
 [ext_resource type="PackedScene" uid="uid://tpmr0gct8ek1" path="res://test/VFX/floting_text.tscn" id="34_yvir7"]
 [ext_resource type="PackedScene" uid="uid://bcd5hlwjw6ovp" path="res://test/tempo.tscn" id="35_n65uo"]
+[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://test/StateTest/enemy_state_test_03.tscn" id="37_dypag"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
 render_priority = 0
@@ -472,6 +473,9 @@ test_scene = ExtResource("34_yvir7")
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.9236, 3.05559, -11.7724)
 Camera = NodePath("../View/Camera3D")
+
+[node name="EnemyStateTest03" parent="." instance=ExtResource("37_dypag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2844, 1.95902, -8.32331)
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

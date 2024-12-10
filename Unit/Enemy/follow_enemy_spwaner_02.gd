@@ -17,13 +17,15 @@ class_name EnemySpawner
 @export var spwan_angle : float = randf_range(0.0, TAU) #生成角度 #90度就是载具正前方了
 @export var angle_bais := 0.0 #角度概率
 
+@export var activated := true #是否启用
+
 func _ready() -> void:
 	enemy_spwan_timer.wait_time = wait_time
 	EnemySpwanerServer.spwaner_info[self] = [] #加载敌人队列
 
 
 func _on_enemy_spwan_timer_timeout() -> void:
-	if !LevelTargetServer.current_actived_payloads.size():
+	if !LevelTargetServer.current_actived_payloads.size() or !activated:
 		return 
 		
 	EnemySpwanerServer.activate_spwaner(self)

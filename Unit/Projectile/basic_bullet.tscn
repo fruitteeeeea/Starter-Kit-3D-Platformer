@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs1y3y8kpdu1n"]
+[gd_scene load_steps=6 format=3 uid="uid://bs1y3y8kpdu1n"]
 
 [ext_resource type="Script" path="res://Unit/Projectile/basic_bullet.gd" id="1_x3kqn"]
-[ext_resource type="PackedScene" uid="uid://dpqho2l136ob1" path="res://move/fire_ball.tscn" id="3_1ien4"]
 
 [sub_resource type="Curve" id="Curve_2rrwy"]
 _data = [Vector2(0, 0.953237), 0.0, 1.01701, 0, 0, Vector2(0.364303, 0.776876), 0.0, 0.0, 0, 0, Vector2(1, 0.0751445), 0.0, 0.0, 0, 0]
@@ -27,9 +26,7 @@ volume_curve = SubResource("Curve_2gows")
 speed_damp = 0.2
 
 [node name="Model" type="Node3D" parent="."]
-
-[node name="FireBall" parent="Model" instance=ExtResource("3_1ien4")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0

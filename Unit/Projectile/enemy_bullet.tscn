@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0qbf358p2e1t"]
+
+[ext_resource type="PackedScene" uid="uid://bs1y3y8kpdu1n" path="res://Unit/Projectile/basic_bullet.tscn" id="1_87wvx"]
+[ext_resource type="PackedScene" uid="uid://xua7u36lxw26" path="res://move/fire_ball_02.tscn" id="2_6mvji"]
+[ext_resource type="Script" path="res://test/StateTest/hit_player_ray_cast.gd" id="3_w5lri"]
+
+[node name="EnemyBullet" instance=ExtResource("1_87wvx")]
+collision_layer = 4
+speed_curve = null
+volume_curve = null
+lifespan = 4.0
+
+[node name="FireBall02" parent="Model" index="0" instance=ExtResource("2_6mvji")]
+
+[node name="HitPlayerRayCast" type="RayCast3D" parent="." index="3"]
+transform = Transform3D(-0.3, -4.52987e-08, 1.98007e-15, 0, -1.31134e-08, -0.3, 4.52987e-08, -0.3, 1.31134e-08, 0, 0.000397891, -0.172345)
+script = ExtResource("3_w5lri")

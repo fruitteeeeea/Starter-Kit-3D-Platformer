@@ -26,11 +26,7 @@ var is_hit := false
 
 func _ready() -> void:
 	kockback_force = max_knockback_force
-	#设置属性
-	#model.scale *= volume
-	#var new_radius = normal_radius_scale * volume
-	#collision_shape_3d.shape.radius = new_radius
-	scale *= scale01
+	scale *= scale01 #设置体积
 	
 
 
@@ -41,21 +37,17 @@ func _physics_process(delta: float) -> void:
 	if t > 1.0 && !is_hit: #度过生命周期时间
 		queue_free()
 	
-	speed *= speed_curve.sample(t)
-	volume = volume_curve.sample(t)
+	if speed_curve:
+		speed *= speed_curve.sample(t)
+	if volume_curve:
+		volume = volume_curve.sample(t)
 	
 	rotation.y = atan2(direction.x, direction.z) #旋转
 	velocity = direction * speed
 	scale = Vector3(volume, volume, volume)
-	
-	#speed = lerpf(speed, 0, speed_damp) #平滑减少速度
-	
-	
+
 	#if kockback_force > min_knockback_force:
 		#kockback_force -= knockback_force_reducerate #减少击退力度
-	
-	#if speed < 0.1: #小于某个设定的值 就释放掉
-		#queue_free()
 		
 	move_and_slide()
 

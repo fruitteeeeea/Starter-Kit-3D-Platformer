@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Unit/Weapon/basic_bullet_shooter.gd" id="1_6rus7"]
 [ext_resource type="PackedScene" uid="uid://cgtrpk7koy71t" path="res://test/attack/food model/GLB format/hot-dog-raw.glb" id="1_kn0jf"]
 [ext_resource type="AudioStream" uid="uid://x3l6b80xft2y" path="res://test/SFX/Punch Heavy A.wav" id="2_1vo5c"]
-[ext_resource type="PackedScene" uid="uid://bs1y3y8kpdu1n" path="res://Unit/Projectile/basic_bullet.tscn" id="2_t7f3p"]
+[ext_resource type="PackedScene" uid="uid://q41jpxmfryp3" path="res://Unit/Projectile/player_bullet.tscn" id="2_man45"]
 [ext_resource type="AudioStream" uid="uid://dfxr4isijglmi" path="res://test/SFX/Punch Heavy B.wav" id="3_pdggb"]
 [ext_resource type="AudioStream" uid="uid://1r2ih5v5h5lh" path="res://test/SFX/Punch Heavy C.wav" id="4_sbldi"]
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="7_r3x6b"]
@@ -17,7 +17,7 @@ stream_2/stream = ExtResource("4_sbldi")
 [node name="BasicBulletShooter" type="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -0.8)
 script = ExtResource("1_6rus7")
-Bullet = ExtResource("2_t7f3p")
+Bullet = ExtResource("2_man45")
 weapon_info = {
 "bullet_damage": 1.0,
 "bullet_interval": 0.1,

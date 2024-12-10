@@ -159,8 +159,11 @@ func _on_lifetime_timeout() -> void:
 
 #进入攻击状态
 func _on_attack_state_entered() -> void:
+	animation_player.play("idle") #攻击前摇
+	await get_tree().create_timer(randf_range(.1, .15)).timeout
+	
 	$AlertMarker.show()
-	$EnemyAttack/RayCast3D.enabled = true
+	$EnemyAttack/HitPlayerRayCast.enabled = true
 	animation_player.play("attack-melee-left")
 	await animation_player.animation_finished
 	state_chart.send_event("to_idle")
@@ -175,4 +178,4 @@ func _on_attack_state_physics_processing(delta: float) -> void:
 
 func _on_attack_state_exited() -> void:
 	$AlertMarker.hide()
-	$EnemyAttack/RayCast3D.enabled = false
+	$EnemyAttack/HitPlayerRayCast.enabled = false
