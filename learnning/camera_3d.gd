@@ -28,10 +28,7 @@ func shoot_ray():
 	var raycast_result = space.intersect_ray(ray_query)
 	
 	if !raycast_result.is_empty():
-		#var tree = TREE.instantiate()
-		#tree.position = raycast_result["position"]
-		#get_tree().root.add_child(tree)
-		return raycast_result["position"]
+		return raycast_result["position"] #返回鼠标位置
 
 
 func add_trauma(trauma_amount : float):

@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://o8wwmtumw6sb"]
+
+[ext_resource type="Shader" path="res://move/dummy/dummy.gdshader" id="1_v5hed"]
+[ext_resource type="Texture2D" uid="uid://b5ultiufty6b5" path="res://move/dummy/dummy_diffuse.png" id="2_cdfxw"]
+[ext_resource type="Texture2D" uid="uid://clgfskyt0y8oh" path="res://move/dummy/dummy_normal.png" id="3_fho7i"]
+[ext_resource type="Texture2D" uid="uid://ld512o6s5u6c" path="res://move/dummy/dummy_roughness.png" id="4_871qf"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_v5hed")
+shader_parameter/emission_color = null
+shader_parameter/emission_strength = 1.0
+shader_parameter/emission_blend = 0.0
+shader_parameter/albedo_sampler = ExtResource("2_cdfxw")
+shader_parameter/roughness_sampler = ExtResource("4_871qf")
+shader_parameter/normal_sampler = ExtResource("3_fho7i")

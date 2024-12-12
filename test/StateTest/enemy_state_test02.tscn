@@ -75,9 +75,6 @@ FloatingText = ExtResource("6_2x2sf")
 [node name="character-skeleton" parent="." index="0"]
 transform = Transform3D(-0.999753, 0, 0.0222194, 0, 1, 0, -0.0222194, 0, -0.999753, 0, 0, 0)
 
-[node name="leg-left" parent="character-skeleton/root" index="0"]
-transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, 0.074204, 0.223184, 0)
-
 [node name="leg-right" parent="character-skeleton/root" index="1"]
 transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.858399, -0.074204, 0.223184, 0)
 
