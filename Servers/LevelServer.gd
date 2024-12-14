@@ -25,12 +25,30 @@ var level_information := {
 
 @onready var level_timer: Timer = $LevelTimer
 
-
+@export var level_list := [
+	"res://test/LevelTest/prototype_test.tscn",
+	"res://test/LevelTest/test_01.tscn",
+	"res://test/LevelTest/test_02.tscn", 
+	"res://test/LevelTest/test_03.tscn"
+	
+]
 
 var LevelList := [] #任务列表
 var current_level := Node #当前关卡
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug"):
+		change_scene(level_list.pick_random())
 
+func change_scene(path: String): #专门用于处理游戏场景切换
+	var tree := get_tree()
+	
+	tree.change_scene_to_file(path)
+	await  tree.tree_changed #等待游戏场景切换
+	
+	for node in tree.get_nodes_in_group("entry_points"):
+		tree.current_scene.update_player(node.global_position)
+		break
 
 
 

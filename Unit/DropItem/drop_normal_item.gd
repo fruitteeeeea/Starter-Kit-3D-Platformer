@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		
 		time += delta
 	
-	if is_collectting:
+	if is_collectting && is_instance_valid(target):
 		global_position = global_position.lerp(target.global_position, delta * 10)
 		
 		if global_position.distance_to(target.global_position) <.5:

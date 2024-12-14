@@ -6,7 +6,20 @@ extends Node3D
 @export var world_envi : Environment #世界环境
 @export var level_map : GridMap #关卡地图
 
+
+@onready var entery_point: Marker3D = $EnteryPoint #初始地点
+@onready var basic_player: CharacterBody3D = $"Basic Player"
+
+
 @export var level_info := {
 	"LevelTime" : 0.0,
 	"EnemySpwaner" : [PackedScene],
 }
+
+func _ready() -> void:
+	print(get_tree().current_scene.name) 
+	pass
+
+func update_player(pos: Vector3): #关卡文件会更新玩家节点
+	$"Basic Player".global_position = pos
+	pass

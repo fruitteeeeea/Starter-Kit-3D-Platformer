@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn4k86ii5sdik"]
+[gd_scene load_steps=2 format=3 uid="uid://bn4k86ii5sdik"]
 
 [ext_resource type="Script" path="res://Servers/LevelServer.gd" id="1_ohdl0"]
-[ext_resource type="PackedScene" uid="uid://bh8efddmke1ed" path="res://test/level/basic_level.tscn" id="2_mrwxv"]
 
 [node name="LevelServer" type="Node"]
 script = ExtResource("1_ohdl0")
 
 [node name="LevelTimer" type="Timer" parent="."]
-
-[node name="BasicLevel" parent="." instance=ExtResource("2_mrwxv")]
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

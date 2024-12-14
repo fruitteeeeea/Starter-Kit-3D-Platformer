@@ -1,47 +1,49 @@
-[gd_scene load_steps=41 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=43 format=3 uid="uid://wgb1b26ie4w5"]
 
-[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="2_kimho"]
-[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="2_ywrcx"]
-[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="3_182vw"]
-[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_q7lpw"]
-[ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="5_ad16m"]
-[ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="7_dqga3"]
-[ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="8_bny0y"]
-[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://Unit/Enemy/rigid_enemy.tscn" id="8_k3d8s"]
-[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="9_vokyu"]
-[ext_resource type="Script" path="res://test/test_manager.gd" id="11_en21h"]
-[ext_resource type="PackedScene" uid="uid://b3fibmjnlqia7" path="res://test/enemy/pizza.tscn" id="12_ufw74"]
-[ext_resource type="PackedScene" uid="uid://dornphy2q7xsd" path="res://Unit/Enemy/baisc_enemy_spwaner.tscn" id="13_ufkj2"]
-[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="13_ywdqq"]
-[ext_resource type="Script" path="res://test/level_target_test.gd" id="14_os0rd"]
-[ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://Unit/Payload/move_payload.tscn" id="15_m2k6f"]
-[ext_resource type="PackedScene" uid="uid://cys28ci6xn58s" path="res://test/target/occupy_zone.tscn" id="16_14lsc"]
-[ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="17_jjg2f"]
-[ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="18_a510i"]
-[ext_resource type="PackedScene" uid="uid://di0n76sqbueep" path="res://test/target/target_enemy_spwaner.tscn" id="18_d5vjn"]
-[ext_resource type="PackedScene" uid="uid://bo33wyc3v2qxj" path="res://test/moving_platform.tscn" id="18_dpal6"]
-[ext_resource type="PackedScene" uid="uid://c3ndpg12bjjp3" path="res://test/target/target_enemy.tscn" id="19_2r0lr"]
-[ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://Unit/DropItem/drop_rigid_item.tscn" id="19_ygwm6"]
-[ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="20_gavum"]
-[ext_resource type="Script" path="res://UI/buff_indiactor_test.gd" id="23_hcfg3"]
-[ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="24_i10lm"]
-[ext_resource type="Script" path="res://test/loot_number.gd" id="26_asoyu"]
-[ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://Unit/DropItem/chest.tscn" id="26_iyaov"]
-[ext_resource type="Script" path="res://UI/firerate.gd" id="27_55q85"]
-[ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/spwaner/follow_payload_chest_spwaner.tscn" id="27_emk3l"]
-[ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://Unit/Facility/buff_test_ground_button.tscn" id="28_5bxip"]
-[ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://Unit/Enemy/StateEnemy/enemy_state_test02.tscn" id="28_m5bpb"]
-[ext_resource type="PackedScene" uid="uid://c0183kou80eg8" path="res://Unit/Facility/dialog_test_ground_button.tscn" id="30_irbnc"]
-[ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://Unit/Facility/loot_test_ground_button.tscn" id="31_uxoeo"]
-[ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="34_ubop2"]
-[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://Unit/Enemy/StateEnemy/enemy_state_test_03.tscn" id="37_dypag"]
+[ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_fnjwn"]
+[ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="2_2oxsu"]
+[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="3_5ao1d"]
+[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="4_jwelj"]
+[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="5_yo50f"]
+[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="6_dqxve"]
+[ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="7_ee7h1"]
+[ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="8_xf12e"]
+[ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="9_alc6s"]
+[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://Unit/Enemy/rigid_enemy.tscn" id="10_ebrsn"]
+[ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="11_ctvvs"]
+[ext_resource type="PackedScene" uid="uid://b3fibmjnlqia7" path="res://test/enemy/pizza.tscn" id="12_vdv0t"]
+[ext_resource type="PackedScene" uid="uid://dornphy2q7xsd" path="res://Unit/Enemy/baisc_enemy_spwaner.tscn" id="13_56d2j"]
+[ext_resource type="PackedScene" uid="uid://di0n76sqbueep" path="res://test/target/target_enemy_spwaner.tscn" id="14_dofet"]
+[ext_resource type="PackedScene" uid="uid://c3ndpg12bjjp3" path="res://test/target/target_enemy.tscn" id="15_n8ajf"]
+[ext_resource type="PackedScene" uid="uid://bo33wyc3v2qxj" path="res://test/moving_platform.tscn" id="16_1i6rv"]
+[ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://Unit/DropItem/drop_rigid_item.tscn" id="17_vn4o7"]
+[ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="18_dygxm"]
+[ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="19_qm5n7"]
+[ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://Unit/Payload/move_payload.tscn" id="20_0ufhv"]
+[ext_resource type="PackedScene" uid="uid://cys28ci6xn58s" path="res://test/target/occupy_zone.tscn" id="21_nrsvd"]
+[ext_resource type="Script" path="res://test/test_manager.gd" id="22_wtsrp"]
+[ext_resource type="Script" path="res://test/level_target_test.gd" id="23_cuwl0"]
+[ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="24_dgxbv"]
+[ext_resource type="Script" path="res://UI/buff_indiactor_test.gd" id="25_d005f"]
+[ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="26_0aamg"]
+[ext_resource type="Script" path="res://test/loot_number.gd" id="27_56qht"]
+[ext_resource type="Script" path="res://UI/firerate.gd" id="28_5u48v"]
+[ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/spwaner/follow_payload_chest_spwaner.tscn" id="29_gwc2c"]
+[ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://Unit/DropItem/chest.tscn" id="30_1uns8"]
+[ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://Unit/Enemy/StateEnemy/enemy_state_test02.tscn" id="31_u7hcl"]
+[ext_resource type="PackedScene" uid="uid://c0183kou80eg8" path="res://Unit/Facility/dialog_test_ground_button.tscn" id="32_3g0vm"]
+[ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://Unit/Facility/buff_test_ground_button.tscn" id="33_toiyo"]
+[ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://Unit/Facility/loot_test_ground_button.tscn" id="34_mlr3e"]
+[ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="35_bkhkh"]
+[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="36_yttye"]
+[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://Unit/Enemy/StateEnemy/enemy_state_test_03.tscn" id="37_4361j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
 render_priority = 0
-shader = ExtResource("7_dqga3")
+shader = ExtResource("7_ee7h1")
 shader_parameter/albedo_color = Color(0.2, 0.2, 0.2, 1)
 shader_parameter/uv_scale = 40.0
-shader_parameter/checkerboard_sampler = ExtResource("8_bny0y")
+shader_parameter/checkerboard_sampler = ExtResource("8_xf12e")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_weu8b"]
 size = Vector2(80, 80)
@@ -58,17 +60,21 @@ point_count = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4rlnw"]
 render_priority = 0
-shader = ExtResource("17_jjg2f")
+shader = ExtResource("18_dygxm")
 shader_parameter/ColorParameter = Color(1, 0.827451, 0.388235, 1)
 shader_parameter/Vector2Parameter = Vector2(-0.5, 0)
 shader_parameter/FloatParameter = 0.05
-shader_parameter/main_texture = ExtResource("18_a510i")
+shader_parameter/main_texture = ExtResource("19_qm5n7")
 
 [node name="PrototypeTest" type="Node3D"]
+script = ExtResource("1_fnjwn")
+
+[node name="EnteryPoint" parent="." instance=ExtResource("2_2oxsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49353, 0.594098, -13.4946)
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10846, 1.48326, 1.26512)
-script = ExtResource("2_kimho")
+script = ExtResource("3_5ao1d")
 target = NodePath("../Basic Player")
 
 [node name="Camera3D" type="Camera3D" parent="View"]
@@ -76,15 +82,15 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 projection = 1
 size = 12.0
 far = 40.0
-script = ExtResource("2_ywrcx")
+script = ExtResource("4_jwelj")
 
 [node name="truma_component" type="Node" parent="View/Camera3D"]
-script = ExtResource("3_182vw")
+script = ExtResource("5_yo50f")
 max_x = 2.0
 max_y = 2.0
 max_z = 2.0
 max_trauma = 0.4
-noise = ExtResource("4_q7lpw")
+noise = ExtResource("6_dqxve")
 
 [node name="World" type="Node3D" parent="."]
 
@@ -105,37 +111,37 @@ metadata/_edit_lock_ = true
 shape = SubResource("ConcavePolygonShape3D_54rqv")
 
 [node name="Environment" type="WorldEnvironment" parent="World"]
-environment = ExtResource("5_ad16m")
+environment = ExtResource("9_alc6s")
 
 [node name="RigidEnemyTest" type="Node3D" parent="."]
 
-[node name="RigidEnemy" parent="RigidEnemyTest" instance=ExtResource("8_k3d8s")]
+[node name="RigidEnemy" parent="RigidEnemyTest" instance=ExtResource("10_ebrsn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8457, 1.25117, 3.2674)
 
-[node name="Turkey" parent="RigidEnemyTest" instance=ExtResource("9_vokyu")]
+[node name="Turkey" parent="RigidEnemyTest" instance=ExtResource("11_ctvvs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28586, 0.988752, 3.435)
 
-[node name="Pizza" parent="RigidEnemyTest" instance=ExtResource("12_ufw74")]
+[node name="Pizza" parent="RigidEnemyTest" instance=ExtResource("12_vdv0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11019, 0.832638, 6.84001)
 
-[node name="BaiscEnemySpwaner" parent="RigidEnemyTest" instance=ExtResource("13_ufkj2")]
+[node name="BaiscEnemySpwaner" parent="RigidEnemyTest" instance=ExtResource("13_56d2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8948, 2.03919, -4.84904)
 
 [node name="TargetEnemySpwanerTest" type="Node3D" parent="."]
 
-[node name="TargetEnemySpwaner" parent="TargetEnemySpwanerTest" instance=ExtResource("18_d5vjn")]
+[node name="TargetEnemySpwaner" parent="TargetEnemySpwanerTest" instance=ExtResource("14_dofet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86424, 0.630728, 5.00555)
 
-[node name="Target_Enemy" parent="TargetEnemySpwanerTest" instance=ExtResource("19_2r0lr")]
+[node name="Target_Enemy" parent="TargetEnemySpwanerTest" instance=ExtResource("15_n8ajf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63193, 0.630728, 4.98824)
 
 [node name="PathTest" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42334, 0)
 
-[node name="MovingPlatform" parent="PathTest" instance=ExtResource("18_dpal6")]
+[node name="MovingPlatform" parent="PathTest" instance=ExtResource("16_1i6rv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744117, 0.987252, -3.05875)
 
-[node name="DropRigidItem" parent="PathTest/MovingPlatform" instance=ExtResource("19_ygwm6")]
+[node name="DropRigidItem" parent="PathTest/MovingPlatform" instance=ExtResource("17_vn4o7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39317, 0.456356, 5.90125)
 
 [node name="Path3D" type="Path3D" parent="PathTest"]
@@ -156,12 +162,12 @@ path_continuous_u = true
 path_u_distance = 0.69
 path_joined = false
 
-[node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("15_m2k6f")]
+[node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("20_0ufhv")]
 progress = 1.0
 
 [node name="OccupyZoneTest" type="Node3D" parent="."]
 
-[node name="OccupyZone" parent="OccupyZoneTest" instance=ExtResource("16_14lsc")]
+[node name="OccupyZone" parent="OccupyZoneTest" instance=ExtResource("21_nrsvd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999659, 0.564809, 0.494062)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -175,7 +181,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("11_en21h")
+script = ExtResource("22_wtsrp")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TestManager"]
 layout_mode = 1
@@ -264,7 +270,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
-script = ExtResource("14_os0rd")
+script = ExtResource("23_cuwl0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelTargetTest"]
 layout_mode = 1
@@ -319,7 +325,7 @@ text = "目标进度"
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="PayloadProgressUI" parent="CanvasLayer" instance=ExtResource("20_gavum")]
+[node name="PayloadProgressUI" parent="CanvasLayer" instance=ExtResource("24_dgxbv")]
 offset_left = 696.0
 offset_top = 824.0
 offset_right = 696.0
@@ -332,8 +338,8 @@ anchor_right = 1.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 mouse_filter = 2
-script = ExtResource("23_hcfg3")
-BuffIcon = ExtResource("24_i10lm")
+script = ExtResource("25_d005f")
+BuffIcon = ExtResource("26_0aamg")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BuffIndiactorTest"]
 layout_mode = 1
@@ -360,7 +366,7 @@ offset_left = 912.0
 offset_top = 856.0
 offset_right = 1036.0
 offset_bottom = 889.0
-script = ExtResource("26_asoyu")
+script = ExtResource("27_56qht")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LootNumber"]
 layout_mode = 2
@@ -411,7 +417,7 @@ theme_override_constants/margin_bottom = 5
 [node name="Firerate" type="HBoxContainer" parent="CanvasLayer/WeaponStatus/HBoxContainer/WeaponStatus/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
-script = ExtResource("27_55q85")
+script = ExtResource("28_5u48v")
 
 [node name="Label" type="Label" parent="CanvasLayer/WeaponStatus/HBoxContainer/WeaponStatus/MarginContainer/Firerate"]
 layout_mode = 2
@@ -424,33 +430,33 @@ layout_mode = 2
 max_value = 1.0
 value = 1.0
 
-[node name="follow_payload_chest_spwaner" parent="." instance=ExtResource("27_emk3l")]
+[node name="follow_payload_chest_spwaner" parent="." instance=ExtResource("29_gwc2c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-Chest = ExtResource("26_iyaov")
+Chest = ExtResource("30_1uns8")
 
-[node name="EnemyStateTest02" parent="." instance=ExtResource("28_m5bpb")]
+[node name="EnemyStateTest02" parent="." instance=ExtResource("31_u7hcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4835, 1.54611, -5.52192)
 
-[node name="DialogTestGroundButton" parent="." instance=ExtResource("30_irbnc")]
+[node name="DialogTestGroundButton" parent="." instance=ExtResource("32_3g0vm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05232, 0.525106, 10.9371)
 
-[node name="BuffTestGroundButton" parent="." instance=ExtResource("28_5bxip")]
+[node name="BuffTestGroundButton" parent="." instance=ExtResource("33_toiyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33466, 0.525106, 9.49709)
 
-[node name="LootTestGroundButton" parent="." instance=ExtResource("31_uxoeo")]
+[node name="LootTestGroundButton" parent="." instance=ExtResource("34_mlr3e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45205, 0.525106, 7.07111)
 
-[node name="FollowEnemySpwaner02" parent="." instance=ExtResource("34_ubop2")]
+[node name="FollowEnemySpwaner02" parent="." instance=ExtResource("35_bkhkh")]
 
-[node name="FollowEnemySpwaner03" parent="." instance=ExtResource("34_ubop2")]
+[node name="FollowEnemySpwaner03" parent="." instance=ExtResource("35_bkhkh")]
 
-[node name="FollowEnemySpwaner04" parent="." instance=ExtResource("34_ubop2")]
+[node name="FollowEnemySpwaner04" parent="." instance=ExtResource("35_bkhkh")]
 
-[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
+[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("36_yttye")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.9236, 3.05559, -11.7724)
 Camera = NodePath("../View/Camera3D")
 
-[node name="EnemyStateTest03" parent="." instance=ExtResource("37_dypag")]
+[node name="EnemyStateTest03" parent="." instance=ExtResource("37_4361j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2844, 1.95902, -8.32331)
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]

@@ -41,22 +41,22 @@ func _ready() -> void:
 	
 	WeaponServers.Player = self
 	
-	camera = get_viewport().get_camera_3d()
-	if activate_followbot: #如果需要添加无人机
-		add_bot()
+	Camera = get_viewport().get_camera_3d()
+	#if activate_followbot: #如果需要添加无人机
+		#add_bot()
 
 func player():
 	pass
 
 #添加无人机
-func add_bot():
-	await get_tree().create_timer(.5).timeout
-	if FollowBot && follow_point:
-		var follow_bot = FollowBot.instantiate()
-		get_tree().root.add_child(follow_bot)
-		follow_bot.position = follow_point.global_position
-		follow_bot.player = self
-		follow_bot.follow_point  = follow_point #赋予跟踪marker3d
+#func add_bot():
+	#await get_tree().create_timer(.5).timeout
+	#if FollowBot && follow_point:
+		#var follow_bot = FollowBot.instantiate()
+		#get_tree().root.add_child(follow_bot)
+		#follow_bot.position = follow_point.global_position
+		#follow_bot.player = self
+		#follow_bot.follow_point  = follow_point #赋予跟踪marker3d
 
 
 func _physics_process(delta):
@@ -118,7 +118,7 @@ func handle_effects(delta):
 		if speed_factor > 0.05:
 			if animation.current_animation != "walk":
 				animation.play("walk", 0.1)
-				camera.do_zoom(camera.run_zoom, camera.run_tween_time)
+				#camera.do_zoom(camera.run_zoom, camera.run_tween_time)
 
 			if speed_factor > 0.3:
 				sound_footsteps.stream_paused = false
@@ -128,7 +128,7 @@ func handle_effects(delta):
 				particles_trail.emitting = true
 
 		elif animation.current_animation != "idle":
-			camera.do_zoom(camera.defult_zoom, camera.defult_tween_time)
+			#camera.do_zoom(camera.defult_zoom, camera.defult_tween_time)
 			animation.play("idle", 0.1)
 
 	elif animation.current_animation != "jump":
@@ -145,7 +145,8 @@ func handle_controls(delta):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 
-	input = input.rotated(Vector3.UP, Camera.rotation.y)
+	if Camera: #指定了相机才旋转
+		input = input.rotated(Vector3.UP, Camera.rotation.y)
 
 	if input.length() > 1:
 		input = input.normalized()

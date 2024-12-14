@@ -1,0 +1,111 @@
+[gd_scene load_steps=19 format=3 uid="uid://bh8efddmke1ed"]
+
+[ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_rbnmc"]
+[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_7unuy"]
+[ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="3_wnns8"]
+[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="4_uxkq7"]
+[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="5_trx5n"]
+[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="6_ksera"]
+[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="7_2yb3i"]
+[ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="8_haxp0"]
+[ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="9_i8vv1"]
+[ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="10_hqei4"]
+[ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="11_ifyp2"]
+[ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="12_q0odw"]
+[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="14_huurl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbwaa"]
+render_priority = 0
+shader = ExtResource("8_haxp0")
+shader_parameter/albedo_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/uv_scale = 20.0
+shader_parameter/checkerboard_sampler = ExtResource("9_i8vv1")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r3b2b"]
+size = Vector2(40, 40)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_78sra"]
+data = PackedVector3Array(40, 0, 40, -40, 0, 40, 40, 0, -40, -40, 0, 40, -40, 0, -40, 40, 0, -40)
+
+[sub_resource type="Curve3D" id="Curve3D_clhnh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10, 0, -10, 0, 0, 0, 0, 0, 0, 10, 0, -10, 0, 0, 0, 0, 0, 0, 10, 0, 11, 0, 0, 0, 0, 0, 0, -10, 0, 10, 0, 0, 0, 0, 0, 0, -10, 0, -10),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppvc0"]
+render_priority = 0
+shader = ExtResource("11_ifyp2")
+shader_parameter/ColorParameter = Color(1, 0.827451, 0.388235, 1)
+shader_parameter/Vector2Parameter = Vector2(-0.5, 0)
+shader_parameter/FloatParameter = 0.05
+shader_parameter/main_texture = ExtResource("12_q0odw")
+
+[node name="BasicLevel" type="Node3D"]
+script = ExtResource("1_rbnmc")
+world_envi = ExtResource("2_7unuy")
+level_info = {}
+
+[node name="EnteryPoint" parent="." instance=ExtResource("3_wnns8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181, 0)
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.12, 0)
+script = ExtResource("4_uxkq7")
+target = NodePath("../Basic Player")
+
+[node name="Camera3D" type="Camera3D" parent="View"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, -4.5292, 8.51674, 3.69911)
+projection = 1
+size = 12.0
+far = 40.0
+script = ExtResource("5_trx5n")
+
+[node name="truma_component" type="Node" parent="View/Camera3D"]
+script = ExtResource("6_ksera")
+max_x = 2.0
+max_y = 2.0
+max_z = 2.0
+max_trauma = 0.4
+noise = ExtResource("7_2yb3i")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Sun" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.91212, 0.355004, -0.204961, 0, 0.5, 0.866025, 0.409923, -0.789919, 0.45606, -23.5194, 9.37435, -3.25129)
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+material_override = SubResource("ShaderMaterial_qbwaa")
+mesh = SubResource("PlaneMesh_r3b2b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_78sra")
+
+[node name="Environment" type="WorldEnvironment" parent="World"]
+environment = ExtResource("10_hqei4")
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+curve = SubResource("Curve3D_clhnh")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+material_override = SubResource("ShaderMaterial_ppvc0")
+polygon = PackedVector2Array(-0.1, -0.005, -0.1, 0.005, 0.1, 0.005, 0.1, -0.005)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 0.69
+path_joined = false
+
+[node name="Basic Player" parent="." instance=ExtResource("14_huurl")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.51221, 0)

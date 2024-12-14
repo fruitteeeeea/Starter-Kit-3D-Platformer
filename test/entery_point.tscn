@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=4 uid="uid://cq1r758b0q8ui"]
+
+[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_o7rjv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7onx7"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("1_o7rjv")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2y52e"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"format": 34896613377,
+"index_count": 66,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIAAwAEAAIABQAEAAMABQAGAAQABwAFAAMACAAHAAMAAwAJAAgABQAKAAYACgAFAAsACgAMAAYADAANAAYACwAOAAoACwAPAA4AEgAQABEAEAATABEAEgARABQAFQARABMAFAAWABIAFQATABcAFgAVABcAFwASABYA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zMwAADIzAADMzAAA81EAAK6vAAAyMwAA1p0AAOiAAAD/fwAA4mIAAP9/AACRngAAUFAAADIzAAA6rgAAzMwAAMzMAADMzAAAzMwAAN2vAAAoYgAA6IAAAMRRAADMzAAAMjMAAPNRAAAyMwAAMjMAADIzAADdrwAAMjMAAMzMAACZGQAAmRkAAAAAAAAAAAAAZeYAAJkZAACZGQAAZeYAAP//AAAAAAAAAAAAAP//AAD//wAA//8AAGXmAABl5gAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7ys0y"]
+resource_name = "indicator-special-cross_indicator-special-cross"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray("/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f/0f/n/9H/5//R/+f"),
+"format": 34896613399,
+"index_count": 66,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIAAwAEAAIABQAEAAMABQAGAAQABwAFAAMACAAHAAMAAwAJAAgABQAKAAYACgAFAAsACgAMAAYADAANAAYACwAOAAoACwAPAA4AEgAQABEAEAATABEAEgARABQAFQARABMAFAAWABIAFQATABcAFgAVABcAFwASABYA"),
+"material": SubResource("StandardMaterial3D_7onx7"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("zMwAADIz///MzAAA81H//66vAAAyM///1p0AAOiA////fwAA4mL///9/AACRnv//UFAAADIz//86rgAAzMz//8zMAADMzP//zMwAAN2v//8oYgAA6ID//8RRAADMzP//MjMAAPNR//8yMwAAMjP//zIzAADdr///MjMAAMzM//+ZGQAAmRn//wAAAAAAAP//ZeYAAJkZ//+ZGQAAZeb/////AAAAAP//AAAAAP///////wAA/////2XmAABl5v///3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2y52e")
+
+[node name="EnteryPoint" type="Marker3D" groups=["entry_points"]]
+
+[node name="indicator-special-cross" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_7ys0y")
+skeleton = NodePath("")
