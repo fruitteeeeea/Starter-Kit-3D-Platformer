@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwsn1pbi3p8a1"]
 
 [ext_resource type="Script" path="res://Unit/spwaner/follow_payload_chest_spwaner.gd" id="1_gqevf"]
-[ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://test/chest.tscn" id="2_b0p8k"]
+[ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://Unit/DropItem/chest.tscn" id="2_b0p8k"]
 
 [node name="follow_payload_chest_spwaner" type="Node3D"]
 script = ExtResource("1_gqevf")

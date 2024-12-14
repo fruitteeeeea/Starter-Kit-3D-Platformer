@@ -14,6 +14,7 @@ var current_Bufficon : Control #当前Buff栏位
 @onready var loot_panel_pos: Control = $LootPanelPos
 var current_LootUI : Control #当前的战利品选择UI
 
+@onready var level_massage: Control = $LevelMassage #关卡信息UI
 
 func add_central_pos_panel(panel01 : PackedScene):
 	var panel = panel01.instantiate() #生成UI节点

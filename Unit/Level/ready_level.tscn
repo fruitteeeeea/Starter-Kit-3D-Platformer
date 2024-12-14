@@ -2,14 +2,14 @@
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_qmp8d"]
 [ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="2_flxed"]
-[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://test/drop item/basic_ground_button.tscn" id="3_s7eay"]
+[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="3_s7eay"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="4_5shkc"]
 [ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="4_6rtxr"]
 [ext_resource type="Script" path="res://Unit/Level/change_weapon_layout.gd" id="4_ihqmw"]
 [ext_resource type="PackedScene" uid="uid://cqnnjulwhqvee" path="res://UI/ready_to_start.tscn" id="5_cgh0a"]
-[ext_resource type="Script" path="res://learnning/view.gd" id="5_xk4p2"]
-[ext_resource type="Script" path="res://learnning/camera_3d.gd" id="6_iaxpq"]
-[ext_resource type="Script" path="res://learnning/truma_component.gd" id="7_nglqw"]
+[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="5_xk4p2"]
+[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="6_iaxpq"]
+[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="7_nglqw"]
 [ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="8_57f2j"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="10_ii7ui"]
 

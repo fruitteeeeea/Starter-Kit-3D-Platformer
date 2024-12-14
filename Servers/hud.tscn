@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bslygqfdfikr"]
+[gd_scene load_steps=7 format=3 uid="uid://bslygqfdfikr"]
 
 [ext_resource type="Script" path="res://Servers/hud.gd" id="1_cbi3n"]
 [ext_resource type="Script" path="res://UI/massage.gd" id="2_1t4ei"]
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="2_j0p27"]
+[ext_resource type="Script" path="res://Servers/level_massage.gd" id="2_lqq3i"]
 [ext_resource type="PackedScene" uid="uid://c6f40e58mcty7" path="res://UI/gameplay_option.tscn" id="3_kiah5"]
 [ext_resource type="Script" path="res://UI/transition_screen.gd" id="4_jpnhp"]
 
@@ -40,6 +41,47 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelMassage" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_lqq3i")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelMassage"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelMassage/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelMassage/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="VBoxContainer" parent="LevelMassage/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Massage" type="Label" parent="LevelMassage/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "关卡开始"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="LevelMassage/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "在规定时间内尽可能多完成目标"
+horizontal_alignment = 1
 
 [node name="Massage" type="Control" parent="."]
 visible = false

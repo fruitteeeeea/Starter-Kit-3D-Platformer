@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://vtc1gx78xl2m" path="res://test/enemy/character-ghost.glb" id="1_ksqmb"]
 [ext_resource type="Script" path="res://Unit/Enemy/enemy_ghost.gd" id="2_a5scm"]
-[ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/attack/components/health_component.tscn" id="3_xrpy0"]
+[ext_resource type="PackedScene" uid="uid://b4upnpxawoc68" path="res://test/player/health_component.tscn" id="3_xrpy0"]
 [ext_resource type="Script" path="res://test/enemy/damage_number_spawn_point.gd" id="4_5pmsp"]
 [ext_resource type="PackedScene" uid="uid://cxgrdxibbb8wp" path="res://test/enemy/damage_number.tscn" id="5_gambk"]
 [ext_resource type="Script" path="res://Unit/DropItem/drop_item_point.gd" id="6_tdq21"]

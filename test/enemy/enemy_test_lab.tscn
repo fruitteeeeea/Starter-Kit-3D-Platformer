@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="3_20q16"]
 [ext_resource type="Script" path="res://test/enemy/shootray_camaera.gd" id="4_fwn7j"]
 [ext_resource type="PackedScene" uid="uid://djiggioyplryj" path="res://test/dummy.tscn" id="4_nc6aq"]
-[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://test/StateTest/enemy_state_test_03.tscn" id="6_1kidq"]
+[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://Unit/Enemy/StateEnemy/enemy_state_test_03.tscn" id="6_1kidq"]
 [ext_resource type="PackedScene" uid="uid://nexnmaly82uy" path="res://test/Beehave/enemy_beehave_test_00.tscn" id="6_bss1m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xcgh0"]

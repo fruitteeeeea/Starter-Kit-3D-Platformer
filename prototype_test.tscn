@@ -1,8 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=41 format=3 uid="uid://wgb1b26ie4w5"]
 
-[ext_resource type="Script" path="res://learnning/view.gd" id="2_kimho"]
-[ext_resource type="Script" path="res://learnning/camera_3d.gd" id="2_ywrcx"]
-[ext_resource type="Script" path="res://learnning/truma_component.gd" id="3_182vw"]
+[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="2_kimho"]
+[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="2_ywrcx"]
+[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="3_182vw"]
 [ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_q7lpw"]
 [ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="5_ad16m"]
 [ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="7_dqga3"]
@@ -21,21 +21,20 @@
 [ext_resource type="PackedScene" uid="uid://di0n76sqbueep" path="res://test/target/target_enemy_spwaner.tscn" id="18_d5vjn"]
 [ext_resource type="PackedScene" uid="uid://bo33wyc3v2qxj" path="res://test/moving_platform.tscn" id="18_dpal6"]
 [ext_resource type="PackedScene" uid="uid://c3ndpg12bjjp3" path="res://test/target/target_enemy.tscn" id="19_2r0lr"]
-[ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://test/drop_rigid_item.tscn" id="19_ygwm6"]
+[ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://Unit/DropItem/drop_rigid_item.tscn" id="19_ygwm6"]
 [ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="20_gavum"]
 [ext_resource type="Script" path="res://UI/buff_indiactor_test.gd" id="23_hcfg3"]
 [ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="24_i10lm"]
 [ext_resource type="Script" path="res://test/loot_number.gd" id="26_asoyu"]
-[ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://test/chest.tscn" id="26_iyaov"]
-[ext_resource type="Script" path="res://firerate.gd" id="27_55q85"]
+[ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://Unit/DropItem/chest.tscn" id="26_iyaov"]
+[ext_resource type="Script" path="res://UI/firerate.gd" id="27_55q85"]
 [ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/spwaner/follow_payload_chest_spwaner.tscn" id="27_emk3l"]
-[ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://test/drop item/buff_test_ground_button.tscn" id="28_5bxip"]
-[ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://test/StateTest/enemy_state_test02.tscn" id="28_m5bpb"]
-[ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://test/drop item/loot_test_ground_button.tscn" id="31_uxoeo"]
+[ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://Unit/Facility/buff_test_ground_button.tscn" id="28_5bxip"]
+[ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://Unit/Enemy/StateEnemy/enemy_state_test02.tscn" id="28_m5bpb"]
+[ext_resource type="PackedScene" uid="uid://c0183kou80eg8" path="res://Unit/Facility/dialog_test_ground_button.tscn" id="30_irbnc"]
+[ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://Unit/Facility/loot_test_ground_button.tscn" id="31_uxoeo"]
 [ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="34_ubop2"]
-[ext_resource type="PackedScene" uid="uid://tpmr0gct8ek1" path="res://test/VFX/floting_text.tscn" id="34_yvir7"]
-[ext_resource type="PackedScene" uid="uid://bcd5hlwjw6ovp" path="res://test/tempo.tscn" id="35_n65uo"]
-[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://test/StateTest/enemy_state_test_03.tscn" id="37_dypag"]
+[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://Unit/Enemy/StateEnemy/enemy_state_test_03.tscn" id="37_dypag"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
 render_priority = 0
@@ -50,9 +49,9 @@ size = Vector2(80, 80)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_54rqv"]
 data = PackedVector3Array(40, 0, 40, -40, 0, 40, 40, 0, -40, -40, 0, 40, -40, 0, -40, 40, 0, -40)
 
-[sub_resource type="Curve3D" id="Curve3D_6lrnb"]
+[sub_resource type="Curve3D" id="Curve3D_5k2fc"]
 _data = {
-"points": PackedVector3Array(-6.00272, 1.04904e-05, 8.93376, 6.00272, -1.04904e-05, -8.93376, -19.2978, -0.42334, -12.0656, -7.93545, -1.04904e-05, -6.07891, 7.93545, 1.04904e-05, 6.07891, 17.3644, -0.42334, -12.3115, 6.267, -1.04904e-05, -5.0656, -6.267, 1.04904e-05, 5.0656, 18.4452, -0.42334, 14.0756, 7.76751, -1.04904e-05, 8.67149, -7.76751, 1.04904e-05, -8.67149, -19.5411, -0.42334, 14.9655, 0, 0, 0, 0, 0, 0, -19.2978, -0.42334, -12.0656),
+"points": PackedVector3Array(-12.3535, -4.24683e-05, 9.74472, 12, 0, -12, -16, -0.423, -16, -5.31032, 4.24683e-05, -5.86281, 5.31032, -4.24683e-05, 5.86281, 16, -0.423, -16, 5.78316, 4.24683e-05, -7.39783, -5.78316, -4.24683e-05, 7.39783, 16, -0.423, 26, 5.70875, 4.24683e-05, 7.13314, -5.70875, -4.24683e-05, -7.13314, -16, -0.423, 26, -5.97928, 4.24683e-05, 5.81132, 5.97928, -4.24683e-05, -5.81132, -16, -0.423, -16),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -139,11 +138,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744117, 0.987252, -3.05875
 [node name="DropRigidItem" parent="PathTest/MovingPlatform" instance=ExtResource("19_ygwm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39317, 0.456356, 5.90125)
 
-[node name="Path3D2" type="Path3D" parent="PathTest"]
+[node name="Path3D" type="Path3D" parent="PathTest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.720931, 0)
-curve = SubResource("Curve3D_6lrnb")
+curve = SubResource("Curve3D_5k2fc")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="PathTest/Path3D2"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="PathTest/Path3D"]
 material_override = SubResource("ShaderMaterial_4rlnw")
 polygon = PackedVector2Array(-0.1, -0.005, -0.1, 0.005, 0.1, 0.005, 0.1, -0.005)
 mode = 2
@@ -157,7 +156,7 @@ path_continuous_u = true
 path_u_distance = 0.69
 path_joined = false
 
-[node name="MovePayload" parent="PathTest/Path3D2" instance=ExtResource("15_m2k6f")]
+[node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("15_m2k6f")]
 progress = 1.0
 
 [node name="OccupyZoneTest" type="Node3D" parent="."]
@@ -328,11 +327,10 @@ offset_bottom = 824.0
 
 [node name="BuffIndiactorTest" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+size_flags_horizontal = 0
 mouse_filter = 2
 script = ExtResource("23_hcfg3")
 BuffIcon = ExtResource("24_i10lm")
@@ -433,17 +431,20 @@ Chest = ExtResource("26_iyaov")
 [node name="EnemyStateTest02" parent="." instance=ExtResource("28_m5bpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4835, 1.54611, -5.52192)
 
-[node name="BasicGroundButton" parent="." instance=ExtResource("28_5bxip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29194, 0.479797, 8.82824)
+[node name="DialogTestGroundButton" parent="." instance=ExtResource("30_irbnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05232, 0.525106, 10.9371)
+
+[node name="BuffTestGroundButton" parent="." instance=ExtResource("28_5bxip")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33466, 0.525106, 9.49709)
 
 [node name="LootTestGroundButton" parent="." instance=ExtResource("31_uxoeo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45205, 1.3885, 7.07111)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45205, 0.525106, 7.07111)
 
 [node name="FollowEnemySpwaner02" parent="." instance=ExtResource("34_ubop2")]
 
-[node name="tempo" parent="." instance=ExtResource("35_n65uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7139, 0.936073, 5.26171)
-test_scene = ExtResource("34_yvir7")
+[node name="FollowEnemySpwaner03" parent="." instance=ExtResource("34_ubop2")]
+
+[node name="FollowEnemySpwaner04" parent="." instance=ExtResource("34_ubop2")]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywdqq")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.9236, 3.05559, -11.7724)

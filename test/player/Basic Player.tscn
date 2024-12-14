@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dsng3qsq77tne" path="res://UI/cross_small.png" id="3_grx73"]
 [ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="4_0se0j"]
 [ext_resource type="PackedScene" uid="uid://b7bv50a2vmfh6" path="res://Unit/Weapon/BulletShooter/shotgun.tscn" id="8_83fks"]
-[ext_resource type="Texture2D" uid="uid://b6g6xonw5fdb7" path="res://test/navigation_n.svg" id="9_gwjtp"]
+[ext_resource type="Texture2D" uid="uid://b6g6xonw5fdb7" path="res://sprites/navigation_n.svg" id="9_gwjtp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pdyd2"]
 radius = 0.3

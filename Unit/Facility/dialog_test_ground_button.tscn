@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0183kou80eg8"]
+
+[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="1_w51ed"]
+[ext_resource type="Script" path="res://test/drop item/start_talk.gd" id="2_k6xv1"]
+
+[node name="DialogTestGroundButton" instance=ExtResource("1_w51ed")]
+
+[node name="StartTalk" type="Node" parent="Method" index="0"]
+script = ExtResource("2_k6xv1")

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="1_11f7d"]
 [ext_resource type="Script" path="res://UI/loot_option_pannel.gd" id="2_i5pl6"]
 [ext_resource type="Texture2D" uid="uid://ch5n8djbgiul5" path="res://icon.svg" id="2_vwehu"]
-[ext_resource type="LabelSettings" uid="uid://cg386lfs8ns0o" path="res://test/rouge like framework/label_font.tres" id="3_8chid"]
+[ext_resource type="LabelSettings" uid="uid://cg386lfs8ns0o" path="res://test/Abandon/rouge like framework/label_font.tres" id="3_8chid"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_025lq"]
 texture = ExtResource("1_11f7d")

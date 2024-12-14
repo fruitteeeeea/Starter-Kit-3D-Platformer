@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cthj57j0hyu7b" path="res://Unit/DropItem/payload_rigids_orange.tscn" id="7_h1jpa"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_7k04d"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_nrg2q"]
-[ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://test/drop_rigid_item.tscn" id="11_2rh5g"]
+[ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://Unit/DropItem/drop_rigid_item.tscn" id="11_2rh5g"]
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="11_kdktq"]
 [ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://Unit/Payload/payload arms/payload_arms.tscn" id="16_426xa"]
 

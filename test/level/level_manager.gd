@@ -14,14 +14,6 @@ var level_pos_v : Vector2
 
 @export var playBGM := false
 
-#枚举游戏阶段a
-enum Phase {
-	SHOPPING,
-	COUNTDOWN,
-	BATTLE,
-	REWARD
-}
-
 #游戏阶段应该是：购物-倒计时-战斗-奖励 这样的循环
 
 @export var shopping_time := INF #购物时间无限 只有点了下一步才能接着继续

@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=3 uid="uid://uutrneo3y8"]
+
+[ext_resource type="PackedScene" uid="uid://dusiu08hxrxug" path="res://Unit/VisualEffect/hurt_particle_01.tscn" id="1_m1d1g"]
+[ext_resource type="Shader" path="res://move/fireball_particles.gdshader" id="2_ds2u5"]
+[ext_resource type="Texture2D" uid="uid://dry8481qydwcp" path="res://move/gradient_texture_1d.tres" id="3_sceh0"]
+[ext_resource type="Texture2D" uid="uid://q2y3kscm0kmv" path="res://move/voronoi_noise_texture_2d.tres" id="4_gi1ls"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8skwn"]
+render_priority = 0
+shader = ExtResource("2_ds2u5")
+shader_parameter/uv_scale = 0.5
+shader_parameter/voronoi_sampler = ExtResource("4_gi1ls")
+shader_parameter/gradient_sampler = ExtResource("3_sceh0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ugjyn"]
+
+[node name="HurtParticle02" instance=ExtResource("1_m1d1g")]
+material_override = SubResource("ShaderMaterial_8skwn")
+lifetime = 0.4
+draw_pass_1 = SubResource("QuadMesh_ugjyn")

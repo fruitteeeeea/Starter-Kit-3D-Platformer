@@ -189,4 +189,5 @@ func _on_complete_state_entered() -> void:
 	payload_complete.emit(self) #车子到达终点 发出信号
 	$AnimationPlayer.play("complete")
 	await $AnimationPlayer.animation_finished
+	Hud.level_massage.show_massage("已完成载具运送", "前往下一个目标或离开关卡")
 	queue_free()

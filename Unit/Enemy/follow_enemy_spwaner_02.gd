@@ -29,3 +29,4 @@ func _on_enemy_spwan_timer_timeout() -> void:
 		return 
 		
 	EnemySpwanerServer.activate_spwaner(self)
+	enemy_spwan_timer.wait_time = wait_time + randf_range(-.2, .2) #生成时间随机化

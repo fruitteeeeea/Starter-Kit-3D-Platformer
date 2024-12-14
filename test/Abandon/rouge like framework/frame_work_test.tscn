@@ -1,0 +1,263 @@
+[gd_scene load_steps=11 format=3 uid="uid://lmddst7kxa2m"]
+
+[ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="1_ahjft"]
+[ext_resource type="Script" path="res://test/Abandon/rouge like framework/player.gd" id="1_ypv2l"]
+[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="2_p74ik"]
+[ext_resource type="LabelSettings" uid="uid://cg386lfs8ns0o" path="res://test/Abandon/rouge like framework/label_font.tres" id="3_0s3o4"]
+[ext_resource type="Script" path="res://test/Abandon/rouge like framework/enemy.gd" id="4_tjbor"]
+[ext_resource type="Script" path="res://test/Abandon/rouge like framework/damage_number.gd" id="6_24bdq"]
+[ext_resource type="Script" path="res://test/Abandon/rouge like framework/affix.gd" id="6_37m2o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ai7ru"]
+texture = ExtResource("1_ahjft")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+modulate_color = Color(0.203922, 0.6, 0.854902, 1)
+
+[sub_resource type="Theme" id="Theme_jj5ui"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_ai7ru")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ba5si"]
+font = ExtResource("2_p74ik")
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.376471)
+shadow_offset = Vector2(2, 2)
+
+[node name="FrameWorkTest" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Player" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Enemy")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ypv2l")
+LevelingCurve = {
+"attack_damage": [1.5, 1.75, 2.0],
+"attack_speed": [0.75, 0.5, 0.3, 0.1],
+"crithit_damage": [2.0, 2.5, 3.0],
+"crithit_rate": [2.0, 3.0, 4.0]
+}
+Enemy = NodePath("../EnemyDummy")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_right = 378.0
+offset_bottom = 881.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_jj5ui")
+
+[node name="Label" type="Label" parent="CanvasLayer/Player"]
+layout_mode = 2
+offset_left = 63.0
+offset_top = 48.0
+offset_right = 371.0
+offset_bottom = 104.0
+text = "Player
+"
+label_settings = SubResource("LabelSettings_ba5si")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Player"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 112.0
+offset_right = 368.0
+offset_bottom = 488.0
+
+[node name="Button" type="Button" parent="CanvasLayer/Player"]
+layout_mode = 0
+offset_left = 991.0
+offset_top = 121.0
+offset_right = 1119.0
+offset_bottom = 169.0
+text = "攻击敌人"
+
+[node name="Reset" type="Button" parent="CanvasLayer/Player"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 56.0
+offset_right = 75.0
+offset_bottom = 64.0
+text = "RESET
+"
+
+[node name="EnemyDummy" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("Player")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1143.0
+offset_top = -23.0
+offset_right = 1183.0
+offset_bottom = 17.0
+script = ExtResource("4_tjbor")
+Player = NodePath("../Player")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/EnemyDummy"]
+autostart = true
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_right = 372.0
+offset_bottom = 506.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_jj5ui")
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 372.0
+offset_bottom = 104.0
+text = "Enemy
+"
+label_settings = SubResource("LabelSettings_ba5si")
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
+offset_left = -152.0
+offset_top = 240.0
+offset_right = -24.0
+offset_bottom = 288.0
+text = "攻击玩家"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 121.0
+offset_right = 292.0
+offset_bottom = 166.0
+
+[node name="Label" type="Label" parent="CanvasLayer/EnemyDummy/HBoxContainer"]
+layout_mode = 2
+text = "DPS："
+label_settings = ExtResource("3_0s3o4")
+
+[node name="DPSNumberLabel" type="Label" parent="CanvasLayer/EnemyDummy/HBoxContainer"]
+layout_mode = 2
+text = "00"
+label_settings = ExtResource("3_0s3o4")
+
+[node name="DamageNumber" type="Label" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 243.0
+offset_right = 422.0
+offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("2_p74ik")
+theme_override_font_sizes/font_size = 64
+text = "-191"
+script = ExtResource("6_24bdq")
+
+[node name="Reset" type="Button" parent="CanvasLayer/EnemyDummy"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 56.0
+offset_right = 75.0
+offset_bottom = 64.0
+text = "RESET
+"
+
+[node name="Affix" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 378.0
+offset_top = -152.0
+offset_right = 418.0
+offset_bottom = -112.0
+script = ExtResource("6_37m2o")
+player = NodePath("../Player")
+enemy = NodePath("../EnemyDummy")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Affix"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 563.0
+offset_top = 513.0
+offset_right = 771.0
+offset_bottom = 618.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988766)
+theme = SubResource("Theme_jj5ui")
+
+[node name="Label" type="Label" parent="CanvasLayer/Affix"]
+layout_mode = 0
+offset_left = 615.0
+offset_top = 557.0
+offset_right = 752.0
+offset_bottom = 613.0
+text = "Affix
+"
+label_settings = SubResource("LabelSettings_ba5si")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Affix"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 674.0
+offset_right = 663.0
+offset_bottom = 885.0
+columns = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "增加攻击伤害"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "增加攻击速度"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "增加暴击概率
+"
+
+[node name="Button4" type="Button" parent="CanvasLayer/Affix/GridContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+text = "增加暴击伤害
+"
+
+[node name="test" type="Label" parent="CanvasLayer"]
+offset_left = 429.0
+offset_top = 610.0
+offset_right = 1542.0
+offset_bottom = 849.0
+autowrap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/Player/Button" to="CanvasLayer/Player" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Player/Reset" to="CanvasLayer/Player" method="_on_reset_pressed"]
+[connection signal="timeout" from="CanvasLayer/EnemyDummy/Timer" to="CanvasLayer/EnemyDummy" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button" to="CanvasLayer/Affix" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button2" to="CanvasLayer/Affix" method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button3" to="CanvasLayer/Affix" method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/Affix/GridContainer/Button4" to="CanvasLayer/Affix" method="_on_button_4_pressed"]

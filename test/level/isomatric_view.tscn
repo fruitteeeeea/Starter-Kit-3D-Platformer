@@ -1,12 +1,13 @@
-[gd_scene load_steps=38 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=39 format=3 uid="uid://btdb7ttpjv4ek"]
 
-[ext_resource type="Script" path="res://learnning/camera_3d.gd" id="1_3law7"]
-[ext_resource type="Script" path="res://learnning/view.gd" id="1_jro5e"]
+[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="1_3law7"]
+[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="1_jro5e"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_lni6x"]
 [ext_resource type="Script" path="res://test/level/level_manager.gd" id="1_od1ql"]
 [ext_resource type="AudioStream" uid="uid://bsddbfhelcr17" path="res://test/BGM/Lo-Fi Vol2 Joyride Cut 60.wav" id="2_3warf"]
 [ext_resource type="PackedScene" uid="uid://b1fw18piq10vy" path="res://test/GLB format/tree.glb" id="3_elp3a"]
-[ext_resource type="Script" path="res://learnning/truma_component.gd" id="3_qusnx"]
+[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="3_qusnx"]
+[ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://Unit/Enemy/StateEnemy/enemy_state_test02.tscn" id="4_d5a8k"]
 [ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_lksb1"]
 [ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://Unit/Enemy/rigid_enemy.tscn" id="5_nx8uh"]
 [ext_resource type="PackedScene" uid="uid://bfo5c2x5m4cgb" path="res://test/attack/interactive_comp[onent/random_buff.tscn" id="5_ohgqq"]
@@ -69,10 +70,44 @@ UI_Container = NodePath("../HUD")
 [node name="EnemySpwan" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.63249, -15.9239)
 script = ExtResource("8_01ata")
+Enemy = ExtResource("4_d5a8k")
 spwan_enemy_time = 5.0
 level_manager = NodePath("..")
 
 [node name="Timer" type="Timer" parent="LevelManager/EnemySpwan"]
+wait_time = 1.5
+autostart = true
+
+[node name="EnemySpwan2" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.63249, -15.9239)
+script = ExtResource("8_01ata")
+Enemy = ExtResource("4_d5a8k")
+spwan_enemy_time = 5.0
+level_manager = NodePath("..")
+
+[node name="Timer" type="Timer" parent="LevelManager/EnemySpwan2"]
+wait_time = 1.5
+autostart = true
+
+[node name="EnemySpwan3" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.63249, -15.9239)
+script = ExtResource("8_01ata")
+Enemy = ExtResource("4_d5a8k")
+spwan_enemy_time = 5.0
+level_manager = NodePath("..")
+
+[node name="Timer" type="Timer" parent="LevelManager/EnemySpwan3"]
+wait_time = 1.5
+autostart = true
+
+[node name="EnemySpwan4" type="Marker3D" parent="LevelManager" node_paths=PackedStringArray("level_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.63249, -15.9239)
+script = ExtResource("8_01ata")
+Enemy = ExtResource("4_d5a8k")
+spwan_enemy_time = 5.0
+level_manager = NodePath("..")
+
+[node name="Timer" type="Timer" parent="LevelManager/EnemySpwan4"]
 wait_time = 1.5
 autostart = true
 
@@ -673,5 +708,8 @@ script = ExtResource("30_2wpb1")
 
 [connection signal="timeout" from="LevelManager/StateTimer" to="LevelManager" method="_on_state_timer_timeout"]
 [connection signal="timeout" from="LevelManager/EnemySpwan/Timer" to="LevelManager/EnemySpwan" method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelManager/EnemySpwan2/Timer" to="LevelManager/EnemySpwan2" method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelManager/EnemySpwan3/Timer" to="LevelManager/EnemySpwan3" method="_on_timer_timeout"]
+[connection signal="timeout" from="LevelManager/EnemySpwan4/Timer" to="LevelManager/EnemySpwan4" method="_on_timer_timeout"]
 [connection signal="timeout" from="LevelManager/RandomBuffSpwan/Timer" to="LevelManager/RandomBuffSpwan" method="_on_timer_timeout"]
 [connection signal="body_entered" from="LevelManager/BattleZone" to="LevelManager" method="_on_battle_zone_body_entered"]
