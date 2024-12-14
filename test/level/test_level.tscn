@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://24k8hgospgqc"]
+[gd_scene load_steps=22 format=3 uid="uid://24k8hgospgqc"]
 
 [ext_resource type="MeshLibrary" uid="uid://cote2g2mk3obv" path="res://test/floor/floor.tres" id="1_k4w35"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_p1nlk"]
-[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://Unit/Enemy/enemy_skeleton.tscn" id="3_kgy68"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="3_pvdor"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="4_l06dd"]
 [ext_resource type="PackedScene" uid="uid://cyq8lfon4cta0" path="res://test/map/arrow.tscn" id="4_nw20x"]
@@ -16,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://byi8n3vwlmppk" path="res://test/GLB format/rocks.glb" id="10_v8d3b"]
 [ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="13_58qoj"]
 [ext_resource type="PackedScene" uid="uid://co3quursonq47" path="res://test/map/barrel.tscn" id="13_485hn"]
-[ext_resource type="Script" path="res://Unit/Enemy/enemy_spwaner.gd" id="15_a7f00"]
 [ext_resource type="PackedScene" uid="uid://bpiuanfjrb3aw" path="res://Unit/DropItem/pineapple_2.tscn" id="15_uifax"]
 [ext_resource type="PackedScene" uid="uid://fg23drk7hoh8" path="res://test/drop item/soda_glass_2.tscn" id="16_byoej"]
 [ext_resource type="PackedScene" uid="uid://cc86kyivdtbjg" path="res://test/GLB format/platform-fortified.glb" id="17_5fw5x"]
@@ -352,23 +350,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1366, 0.245112, 7.31447)
 
 [node name="platform-fortified4" parent="World" instance=ExtResource("17_5fw5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1366, 0.245112, 6.28362)
-
-[node name="Enemy Skeleton" parent="." instance=ExtResource("3_kgy68")]
-transform = Transform3D(-0.921579, 1.32745e-08, -0.388191, 4.53688e-08, 1, -7.35115e-08, 0.388191, -8.53584e-08, -0.921579, 17.246, 6.36643, -32.0005)
-
-[node name="EnemySpwan" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5934, 6.49353, -25.293)
-script = ExtResource("15_a7f00")
-
-[node name="Timer" type="Timer" parent="EnemySpwan"]
-autostart = true
-
-[node name="EnemySpwan2" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6444, 6.49353, -27.1451)
-script = ExtResource("15_a7f00")
-
-[node name="Timer" type="Timer" parent="EnemySpwan2"]
-autostart = true
-
-[connection signal="timeout" from="EnemySpwan/Timer" to="EnemySpwan" method="_on_timer_timeout"]
-[connection signal="timeout" from="EnemySpwan2/Timer" to="EnemySpwan2" method="_on_timer_timeout"]

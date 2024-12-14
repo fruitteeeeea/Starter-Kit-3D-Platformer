@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c3iha1stqvr32"]
+[gd_scene load_steps=14 format=4 uid="uid://c3iha1stqvr32"]
 
 [ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_nmdsg"]
 [ext_resource type="Script" path="res://test/StateTest/enemy_state_test_03.gd" id="2_7n4mu"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="6_sbw75"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_bfk48"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="8_amg6h"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="10_mdumu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxk3a"]
 resource_name = "colormap"
@@ -81,17 +80,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
 shape = SubResource("CapsuleShape3D_ny5dx")
 
-[node name="StateChartDebugger" parent="." index="3" instance=ExtResource("10_mdumu")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -338.0
-offset_bottom = 535.0
-grow_horizontal = 0
-grow_vertical = 1
-initial_node_to_watch = NodePath("../StateChart")
-
-[node name="StateChart" type="Node" parent="." index="4"]
+[node name="StateChart" type="Node" parent="." index="3"]
 script = ExtResource("4_fg5n8")
 
 [node name="ParallelState" type="Node" parent="StateChart" index="0"]
@@ -147,7 +136,7 @@ script = ExtResource("7_bfk48")
 [node name="Dead" type="Node" parent="StateChart/ParallelState/Health" index="2"]
 script = ExtResource("7_bfk48")
 
-[node name="EnemyAttack" type="Node3D" parent="." index="5"]
+[node name="EnemyAttack" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.389809, 0)
 
 [node name="Marker3D" type="Marker3D" parent="EnemyAttack" index="0"]

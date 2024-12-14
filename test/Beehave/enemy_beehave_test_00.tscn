@@ -1,0 +1,103 @@
+[gd_scene load_steps=18 format=3 uid="uid://nexnmaly82uy"]
+
+[ext_resource type="PackedScene" uid="uid://dpv577npmrp1n" path="res://test/enemy/character-skeleton.glb" id="1_wwg18"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_5dac8"]
+[ext_resource type="Script" path="res://test/Beehave/enemy_beehave_test_00.gd" id="2_mly53"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="3_6uyr1"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_emxnp"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="4_wu6nr"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/leaves/condition.gd" id="5_3wfr7"]
+[ext_resource type="Script" path="res://test/Beehave/is_player_faraway.gd" id="6_otejx"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/leaves/action.gd" id="6_xkwuk"]
+[ext_resource type="Script" path="res://test/Beehave/patrol_the_area.gd" id="7_7l12s"]
+[ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="9_8oxa0"]
+[ext_resource type="Script" path="res://test/Beehave/is_hp_low.gd" id="9_rrabv"]
+[ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="10_u5qwk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x54qd"]
+radius = 0.25
+height = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yex67"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_joyta"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aqjso"]
+render_priority = 0
+shader = ExtResource("9_8oxa0")
+shader_parameter/ColorParameter = Color(1, 0.827451, 0.388235, 1)
+shader_parameter/Vector2Parameter = Vector2(-0.5, 0)
+shader_parameter/FloatParameter = 0.05
+shader_parameter/main_texture = ExtResource("10_u5qwk")
+
+[node name="EnemyBeehaveTest00" instance=ExtResource("1_wwg18")]
+script = ExtResource("2_mly53")
+
+[node name="torso" parent="character-skeleton/root" index="2"]
+transform = Transform3D(1, -7.83772e-12, 1.01848e-09, -4.61982e-12, 0.999925, 0.0122309, -1.0185e-09, -0.0122309, 0.999925, 0, 0.223184, 0)
+
+[node name="arm-left" parent="character-skeleton/root/torso" index="0"]
+transform = Transform3D(0.732571, 0.68069, 1.23519e-09, -0.68069, 0.732571, -4.35415e-10, -1.20125e-09, -5.21807e-10, 1, 0.15, 0.225, 0.0025)
+
+[node name="arm-right" parent="character-skeleton/root/torso" index="1"]
+transform = Transform3D(0.732571, -0.68069, 1.23519e-09, 0.68069, 0.732571, 4.35415e-10, -1.20125e-09, 5.21807e-10, 1, -0.15, 0.225, 0.0025)
+
+[node name="head" parent="character-skeleton/root/torso" index="2"]
+transform = Transform3D(0.999925, 0, 0.0122309, 0, 1, 0, -0.0122309, 0, 0.999925, 0, 0.26, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382437, 0)
+shape = SubResource("CapsuleShape3D_x54qd")
+
+[node name="BeehaveTree" type="Node" parent="." index="3" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_5dac8")
+blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
+
+[node name="SelectorComposite" type="Node" parent="BeehaveTree" index="0"]
+script = ExtResource("3_6uyr1")
+
+[node name="SequenceComposite" type="Node" parent="BeehaveTree/SelectorComposite" index="0"]
+script = ExtResource("4_emxnp")
+
+[node name="IsPlayerFaraway" type="Node" parent="BeehaveTree/SelectorComposite/SequenceComposite" index="0"]
+script = ExtResource("6_otejx")
+
+[node name="PatrolTheArea" type="Node" parent="BeehaveTree/SelectorComposite/SequenceComposite" index="1"]
+script = ExtResource("7_7l12s")
+
+[node name="SequenceComposite2" type="Node" parent="BeehaveTree/SelectorComposite" index="1"]
+script = ExtResource("4_emxnp")
+
+[node name="IsHPLow" type="Node" parent="BeehaveTree/SelectorComposite/SequenceComposite2" index="0"]
+script = ExtResource("9_rrabv")
+
+[node name="Retreat" type="Node" parent="BeehaveTree/SelectorComposite/SequenceComposite2" index="1"]
+script = ExtResource("6_xkwuk")
+
+[node name="SequenceComposite3" type="Node" parent="BeehaveTree/SelectorComposite" index="2"]
+script = ExtResource("4_emxnp")
+
+[node name="IsPlayerClose" type="Node" parent="BeehaveTree/SelectorComposite/SequenceComposite3" index="0"]
+script = ExtResource("5_3wfr7")
+
+[node name="AttackPlayer" type="Node" parent="BeehaveTree/SelectorComposite/SequenceComposite3" index="1"]
+script = ExtResource("6_xkwuk")
+
+[node name="Blackboard" type="Node" parent="." index="4"]
+script = ExtResource("4_wu6nr")
+
+[node name="DetectePlayer" type="Area3D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectePlayer" index="0"]
+shape = SubResource("BoxShape3D_yex67")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="6"]
+mesh = SubResource("PlaneMesh_joyta")
+surface_material_override/0 = SubResource("ShaderMaterial_aqjso")
+
+[connection signal="body_entered" from="DetectePlayer" to="." method="_on_detecte_player_body_entered"]
+[connection signal="body_exited" from="DetectePlayer" to="." method="_on_detecte_player_body_exited"]

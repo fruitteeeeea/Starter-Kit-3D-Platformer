@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://djiggioyplryj"]
+[gd_scene load_steps=13 format=4 uid="uid://djiggioyplryj"]
 
 [ext_resource type="Material" uid="uid://o8wwmtumw6sb" path="res://move/dummy/dummy_mat.tres" id="1_emvvh"]
 [ext_resource type="Script" path="res://test/dummy.gd" id="1_jgr2l"]
@@ -184,7 +184,11 @@ _data = {
 "idle": SubResource("Animation_0it54")
 }
 
-[node name="dummy" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mr52c"]
+height = 1.0
+
+[node name="dummy" type="CharacterBody3D"]
+collision_layer = 5
 script = ExtResource("1_jgr2l")
 
 [node name="dummy" type="Node3D" parent="."]
@@ -271,3 +275,7 @@ autoplay = "idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.481219, 0)
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("5_3h7u6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528398, 0)
+shape = SubResource("CapsuleShape3D_mr52c")

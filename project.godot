@@ -21,7 +21,6 @@ config/icon="res://icon.png"
 [autoload]
 
 Audio="*res://scripts/audio.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SoundManager="*res://Servers/sound_manager.tscn"
 LootOptionsManager="*res://test/manager/loot_options_manager.gd"
 ProjectileServer="*res://Servers/ProjectileServer.gd"
@@ -37,6 +36,9 @@ Hud="*res://Servers/hud.tscn"
 DebugServer="*res://Servers/debug_server.tscn"
 BuffServer="*res://Servers/BuffServer.tscn"
 LootServer="*res://Servers/LootServer.tscn"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [dialogic]
 
@@ -83,7 +85,7 @@ movie_writer/movie_file="C:/Users/Kenney/Desktop/video-footage.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [filesystem]
 

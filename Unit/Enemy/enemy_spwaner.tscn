@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2dbp8mmitnif"]
+[gd_scene load_steps=2 format=3 uid="uid://d2dbp8mmitnif"]
 
 [ext_resource type="Script" path="res://Unit/Enemy/enemy_spwaner.gd" id="1_ll0xk"]
-[ext_resource type="PackedScene" uid="uid://dqjuw1d4d3rnx" path="res://Unit/Enemy/enemy_skeleton.tscn" id="2_lk16d"]
 
 [node name="EnemySpwaner" type="Marker3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0767325, 3.63249, -15.9239)
 script = ExtResource("1_ll0xk")
-Enemy = ExtResource("2_lk16d")
 spwan_enemy_time = 5.0

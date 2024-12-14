@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://co3quursonq47"]
 
-[ext_resource type="PackedScene" uid="uid://dy1its6usp4t6" path="res://test/GLB format/barrel.glb" id="1_rxjxi"]
+[ext_resource type="PackedScene" uid="uid://lk5581yy4abd" path="res://test/attack/food model/GLB format/barrel.glb" id="1_rxjxi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oy42l"]
 radius = 0.25

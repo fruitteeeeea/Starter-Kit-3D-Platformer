@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 
 var target_pos : Vector3
 @onready var decal: Decal = $Decal

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqxvodgsrtius"]
+[gd_scene load_steps=11 format=3 uid="uid://dqxvodgsrtius"]
 
 [ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="1_qog2v"]
 [ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="2_rtshc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://test/enemy/shootray_camaera.gd" id="4_fwn7j"]
 [ext_resource type="PackedScene" uid="uid://djiggioyplryj" path="res://test/dummy.tscn" id="4_nc6aq"]
 [ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://test/StateTest/enemy_state_test_03.tscn" id="6_1kidq"]
+[ext_resource type="PackedScene" uid="uid://nexnmaly82uy" path="res://test/Beehave/enemy_beehave_test_00.tscn" id="6_bss1m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xcgh0"]
 render_priority = 0
@@ -21,6 +22,9 @@ size = Vector2(40, 40)
 data = PackedVector3Array(20, 0, 20, -20, 0, 20, 20, 0, -20, -20, 0, 20, -20, 0, -20, 20, 0, -20)
 
 [node name="EnemyTestLab" type="Node3D"]
+
+[node name="EnemyBeehaveTest00" parent="." instance=ExtResource("6_bss1m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7127, 0.189106, 3.11366)
 
 [node name="World" type="Node3D" parent="."]
 
