@@ -45,3 +45,11 @@ shadow_mesh = SubResource("ArrayMesh_2y52e")
 [node name="indicator-special-cross" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_7ys0y")
 skeleton = NodePath("")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1.41421, -1.41421, -6.18172e-08, 0, -8.74228e-08, 2, -1.41421, -1.41421, -6.18172e-08, 1, 1, 1)
+visible = false
+billboard = 1
+modulate = Color(1, 0.87451, 0.360784, 1)
+text = "离开黄圈以开始游戏"
+font_size = 64

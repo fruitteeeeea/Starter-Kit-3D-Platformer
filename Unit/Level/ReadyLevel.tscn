@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj5ofg2uennp2"]
+
+[ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_134tl"]
+[ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="2_het6u"]
+[ext_resource type="PackedScene" uid="uid://dxxym3sxaptvh" path="res://UI/enter_next_level.tscn" id="3_r285t"]
+[ext_resource type="PackedScene" uid="uid://cqnnjulwhqvee" path="res://UI/change_weapon_layout.tscn" id="3_tf56p"]
+
+[node name="ReadyLevel" instance=ExtResource("1_134tl")]
+
+[node name="Label3D" parent="World/TopButton" index="2"]
+text = "进入关卡"
+
+[node name="EnterNextLevel" type="Node" parent="World/TopButton/Method" index="0"]
+script = ExtResource("2_het6u")
+UI = ExtResource("3_r285t")
+
+[node name="Label3D" parent="World/MiddleLeftButton" index="2"]
+text = "更改武器配置"
+
+[node name="ChangeWeaponLayout" type="Node" parent="World/MiddleLeftButton/Method" index="0"]
+script = ExtResource("2_het6u")
+UI = ExtResource("3_tf56p")
+
+[node name="Label3D" parent="World/MiddleRightButton" index="2"]
+text = "更改游戏难度"
+
+[editable path="World/TopButton"]
+[editable path="World/MiddleLeftButton"]
+[editable path="World/MiddleRightButton"]

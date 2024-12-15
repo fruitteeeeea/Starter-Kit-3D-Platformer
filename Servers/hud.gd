@@ -16,6 +16,9 @@ var current_LootUI : Control #当前的战利品选择UI
 
 @onready var level_massage: Control = $LevelMassage #关卡信息UI
 
+@onready var level_info: Control = $LevelInfo #关卡内信息
+
+
 func add_central_pos_panel(panel01 : PackedScene):
 	var panel = panel01.instantiate() #生成UI节点
 	central_pos.add_child(panel)

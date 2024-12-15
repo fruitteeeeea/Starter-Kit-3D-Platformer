@@ -1,22 +1,34 @@
-[gd_scene load_steps=57 format=4 uid="uid://svpgxw2bs4im"]
+[gd_scene load_steps=59 format=4 uid="uid://b86bkk20muc6b"]
 
-[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_qmp8d"]
-[ext_resource type="MeshLibrary" uid="uid://tx16r4lqfqx6" path="res://PototypeModel/PrototypeGridMap.tres" id="2_flxed"]
-[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="3_s7eay"]
-[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="4_5shkc"]
-[ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="4_6rtxr"]
-[ext_resource type="Script" path="res://Unit/Level/change_weapon_layout.gd" id="4_ihqmw"]
-[ext_resource type="PackedScene" uid="uid://cqnnjulwhqvee" path="res://UI/ready_to_start.tscn" id="5_cgh0a"]
-[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="5_xk4p2"]
-[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="6_iaxpq"]
-[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="7_nglqw"]
-[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="8_57f2j"]
-[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="10_ii7ui"]
+[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="1_qbruw"]
+[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="2_dwn5p"]
+[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="3_bglnv"]
+[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_g0vql"]
+[ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="5_ve4b5"]
+[ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="6_8dtgw"]
+[ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="7_tsrgm"]
+[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="8_b2o62"]
+[ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="9_nr3j1"]
+[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="10_qn3qw"]
+[ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="11_1s8n2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sy5s"]
+render_priority = 0
+shader = ExtResource("6_8dtgw")
+shader_parameter/albedo_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/uv_scale = 5.0
+shader_parameter/checkerboard_sampler = ExtResource("7_tsrgm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_edov0"]
+size = Vector2(10, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_saqaw"]
+data = PackedVector3Array(40, 0, 40, -40, 0, 40, 40, 0, -40, -40, 0, 40, -40, 0, -40, 40, 0, -40)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea10y"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("4_6rtxr")
+albedo_texture = ExtResource("9_nr3j1")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gjg5c"]
@@ -34,7 +46,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_10nq7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rvhr1"]
 resource_name = "stall-information_stall-information"
 _surfaces = [{
 "aabb": AABB(-0.5, -2.8217e-31, -0.65, 1, 1.5, 1.15),
@@ -56,10 +68,10 @@ shadow_mesh = SubResource("ArrayMesh_gjg5c")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dmmy"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("10_ii7ui")
+albedo_texture = ExtResource("10_qn3qw")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_eaat0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ts52x"]
 _surfaces = [{
 "aabb": AABB(-0.05, -0.25, -0.05, 0.1, 0.3, 0.1),
 "format": 34896613377,
@@ -74,7 +86,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_v7kvo"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_bpqir"]
 resource_name = "figurine-large_leg-left"
 _surfaces = [{
 "aabb": AABB(-0.05, -0.25, -0.05, 0.1, 0.3, 0.1),
@@ -91,9 +103,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAP//AIAAAAAA//8AgP//VNX///+HAABU1f///4cAAAAAAAD/////AAAAAP//AABU1QAA/////1TVAAD/////AAAAAP+/AAAAAAAA/7///wAA////vwAAAAD///+/AABU1QAA/78AAH/zfSX/vwAAAAAAAP+/AAAAAP///78AAP///3//vwAAf/OB2v+/AABU1f///7///1TVAAD/v///AAAAAP+///9/830l/7///wAA////v///////f/+///9/84Ha/7///1TV////v///VNX///+HAABU1f///4f//3/zgdr/nwAAf/OB2v+f//////9//7///3/zgdr/nwAA////f/+/AAB/84Ha/5///////3///wAA////f/////9/830l//8AAH/zfSX/////VNUAAP////9/830l//8AAFTVAAD//wAAf/N9Jf//AAAAAP//JZ3//wAAAABS3v//f/OB2qKH//9/84Ha/t8AAH/zfSX//wAAf/N9JR78//9/84HaW43//3/zgdpFtwAA////f7OwAAD///9/8M7//3/zfSX//wAAf/N9Jf///3////9///////9/////f/9/////f////3+F9P9/hfQAAP9/AAD/fwAA/38AAP9//3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD///9/////f////3////9/////f////3////9/////f/9//7//f/+//3+B2v9/gdr/f4X0/3+B2v9/hfT/f4HazJcx6GByng0k19mocKRwJP9y//KGfngB////f////3////9/////f/9/XdH/f/Dv")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_eaat0")
+shadow_mesh = SubResource("ArrayMesh_ts52x")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_al6ds"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_c4lto"]
 _surfaces = [{
 "aabb": AABB(-0.05, -0.25, -0.05, 0.1, 0.3, 0.1),
 "format": 34896613377,
@@ -108,7 +120,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_65spe"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_nno86"]
 resource_name = "figurine-large_leg-right"
 _surfaces = [{
 "aabb": AABB(-0.05, -0.25, -0.05, 0.1, 0.3, 0.1),
@@ -125,9 +137,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("//8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7///wAA//8AgAAAAAD//wCA//9U1f///4cAAFTV////h///VNX///+HAABU1f///4f//3/zgdr/nwAAf/OB2v+f//////9//7///3/zgdr/nwAA////f/+/AAB/84Ha/5///1TVAAD/v///AAAAAP+///9/830l/7///wAA////v///////f/+///9/84Ha/7///1TV////vwAAVNUAAP+/AAB/830l/78AAAAAAAD/vwAAAAD///+/AAD///9//78AAH/zgdr/vwAAVNX///+/AAAAAAAA/////wAAAAD//wAAVNUAAP////9U1QAA/////////3///wAA////f/////9/830l//8AAH/zfSX/////VNUAAP////9/830l//8AAFTVAAD//wAAf/N9Jf////9/84Haoof//3/zgdoV8gAA////fzyMAAD///9/9/n//wAAAABr+///f/OB2uKL//9/84HaZrsAAP///3/DpgAA////f8XI//9/830l//8AAH/zfSX//wAA/38AAP9/AAD/fwAA/3//f////3///////3////9/////f////3////9/////f////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3+F9P9/hfT/f/+//3//v/9/gdr/f4Ha/3+F9P9/gdr/f4X0/3+B2gz+8YEvsy8zse1MknXydXIPf/AA////f////3////9/////f/9/09H/fwfv")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_al6ds")
+shadow_mesh = SubResource("ArrayMesh_c4lto")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vof5t"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p5kid"]
 _surfaces = [{
 "aabb": AABB(-0.25, -0.05, -0.15, 0.5, 0.5, 0.3),
 "format": 34896613377,
@@ -142,7 +154,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_15jbt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0va5i"]
 resource_name = "figurine-large_torso"
 _surfaces = [{
 "aabb": AABB(-0.25, -0.05, -0.15, 0.5, 0.5, 0.3),
@@ -159,9 +171,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("zMwzM1VV/7+ZmTMzVVX/v8zMMzOpqv+/mZkzM6mq/79mZjMzVVX/v2ZmMzOpqv+/ZmaZGVVV/79mZn8H1GH/v2ZmAAD/f/+/ZmZ/Byqe/79mZpkZqqr/v2ZmMzNVVf+/MjMzM1VV/79mZjMzqar/vzIzMzOpqv+/ZmaZGVVV//+ZmZkZVVX//2ZmMzNVVf//mZkzM1VV//8AAJmZAABiwAAA//8AAP+/AACZmf//YsAAAP//////vzIzMzOpqibCMjMzM1VVJsIAAJmZ//9iwAAAmZkAAGLAMjMzM1VV//9mZjMzVVX//wAAmZkAAP////+ZmQAA///MzDMzVVX//5mZMzNVVf//mZkAAP9///+ZmX8H1GH//2ZmAAD/f///ZmZ/B9Rh//+ZmQAA/3//v2ZmAAD/f/+/mZl/Byqe/59mZn8HKp7/n2Zmfwcqnv+fZmaZGaqq/4eZmX8HKp7/n5mZmRmpqv+HZmZ/B9Rh//+ZmX8H1GH//2ZmmRlVVf//mZmZGVVV//+ZmZkZVVX/v5mZfwfUYf+/mZkzM1VV/7+ZmTMzqar/v5mZAAD/f/+/mZl/Byqe/7+ZmZkZqar/v2ZmmRmqqv+HZmYzM6mqAICZmZkZqar/h5mZMzOpqgCA/////wAA/7///5mZAABiwP////////+///+Zmf//YsDMzDMzqarjkpmZMzOpquOS//+Zmf//9YdmZjMzqarjkjIzMzOpquOSAACZmf//9Yf//5mZAABiwMzMMzOpqibC//+Zmf//YsDMzDMzVVUmwv////8AAP////////////8AAP//AAD//wAA////////AACZmf//9YcAAP////8AgP//mZn///WH////////AIAAAJmZAAD/////mZkAAP//AAD//wAA////////AAD//2ZmMzNVVf//ZmYzM1VV//+ZmTMzVVX//8zMMzNVVf//ZmYAAP9///9mZgAA/3///5mZfwcqnhjomZl/ByqeuI0AAP9/AAD/fwAA/38AAP9//3////9/////f////3////9/////f////3///wAA/38AAP9/AAD/fwAA/395i///eYv///9/////f///BmuC9f9///8Ga4L1/3////JWeOvyVnjrBmuC9QZrgvVxmP//cZj//2uL//9ri///cZj//3GY////f/8/fKX///9//z98pf//AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/398pf//fKX//3mL//95i////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAAAA/3//f///AAD/f/9/////fwAAgnX5FP9/AACCdfkUAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/gnX5FHhrDSmCdfkUeGsNKf9//7//f/+//3//v/9//78AAP9//3///wAA/3//f///a4v//2uL////f////3///4G3//8rlP//O5n//4yf///pqv///39aXQAA/38AAP9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vof5t")
+shadow_mesh = SubResource("ArrayMesh_p5kid")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_e1wtd"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_gnwax"]
 _surfaces = [{
 "aabb": AABB(-0.05, -0.45, -0.1, 0.1, 0.55, 0.2),
 "format": 34896613377,
@@ -176,7 +188,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_hyyod"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_5phk1"]
 resource_name = "figurine-large_arm-left"
 _surfaces = [{
 "aabb": AABB(-0.05, -0.45, -0.1, 0.1, 0.55, 0.2),
@@ -193,9 +205,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/v8AAP+/gYQAAAAA/7+BhP7/c9H//76FAABz0f//voX+/wAA/z//////c9EAAP//AAAAAP8///8AAHPRAAD/////////f/+///9d8oHa/58AAP///3//vwAAXfKB2v+fAABz0QAA/78AAF3yfSX/vwAAAAD/P/+/AAD///9//78AAAAA/7//vwAAXfKB2v+/AABz0f///7///13yfSX/////////f///AABd8n0l//8AAP///3////7/AAD/P/+/AAAAAP8//7/+/wAA/7//vwAAAAD/v/+//v9z0f//voUAAHPR//++hf//XfKB2v+fAABd8oHa/5///3PRAAD/////XfJ9Jf//AABz0QAA//8AAF3yfSX/////c9EAAP+//v8AAP8//7///13yfSX/v///////f/+//v8AAP+//7///13ygdr/v/7/c9H///+/AAAAAP+//78AAAAA/z//////XfKB2quC//9d8oHa/7///13ygdpe/v//XfKB2v+/AABd8n0l//8AAF3yfSX/////////f3Pe//9d8oHaxor//13ygdpWsQAA////f6qqAABd8n0lbvsAAF3yfSX//wAA/38AAP9/////f////3+3hv///3+N97eG////f433////f////3////9/////f/9/////f////3////9/////f////3////9/////f4Ha/3//v/9/gdr/f/+/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3//f433/3+B2v9/jff/f4Ha/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////fwAA////f/9///////9//38AAP9/////fwAA////f////3////9/////fwd/Bv//f2PS")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_e1wtd")
+shadow_mesh = SubResource("ArrayMesh_gnwax")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3luak"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_nsc3p"]
 _surfaces = [{
 "aabb": AABB(-0.05, -0.45, -0.1, 0.1, 0.55, 0.2),
 "format": 34896613377,
@@ -210,7 +222,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_02621"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_wcro6"]
 resource_name = "figurine-large_arm-right"
 _surfaces = [{
 "aabb": AABB(-0.05, -0.45, -0.1, 0.1, 0.55, 0.2),
@@ -227,9 +239,9 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/v8AAP8//78AAAAA/z//v/7/AAD/v/+/AAAAAP+//78AAHPRAAD/vwAAXfJ9Jf+/AAAAAP8//78AAP///3//vwAAAAD/v/+/AABd8oHa/78AAHPR////v/7/AAD/v4GEAAAAAP+/gYT+/3PR//++hQAAc9H//76F/v8AAP8//////3PRAAD//wAAAAD/P///AABz0QAA/////3PRAAD/////XfJ9Jf//AABz0QAA//8AAF3yfSX/////c9EAAP+//v8AAP8//7///13yfSX/v///////f/+//v8AAP+//7///13ygdr/v/7/c9H///+///////9//7///13ygdr/nwAA////f/+/AABd8oHa/5///13yfSX/////////f///AABd8n0l//8AAP///3////7/c9H//76FAABz0f//voX//13ygdr/nwAAXfKB2v+f//9d8oHazoP//13ygdpd/gAAXfKB2smFAABd8oHagPwAAF3yfSX/////////f0HC//////9/Vt3//13ygdqdgv//XfKB2jKrAAD///9/9bgAAF3ygdrIlQAA/38AAP9/AAD/fwAA/3//f////3////9/////f////3////9/////f///AAD/fwAA/3////9/////f7eG////f433t4b///9/jff/f433/3+B2v9/jff/f4Ha/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP///3////9/////f////3//f4Ha/3//v/9/gdr/f/+/////f////3////9/////f////3////9/////f////3//fx3f////f////3////9/////f////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_3luak")
+shadow_mesh = SubResource("ArrayMesh_nsc3p")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_iik3u"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_vdqrm"]
 _surfaces = [{
 "aabb": AABB(-0.1, 0, -0.1, 0.2, 0.2, 0.2),
 "format": 34896613377,
@@ -243,7 +255,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3cs8x"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_050pp"]
 resource_name = "figurine-large_head"
 _surfaces = [{
 "aabb": AABB(-0.1, 0, -0.1, 0.2, 0.2, 0.2),
@@ -259,7 +271,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/////wAA/7///wAAAAD/v/////////+///8AAP///7//////AAD/////////////AAD//wAA//8AAP///////wAAAAAAAP////8AAAAA//8AAP//AAD///////8AAP//AAAAAAAA/78AAP//AAD/vwAAAAD///+/AAD//////7///wAAAAD/vwAAAAAAAP+///8AAP///78AAAAA////v///AAD//wCAAAAAAP//AID///////8AgAAA/////wCA/38AAP9/AAD/fwAA/38AAP9//7//f/+//3//v/9//7//f////3////9/////f////3////9/////f////3///wAA/38AAP9/AAD/fwAA/3//f////3////9/////f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_iik3u")
+shadow_mesh = SubResource("ArrayMesh_vdqrm")
 
 [sub_resource type="Animation" id="Animation_kkfts"]
 resource_name = "attack-kick-left"
@@ -1912,72 +1924,11 @@ _data = {
 "wheelchair-sit": SubResource("Animation_88bof")
 }
 
-[node name="ReadyLevel" type="Node3D"]
-
-[node name="World" type="Node3D" parent="."]
-
-[node name="Environment" type="WorldEnvironment" parent="World"]
-environment = ExtResource("1_qmp8d")
-
-[node name="Sun" type="DirectionalLight3D" parent="World"]
-transform = Transform3D(0.990024, 0.122024, -0.0704506, 0, 0.5, 0.866025, 0.140901, -0.857386, 0.495012, -23.5194, 9.37435, -3.25129)
-shadow_enabled = true
-shadow_opacity = 0.75
-
-[node name="GridMap" type="GridMap" parent="World"]
-mesh_library = ExtResource("2_flxed")
-cell_size = Vector3(1, 1, 1)
-data = {
-"cells": PackedInt32Array(65531, 65531, 0, 65531, 65532, 0, 65531, 65533, 0, 65531, 65534, 0, 65531, 65535, 0, 65531, 0, 0, 65531, 1, 0, 65531, 2, 0, 65531, 3, 0, 65531, 4, 0, 65532, 65531, 0, 65532, 65532, 0, 65532, 65533, 0, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65532, 2, 0, 65532, 3, 0, 65532, 4, 0, 65533, 65531, 0, 65533, 65532, 0, 65533, 65533, 0, 65533, 65534, 0, 65533, 65535, 0, 65533, 0, 0, 65533, 1, 0, 65533, 2, 0, 65533, 3, 0, 65533, 4, 0, 65534, 65531, 0, 65534, 65532, 0, 65534, 65533, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 65534, 3, 0, 65534, 4, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65535, 1, 0, 65535, 2, 0, 65535, 3, 0, 65535, 4, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 1, 65531, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65535, 0, 1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 2, 65531, 0, 2, 65532, 0, 2, 65533, 0, 2, 65534, 0, 2, 65535, 0, 2, 0, 0, 2, 1, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 3, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 3, 3, 0, 3, 4, 0, 4, 65531, 0, 4, 65532, 0, 4, 65533, 0, 4, 65534, 0, 4, 65535, 0, 4, 0, 0, 4, 1, 0, 4, 2, 0, 4, 3, 0, 4, 4, 0)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="TopButton" parent="World/GridMap" instance=ExtResource("3_s7eay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89921, 0.506439, -2.95342)
-text = "进入关卡"
-
-[node name="Label3D" parent="World/GridMap/TopButton" index="2"]
-text = "进入关卡"
-
-[node name="MiddleLeftButton" parent="World/GridMap" instance=ExtResource("3_s7eay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46664, 0.506439, 1.02079)
-text = "更改武器配置"
-
-[node name="Label3D" parent="World/GridMap/MiddleLeftButton" index="2"]
-text = "更改武器配置"
-
-[node name="ChangeWeaponLayout" type="Node" parent="World/GridMap/MiddleLeftButton/Method" index="0"]
-script = ExtResource("4_ihqmw")
-UI = ExtResource("5_cgh0a")
-
-[node name="MiddleRightButton" parent="World/GridMap" instance=ExtResource("3_s7eay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4766, 0.506439, -1.53714)
-text = "更改游戏难度"
-
-[node name="Label3D" parent="World/GridMap/MiddleRightButton" index="2"]
-text = "更改游戏难度"
-
-[node name="Facility01" type="Node3D" parent="World"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.50006, 0.572344, 0.945248)
-
-[node name="stall-information" type="MeshInstance3D" parent="World/Facility01"]
-mesh = SubResource("ArrayMesh_10nq7")
-skeleton = NodePath("")
-
-[node name="Facility02" type="Node3D" parent="World"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.51522, 0.572344, -2.5659)
-
-[node name="stall-information" type="MeshInstance3D" parent="World/Facility02"]
-mesh = SubResource("ArrayMesh_10nq7")
-skeleton = NodePath("")
-
-[node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("4_5shkc")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0856705, 2.03599, -0.0677251)
-Camera = NodePath("../View/Camera3D")
+[node name="LevelType01" type="Node3D"]
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10846, 1.48326, 1.26512)
-script = ExtResource("5_xk4p2")
+script = ExtResource("1_qbruw")
 target = NodePath("../Basic Player")
 
 [node name="Camera3D" type="Camera3D" parent="View"]
@@ -1985,21 +1936,116 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 projection = 1
 size = 12.0
 far = 40.0
-script = ExtResource("6_iaxpq")
+script = ExtResource("2_dwn5p")
 
 [node name="truma_component" type="Node" parent="View/Camera3D"]
-script = ExtResource("7_nglqw")
+script = ExtResource("3_bglnv")
 max_x = 2.0
 max_y = 2.0
 max_z = 2.0
 max_trauma = 0.4
-noise = ExtResource("8_57f2j")
+noise = ExtResource("4_g0vql")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Sun" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.91212, 0.355004, -0.204962, 0, 0.5, 0.866025, 0.409923, -0.789919, 0.45606, -23.5194, 9.37435, -3.25129)
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="Environment" type="WorldEnvironment" parent="World"]
+environment = ExtResource("5_ve4b5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+material_override = SubResource("ShaderMaterial_7sy5s")
+mesh = SubResource("PlaneMesh_edov0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_saqaw")
+
+[node name="TopButton" parent="World" instance=ExtResource("8_b2o62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89921, 0, -2.95342)
+
+[node name="Label3D" parent="World/TopButton" index="2"]
+text = "TopButton
+"
+
+[node name="MiddleLeftButton" parent="World" instance=ExtResource("8_b2o62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46664, 0, 1.02079)
+
+[node name="Label3D" parent="World/MiddleLeftButton" index="2"]
+text = "MiddleLeftButton"
+
+[node name="MiddleRightButton" parent="World" instance=ExtResource("8_b2o62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4766, 0, -1.53714)
+
+[node name="Label3D" parent="World/MiddleRightButton" index="2"]
+text = "MiddleRightButton"
+
+[node name="Facility01" type="Node3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.50006, 0, 0.945248)
+
+[node name="stall-information" type="MeshInstance3D" parent="World/Facility01"]
+mesh = SubResource("ArrayMesh_rvhr1")
+skeleton = NodePath("")
+
+[node name="Facility02" type="Node3D" parent="World"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 1.51522, 0, -2.5659)
+
+[node name="stall-information" type="MeshInstance3D" parent="World/Facility02"]
+mesh = SubResource("ArrayMesh_rvhr1")
+skeleton = NodePath("")
 
 [node name="Dummy" type="Node3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.91621, 0.531325, 2.95634)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.916, 0, 2.956)
+
+[node name="figurine-large1" type="Node3D" parent="Dummy"]
+transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, 1.54799, 0, -0.182646)
+
+[node name="figurine-large" type="Node3D" parent="Dummy/figurine-large1"]
+
+[node name="root" type="Node3D" parent="Dummy/figurine-large1/figurine-large"]
+
+[node name="leg-left" type="MeshInstance3D" parent="Dummy/figurine-large1/figurine-large/root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.25, 1.49018e-09)
+mesh = SubResource("ArrayMesh_bpqir")
+skeleton = NodePath("")
+
+[node name="leg-right" type="MeshInstance3D" parent="Dummy/figurine-large1/figurine-large/root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.25, -1.49019e-09)
+mesh = SubResource("ArrayMesh_nno86")
+skeleton = NodePath("")
+
+[node name="torso" type="MeshInstance3D" parent="Dummy/figurine-large1/figurine-large/root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("ArrayMesh_0va5i")
+skeleton = NodePath("")
+
+[node name="arm-left" type="MeshInstance3D" parent="Dummy/figurine-large1/figurine-large/root/torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.35, 5.62299e-09)
+mesh = SubResource("ArrayMesh_5phk1")
+skeleton = NodePath("")
+
+[node name="arm-right" type="MeshInstance3D" parent="Dummy/figurine-large1/figurine-large/root/torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.35, -2.9455e-09)
+mesh = SubResource("ArrayMesh_wcro6")
+skeleton = NodePath("")
+
+[node name="head" type="MeshInstance3D" parent="Dummy/figurine-large1/figurine-large/root/torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("ArrayMesh_050pp")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dummy/figurine-large1"]
+libraries = {
+"": SubResource("AnimationLibrary_iljlj")
+}
 
 [node name="figurine-large2" type="Node3D" parent="Dummy"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0958135, 0, 0.275465)
 
 [node name="figurine-large" type="Node3D" parent="Dummy/figurine-large2"]
 
@@ -2007,35 +2053,77 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="leg-left" type="MeshInstance3D" parent="Dummy/figurine-large2/figurine-large/root"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.25, 1.49018e-09)
-mesh = SubResource("ArrayMesh_v7kvo")
+mesh = SubResource("ArrayMesh_bpqir")
 skeleton = NodePath("")
 
 [node name="leg-right" type="MeshInstance3D" parent="Dummy/figurine-large2/figurine-large/root"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.25, -1.49019e-09)
-mesh = SubResource("ArrayMesh_65spe")
+mesh = SubResource("ArrayMesh_nno86")
 skeleton = NodePath("")
 
 [node name="torso" type="MeshInstance3D" parent="Dummy/figurine-large2/figurine-large/root"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("ArrayMesh_15jbt")
+mesh = SubResource("ArrayMesh_0va5i")
 skeleton = NodePath("")
 
 [node name="arm-left" type="MeshInstance3D" parent="Dummy/figurine-large2/figurine-large/root/torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.35, 5.62299e-09)
-mesh = SubResource("ArrayMesh_hyyod")
+mesh = SubResource("ArrayMesh_5phk1")
 skeleton = NodePath("")
 
 [node name="arm-right" type="MeshInstance3D" parent="Dummy/figurine-large2/figurine-large/root/torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.35, -2.9455e-09)
-mesh = SubResource("ArrayMesh_02621")
+mesh = SubResource("ArrayMesh_wcro6")
 skeleton = NodePath("")
 
 [node name="head" type="MeshInstance3D" parent="Dummy/figurine-large2/figurine-large/root/torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
-mesh = SubResource("ArrayMesh_3cs8x")
+mesh = SubResource("ArrayMesh_050pp")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dummy/figurine-large2"]
+libraries = {
+"": SubResource("AnimationLibrary_iljlj")
+}
+
+[node name="figurine-large3" type="Node3D" parent="Dummy"]
+transform = Transform3D(1.06066, 0, -1.06066, 0, 1.5, 0, 1.06066, 0, 1.06066, -1.68273, 0, -0.179651)
+
+[node name="figurine-large" type="Node3D" parent="Dummy/figurine-large3"]
+
+[node name="root" type="Node3D" parent="Dummy/figurine-large3/figurine-large"]
+
+[node name="leg-left" type="MeshInstance3D" parent="Dummy/figurine-large3/figurine-large/root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.25, 1.49018e-09)
+mesh = SubResource("ArrayMesh_bpqir")
+skeleton = NodePath("")
+
+[node name="leg-right" type="MeshInstance3D" parent="Dummy/figurine-large3/figurine-large/root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.25, -1.49019e-09)
+mesh = SubResource("ArrayMesh_nno86")
+skeleton = NodePath("")
+
+[node name="torso" type="MeshInstance3D" parent="Dummy/figurine-large3/figurine-large/root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("ArrayMesh_0va5i")
+skeleton = NodePath("")
+
+[node name="arm-left" type="MeshInstance3D" parent="Dummy/figurine-large3/figurine-large/root/torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.35, 5.62299e-09)
+mesh = SubResource("ArrayMesh_5phk1")
+skeleton = NodePath("")
+
+[node name="arm-right" type="MeshInstance3D" parent="Dummy/figurine-large3/figurine-large/root/torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.35, -2.9455e-09)
+mesh = SubResource("ArrayMesh_wcro6")
+skeleton = NodePath("")
+
+[node name="head" type="MeshInstance3D" parent="Dummy/figurine-large3/figurine-large/root/torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("ArrayMesh_050pp")
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dummy/figurine-large3"]
 libraries = {
 "": SubResource("AnimationLibrary_iljlj")
 }
@@ -2046,6 +2134,9 @@ pixel_size = 0.01
 billboard = 1
 text = "Dummy"
 
-[editable path="World/GridMap/TopButton"]
-[editable path="World/GridMap/MiddleLeftButton"]
-[editable path="World/GridMap/MiddleRightButton"]
+[node name="Basic Player" parent="." instance=ExtResource("11_1s8n2")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0856705, 2.03599, -0.0677251)
+
+[editable path="World/TopButton"]
+[editable path="World/MiddleLeftButton"]
+[editable path="World/MiddleRightButton"]

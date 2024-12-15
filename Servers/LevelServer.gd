@@ -26,10 +26,7 @@ var level_information := {
 @onready var level_timer: Timer = $LevelTimer
 
 @export var level_list := [
-	"res://test/LevelTest/prototype_test.tscn",
-	"res://test/LevelTest/test_01.tscn",
-	"res://test/LevelTest/test_02.tscn", 
-	"res://test/LevelTest/test_03.tscn"
+	"res://test/LevelTest/prototype_test.tscn"
 	
 ]
 
@@ -46,7 +43,7 @@ func change_scene(path: String): #专门用于处理游戏场景切换
 	tree.change_scene_to_file(path)
 	await  tree.tree_changed #等待游戏场景切换
 	
-	for node in tree.get_nodes_in_group("entry_points"):
+	for node in tree.get_nodes_in_group("entry_points"): #移动玩家至关卡出生点
 		tree.current_scene.update_player(node.global_position)
 		break
 
@@ -58,7 +55,7 @@ func level_start():
 	for spwaner in level_information["enemy_spwan_point_pool"]:
 		EnemySpwanerServer.add_enemy_spwaner(spwaner)
 		pass
-	
+
 	#启动任务目标
 	for target in level_information["level_target_pool"]:
 		LevelTargetServer.add_level_target(target)

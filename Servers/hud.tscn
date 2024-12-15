@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bslygqfdfikr"]
+[gd_scene load_steps=8 format=3 uid="uid://bslygqfdfikr"]
 
 [ext_resource type="Script" path="res://Servers/hud.gd" id="1_cbi3n"]
 [ext_resource type="Script" path="res://UI/massage.gd" id="2_1t4ei"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Servers/level_massage.gd" id="2_lqq3i"]
 [ext_resource type="PackedScene" uid="uid://c6f40e58mcty7" path="res://UI/gameplay_option.tscn" id="3_kiah5"]
 [ext_resource type="Script" path="res://UI/transition_screen.gd" id="4_jpnhp"]
+[ext_resource type="Script" path="res://Servers/level_info.gd" id="7_kyfr7"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_cbi3n")
@@ -43,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="LevelMassage" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,5 +286,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.203922, 0.207843, 0.239216, 1)
+
+[node name="LevelInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_kyfr7")
+
+[node name="LevelTimer" type="PanelContainer" parent="LevelInfo"]
+layout_mode = 0
+offset_left = 912.0
+offset_top = 816.0
+offset_right = 1036.0
+offset_bottom = 849.0
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelInfo/LevelTimer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TimerLabel" type="Label" parent="LevelInfo/LevelTimer/MarginContainer"]
+layout_mode = 2
+text = "TimeLeft 00:00"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Continue" to="PauseMenuPos/PauseMenu" method="_on_continue_pressed"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfimoovpoeu5u"]
+
+[ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_6wbvx"]
+[ext_resource type="PackedScene" uid="uid://2dua6kr7fdi1" path="res://test/level/LootPlatForm/trophy_2.tscn" id="2_eajm7"]
+
+[node name="GameComplete" instance=ExtResource("1_6wbvx")]
+
+[node name="TopButton" parent="World" index="3"]
+visible = false
+
+[node name="MiddleLeftButton" parent="World" index="4"]
+visible = false
+
+[node name="MiddleRightButton" parent="World" index="5"]
+visible = false
+
+[node name="Facility01" parent="World" index="6"]
+visible = false
+
+[node name="Facility02" parent="World" index="7"]
+visible = false
+
+[node name="Dummy" parent="." index="2"]
+visible = false
+
+[node name="trophy2" parent="." index="4" instance=ExtResource("2_eajm7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.48671, 0.782661, -2.67815)
+
+[editable path="World/TopButton"]
+[editable path="World/MiddleLeftButton"]
+[editable path="World/MiddleRightButton"]

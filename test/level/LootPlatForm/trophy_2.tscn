@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://2dua6kr7fdi1"]
+[gd_scene load_steps=9 format=3 uid="uid://2dua6kr7fdi1"]
 
 [ext_resource type="PackedScene" uid="uid://cn5elfs35n2c7" path="res://test/level/LootPlatForm/GLB format/trophy.glb" id="1_u8ng2"]
 [ext_resource type="Script" path="res://test/level/LootPlatForm/trophy_2.gd" id="2_201yf"]
@@ -21,6 +21,8 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_uy0j7"]
 colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gio3d"]
+
 [node name="trophy2" instance=ExtResource("1_u8ng2")]
 script = ExtResource("2_201yf")
 
@@ -41,3 +43,12 @@ scale_amount_min = 0.15
 scale_amount_max = 0.15
 scale_amount_curve = SubResource("Curve_omeov")
 color_ramp = SubResource("Gradient_uy0j7")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("CapsuleShape3D_gio3d")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

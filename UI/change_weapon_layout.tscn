@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/ready_to_start.gd" id="1_eejoe"]
 [ext_resource type="PackedScene" uid="uid://bcujtvdkfajgo" path="res://UI/gear_option_pannel.tscn" id="2_75ph7"]
 
-[node name="ReadyToStart" type="Control"]
+[node name="ChangeWeaponLayout" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

@@ -16,7 +16,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		show_panel()
 
 func show_panel():
-	if !UI or Hud.central_pos_panel.size() > 0:
+	if !UI or Hud.central_pos_panel.size() > 0: #确保当前只有这一个面板
 		return
 	
 	Hud.add_central_pos_panel(UI)
