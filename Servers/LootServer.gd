@@ -12,11 +12,13 @@ signal loot_status_update
 @export var level_2_loot_list := [] #等级2战利品
 @export var level_3_loot_list := [] #等级3战利品 
 
+var current_loot_level : String #当前选择的战利品等级
+
 var current_picked_loot := [] #当前呈现的战利品
 var current_selected_loot := [] #当前已选择的战利品
 
 var round_loots_nb := 0 #当前回合可选择战利品数量
-var round_loots_page := 1 #当前回合可选择战利品页数
+var round_loots_page := 0 #当前回合可选择战利品页数
 
 var current_loot_nb := 0 #当前已选择战利品 （直接用current_selected_loot数组大小替代
 var current_loot_page := 1 #当前页面
@@ -25,7 +27,7 @@ var current_loot_page := 1 #当前页面
 @export var loot_panel : PackedScene #战利品面板
 var loot_nb_page := 3 #每一页战利品数量 
 
-func _ready() -> void:
+func _ready() -> void: #TD 修改加载等级战利品方法
 	#将各个等级下的词条子节点加入到数组中
 	for loot in level_1_loot.get_children():
 		level_1_loot_list.append(loot)
@@ -50,32 +52,15 @@ func reset_loot_status():
 	current_picked_loot.clear()
 	current_selected_loot.clear()
 
-#添加可选择战利品 参数： 1，战利品等级 2，战利品页数
-func add_loots(level : Array):
+#添加可选择战利品 参数战利品等级 战利品页数
+func pick_loot():
 	if round_loots_page == 0:
 		return
 	
 	var picked_loot_nb = round_loots_page * 3 #每页 3 个战利品 算出需要挑选的中战利品数量
 	for i in range(picked_loot_nb):
-		var picked_loot = level.pick_random() #在目标等级数组中随机挑选战利品 
-		current_picked_loot.append(picked_loot)
-	
-	show_loot_panel()
-
-#显示战利品UI
-func show_loot_panel():
-	if !Hud.current_LootUI: #向hud节点添加战利品ui
-		var ui = loot_panel.instantiate()
-		Hud.loot_panel_pos.add_child(ui)
-		
-		ui.add_loot_option_panel() #在这里定制loot_panel #选择loot_option词条
-		
-		Hud.current_LootUI = ui #设置为当前战利品UI
-	
-	if round_loots_page <= 0:
-		return #如果玩家当前可获取的战利品页数为 0 则直接跳过
-
-	Hud.current_LootUI.show()
+		var picked_loot = level_1_loot_list.pick_random() #在目标等级数组中随机挑选战利品 
+		current_picked_loot.append(picked_loot) #这就是当前挑选的战利品
 
 #玩家选择战利品
 func select_loot(loot01 : Loot):

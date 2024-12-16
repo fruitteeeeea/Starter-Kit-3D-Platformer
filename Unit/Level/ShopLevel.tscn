@@ -1,13 +1,18 @@
-[gd_scene load_steps=10 format=4 uid="uid://bjmyw1gsg1x6t"]
+[gd_scene load_steps=15 format=4 uid="uid://bjmyw1gsg1x6t"]
 
-[ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_u03y7"]
-[ext_resource type="Script" path="res://test/drop item/select_loot.gd" id="2_e08ve"]
-[ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="2_sq12d"]
+[ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_mixhm"]
+[ext_resource type="Script" path="res://Unit/Facility/change_next_level_type.gd" id="2_fgp50"]
+[ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="3_qdm5i"]
+[ext_resource type="PackedScene" uid="uid://dxxym3sxaptvh" path="res://UI/enter_next_level.tscn" id="4_ajdly"]
+[ext_resource type="Script" path="res://test/LevelTest/change_loot_level.gd" id="5_pt5su"]
+[ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="6_rkvsw"]
+[ext_resource type="PackedScene" uid="uid://drohmovuc4v25" path="res://UI/shop_buy.tscn" id="7_mgl11"]
+[ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="8_6ql2q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boov3"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("2_sq12d")
+albedo_texture = ExtResource("8_6ql2q")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_htdtt"]
@@ -47,7 +52,7 @@ shadow_mesh = SubResource("ArrayMesh_htdtt")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdm22"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("2_sq12d")
+albedo_texture = ExtResource("8_6ql2q")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1ju0v"]
@@ -84,19 +89,36 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1ju0v")
 
-[node name="ShopLevel" instance=ExtResource("1_u03y7")]
+[node name="ShopLevel" instance=ExtResource("1_mixhm")]
 
 [node name="Label3D" parent="World/TopButton" index="2"]
 text = "进入下一关"
 
+[node name="ChangeNextLevelType" type="Node" parent="World/TopButton/Method" index="0"]
+script = ExtResource("2_fgp50")
+
+[node name="EnterNextLevel" type="Node" parent="World/TopButton/Method" index="1"]
+script = ExtResource("3_qdm5i")
+UI = ExtResource("4_ajdly")
+
 [node name="Label3D" parent="World/MiddleLeftButton" index="2"]
 text = "选择战利品"
 
-[node name="SelectLoot" type="Node" parent="World/MiddleLeftButton/Method" index="0"]
-script = ExtResource("2_e08ve")
+[node name="ChangeLootLevel" type="Node" parent="World/MiddleLeftButton/Method" index="0"]
+script = ExtResource("5_pt5su")
+
+[node name="OpenLootPanel" type="Node" parent="World/MiddleLeftButton/Method" index="1"]
+script = ExtResource("3_qdm5i")
+UI = ExtResource("6_rkvsw")
 
 [node name="Label3D" parent="World/MiddleRightButton" index="2"]
 text = "选择商品"
+
+[node name="ChangeShopLevel" type="Node" parent="World/MiddleRightButton/Method" index="0"]
+
+[node name="OpenShopPanel" type="Node" parent="World/MiddleRightButton/Method" index="1"]
+script = ExtResource("3_qdm5i")
+UI = ExtResource("7_mgl11")
 
 [node name="stall-information" parent="World/Facility01" index="0"]
 visible = false

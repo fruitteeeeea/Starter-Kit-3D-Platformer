@@ -10,6 +10,16 @@ extends Control
 
 @export var LootOptionPanel : PackedScene #词条
 
+@onready var no_loot: Label = $PanelContainer/MarginContainer/NoLoot #如果没有战利品的话 会显示这个
+ 
+func _ready() -> void:
+	if LootServer.round_loots_page == 0:
+		no_loot.show()
+		return
+	
+	LootServer.pick_loot() #挑选出当前可选择战利品
+	add_loot_option_panel()
+
 #实时更新 UI 信息
 func _process(delta: float) -> void:
 	#当前已选择的loot数量和当前回合可选择loot数量

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=45 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_fnjwn"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="2_2oxsu"]
@@ -33,10 +33,12 @@
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://Unit/Enemy/StateEnemy/enemy_state_test02.tscn" id="31_u7hcl"]
 [ext_resource type="PackedScene" uid="uid://c0183kou80eg8" path="res://Unit/Facility/dialog_test_ground_button.tscn" id="32_3g0vm"]
 [ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://Unit/Facility/buff_test_ground_button.tscn" id="33_toiyo"]
-[ext_resource type="PackedScene" uid="uid://d33dl742ix1a6" path="res://Unit/Facility/loot_test_ground_button.tscn" id="34_mlr3e"]
 [ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="35_bkhkh"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="36_yttye"]
 [ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://Unit/Enemy/StateEnemy/enemy_state_test_03.tscn" id="37_4361j"]
+[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="37_w3g8n"]
+[ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="38_kej0k"]
+[ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="39_2p3jj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
 render_priority = 0
@@ -426,9 +428,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05232, 0.525106, 10.9371)
 [node name="BuffTestGroundButton" parent="." instance=ExtResource("33_toiyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33466, 0.525106, 9.49709)
 
-[node name="LootTestGroundButton" parent="." instance=ExtResource("34_mlr3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45205, 0.525106, 7.07111)
-
 [node name="FollowEnemySpwaner02" parent="." instance=ExtResource("35_bkhkh")]
 
 [node name="FollowEnemySpwaner03" parent="." instance=ExtResource("35_bkhkh")]
@@ -436,11 +435,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45205, 0.525106, 7.07111)
 [node name="FollowEnemySpwaner04" parent="." instance=ExtResource("35_bkhkh")]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("36_yttye")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.9236, 3.05559, -11.7724)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.23335, 3.05559, 10.8132)
 Camera = NodePath("../View/Camera3D")
 
 [node name="EnemyStateTest03" parent="." instance=ExtResource("37_4361j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2844, 1.95902, -8.32331)
+
+[node name="BasicGroundButton" parent="." instance=ExtResource("37_w3g8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114371, 0.525106, 8.79472)
+
+[node name="OpenLootPanel" type="Node" parent="BasicGroundButton/Method" index="0"]
+script = ExtResource("38_kej0k")
+UI = ExtResource("39_2p3jj")
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]
@@ -450,3 +456,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2844, 1.95902, -8.32331)
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/BombShooter" to="CanvasLayer/TestManager" method="_on_bomb_shooter_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer3/add loot" to="CanvasLayer/TestManager" method="_on_add_loot_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer2/add1xenemy" to="CanvasLayer/TestManager" method="_on_add_1_xenemy_pressed"]
+
+[editable path="BasicGroundButton"]

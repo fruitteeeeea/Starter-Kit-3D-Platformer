@@ -69,6 +69,13 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
+[node name="NoLoot" type="Label" parent="PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "无战利品"
+horizontal_alignment = 1
+
 [node name="NextPage" type="PanelContainer" parent="."]
 layout_mode = 2
 offset_left = 319.0
