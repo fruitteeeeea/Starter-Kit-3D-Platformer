@@ -9,3 +9,4 @@ func _physics_process(delta: float) -> void:
 	if target:
 		self.position = self.position.lerp(target.position, delta * 4)
 		camera_3d.position = camera_3d.position.lerp(Vector3(10, 13, 10), 8 * delta) #相机相对于 跟踪节点的偏移
+ 

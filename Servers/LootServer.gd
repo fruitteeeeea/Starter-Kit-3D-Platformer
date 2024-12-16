@@ -16,7 +16,7 @@ var current_picked_loot := [] #当前呈现的战利品
 var current_selected_loot := [] #当前已选择的战利品
 
 var round_loots_nb := 0 #当前回合可选择战利品数量
-var round_loots_page := 0 #当前回合可选择战利品页数
+var round_loots_page := 1 #当前回合可选择战利品页数
 
 var current_loot_nb := 0 #当前已选择战利品 （直接用current_selected_loot数组大小替代
 var current_loot_page := 1 #当前页面

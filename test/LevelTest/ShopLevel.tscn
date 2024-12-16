@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://bjmyw1gsg1x6t"]
+[gd_scene load_steps=10 format=4 uid="uid://bjmyw1gsg1x6t"]
 
 [ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_u03y7"]
+[ext_resource type="Script" path="res://test/drop item/select_loot.gd" id="2_e08ve"]
 [ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="2_sq12d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boov3"]
@@ -90,6 +91,9 @@ text = "进入下一关"
 
 [node name="Label3D" parent="World/MiddleLeftButton" index="2"]
 text = "选择战利品"
+
+[node name="SelectLoot" type="Node" parent="World/MiddleLeftButton/Method" index="0"]
+script = ExtResource("2_e08ve")
 
 [node name="Label3D" parent="World/MiddleRightButton" index="2"]
 text = "选择商品"

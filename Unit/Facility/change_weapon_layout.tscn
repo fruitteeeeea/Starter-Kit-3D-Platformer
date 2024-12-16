@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqnnjulwhqvee"]
 
-[ext_resource type="Script" path="res://UI/ready_to_start.gd" id="1_eejoe"]
+[ext_resource type="Script" path="res://Unit/Facility/change_weapon_layout.gd" id="1_eejoe"]
 [ext_resource type="PackedScene" uid="uid://bcujtvdkfajgo" path="res://UI/gear_option_pannel.tscn" id="2_75ph7"]
 
 [node name="ChangeWeaponLayout" type="Control"]

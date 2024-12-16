@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://test/drop item/select_loot.gd" id="2_ficmw"]
 
 [node name="LootTestGroundButton" instance=ExtResource("1_wb60o")]
-text = "Loot Test"
 
 [node name="SelectLoot" type="Node" parent="Method" index="0"]
 script = ExtResource("2_ficmw")
