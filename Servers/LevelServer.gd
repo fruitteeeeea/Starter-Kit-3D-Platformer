@@ -1,4 +1,5 @@
 extends Node
+#所有关卡位于 Unit/Level 下的对应等级文件夹中
 
 var level_information := {
 	"level_time" : 0.0, #关卡时间
@@ -31,12 +32,15 @@ var level_information := {
 ]
 
 var LevelList := [] #任务列表
-var current_level := Node #当前关卡
+
+@export var level_dir := "res://Unit/Level/" #Level文件夹目录 
+@export_enum("Level01", "Level02", "Level03") var next_level := "Level01" #下一个关卡的品质
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug"):
 		change_scene(level_list.pick_random())
 
+#更换场景
 func change_scene(path: String): #专门用于处理游戏场景切换
 	var tree := get_tree()
 	
@@ -47,7 +51,30 @@ func change_scene(path: String): #专门用于处理游戏场景切换
 		tree.current_scene.update_player(node.global_position)
 		break
 
+#更换关卡
+func change_level():
+	var next_level01 = next_level
+	var level_file = get_level_files(next_level01).pick_random() #随机选择对应关卡的场景文件
+	print("已选择关卡", level_file)
+	change_scene(level_file)
 
+#获取下一个关卡的 tscn 场景文件场景数组
+func get_level_files(subfolder_name := "Level01") -> Array:
+	var result_files := [] #用于存储匹配的文件夹
+	var target_folder_path = level_dir.path_join(subfolder_name)
+	
+	var dir = DirAccess.open(target_folder_path) #打开目标文件夹
+	
+	dir.list_dir_begin() #遍历目标文件夹中的所有文件
+	var file_name = dir.get_next()
+	while file_name != "":
+		if file_name.ends_with(".tscn"): # 筛选以 .tscn 结尾的文件
+			result_files.append(target_folder_path.path_join(file_name)) #加入到结果数组中
+		file_name = dir.get_next()
+	dir.list_dir_end() #结束遍历
+	print("目标关卡列表", result_files)
+	
+	return result_files #返回结果场景数组
 
 #关卡开始 #离开区域以开始游戏
 func level_start():

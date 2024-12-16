@@ -1,9 +1,7 @@
 extends Control
 
-@export var next_level : String
-
 func _on_yes_pressed() -> void:
-	LevelServer.change_scene(next_level)
+	LevelServer.change_level()
 	queue_free()
 
 func _on_no_pressed() -> void:
