@@ -12,7 +12,7 @@ signal loot_status_update
 @export var level_2_loot_list := [] #等级2战利品
 @export var level_3_loot_list := [] #等级3战利品 
 
-var current_loot_level : String #当前选择的战利品等级
+var current_loot_level := {} #当前选择的战利品等级
 
 var current_picked_loot := [] #当前呈现的战利品
 var current_selected_loot := [] #当前已选择的战利品
@@ -37,6 +37,17 @@ func _ready() -> void: #TD 修改加载等级战利品方法
 		
 	for loot in level_3_loot.get_children():
 		level_3_loot_list.append(loot)
+
+#更新当前战利品等级
+func update_loot_level(info: Dictionary):
+	#根据字典内容更新战利品等级分布情况
+	current_loot_level.clear()
+	current_loot_level = info.duplicate()
+
+
+func update_shop_level(info: Dictionary):
+	#根据字典内容更新商店等级分布情况
+	pass
 
 #更新战利品状态
 func update_loot_status(loot_nb01 :int, loot_page01 := 1):

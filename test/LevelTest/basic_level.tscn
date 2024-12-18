@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bh8efddmke1ed"]
+[gd_scene load_steps=21 format=3 uid="uid://bh8efddmke1ed"]
 
 [ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_rbnmc"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_7unuy"]
+[ext_resource type="Resource" uid="uid://c40h0lhiq01u5" path="res://test/LevelTest/level_info_01.tres" id="3_onar7"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="3_wnns8"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="4_uxkq7"]
 [ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="5_trx5n"]
@@ -13,6 +14,9 @@
 [ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="11_ifyp2"]
 [ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="12_q0odw"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="14_huurl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g88ue"]
+size = Vector3(1.5, 5, 1.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qbwaa"]
 render_priority = 0
@@ -45,10 +49,17 @@ shader_parameter/main_texture = ExtResource("12_q0odw")
 [node name="BasicLevel" type="Node3D"]
 script = ExtResource("1_rbnmc")
 world_envi = ExtResource("2_7unuy")
-level_info = {}
+level_info = ExtResource("3_onar7")
 
 [node name="EnteryPoint" parent="." instance=ExtResource("3_wnns8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181, 0)
+
+[node name="EnteryArea" type="Area3D" parent="EnteryPoint"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnteryPoint/EnteryArea"]
+shape = SubResource("BoxShape3D_g88ue")
+
+[node name="LevelTimer" type="Timer" parent="."]
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.12, 0)

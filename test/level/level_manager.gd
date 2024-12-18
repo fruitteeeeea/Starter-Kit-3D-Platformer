@@ -63,7 +63,7 @@ func _on_battle_zone_body_entered(body: Node3D) -> void:
 func kill_every_enemy():
 	for i in get_children():
 		if i.has_method("take_damage"):
-			i.take_damage(100)
+			i.take_damage(100, 0)
 
 
 func _on_state_timer_timeout() -> void:

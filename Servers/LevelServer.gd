@@ -45,14 +45,14 @@ func change_scene(path: String): #专门用于处理游戏场景切换
 	var tree := get_tree()
 	
 	tree.change_scene_to_file(path)
-	await  tree.tree_changed #等待游戏场景切换
+	await tree.tree_changed #等待游戏场景切换
 	
 	for node in tree.get_nodes_in_group("entry_points"): #移动玩家至关卡出生点
 		tree.current_scene.update_player(node.global_position)
 		break
 
 #更换关卡
-func change_level():
+func change_level(): #TODO 修改载入关卡的方式
 	var next_level01 = next_level
 	var level_file = get_level_files(next_level01).pick_random() #随机选择对应关卡的场景文件
 	print("已选择关卡", level_file)

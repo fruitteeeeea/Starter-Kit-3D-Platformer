@@ -287,28 +287,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.203922, 0.207843, 0.239216, 1)
 
-[node name="LevelInfo" type="Control" parent="."]
+[node name="LevelInfoUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("7_kyfr7")
 
-[node name="LevelTimer" type="PanelContainer" parent="LevelInfo"]
+[node name="LevelTimer" type="PanelContainer" parent="LevelInfoUI"]
 layout_mode = 0
 offset_left = 912.0
 offset_top = 816.0
 offset_right = 1036.0
 offset_bottom = 849.0
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelInfo/LevelTimer"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelInfoUI/LevelTimer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="TimerLabel" type="Label" parent="LevelInfo/LevelTimer/MarginContainer"]
+[node name="TimerLabel" type="Label" parent="LevelInfoUI/LevelTimer/MarginContainer"]
 layout_mode = 2
 text = "TimeLeft 00:00"
 horizontal_alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=46 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_fnjwn"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="2_2oxsu"]
@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="26_0aamg"]
 [ext_resource type="Script" path="res://test/loot_number.gd" id="27_56qht"]
 [ext_resource type="Script" path="res://UI/firerate.gd" id="28_5u48v"]
-[ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/spwaner/follow_payload_chest_spwaner.tscn" id="29_gwc2c"]
+[ext_resource type="PackedScene" uid="uid://bwsn1pbi3p8a1" path="res://Unit/MiscSpwaner/follow_payload_chest_spwaner.tscn" id="29_gwc2c"]
 [ext_resource type="PackedScene" uid="uid://broucx21daax8" path="res://Unit/DropItem/chest.tscn" id="30_1uns8"]
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://Unit/Enemy/StateEnemy/enemy_state_test02.tscn" id="31_u7hcl"]
 [ext_resource type="PackedScene" uid="uid://c0183kou80eg8" path="res://Unit/Facility/dialog_test_ground_button.tscn" id="32_3g0vm"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="37_w3g8n"]
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="38_kej0k"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="39_2p3jj"]
+[ext_resource type="Curve3D" uid="uid://b56hfuys3ink4" path="res://test/LevelTest/path3dtres01.tres" id="40_porhc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
 render_priority = 0
@@ -102,7 +103,6 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.524397, 0)
 material_override = SubResource("ShaderMaterial_3nqov")
 mesh = SubResource("PlaneMesh_weu8b")
 metadata/_edit_lock_ = true
@@ -138,7 +138,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.86424, 0.630728, 5.00555)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63193, 0.630728, 4.98824)
 
 [node name="PathTest" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42334, 0)
 
 [node name="MovingPlatform" parent="PathTest" instance=ExtResource("16_1i6rv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744117, 0.987252, -3.05875)
@@ -147,7 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744117, 0.987252, -3.05875
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39317, 0.456356, 5.90125)
 
 [node name="Path3D" type="Path3D" parent="PathTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.720931, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 curve = SubResource("Curve3D_5k2fc")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="PathTest/Path3D"]
@@ -165,7 +164,7 @@ path_u_distance = 0.69
 path_joined = false
 
 [node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("20_0ufhv")]
-progress = 1.0
+progress = 18.32
 
 [node name="OccupyZoneTest" type="Node3D" parent="."]
 
@@ -423,10 +422,10 @@ Chest = ExtResource("30_1uns8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4835, 1.54611, -5.52192)
 
 [node name="DialogTestGroundButton" parent="." instance=ExtResource("32_3g0vm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05232, 0.525106, 10.9371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.052, 0, 10.937)
 
 [node name="BuffTestGroundButton" parent="." instance=ExtResource("33_toiyo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33466, 0.525106, 9.49709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.335, 0, 9.497)
 
 [node name="FollowEnemySpwaner02" parent="." instance=ExtResource("35_bkhkh")]
 
@@ -435,18 +434,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.33466, 0.525106, 9.49709)
 [node name="FollowEnemySpwaner04" parent="." instance=ExtResource("35_bkhkh")]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("36_yttye")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.23335, 3.05559, 10.8132)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13.3022, 3.05559, -14.2927)
 Camera = NodePath("../View/Camera3D")
 
 [node name="EnemyStateTest03" parent="." instance=ExtResource("37_4361j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2844, 1.95902, -8.32331)
 
 [node name="BasicGroundButton" parent="." instance=ExtResource("37_w3g8n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114371, 0.525106, 8.79472)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114, 0, 8.795)
 
 [node name="OpenLootPanel" type="Node" parent="BasicGroundButton/Method" index="0"]
 script = ExtResource("38_kej0k")
 UI = ExtResource("39_2p3jj")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = ExtResource("40_porhc")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
+material_override = SubResource("ShaderMaterial_4rlnw")
+polygon = PackedVector2Array(-0.1, -0.005, -0.1, 0.005, 0.1, 0.005, 0.1, -0.005)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 0.69
+path_joined = false
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

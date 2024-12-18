@@ -1,5 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dwl60mpl3rbif"]
 
+[ext_resource type="Script" path="res://test/LevelTest/level_type_02.gd" id="1_d1ooe"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="1_rlrdi"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="2_ukj0c"]
 [ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="3_wyila"]
@@ -11,20 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="9_lqb1i"]
 [ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="9_salay"]
 [ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="10_vwxgh"]
-
-[sub_resource type="GDScript" id="GDScript_pcls4"]
-script/source = "extends Node3D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gay6b"]
 render_priority = 0
@@ -55,7 +42,7 @@ shader_parameter/FloatParameter = 0.05
 shader_parameter/main_texture = ExtResource("10_vwxgh")
 
 [node name="LevelType02" type="Node3D"]
-script = SubResource("GDScript_pcls4")
+script = ExtResource("1_d1ooe")
 
 [node name="EnteryPoint" parent="." instance=ExtResource("1_rlrdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181, 0)

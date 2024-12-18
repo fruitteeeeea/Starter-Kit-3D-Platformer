@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://bjmyw1gsg1x6t"]
+[gd_scene load_steps=14 format=4 uid="uid://bjmyw1gsg1x6t"]
 
 [ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_mixhm"]
 [ext_resource type="Script" path="res://Unit/Facility/change_next_level_type.gd" id="2_fgp50"]
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="3_qdm5i"]
 [ext_resource type="PackedScene" uid="uid://dxxym3sxaptvh" path="res://UI/enter_next_level.tscn" id="4_ajdly"]
-[ext_resource type="Script" path="res://test/LevelTest/change_loot_level.gd" id="5_pt5su"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="6_rkvsw"]
 [ext_resource type="PackedScene" uid="uid://drohmovuc4v25" path="res://UI/shop_buy.tscn" id="7_mgl11"]
 [ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="8_6ql2q"]
@@ -104,10 +103,7 @@ UI = ExtResource("4_ajdly")
 [node name="Label3D" parent="World/MiddleLeftButton" index="2"]
 text = "选择战利品"
 
-[node name="ChangeLootLevel" type="Node" parent="World/MiddleLeftButton/Method" index="0"]
-script = ExtResource("5_pt5su")
-
-[node name="OpenLootPanel" type="Node" parent="World/MiddleLeftButton/Method" index="1"]
+[node name="OpenLootPanel" type="Node" parent="World/MiddleLeftButton/Method" index="0"]
 script = ExtResource("3_qdm5i")
 UI = ExtResource("6_rkvsw")
 
