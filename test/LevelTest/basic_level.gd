@@ -18,6 +18,7 @@ var level_info : LevelInfo #$加载关卡资源
 
 #更新关卡状态
 func _ready() -> void: 
+	update_player(entery_point.global_position)
 	level_info = LevelServer.level_info
 	
 	var massage = "关卡：" + str(level_info.level_level)

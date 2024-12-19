@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bh8efddmke1ed"]
+[gd_scene load_steps=21 format=3 uid="uid://bh8efddmke1ed"]
 
 [ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_rbnmc"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_7unuy"]
@@ -12,6 +12,7 @@
 [ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="10_hqei4"]
 [ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="11_ifyp2"]
 [ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="12_q0odw"]
+[ext_resource type="PackedScene" uid="uid://dc261m8r6wpdu" path="res://Unit/Facility/enter_shop_level_button.tscn" id="14_8thwj"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="14_huurl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g88ue"]
@@ -117,4 +118,7 @@ path_u_distance = 0.69
 path_joined = false
 
 [node name="Basic Player" parent="." instance=ExtResource("14_huurl")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.51221, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.7289, 3.51221, 14.6597)
+
+[node name="EnterShopLevelButton" parent="." instance=ExtResource("14_8thwj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

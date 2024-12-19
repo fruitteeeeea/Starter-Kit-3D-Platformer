@@ -13,4 +13,5 @@ func _process(delta):
 func _on_area_3d_body_entered(body: Node3D) -> void: #玩家触碰最终奖杯
 	Hud.level_massage.show_massage("已完成本轮游戏！", "即将返回主菜单")
 	await get_tree().create_timer(2.0).timeout
-	LevelServer.change_scene("res://Unit/Level/TitleScene.tscn")
+	LevelServer.level_info = load(LevelServer.defult_level_info) #重置一下关卡信息
+	LevelServer.change_scene(LevelServer.title_level_scene)

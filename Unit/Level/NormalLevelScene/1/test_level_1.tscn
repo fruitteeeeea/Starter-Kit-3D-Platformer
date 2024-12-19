@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmefqh4gqa5q8"]
+
+[ext_resource type="PackedScene" uid="uid://bh8efddmke1ed" path="res://test/LevelTest/basic_level.tscn" id="1_1ehld"]
+
+[node name="TestLevel1" instance=ExtResource("1_1ehld")]
+
+[node name="Basic Player" parent="." index="5"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.13982, 3.51221, 6.72864)

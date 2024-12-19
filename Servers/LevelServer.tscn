@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bn4k86ii5sdik"]
 
 [ext_resource type="Script" path="res://Servers/LevelServer.gd" id="1_ohdl0"]
-[ext_resource type="Resource" uid="uid://woo0q2j42a7f" path="res://Unit/Level/LevelScene/2/01.tres" id="2_rpcbs"]
+[ext_resource type="Resource" uid="uid://cobaih1tshqfu" path="res://Unit/Level/NormalLevelScene/0/00.tres" id="2_i760j"]
 
 [node name="LevelServer" type="Node"]
 script = ExtResource("1_ohdl0")
-level_info = ExtResource("2_rpcbs")
+level_info = ExtResource("2_i760j")
