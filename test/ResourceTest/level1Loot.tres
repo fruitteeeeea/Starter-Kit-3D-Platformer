@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="LootOptions" load_steps=2 format=3 uid="uid://bh4c22t30x31w"]
-
-[ext_resource type="Script" path="res://test/ResourceTest/loot_options.gd" id="1_v4j7o"]
-
-[resource]
-script = ExtResource("1_v4j7o")
-loot_level = 1
-loot_type = "PLyaer"

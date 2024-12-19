@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bh8efddmke1ed"]
+[gd_scene load_steps=22 format=3 uid="uid://bh8efddmke1ed"]
 
 [ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_rbnmc"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_7unuy"]
@@ -12,6 +12,7 @@
 [ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="10_hqei4"]
 [ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="11_ifyp2"]
 [ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="12_q0odw"]
+[ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://Unit/Payload/move_payload.tscn" id="13_6g3b0"]
 [ext_resource type="PackedScene" uid="uid://dc261m8r6wpdu" path="res://Unit/Facility/enter_shop_level_button.tscn" id="14_8thwj"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="14_huurl"]
 
@@ -51,7 +52,9 @@ script = ExtResource("1_rbnmc")
 world_envi = ExtResource("2_7unuy")
 
 [node name="EnteryPoint" parent="." instance=ExtResource("3_wnns8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+collision_layer = 0
+collision_mask = 2
 
 [node name="EnteryArea" type="Area3D" parent="EnteryPoint"]
 
@@ -117,8 +120,10 @@ path_continuous_u = true
 path_u_distance = 0.69
 path_joined = false
 
+[node name="MovePayload" parent="Path3D" instance=ExtResource("13_6g3b0")]
+
 [node name="Basic Player" parent="." instance=ExtResource("14_huurl")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.7289, 3.51221, 14.6597)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.4537, 3.51221, 10.1766)
 
 [node name="EnterShopLevelButton" parent="." instance=ExtResource("14_8thwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

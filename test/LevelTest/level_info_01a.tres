@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelInfo" load_steps=3 format=3 uid="uid://b5hnqgy61r3pl"]
 
-[ext_resource type="Curve3D" uid="uid://b56hfuys3ink4" path="res://test/LevelTest/path3dtres01.tres" id="1_wkioy"]
+[ext_resource type="Curve3D" uid="uid://b56hfuys3ink4" path="res://Unit/Level/MiscResource/path3dtres01.tres" id="1_wkioy"]
 [ext_resource type="Script" path="res://test/LevelTest/LevelInfo.gd" id="2_1k336"]
 
 [resource]

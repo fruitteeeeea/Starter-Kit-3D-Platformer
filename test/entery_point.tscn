@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://cq1r758b0q8ui"]
+[gd_scene load_steps=6 format=4 uid="uid://cq1r758b0q8ui"]
 
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_o7rjv"]
 
@@ -40,9 +40,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2y52e")
 
-[node name="EnteryPoint" type="Marker3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2s15s"]
+size = Vector3(1, 5, 1)
+
+[node name="EnteryPoint" type="Area3D"]
 
 [node name="indicator-special-cross" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.33, 0)
 mesh = SubResource("ArrayMesh_7ys0y")
 skeleton = NodePath("")
 
@@ -53,3 +57,6 @@ billboard = 1
 modulate = Color(1, 0.87451, 0.360784, 1)
 text = "离开黄圈以开始游戏"
 font_size = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_2s15s")

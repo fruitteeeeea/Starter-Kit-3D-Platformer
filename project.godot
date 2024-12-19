@@ -22,7 +22,6 @@ config/icon="res://icon.png"
 
 Audio="*res://scripts/audio.gd"
 SoundManager="*res://Servers/sound_manager.tscn"
-LootOptionsManager="*res://test/manager/loot_options_manager.gd"
 ProjectileServer="*res://Servers/ProjectileServer.gd"
 WeaponServers="*res://Servers/WeaponServers.gd"
 VisualServer="*res://Servers/VisualServer.gd"

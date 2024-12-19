@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=45 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="2_2oxsu"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="3_5ao1d"]
@@ -39,7 +39,6 @@
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="38_kej0k"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="39_2p3jj"]
 [ext_resource type="PackedScene" uid="uid://dc261m8r6wpdu" path="res://Unit/Facility/enter_shop_level_button.tscn" id="40_4tpuj"]
-[ext_resource type="Curve3D" uid="uid://b56hfuys3ink4" path="res://test/LevelTest/path3dtres01.tres" id="40_porhc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
 render_priority = 0
@@ -445,23 +444,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114, 0, 8.795)
 [node name="OpenLootPanel" type="Node" parent="BasicGroundButton/Method" index="0"]
 script = ExtResource("38_kej0k")
 UI = ExtResource("39_2p3jj")
-
-[node name="Path3D" type="Path3D" parent="."]
-curve = ExtResource("40_porhc")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Path3D"]
-material_override = SubResource("ShaderMaterial_4rlnw")
-polygon = PackedVector2Array(-0.1, -0.005, -0.1, 0.005, 0.1, 0.005, 0.1, -0.005)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = true
-path_continuous_u = true
-path_u_distance = 0.69
-path_joined = false
 
 [node name="EnterShopLevelButton" parent="." instance=ExtResource("40_4tpuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3146, 0, -15.2057)

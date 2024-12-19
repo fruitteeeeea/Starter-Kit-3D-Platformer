@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=35 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="1_jro5e"]
@@ -29,10 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://bf24q80s6qohr" path="res://test/scene/select_your_loot.tscn" id="26_d0fky"]
 [ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="26_rvux6"]
 [ext_resource type="PackedScene" uid="uid://bho53njvwipfv" path="res://test/attack/interactive_comp[onent/dummy.tscn" id="27_0euas"]
-[ext_resource type="Script" path="res://test/manager/shop_manager.gd" id="30_2wpb1"]
-[ext_resource type="Script" path="res://test/manager/weapon_status_manager.gd" id="31_hkuk4"]
-[ext_resource type="Script" path="res://test/manager/player_status_manager.gd" id="32_4qln1"]
-[ext_resource type="Script" path="res://test/manager/loot_options_manager.gd" id="33_iwqp0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6lwo"]
 size = Vector3(20, 5, 18)
@@ -693,18 +689,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61561, 1.61683, 4.02715)
 
 [node name="Turkey" parent="." instance=ExtResource("14_vpctm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12779, 3.08107, -17.5824)
-
-[node name="PlayerStatusManager" type="Node" parent="."]
-script = ExtResource("32_4qln1")
-
-[node name="WeaponStatusManager" type="Node" parent="."]
-script = ExtResource("31_hkuk4")
-
-[node name="LootOptionsManager" type="Node" parent="."]
-script = ExtResource("33_iwqp0")
-
-[node name="ShopManager" type="Node" parent="."]
-script = ExtResource("30_2wpb1")
 
 [connection signal="timeout" from="LevelManager/StateTimer" to="LevelManager" method="_on_state_timer_timeout"]
 [connection signal="timeout" from="LevelManager/EnemySpwan/Timer" to="LevelManager/EnemySpwan" method="_on_timer_timeout"]
