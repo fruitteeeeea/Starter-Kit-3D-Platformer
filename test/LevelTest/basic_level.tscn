@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bh8efddmke1ed"]
+[gd_scene load_steps=20 format=3 uid="uid://bh8efddmke1ed"]
 
 [ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_rbnmc"]
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="2_7unuy"]
-[ext_resource type="Resource" uid="uid://c40h0lhiq01u5" path="res://test/LevelTest/level_info_01.tres" id="3_onar7"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="3_wnns8"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="4_uxkq7"]
 [ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="5_trx5n"]
@@ -49,7 +48,6 @@ shader_parameter/main_texture = ExtResource("12_q0odw")
 [node name="BasicLevel" type="Node3D"]
 script = ExtResource("1_rbnmc")
 world_envi = ExtResource("2_7unuy")
-level_info = ExtResource("3_onar7")
 
 [node name="EnteryPoint" parent="." instance=ExtResource("3_wnns8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181, 0)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc261m8r6wpdu"]
+
+[ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="1_kpo6i"]
+[ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="2_brdq7"]
+[ext_resource type="PackedScene" uid="uid://bndbltq35kk38" path="res://UI/enter_shop_level.tscn" id="3_tufhu"]
+
+[node name="EnterShopLevelButton" instance=ExtResource("1_kpo6i")]
+
+[node name="Label3D" parent="." index="2"]
+text = "进入购物"
+
+[node name="EnterShopLevel" type="Node" parent="Method" index="0"]
+script = ExtResource("2_brdq7")
+UI = ExtResource("3_tufhu")

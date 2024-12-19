@@ -1,6 +1,5 @@
 [gd_scene load_steps=46 format=3 uid="uid://wgb1b26ie4w5"]
 
-[ext_resource type="Script" path="res://test/LevelTest/basic_level.gd" id="1_fnjwn"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="2_2oxsu"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="3_5ao1d"]
 [ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="4_jwelj"]
@@ -39,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="37_w3g8n"]
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="38_kej0k"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="39_2p3jj"]
+[ext_resource type="PackedScene" uid="uid://dc261m8r6wpdu" path="res://Unit/Facility/enter_shop_level_button.tscn" id="40_4tpuj"]
 [ext_resource type="Curve3D" uid="uid://b56hfuys3ink4" path="res://test/LevelTest/path3dtres01.tres" id="40_porhc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
@@ -70,7 +70,6 @@ shader_parameter/FloatParameter = 0.05
 shader_parameter/main_texture = ExtResource("19_qm5n7")
 
 [node name="PrototypeTest" type="Node3D"]
-script = ExtResource("1_fnjwn")
 
 [node name="EnteryPoint" parent="." instance=ExtResource("2_2oxsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49353, 0.594098, -13.4946)
@@ -463,6 +462,9 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 0.69
 path_joined = false
+
+[node name="EnterShopLevelButton" parent="." instance=ExtResource("40_4tpuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3146, 0, -15.2057)
 
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
 [connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]

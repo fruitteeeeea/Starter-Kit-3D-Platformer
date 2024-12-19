@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://bjmyw1gsg1x6t"]
+[gd_scene load_steps=13 format=4 uid="uid://bjmyw1gsg1x6t"]
 
 [ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_mixhm"]
-[ext_resource type="Script" path="res://Unit/Facility/change_next_level_type.gd" id="2_fgp50"]
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="3_qdm5i"]
 [ext_resource type="PackedScene" uid="uid://dxxym3sxaptvh" path="res://UI/enter_next_level.tscn" id="4_ajdly"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="6_rkvsw"]
@@ -93,10 +92,7 @@ shadow_mesh = SubResource("ArrayMesh_1ju0v")
 [node name="Label3D" parent="World/TopButton" index="2"]
 text = "进入下一关"
 
-[node name="ChangeNextLevelType" type="Node" parent="World/TopButton/Method" index="0"]
-script = ExtResource("2_fgp50")
-
-[node name="EnterNextLevel" type="Node" parent="World/TopButton/Method" index="1"]
+[node name="EnterNextLevel" type="Node" parent="World/TopButton/Method" index="0"]
 script = ExtResource("3_qdm5i")
 UI = ExtResource("4_ajdly")
 

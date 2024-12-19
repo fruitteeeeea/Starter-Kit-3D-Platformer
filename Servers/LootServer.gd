@@ -12,7 +12,8 @@ signal loot_status_update
 @export var level_2_loot_list := [] #等级2战利品
 @export var level_3_loot_list := [] #等级3战利品 
 
-var current_loot_level := {} #当前选择的战利品等级
+var current_loot_level := {} #当前关卡的战利品等级
+var current_shop_level := {} #当前关卡的商品等级
 
 var current_picked_loot := [] #当前呈现的战利品
 var current_selected_loot := [] #当前已选择的战利品

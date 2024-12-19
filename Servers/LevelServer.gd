@@ -1,44 +1,20 @@
 extends Node
 #所有关卡位于 Unit/Level 下的对应等级文件夹中
 
-var level_information := {
-	"level_time" : 0.0, #关卡时间
-	
-	"level_loot_nb" : 0, #关卡战利品数量
-	"levbel_debuff_nb" : 0, #关卡中debuff的数量
-	"level_target_nb" : 0, #关卡中任务目标数
-	"level_target_pool" : [], #任务目标池子
-	
-	"enemy_spwaner" : 0, #怪物生成点数量
-	"enemy_spwan_point_pool" : [], #怪物生成点池子
-	
-	#"enemy_spwaner_posy" : 0.0, #怪物生成y 坐标
-	#"enemy_spwaner_pos_limit" : [], #怪物生成坐标限制
+var final_level := 3 #最后一关是第3关 最后一关结束之后不会被传送到商店 而是通关关卡
 
-	"enemy_power" : 0.0, #怪物强度
-	
-	"dynamic_difficulty" : false #动态难度
-}
+@export var level_dir := "res://Unit/Level/LevelScene/" #Level文件夹目录 
 
-@export var level_time := 45.0 #任务时间
-@export var enemy_spwaner : Array[PackedScene] #怪物生成器
+#特殊关卡
+var ready_level_scene := "res://Unit/Level/ReadyLevel.tscn"
+var shop_level_scene := "res://Unit/Level/ShopLevel.tscn" #商店关卡
+var final_level_scene := "res://Unit/Level/CompleteLevel.tscn" #最终关卡
 
+@export var level_info : LevelInfo
 
-@onready var level_timer: Timer = $LevelTimer
-
-@export var level_list := [
-	"res://test/LevelTest/prototype_test.tscn"
-	
-]
-
-var LevelList := [] #任务列表
-
-@export var level_dir := "res://Unit/Level/" #Level文件夹目录 
-@export_enum("Level01", "Level02", "Level03") var next_level := "Level01" #下一个关卡的品质
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug"):
-		change_scene(level_list.pick_random())
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event.is_action_pressed("debug"):
+		#get_level_scene()
 
 #更换场景
 func change_scene(path: String): #专门用于处理游戏场景切换
@@ -51,17 +27,29 @@ func change_scene(path: String): #专门用于处理游戏场景切换
 		tree.current_scene.update_player(node.global_position)
 		break
 
-#更换关卡
-func change_level(): #TODO 修改载入关卡的方式
-	var next_level01 = next_level
-	var level_file = get_level_files(next_level01).pick_random() #随机选择对应关卡的场景文件
-	print("已选择关卡", level_file)
-	change_scene(level_file)
+#前往购物关卡或结算关卡
+func change_to_shop_level():
+	var next_level = level_info.level_level + 1
+	if next_level <= final_level:
+		change_scene(shop_level_scene) #在这个位置判断是否还有最后一关
+	else:
+		change_scene(final_level_scene)
 
-#获取下一个关卡的 tscn 场景文件场景数组
-func get_level_files(subfolder_name := "Level01") -> Array:
-	var result_files := [] #用于存储匹配的文件夹
-	var target_folder_path = level_dir.path_join(subfolder_name)
+#前往下个游戏关卡
+func change_to_next_level():
+	var level_scene01 = get_level_scene()[0] #获取下一个关卡的地址
+	var level_info01 = get_level_scene()[1] #获取下一个关卡的关卡信息
+	
+	level_info = level_info01 #更新关卡信息
+	change_scene(level_scene01) #更换关卡场景
+
+#获取关卡场景实例
+func get_level_scene(): #总是获取下一个关卡场景
+	var next_level = level_info.level_level + 1
+
+	var result_level_scene := [] #关卡实例 #扫描出来的关卡场景
+	var result_level_tres := [] #关卡信息 #扫描出来的关卡信息
+	var target_folder_path = level_dir.path_join(str(next_level)) #打开对应关卡文件夹
 	
 	var dir = DirAccess.open(target_folder_path) #打开目标文件夹
 	
@@ -69,43 +57,14 @@ func get_level_files(subfolder_name := "Level01") -> Array:
 	var file_name = dir.get_next()
 	while file_name != "":
 		if file_name.ends_with(".tscn"): # 筛选以 .tscn 结尾的文件
-			result_files.append(target_folder_path.path_join(file_name)) #加入到结果数组中
+			result_level_scene.append(target_folder_path.path_join(file_name)) #加入到关卡实例数组中
+		elif file_name.ends_with(".tres"): # 筛选以 .tscn 结尾的文件
+			result_level_tres.append(target_folder_path.path_join(file_name)) #加入到关卡资源数组中
 		file_name = dir.get_next()
 	dir.list_dir_end() #结束遍历
-	print("目标关卡列表", result_files)
+	print(["关卡实例", result_level_scene, "关卡信息", result_level_tres]) #扫描出所有符合要求的关卡场景文件
 	
-	return result_files #返回结果场景数组
-
-#关卡开始 #离开区域以开始游戏
-func level_start():
-	#启动刷怪点
-	for spwaner in level_information["enemy_spwan_point_pool"]:
-		EnemySpwanerServer.add_enemy_spwaner(spwaner)
-		pass
-
-	#启动任务目标
-	for target in level_information["level_target_pool"]:
-		LevelTargetServer.add_level_target(target)
+	var final_scene = result_level_scene.pick_random() #得出最终关卡场景
+	var final_tres = result_level_tres.pick_random() #得出最终关卡信息
 	
-	#启动 debuff 生成
-	
-
-	#启动机计时器
-	level_timer.wait_time = level_information["level_time"]
-	level_timer.start()
-
-#关卡完成
-func level_complete():
-	#判断玩家是否完成关卡目标
-	#否 玩家失败
-	#是 玩家进入过渡层
-	
-	#展示战利品结算界面
-	#展示商店？
-	
-	#关卡
-	pass
-
-
-func _on_level_timer_timeout() -> void:
-	level_complete()
+	return [final_scene, final_tres] #返回关卡场景和关卡信息

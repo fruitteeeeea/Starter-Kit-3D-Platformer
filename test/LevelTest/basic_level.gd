@@ -14,32 +14,46 @@ extends Node3D
 @onready var level_timer: Timer = $LevelTimer #关卡计时器
 @onready var basic_player: CharacterBody3D = $"Basic Player" #玩家节点
 
-@export var level_info : LevelInfo #$加载关卡资源
+var level_info : LevelInfo #$加载关卡资源
 
 #更新关卡状态
 func _ready() -> void: 
-	print(level_info.level_level) #打印关卡名字
+	level_info = LevelServer.level_info
+	
+	var massage = "关卡：" + str(level_info.level_level)
+	Hud.level_massage.show_massage(massage, "请好好加油！") #欢迎页面
+
+	LootServer.update_loot_level(level_info.level_loot_level) #更新关卡战利品等级
+	LootServer.update_shop_level(level_info.level_shop_level) #更新关卡商品等级
+
 	level_timer.wait_time = level_info.level_time #更新计时器时间
 	path_3d.curve = level_info.payload_path #更换对应 path3d 资源
 	
-	add_enemy_spwaner()
-	add_debuff_spwaner()
+	add_spwaners()
 	
 	SoundManager.play_bgm(level_info.level_BGM) #播放关卡 BGM
-	
-	LootServer.update_loot_level(level_info.level_loot_level) #更新关卡战利品等级
-	LootServer.update_shop_level(level_info.level_shop_level) #更新关卡商品等级
-	
+
 	entery_area.area_exited.connect(level_start) #离开黄圈 关卡开始
 	level_timer.timeout.connect(level_complete) #计时器完成 关卡结束
 
-
-func add_enemy_spwaner(): #生成敌人生成器节点
-	pass
-
-
-func add_debuff_spwaner(): #添加 debuff 生成节点
-	pass
+#添加各类生成器
+func add_spwaners(): 
+	var main_level = get_tree().current_scene #直接加载在主场景下
+	
+	for spwaner in level_info.enemy_spwaner_list:
+		EnemySpwanerServer.add_enemy_spwaner(spwaner) #敌人生成器服务器添加敌人生成节点
+	
+	for spwaner in level_info.level_chest_spwaner:
+		var spwaner01 = spwaner.instantiate()
+		main_level.add_child(spwaner01) #场景添加奖励箱子节点
+	
+	for spwaner in level_info.payload_debuff_list:
+		var spwaner01 = spwaner.instantiate()
+		main_level.add_child(spwaner01) #场景添加debuff 节点
+	
+	for target in level_info.payload_target_list:
+		var target01 = target.instantiate()
+		main_level.add_child(target01) #场景添加debuff 节点
 
 
 func update_player(pos: Vector3): #关卡文件会更新玩家节点
@@ -51,4 +65,12 @@ func level_start():
 
 
 func level_complete():
+	#判断玩家是否完成关卡目标
+	#否 玩家失败
+	#是 玩家进入过渡层
+	
+	#展示战利品结算界面
+	#展示商店？
+	
+	#关卡
 	pass

@@ -40,7 +40,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2y52e")
 
-[node name="EnteryPoint" type="Marker3D" groups=["entry_points"]]
+[node name="EnteryPoint" type="Marker3D"]
 
 [node name="indicator-special-cross" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_7ys0y")
