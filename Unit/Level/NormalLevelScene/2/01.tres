@@ -6,9 +6,13 @@
 [resource]
 script = ExtResource("1_ctkkk")
 level_level = 2
-level_loot_level = {}
+level_loot_level = {
+"-1": 0.25,
+"1": 0.6,
+"2": 0.15
+}
 level_shop_level = {}
-level_time = 30.0
+level_time = 45.0
 payload_path = ExtResource("1_f4ywk")
 enemy_spwaner_list = Array[PackedScene]([])
 level_chest_spwaner = Array[PackedScene]([])

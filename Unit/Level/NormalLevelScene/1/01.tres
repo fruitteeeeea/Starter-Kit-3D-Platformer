@@ -6,7 +6,11 @@
 [resource]
 script = ExtResource("1_0e41r")
 level_level = 1
-level_loot_level = {}
+level_loot_level = {
+"-1": 0.25,
+"1": 0.6,
+"2": 0.15
+}
 level_shop_level = {}
 level_time = 30.0
 payload_path = ExtResource("1_34lo7")

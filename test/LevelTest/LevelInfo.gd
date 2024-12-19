@@ -2,7 +2,7 @@ extends Resource
 class_name LevelInfo #管理关卡信息的类
 
 @export var level_level := 1 #关卡等级
-@export var level_loot_level := {} #关卡战利品列表 使用字典存储 分别记录各个等级的战利品占比情况
+@export var level_loot_level := {"-1" : .25, "1" : .6, "2" : .15} #关卡战利品列表 使用字典存储 分别记录各个等级的战利品占比情况
 @export var level_shop_level := {} #关卡商店列表
 
 @export var level_time := 30.0 #关卡时间
