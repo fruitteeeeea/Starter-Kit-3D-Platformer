@@ -1,0 +1,2 @@
+extends LootEffect
+class_name PlayerLootEffect
