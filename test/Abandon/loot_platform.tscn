@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b13rt3lc5uulx"]
 
-[ext_resource type="Script" path="res://test/level/LootPlatForm/loot_platform.gd" id="1_mtesl"]
+[ext_resource type="Script" path="res://test/Abandon/loot_platform.gd" id="1_mtesl"]
 [ext_resource type="PackedScene" uid="uid://bjgr70s00mh1p" path="res://test/level/LootPlatForm/GLB format/border-straight.glb" id="1_udnx2"]
 [ext_resource type="PackedScene" uid="uid://bke7od6sdjgvn" path="res://test/level/LootPlatForm/GLB format/stairs.glb" id="2_surss"]
 [ext_resource type="PackedScene" uid="uid://bj0vs8rk58oyg" path="res://test/level/LootPlatForm/GLB format/tree.glb" id="3_e1fln"]

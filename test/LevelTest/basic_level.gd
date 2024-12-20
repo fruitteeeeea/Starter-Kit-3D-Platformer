@@ -15,6 +15,9 @@ extends Node3D
 
 var level_info : LevelInfo #$加载关卡资源
 
+@onready var spwan_object: Node = $SpwanObject
+ #所有生成物放在这里
+
 #更新关卡状态
 func _ready() -> void: 
 	update_player(entery_point.global_position)

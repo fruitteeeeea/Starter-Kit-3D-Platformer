@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfpyhhr1e3nrl"]
 
-[ext_resource type="Script" path="res://test/target/rigid_item_spwaner.gd" id="1_kx7gn"]
+[ext_resource type="Script" path="res://Unit/DropItem/rigid_item_spwaner.gd" id="1_kx7gn"]
 
 [node name="RigidItemSpwaner" type="Marker3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47735, -0.00388497)

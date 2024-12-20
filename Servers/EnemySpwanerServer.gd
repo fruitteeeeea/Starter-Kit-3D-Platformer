@@ -1,8 +1,5 @@
 extends Node
 
-#当前场景生成器配置
-var enemy_spwaner := [] #所有生成器加入到一个数组中
-
 var spwaner_info := {
 	#生成节点 #计时器 #敌人类型 #最大敌人数 #当前敌人数 
 	#生成节点 当前敌人队列
@@ -11,11 +8,10 @@ var spwaner_info := {
 
 #添加敌人生成器
 func add_enemy_spwaner(spwaner01 : PackedScene):
-	var spwaner = spwaner01 #实例化生成器
-	get_tree().root.add_child(spwaner) #添加到场景树中
+	var spwaner = spwaner01.instantiate() #实例化生成器
+	get_tree().current_scene.add_child(spwaner) #添加到当前场景树中
 	
-	enemy_spwaner.append(spwaner)
-	spwaner_info[spwaner01] = [] #加载敌人队列
+	spwaner_info[spwaner01] = [] #信息字典中添加该生成器的当前敌人数组
 
 #激活生成器
 func activate_spwaner(spwaner01 : EnemySpawner):
@@ -32,10 +28,4 @@ func activate_spwaner(spwaner01 : EnemySpawner):
 	if PayloadServer.GetPayloadAroundPos(5, 0.0, 0.0) == Vector3.ZERO: #防止未找到当前活跃载具
 		return
 
-	EnemyStatusServer._add_enemy(spwaner01, enemy01, strength01, pos01)
-
-#删除敌人生成器
-func remove_enemy_spwaner(spwaner01 : Marker3D):
-	enemy_spwaner.erase(spwaner01) #从数组中移除生成器
-	spwaner_info.erase(spwaner01) #从字典中移除生成器
-	spwaner01.queue_free() #释放节点
+	EnemyStatusServer.add_enemy(spwaner01, enemy01, strength01, pos01)

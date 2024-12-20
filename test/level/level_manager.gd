@@ -26,7 +26,6 @@ var level_pos_v : Vector2
 
 func _ready() -> void:
 	#将自己添加到各个manager当中
-	LootOptionsManager
 	
 	if LevelSizeTopLeft && LevelSizeDownRight:
 		level_pos_h = Vector2(LevelSizeTopLeft.global_position.x, LevelSizeDownRight.global_position.x)

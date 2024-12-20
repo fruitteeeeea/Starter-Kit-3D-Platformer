@@ -127,3 +127,5 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.4537, 3.51221, 10.17
 
 [node name="EnterShopLevelButton" parent="." instance=ExtResource("14_8thwj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="SpwanObject" type="Node" parent="."]

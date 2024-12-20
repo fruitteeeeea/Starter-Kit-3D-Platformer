@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="LevelInfo" load_steps=3 format=3 uid="uid://woo0q2j42a7f"]
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=4 format=3 uid="uid://woo0q2j42a7f"]
 
-[ext_resource type="Script" path="res://test/LevelTest/LevelInfo.gd" id="1_ctkkk"]
+[ext_resource type="Script" path="res://Unit/Level/MiscResource/LevelInfo.gd" id="1_ctkkk"]
 [ext_resource type="Curve3D" uid="uid://dja3h54rmm4qn" path="res://Unit/Level/MiscResource/path3dtres02.tres" id="1_f4ywk"]
+[ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="1_rhwlo"]
 
 [resource]
 script = ExtResource("1_ctkkk")
@@ -14,7 +15,7 @@ level_loot_level = {
 level_shop_level = {}
 level_time = 45.0
 payload_path = ExtResource("1_f4ywk")
-enemy_spwaner_list = Array[PackedScene]([])
+enemy_spwaner_list = Array[PackedScene]([ExtResource("1_rhwlo"), ExtResource("1_rhwlo")])
 level_chest_spwaner = Array[PackedScene]([])
 payload_debuff_list = Array[PackedScene]([])
 payload_target_list = Array[PackedScene]([])
