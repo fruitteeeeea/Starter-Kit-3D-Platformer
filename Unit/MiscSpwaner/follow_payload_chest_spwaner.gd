@@ -26,10 +26,10 @@ func _on_chest_spwan_timer_timeout() -> void:
 
 
 func spwan_chest():
-	if !LevelTargetServer.current_actived_payloads.size():
+	if !PayloadServer.current_actived_payloads.size():
 		return
 	
-	var current_payload = LevelTargetServer.current_actived_payloads.pick_random()
+	var current_payload = PayloadServer.current_actived_payloads.pick_random()
 	if !current_payload:
 		return
 	

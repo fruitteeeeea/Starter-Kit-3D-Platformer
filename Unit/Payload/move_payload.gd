@@ -58,7 +58,7 @@ func _ready() -> void:
 	for marker in payload_surround_position.get_children():
 		surround_position.append(marker)
 	
-	LevelTargetServer.add_payload(self)
+	PayloadServer.add_payload(self)
 	rigid_item_spwan_timer.wait_time = spwan_time
 
 func _physics_process(delta: float) -> void:
@@ -132,7 +132,7 @@ func _on_move_state_physics_processing(delta: float) -> void:
 	current_move_speed = lerpf(current_move_speed, max_move_speed, 0.1)
 	current_rotate_speed = lerpf(current_rotate_speed, max_rotate_speed, 0.1)  #指示器旋转
 	
-	LevelTargetServer.current_payload[self] = progress_ratio
+	PayloadServer.current_payload[self] = progress_ratio
 
 func _on_idle_state_entered() -> void:
 	$AnimationPlayer.play("RESET")

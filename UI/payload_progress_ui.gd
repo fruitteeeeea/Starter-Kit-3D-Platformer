@@ -7,25 +7,19 @@ class_name PayloadLabel
 var payload : PathFollow3D #车子节点
 var payload_moving := false #是否在移动
 
-#func _ready() -> void:
-	#panel_container.visible = false
-#
-#
 func _process(delta: float) -> void:
 	if payload_moving:
-		progress_bar.value = LevelTargetServer.current_payload[payload]
+		progress_bar.value = PayloadServer.current_payload[payload]
 
 
 func _payload_move(payload01):
 	payload_moving = true
 	change_visual_state(true)
-	pass
 
 
 func _payload_stop(payload01):
 	payload_moving = false
 	change_visual_state()
-	pass
 
 
 func _payload_complete():

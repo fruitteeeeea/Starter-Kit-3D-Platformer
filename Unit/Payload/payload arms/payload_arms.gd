@@ -56,8 +56,6 @@ func payload_arms_attack():
 
 #动态更改车子武装状态
 func _arms_state_actived(payload01 : MovePayload, state := true):
-	#if !LevelTargetServer.current_actived_payloads.has(payload01):
-		#return
 	if state == true:
 		fire_timer.paused = false
 	else:

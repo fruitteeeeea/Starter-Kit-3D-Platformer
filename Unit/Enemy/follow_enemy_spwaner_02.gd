@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func _on_enemy_spwan_timer_timeout() -> void:
-	if !LevelTargetServer.current_actived_payloads.size() or !activated:
+	if !PayloadServer.current_actived_payloads.size() or !activated:
 		return 
 		
 	EnemySpwanerServer.activate_spwaner(self)
