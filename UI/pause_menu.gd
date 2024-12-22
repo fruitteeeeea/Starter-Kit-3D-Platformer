@@ -11,8 +11,10 @@ func change_display_state():
 	match is_display:
 		true:
 			show()
+			get_tree().paused = true
 		false:
 			hide()
+			get_tree().paused = false
 
 func _on_continue_pressed() -> void:
 	is_display =! is_display

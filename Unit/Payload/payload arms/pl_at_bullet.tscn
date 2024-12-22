@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2706px6jyidt"]
+
+[ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://Unit/Payload/payload arms/payload_arms.tscn" id="1_0etht"]
+
+[node name="PLAtBullet" instance=ExtResource("1_0etht")]

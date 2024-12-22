@@ -22,8 +22,8 @@ func _payload_stop(payload01):
 	change_visual_state()
 
 
-func _payload_complete():
-	pass
+func _payload_complete(payload01):
+	queue_free()
 
 
 func change_visual_state(state01 := false):

@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=4 uid="uid://bysf6jlwdebvw"]
 
-[ext_resource type="Script" path="res://Unit/Payload/payload arms/payload_arms_bomb.gd" id="1_a1xbk"]
-[ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="2_o3gyy"]
-[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_j1h01"]
+[ext_resource type="Script" path="res://Unit/Payload/payload arms/payload_arms_bomb.gd" id="1_8yqy2"]
+[ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="2_urssk"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_ar5d4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qyh3"]
 resource_name = "colormap"
 cull_mode = 2
-albedo_texture = ExtResource("2_o3gyy")
+albedo_texture = ExtResource("2_urssk")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gk36g"]
@@ -63,7 +63,7 @@ point_count = 4
 radius = 5.1
 
 [node name="PayloadArmsBomb" type="Node3D"]
-script = ExtResource("1_a1xbk")
+script = ExtResource("1_8yqy2")
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
@@ -84,7 +84,7 @@ one_shot = true
 speed_scale = 1.2
 explosiveness = 0.8
 randomness = 1.0
-mesh = ExtResource("3_j1h01")
+mesh = ExtResource("3_ar5d4")
 emission_shape = 1
 emission_sphere_radius = 0.2
 particle_flag_align_y = true

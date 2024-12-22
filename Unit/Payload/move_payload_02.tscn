@@ -699,7 +699,6 @@ fire_colddown = 2.0
 
 [node name="PayloadArms5" parent="Arms" instance=ExtResource("12_ydohw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.391443, 0)
-weapon_type = 0
 fire_colddown = 5.0
 
 [node name="DetectIndicator" type="MeshInstance3D" parent="."]

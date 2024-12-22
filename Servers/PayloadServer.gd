@@ -19,6 +19,7 @@ func add_payload(payload01 :  MovePayload):
 	label.payload = payload01
 	payload01.payload_move.connect(label._payload_move)
 	payload01.payload_stop.connect(label._payload_stop)
+	payload01.payload_complete.connect(label._payload_complete)
 	Hud.add_child(label)
 
 

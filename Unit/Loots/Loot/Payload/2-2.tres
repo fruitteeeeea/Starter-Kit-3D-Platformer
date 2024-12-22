@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PayloadLootEffect" load_steps=3 format=3 uid="uid://bir7056sg7ulc"]
+
+[ext_resource type="PackedScene" uid="uid://d2706px6jyidt" path="res://Unit/Payload/payload arms/pl_at_bullet.tscn" id="1_o3jnr"]
+[ext_resource type="Script" path="res://Unit/Loots/LootEffect/PayloadLootEffect.gd" id="2_5vb3m"]
+
+[resource]
+script = ExtResource("2_5vb3m")
+LootPayloadArms = ExtResource("1_o3jnr")

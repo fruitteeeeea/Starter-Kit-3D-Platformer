@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgyfh0nmnww48"]
+
+[ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://Unit/Payload/payload arms/payload_arms.tscn" id="1_qgg6o"]
+
+[node name="PLAtMELEE" instance=ExtResource("1_qgg6o")]
+weapon_type = 2

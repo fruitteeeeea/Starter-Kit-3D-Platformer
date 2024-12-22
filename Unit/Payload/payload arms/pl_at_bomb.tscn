@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfhr2xb0upbex"]
+
+[ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://Unit/Payload/payload arms/payload_arms.tscn" id="1_kt7rf"]
+
+[node name="PLAtBOMB" instance=ExtResource("1_kt7rf")]
+weapon_type = 1

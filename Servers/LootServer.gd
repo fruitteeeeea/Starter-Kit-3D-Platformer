@@ -91,8 +91,8 @@ func apply_status(loot01 : Loot): #应用具体数据
 	match loot01.Type:
 		loot01.LootType.PlayerStatus: #根据战利品类型修改对应参数
 			print("修改 PlayerSatus")
-			var final_value = PlayerSatusServer.BasicStatus[loot01.modify_property] * loot01.modify_value
-			PlayerSatusServer.ModifyStatus[loot01.modify_property] += final_value #添加对应值
+			#var final_value = PlayerSatusServer.BasicStatus[loot01.modify_property] * loot01.modify_value
+			#PlayerSatusServer.ModifyStatus[loot01.modify_property] += final_value #添加对应值
 		loot01.LootType.WeaponStatus:
 			print("修改 WeaponSatus")
 		loot01.LootType.PayloadStatus:

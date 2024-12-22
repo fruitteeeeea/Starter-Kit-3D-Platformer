@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerLootEffect" load_steps=2 format=3 uid="uid://kwi1wnof7wk1"]
+
+[ext_resource type="Script" path="res://Unit/Loots/LootEffect/PlayerLootEffect.gd" id="1_flmgm"]
+
+[resource]
+script = ExtResource("1_flmgm")
+modify_property = "move_speed"
+modify_value = 0.1

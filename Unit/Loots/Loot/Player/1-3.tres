@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerLootEffect" load_steps=2 format=3 uid="uid://b8w30tdpplmjj"]
+
+[ext_resource type="Script" path="res://Unit/Loots/LootEffect/PlayerLootEffect.gd" id="1_xyuku"]
+
+[resource]
+script = ExtResource("1_xyuku")
+modify_property = "multi_jump"
+modify_value = 1.0
