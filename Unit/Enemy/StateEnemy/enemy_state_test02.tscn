@@ -63,7 +63,7 @@ radius = 0.25
 height = 0.75
 
 [node name="EnemyStateTest02" instance=ExtResource("1_2xcuc")]
-collision_layer = 2
+collision_layer = 34
 collision_mask = 3
 script = ExtResource("2_ughar")
 LifeTime = 30.0

@@ -33,9 +33,7 @@ func spwan_chest():
 	if !current_payload:
 		return
 	
-	#var pos = current_payload.surround_position.pick_random().global_position #随机寻找车子周围的一个位置
-	var pos = current_payload.get_surrounding_position(distance_to_payload)
-	#var pos = PayloadServer.GetPayloadAroundPos(distance_to_payload, 0, 0)
+	var pos = PayloadServer.GetPayloadAroundPos(distance_to_payload, 0, 0)
 	
 	pos += Vector3(randf_range(-1, 1), 0, randf_range(-1, 1)) #进一步加工位置信息
 	

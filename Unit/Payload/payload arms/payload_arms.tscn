@@ -7,7 +7,6 @@
 
 [node name="PayloadArms" type="Node3D"]
 script = ExtResource("1_8bfru")
-weapon_type = 2
 Bullet = ExtResource("2_l0ikx")
 Bomb = ExtResource("4_jmddd")
 fire_colddown = 1.0

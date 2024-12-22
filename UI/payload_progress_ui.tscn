@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b6vk7xc8fcwcd"]
 
-[ext_resource type="Script" path="res://UI/payload_progress_ui.gd" id="1_37fii"]
+[ext_resource type="Script" path="res://UI/payload_progress_ui.gd" id="1_f8sji"]
 
 [node name="PayloadProgressUI" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
-script = ExtResource("1_37fii")
+script = ExtResource("1_f8sji")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

@@ -18,11 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://dvumw4an5h14" path="res://Unit/DropItem/drop_rigid_item.tscn" id="17_vn4o7"]
 [ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="18_dygxm"]
 [ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="19_qm5n7"]
-[ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://Unit/Payload/move_payload.tscn" id="20_0ufhv"]
 [ext_resource type="PackedScene" uid="uid://cys28ci6xn58s" path="res://test/target/occupy_zone.tscn" id="21_nrsvd"]
 [ext_resource type="Script" path="res://test/test_manager.gd" id="22_wtsrp"]
 [ext_resource type="Script" path="res://test/level_target_test.gd" id="23_cuwl0"]
-[ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://test/target/payload_progress_ui.tscn" id="24_dgxbv"]
+[ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://UI/payload_progress_ui.tscn" id="24_dgxbv"]
 [ext_resource type="Script" path="res://UI/buff_indiactor_test.gd" id="25_d005f"]
 [ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="26_0aamg"]
 [ext_resource type="Script" path="res://test/loot_number.gd" id="27_56qht"]
@@ -38,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="37_w3g8n"]
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="38_kej0k"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="39_2p3jj"]
+[ext_resource type="PackedScene" uid="uid://bwemstfnlp6ix" path="res://Unit/Payload/move_payload_02.tscn" id="39_g7mb5"]
 [ext_resource type="PackedScene" uid="uid://dc261m8r6wpdu" path="res://Unit/Facility/enter_shop_level_button.tscn" id="40_4tpuj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nqov"]
@@ -159,8 +159,8 @@ path_continuous_u = true
 path_u_distance = 0.69
 path_joined = false
 
-[node name="MovePayload" parent="PathTest/Path3D" instance=ExtResource("20_0ufhv")]
-progress = 18.32
+[node name="MovePayload02" parent="PathTest/Path3D" instance=ExtResource("39_g7mb5")]
+transform = Transform3D(0.707105, 0, -0.707105, 0, 1, 0, 0.707105, 0, 0.707105, -16, -0.423, -16)
 
 [node name="OccupyZoneTest" type="Node3D" parent="."]
 
@@ -220,15 +220,6 @@ text = "BombShooter
 [node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/TestManager/HBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "关卡开始"
-
-[node name="Button2" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "加载关卡 1
-"
-
 [node name="add loot" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 text = "添加战利品
@@ -253,20 +244,6 @@ offset_left = -218.0
 offset_bottom = 101.0
 grow_horizontal = 0
 
-[node name="Payload" type="PanelContainer" parent="CanvasLayer/LevelTargetTest/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelTargetTest/VBoxContainer/Payload"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/LevelTargetTest/VBoxContainer/Payload/HBoxContainer"]
-layout_mode = 2
-text = "推车进度"
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/LevelTargetTest/VBoxContainer/Payload/HBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-
 [node name="OccupyZone" type="PanelContainer" parent="CanvasLayer/LevelTargetTest/VBoxContainer"]
 layout_mode = 2
 
@@ -282,20 +259,6 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 max_value = 1.0
 step = 0.1
-
-[node name="TargetEnemy" type="PanelContainer" parent="CanvasLayer/LevelTargetTest/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelTargetTest/VBoxContainer/TargetEnemy"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/LevelTargetTest/VBoxContainer/TargetEnemy/HBoxContainer"]
-layout_mode = 2
-text = "目标进度"
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/LevelTargetTest/VBoxContainer/TargetEnemy/HBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
 
 [node name="PayloadProgressUI" parent="CanvasLayer" instance=ExtResource("24_dgxbv")]
 offset_left = 696.0
@@ -370,9 +333,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -372.0
+offset_left = -308.0
 offset_top = -52.0
-offset_right = -152.0
+offset_right = -88.0
 offset_bottom = -15.0
 grow_vertical = 0
 

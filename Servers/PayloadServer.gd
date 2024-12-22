@@ -7,13 +7,15 @@ var current_actived_payloads := [] #当前活跃的车子
 var current_payload_arms : Array[PackedScene] #当前存在的载具武装
 
 #====注册车子相关====
-func add_payload(payload01 : PathFollow3D):
+func add_payload(payload01 :  MovePayload):
 	current_payload[payload01] = 0.0 #登记车子
 	payload01.payload_move.connect(_payload_move) #管理器信号链接
 	payload01.payload_stop.connect(_payload_stop)
 	payload01.payload_complete.connect(_payload_complete)
 	
-	var label = payload01.label.instantiate()
+	add_payload_arms(payload01) #添加武装
+	
+	var label = payload01.label.instantiate() #UI 相关
 	label.payload = payload01
 	payload01.payload_move.connect(label._payload_move)
 	payload01.payload_stop.connect(label._payload_stop)
@@ -35,17 +37,20 @@ func _payload_complete(payload01):
 	
 	LootServer.update_loot_status(loot_nb01, 1)
 
-
-
+#为车子添加武装
+func add_payload_arms(payload01: MovePayload): 
+	for arm in current_payload_arms:
+		var arm01 = arm.instantiate()
+		payload01.arms.add_child(arm01) #节点添加至载具下
 
 
 
 
 #获取载具周围坐标 #距离远近 #角度偏好
 func GetPayloadAroundPos(distance01 : float, angle01 : float, bais01 : float,) -> Vector3:
-	if !current_actived_payloads.size():
-		return Vector3.ZERO
-	
+	#if !current_actived_payloads.size():
+		#return Vector3.ZERO
+	#
 	var current_payload = current_actived_payloads.pick_random()
 	if !current_payload:
 		return Vector3.ZERO
@@ -62,9 +67,19 @@ func GetPayloadAroundPos(distance01 : float, angle01 : float, bais01 : float,) -
 	
 	return final_pos
 
+#func GetPayloadAroundPos(distance01 : float, angle01 : float, bais01 : float) -> Vector3:
+	#var current_payload = current_actived_payloads.pick_random()
+	#if !current_payload:
+		#return Vector3.ZERO
+	#
+	#var result_angle = get_biased_angle(angle01  + current_payload.anchor.rotation.x, bais01) #获得角度
+	#var final_pos = get_random_point_on_circle(result_angle, Vector2(current_payload.global_position.x, current_payload.global_position.z), distance01)
+	#return Vector3(final_pos.x, current_payload.global_position.y, final_pos.y)
+
+
 #获取圆周长上面的一个随机点
-func get_random_point_on_circle(center: Vector2, radius: float = 1.0) -> Vector2:
-	var theta = randf() * TAU  # 随机角度
+func get_random_point_on_circle(theta : float, center: Vector2, radius: float = 1.0) -> Vector2:
+	#var theta = randf() * TAU  # 随机角度
 	var point = Vector2(cos(theta), sin(theta)) * radius  # 圆周上的点
 	return center + point  # 平移到圆心
 

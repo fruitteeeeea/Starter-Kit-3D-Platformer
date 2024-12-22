@@ -12,7 +12,7 @@
 [ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="10_hqei4"]
 [ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="11_ifyp2"]
 [ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="12_q0odw"]
-[ext_resource type="PackedScene" uid="uid://ercle1g605m2" path="res://Unit/Payload/move_payload.tscn" id="13_6g3b0"]
+[ext_resource type="PackedScene" uid="uid://bwemstfnlp6ix" path="res://Unit/Payload/move_payload_02.tscn" id="13_sqfx3"]
 [ext_resource type="PackedScene" uid="uid://dc261m8r6wpdu" path="res://Unit/Facility/enter_shop_level_button.tscn" id="14_8thwj"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="14_huurl"]
 
@@ -120,7 +120,8 @@ path_continuous_u = true
 path_u_distance = 0.69
 path_joined = false
 
-[node name="MovePayload" parent="Path3D" instance=ExtResource("13_6g3b0")]
+[node name="MovePayload02" parent="Path3D" instance=ExtResource("13_sqfx3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -10)
 
 [node name="Basic Player" parent="." instance=ExtResource("14_huurl")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 11.4537, 3.51221, 10.1766)

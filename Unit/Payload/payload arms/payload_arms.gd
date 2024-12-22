@@ -31,8 +31,8 @@ var parent_payload : MovePayload
 func _ready() -> void:
 	fire_timer.start(fire_colddown)
 	fire_timer.paused = true
-	if get_parent() is MovePayload:
-		parent_payload = get_parent()
+	if get_parent().get_parent() is MovePayload:
+		parent_payload = get_parent().get_parent()
 		parent_payload.payload_move.connect(_arms_state_actived.bind(true))
 		parent_payload.payload_stop.connect(_arms_state_actived.bind(false))
 

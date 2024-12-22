@@ -55,6 +55,7 @@ radius = 0.25
 height = 0.75
 
 [node name="EnemyStateTest03" instance=ExtResource("1_nmdsg")]
+collision_layer = 32
 script = ExtResource("2_7n4mu")
 Bullet = ExtResource("3_xa0an")
 

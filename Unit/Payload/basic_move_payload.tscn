@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://063ssd27415u"]
+
+[ext_resource type="Script" path="res://Unit/Payload/basic_move_payload.gd" id="1_ahkbt"]
+[ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://UI/payload_progress_ui.tscn" id="2_y2hqa"]
+[ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://Unit/VisualEffect/alert_material.tres" id="3_quseh"]
+
+[node name="BasicMovePayload" type="PathFollow3D"]
+script = ExtResource("1_ahkbt")
+label = ExtResource("2_y2hqa")
+alert_color = ExtResource("3_quseh")

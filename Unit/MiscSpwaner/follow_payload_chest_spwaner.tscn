@@ -6,6 +6,7 @@
 [node name="follow_payload_chest_spwaner" type="Node3D"]
 script = ExtResource("1_gqevf")
 ChestList = Array[PackedScene]([ExtResource("2_b0p8k")])
+distance_to_payload = 2.0
 spwaner_timer = 1.0
 
 [node name="ChestSpwanTimer" type="Timer" parent="."]
