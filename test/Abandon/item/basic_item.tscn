@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cmsy3yogm81i2"]
 
-[ext_resource type="Script" path="res://test/attack/item/basic_item.gd" id="1_qsguh"]
+[ext_resource type="Script" path="res://test/Abandon/item/basic_item.gd" id="1_qsguh"]
 [ext_resource type="PackedScene" uid="uid://fg23drk7hoh8" path="res://test/drop item/soda_glass_2.tscn" id="1_sxafw"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="2_yb3hd"]
 

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WeaponLootEffect" load_steps=2 format=3 uid="uid://swcngttxdxx1"]
+
+[ext_resource type="Script" path="res://Unit/Loots/LootEffect/WeaponLootEffect.gd" id="1_dijk3"]
+
+[resource]
+script = ExtResource("1_dijk3")
+modify_property = ""
+modify_value = 0.0

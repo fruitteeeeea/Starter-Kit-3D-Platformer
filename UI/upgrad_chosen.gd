@@ -43,8 +43,8 @@ func add_loot_option_panel(number01 : int = LootServer.loot_nb_page):
 	for i in number01: #根据每页数量生成词条
 		var loot01 = LootServer.current_picked_loot[0] #挑选词条数组中的第一个元素
 		var loot_panel = LootOptionPanel.instantiate()
-		loot_panel.loot = loot01
-		loot_list.add_child(loot_panel)
+		loot_panel.loot = loot01 #此处加载战利品词条信息 是一个resource资源文件
+		loot_list.add_child(loot_panel) 
 		LootServer.current_picked_loot.erase(loot01)
 
 func _on_next_page_pressed() -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://wgb1b26ie4w5"]
 
-[ext_resource type="Script" path="res://test/LevelTest/prototype_test.gd" id="1_dq4uv"]
+[ext_resource type="Script" path="res://prototype_test.gd" id="1_dq4uv"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="2_2oxsu"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="3_5ao1d"]
 [ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="4_jwelj"]
@@ -9,7 +9,7 @@
 [ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="7_ee7h1"]
 [ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="8_xf12e"]
 [ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="9_alc6s"]
-[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://Unit/Enemy/rigid_enemy.tscn" id="10_ebrsn"]
+[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://test/Abandon/rigid_enemy.tscn" id="10_ebrsn"]
 [ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="11_ctvvs"]
 [ext_resource type="PackedScene" uid="uid://b3fibmjnlqia7" path="res://test/enemy/pizza.tscn" id="12_vdv0t"]
 [ext_resource type="PackedScene" uid="uid://di0n76sqbueep" path="res://test/target/target_enemy_spwaner.tscn" id="14_dofet"]

@@ -8,7 +8,7 @@ signal loot_status_update
 @onready var level_2_loot: Node = $level2_loot
 @onready var level_3_loot: Node = $level3_loot
 
-@export var level_1_loot_list := [] #等级1战利品
+@export var level_1_loot_list := [] #等级1战利品 #此处放置词条信息资源文件
 @export var level_2_loot_list := [] #等级2战利品
 @export var level_3_loot_list := [] #等级3战利品 
 

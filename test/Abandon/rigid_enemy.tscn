@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://so8eg7q6g3dn"]
 
-[ext_resource type="Script" path="res://Unit/Enemy/rigid_enemy.gd" id="1_j6oce"]
+[ext_resource type="Script" path="res://test/Abandon/rigid_enemy.gd" id="1_j6oce"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="1_n5r7a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okags"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://btdb7ttpjv4ek"]
+[gd_scene load_steps=32 format=3 uid="uid://btdb7ttpjv4ek"]
 
 [ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="1_3law7"]
 [ext_resource type="Script" path="res://Unit/Camera/view.gd" id="1_jro5e"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="3_qusnx"]
 [ext_resource type="PackedScene" uid="uid://csb3rp0raacor" path="res://Unit/Enemy/StateEnemy/enemy_state_test02.tscn" id="4_d5a8k"]
 [ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_lksb1"]
-[ext_resource type="PackedScene" uid="uid://so8eg7q6g3dn" path="res://Unit/Enemy/rigid_enemy.tscn" id="5_nx8uh"]
 [ext_resource type="PackedScene" uid="uid://bfo5c2x5m4cgb" path="res://test/attack/interactive_comp[onent/random_buff.tscn" id="5_ohgqq"]
 [ext_resource type="PackedScene" uid="uid://c5wjln7xt883p" path="res://test/GLB format/grass.glb" id="6_5repo"]
 [ext_resource type="Script" path="res://Unit/Enemy/enemy_spwaner.gd" id="8_01ata"]
@@ -21,14 +20,12 @@
 [ext_resource type="Script" path="res://test/Abandon/fence.gd" id="13_f55vn"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="13_fsq1c"]
 [ext_resource type="PackedScene" uid="uid://bn7xwvst3to0c" path="res://Unit/PhysicalObject/turkey.tscn" id="14_vpctm"]
-[ext_resource type="PackedScene" uid="uid://cmsy3yogm81i2" path="res://test/attack/item/basic_item.tscn" id="15_cvgpy"]
 [ext_resource type="Script" path="res://test/level/luck_combo!!.gd" id="17_acph1"]
 [ext_resource type="Script" path="res://test/level/player_status.gd" id="21_t5yi6"]
 [ext_resource type="Script" path="res://test/level/level_status.gd" id="22_lfo0c"]
 [ext_resource type="PackedScene" uid="uid://b13rt3lc5uulx" path="res://test/Abandon/loot_platform.tscn" id="25_ksjkp"]
-[ext_resource type="PackedScene" uid="uid://bf24q80s6qohr" path="res://test/scene/select_your_loot.tscn" id="26_d0fky"]
+[ext_resource type="PackedScene" uid="uid://bf24q80s6qohr" path="res://test/Abandon/select_your_loot.tscn" id="26_d0fky"]
 [ext_resource type="Texture2D" uid="uid://dxec5lu8e0j82" path="res://test/pannel.png" id="26_rvux6"]
-[ext_resource type="PackedScene" uid="uid://bho53njvwipfv" path="res://test/attack/interactive_comp[onent/dummy.tscn" id="27_0euas"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6lwo"]
 size = Vector3(20, 5, 18)
@@ -349,9 +346,6 @@ transform = Transform3D(0.751897, 0, 0.65928, 0, 1, 0, -0.65928, 0, 0.751897, -8
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 18.1047, 3.05559, -15.6581)
 Camera = NodePath("../View/Camera3D")
 
-[node name="RigidEnemy" parent="." instance=ExtResource("5_nx8uh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21721, 3.63249, 0.934228)
-
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("11_sen8d")
 
@@ -640,9 +634,6 @@ theme = SubResource("Theme_stvm6")
 
 [node name="SelectYourLoot" parent="." instance=ExtResource("26_d0fky")]
 
-[node name="Baisc Item" parent="." instance=ExtResource("15_cvgpy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10667, 1.70519, 2.38727)
-
 [node name="LootPlatform" parent="." node_paths=PackedStringArray("loot_pannel") instance=ExtResource("25_ksjkp")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 15.7313, 1.61109, -18.0563)
 loot_pannel = NodePath("../SelectYourLoot")
@@ -650,9 +641,6 @@ loot_pannel = NodePath("../SelectYourLoot")
 [node name="LootPlatform2" parent="." node_paths=PackedStringArray("loot_pannel") instance=ExtResource("25_ksjkp")]
 transform = Transform3D(0.697378, 0, -0.716704, 0, 1, 0, 0.716704, 0, 0.697378, 26.0709, 1.61109, -17.9055)
 loot_pannel = NodePath("../SelectYourLoot")
-
-[node name="Dummy" parent="." instance=ExtResource("27_0euas")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61561, 1.61683, 4.02715)
 
 [node name="Turkey" parent="." instance=ExtResource("14_vpctm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12779, 3.08107, -17.5824)
