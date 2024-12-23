@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgkr06ek2be6m"]
-
-[ext_resource type="PackedScene" uid="uid://dtx0srteju7gi" path="res://Unit/Loots/basic_player_loot.tscn" id="1_2n18u"]
-
-[node name="loot02" instance=ExtResource("1_2n18u")]
-modify_property = "jump_hight"
-text_display = "+部分跳跃高度"

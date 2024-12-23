@@ -1,8 +1,20 @@
-[gd_resource type="Resource" script_class="PlayerLootEffect" load_steps=2 format=3 uid="uid://b8w30tdpplmjj"]
+[gd_resource type="Resource" script_class="LootInfo" load_steps=4 format=3 uid="uid://b2w1hxgp1t03"]
 
-[ext_resource type="Script" path="res://Unit/Loots/LootEffect/PlayerLootEffect.gd" id="1_xyuku"]
+[ext_resource type="Script" path="res://Unit/Loots/LootEffect/PlayerLootEffect.gd" id="1_pwvir"]
+[ext_resource type="Script" path="res://Unit/Loots/LootInfo.gd" id="2_vqblb"]
 
-[resource]
-script = ExtResource("1_xyuku")
+[sub_resource type="Resource" id="Resource_6y2x6"]
+script = ExtResource("1_pwvir")
 modify_property = "multi_jump"
 modify_value = 1.0
+
+[resource]
+script = ExtResource("2_vqblb")
+LootType = "PlayerStatus"
+Rarity = "普通"
+Tag = "玩家"
+Property = "PlayerStatus"
+Description = ""
+rarity_color = Color(0.552941, 0.368627, 0.831373, 0.301961)
+tag_color = Color(0.713726, 0.835294, 0.235294, 1)
+loot_effect = SubResource("Resource_6y2x6")

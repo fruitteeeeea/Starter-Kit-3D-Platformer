@@ -5,7 +5,7 @@ signal loot_option_selected (loot01)
 var target : Node #修改目标
 var property : String #修改属性
 
-var loot : Loot
+var loot : LootInfo
 
 @onready var loot_rarity: Label = $MarginContainer/VBoxContainer/PanelContainer/LootRarity
 @onready var tag_color: ColorRect = $MarginContainer/VBoxContainer/PanelContainer2/TagColor
@@ -22,14 +22,14 @@ func _ready() -> void:
 	if !loot:
 		return
 	
-	rarity_color.color = loot.rarity_color
-	tag_color.color = loot.tag_color
+	rarity_color.color = loot.rarity_color #稀有度
+	tag_color.color = loot.tag_color #标签
 	
 	loot_rarity.text = loot.Rarity
 	loot_tag.text = loot.Tag
 	
-	loot_porperty.text = loot.text_display
-	loot_descrption.text = loot.Description
+	loot_porperty.text = loot.get_attribute_text()
+	loot_descrption.text = loot.get_description_text()
 
 func _on_button_button_up() -> void:
 	selected.show()

@@ -37,4 +37,4 @@ func _on_bomb_shooter_pressed() -> void:
 
 func _on_add_loot_pressed() -> void:
 	LootServer.update_loot_status(1)
-	$HBoxContainer/VBoxContainer2/add1xenemy.focus_mode = Control.FOCUS_NONE
+	$"HBoxContainer/VBoxContainer3/add loot".focus_mode = Control.FOCUS_NONE

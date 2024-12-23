@@ -1,8 +1,21 @@
-[gd_resource type="Resource" script_class="PayloadLootEffect" load_steps=3 format=3 uid="uid://dkgtv5ubanuxt"]
+[gd_resource type="Resource" script_class="LootInfo" load_steps=5 format=3 uid="uid://d18ftno8bben7"]
 
 [ext_resource type="PackedScene" uid="uid://bfhr2xb0upbex" path="res://Unit/Payload/payload arms/pl_at_bomb.tscn" id="1_1ovyl"]
 [ext_resource type="Script" path="res://Unit/Loots/LootEffect/PayloadLootEffect.gd" id="1_buain"]
+[ext_resource type="Script" path="res://Unit/Loots/LootInfo.gd" id="3_v7e2l"]
 
-[resource]
+[sub_resource type="Resource" id="Resource_njkj2"]
 script = ExtResource("1_buain")
 LootPayloadArms = ExtResource("1_1ovyl")
+ArmsName = "载具炸弹"
+
+[resource]
+script = ExtResource("3_v7e2l")
+LootType = "WeaponStatus"
+Rarity = "稀有"
+Tag = "载具"
+Property = "PayloadStatus"
+Description = "未设置描述"
+rarity_color = Color(0.552941, 0.368627, 0.831373, 0.6)
+tag_color = Color(0.172549, 0.772549, 0.964706, 1)
+loot_effect = SubResource("Resource_njkj2")

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://befmub7uf3vqh"]
-
-[ext_resource type="PackedScene" uid="uid://dwbta6jj3baax" path="res://Unit/Loots/basic_loot.tscn" id="1_issqe"]
-
-[node name="BasicPayloadLoot" instance=ExtResource("1_issqe")]
-Type = 2
-Tag = "载具"
-Property = "PayloadStatus"
-tag_color = Color(0.172549, 0.772549, 0.964706, 1)

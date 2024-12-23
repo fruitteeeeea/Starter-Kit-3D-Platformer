@@ -3,12 +3,10 @@ extends Node
 
 signal loot_status_update
 
-#所有等级词条直接添加到对应节点下
-@onready var level_1_loot: Node = $level1_loot #在此节点下添加所有1级词条
-@onready var level_2_loot: Node = $level2_loot
-@onready var level_3_loot: Node = $level3_loot
+@export var level_1_loot_list := [load("res://Unit/Loots/Loot/Player/1-1.tres"),
+load("res://Unit/Loots/Loot/Payload/2-1.tres"),
+load("res://Unit/Loots/Loot/Payload/2-2.tres")] #等级1战利品 #此处放置词条信息资源文件
 
-@export var level_1_loot_list := [] #等级1战利品 #此处放置词条信息资源文件
 @export var level_2_loot_list := [] #等级2战利品
 @export var level_3_loot_list := [] #等级3战利品 
 
@@ -27,17 +25,6 @@ var current_loot_page := 1 #当前页面
 #UI相关
 @export var loot_panel : PackedScene #战利品面板
 var loot_nb_page := 3 #每一页战利品数量 
-
-func _ready() -> void: #TD 修改加载等级战利品方法
-	#将各个等级下的词条子节点加入到数组中
-	for loot in level_1_loot.get_children():
-		level_1_loot_list.append(loot)
-	
-	for loot in level_2_loot.get_children():
-		level_2_loot_list.append(loot)
-		
-	for loot in level_3_loot.get_children():
-		level_3_loot_list.append(loot)
 
 #更新当前战利品等级
 func update_loot_level(info: Dictionary):
@@ -70,12 +57,14 @@ func pick_loot():
 		return
 	
 	var picked_loot_nb = round_loots_page * 3 #每页 3 个战利品 算出需要挑选的中战利品数量
+	#在此处确定好等级
+	
 	for i in range(picked_loot_nb):
 		var picked_loot = level_1_loot_list.pick_random() #在目标等级数组中随机挑选战利品 
 		current_picked_loot.append(picked_loot) #这就是当前挑选的战利品
 
 #玩家选择战利品
-func select_loot(loot01 : Loot):
+func select_loot(loot01 : LootInfo):
 	current_selected_loot.append(loot01) #目标战利品添加到当前选择列表中 
 
 #最后就是应用修改
@@ -87,15 +76,5 @@ func apply_modify():
 	loot_status_update.emit()
 
 
-func apply_status(loot01 : Loot): #应用具体数据
-	match loot01.Type:
-		loot01.LootType.PlayerStatus: #根据战利品类型修改对应参数
-			print("修改 PlayerSatus")
-			#var final_value = PlayerSatusServer.BasicStatus[loot01.modify_property] * loot01.modify_value
-			#PlayerSatusServer.ModifyStatus[loot01.modify_property] += final_value #添加对应值
-		loot01.LootType.WeaponStatus:
-			print("修改 WeaponSatus")
-		loot01.LootType.PayloadStatus:
-			print("修改 PayloadSatus")
-		loot01.LootType.EnemyStatus:
-			print("修改 EnemySatus")
+func apply_status(loot01 : LootInfo): #应用具体数据
+	loot01.loot_effect.apply_loot()

@@ -6,3 +6,4 @@ class_name WeaponLootEffect
 
 func apply_loot(): #玩家对应属性添加对应值
 	WeaponServers.modify_info[modify_property] += modify_value
+	print("修改 WeaponSatus")
