@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bslygqfdfikr"]
+[gd_scene load_steps=9 format=3 uid="uid://bslygqfdfikr"]
 
 [ext_resource type="Script" path="res://Servers/hud.gd" id="1_cbi3n"]
 [ext_resource type="Script" path="res://UI/massage.gd" id="2_1t4ei"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6f40e58mcty7" path="res://UI/gameplay_option.tscn" id="3_kiah5"]
 [ext_resource type="Script" path="res://UI/transition_screen.gd" id="4_jpnhp"]
 [ext_resource type="Script" path="res://Servers/level_info.gd" id="7_kyfr7"]
+[ext_resource type="Script" path="res://UI/debug_panel.gd" id="8_0b5bl"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_cbi3n")
@@ -314,4 +315,28 @@ layout_mode = 2
 text = "TimeLeft 00:00"
 horizontal_alignment = 1
 
+[node name="DebugPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_0b5bl")
+
+[node name="ColorRect" type="ColorRect" parent="DebugPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2)
+
+[node name="LineEdit" type="LineEdit" parent="DebugPanel/ColorRect"]
+layout_mode = 0
+offset_right = 67.0625
+offset_bottom = 31.0
+
 [connection signal="pressed" from="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Continue" to="PauseMenuPos/PauseMenu" method="_on_continue_pressed"]
+[connection signal="text_submitted" from="DebugPanel/ColorRect/LineEdit" to="DebugPanel" method="_on_line_edit_text_submitted"]

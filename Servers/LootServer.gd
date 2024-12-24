@@ -3,18 +3,11 @@ extends Node
 
 signal loot_status_update
 
-@export var level_1_loot_list := [load("res://Unit/Loots/Loot/Player/1-1.tres"),
-load("res://Unit/Loots/Loot/Payload/2-1.tres"),
-load("res://Unit/Loots/Loot/Payload/2-2.tres")] #等级1战利品 #此处放置词条信息资源文件
-
-@export var level_2_loot_list := [] #等级2战利品
-@export var level_3_loot_list := [] #等级3战利品 
-
 var current_loot_level := {} #当前关卡的战利品等级
 var current_shop_level := {} #当前关卡的商品等级
 
 var current_picked_loot := [] #当前呈现的战利品
-var current_selected_loot := [] #当前已选择的战利品
+var current_selected_loot := [] #当前已选择的战利品 
 
 var round_loots_nb := 0 #当前回合可选择战利品数量
 var round_loots_page := 0 #当前回合可选择战利品页数
@@ -60,7 +53,7 @@ func pick_loot():
 	#在此处确定好等级
 	
 	for i in range(picked_loot_nb):
-		var picked_loot = level_1_loot_list.pick_random() #在目标等级数组中随机挑选战利品 
+		var picked_loot = FileServer.level_2_loot_list.pick_random() #在目标等级数组中随机挑选战利品 
 		current_picked_loot.append(picked_loot) #这就是当前挑选的战利品
 
 #玩家选择战利品

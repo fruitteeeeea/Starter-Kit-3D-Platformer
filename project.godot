@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+FileServer="*res://Servers/FileServer.tscn"
 Audio="*res://scripts/audio.gd"
 SoundManager="*res://Servers/sound_manager.tscn"
 ProjectileServer="*res://Servers/ProjectileServer.gd"

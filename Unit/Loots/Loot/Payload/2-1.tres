@@ -11,10 +11,8 @@ ArmsName = "载具炸弹"
 
 [resource]
 script = ExtResource("3_v7e2l")
-LootType = "WeaponStatus"
 Rarity = "稀有"
 Tag = "载具"
-Property = "PayloadStatus"
 Description = "未设置描述"
 rarity_color = Color(0.552941, 0.368627, 0.831373, 0.6)
 tag_color = Color(0.172549, 0.772549, 0.964706, 1)
