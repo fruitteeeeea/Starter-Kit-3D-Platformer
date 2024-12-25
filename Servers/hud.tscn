@@ -316,6 +316,7 @@ text = "TimeLeft 00:00"
 horizontal_alignment = 1
 
 [node name="DebugPanel" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
