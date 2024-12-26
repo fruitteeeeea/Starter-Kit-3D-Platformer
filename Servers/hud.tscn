@@ -332,12 +332,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.2)
+color = Color(0, 0, 0, 0.501961)
 
-[node name="LineEdit" type="LineEdit" parent="DebugPanel/ColorRect"]
-layout_mode = 0
-offset_right = 67.0625
-offset_bottom = 31.0
+[node name="HBoxContainer" type="VBoxContainer" parent="DebugPanel/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LineEdit" type="LineEdit" parent="DebugPanel/ColorRect/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 
 [connection signal="pressed" from="PauseMenuPos/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/Continue" to="PauseMenuPos/PauseMenu" method="_on_continue_pressed"]
-[connection signal="text_submitted" from="DebugPanel/ColorRect/LineEdit" to="DebugPanel" method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="DebugPanel/ColorRect/HBoxContainer/LineEdit" to="DebugPanel" method="_on_line_edit_text_submitted"]

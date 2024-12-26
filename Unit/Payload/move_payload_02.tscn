@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bwemstfnlp6ix"]
+[gd_scene load_steps=48 format=4 uid="uid://bwemstfnlp6ix"]
 
 [ext_resource type="Script" path="res://Unit/Payload/move_payload_02.gd" id="1_dvh0u"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_rd5ar"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_kmjck"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_d3uyk"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="11_dgw3o"]
-[ext_resource type="PackedScene" uid="uid://co00qighsmlg6" path="res://Unit/Payload/payload arms/payload_arms.tscn" id="12_ydohw"]
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="16_ctvkm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atn3y"]
@@ -687,19 +686,7 @@ libraries = {
 autoplay = "moving"
 
 [node name="Arms" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391443, 0)
-
-[node name="PayloadArms3" parent="Arms" instance=ExtResource("12_ydohw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.391443, 0)
-
-[node name="PayloadArms4" parent="Arms" instance=ExtResource("12_ydohw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.391443, 0)
-weapon_type = 1
-fire_colddown = 2.0
-
-[node name="PayloadArms5" parent="Arms" instance=ExtResource("12_ydohw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.391443, 0)
-fire_colddown = 5.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442509, 0)
 
 [node name="DetectIndicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

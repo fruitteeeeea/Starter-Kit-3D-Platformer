@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://wgb1b26ie4w5"]
+[gd_scene load_steps=43 format=3 uid="uid://wgb1b26ie4w5"]
 
 [ext_resource type="Script" path="res://prototype_test.gd" id="1_dq4uv"]
 [ext_resource type="PackedScene" uid="uid://cq1r758b0q8ui" path="res://test/entery_point.tscn" id="2_2oxsu"]
@@ -19,9 +19,7 @@
 [ext_resource type="Shader" uid="uid://bhmoyftdlndgg" path="res://test/Shader/distance_shader_test.tres" id="18_dygxm"]
 [ext_resource type="Texture2D" uid="uid://bka2cg1mexkjb" path="res://test/Shader/pattern_01.svg" id="19_qm5n7"]
 [ext_resource type="PackedScene" uid="uid://cys28ci6xn58s" path="res://test/target/occupy_zone.tscn" id="21_nrsvd"]
-[ext_resource type="Script" path="res://test/test_manager.gd" id="22_wtsrp"]
 [ext_resource type="Script" path="res://test/level_target_test.gd" id="23_cuwl0"]
-[ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://UI/payload_progress_ui.tscn" id="24_dgxbv"]
 [ext_resource type="Script" path="res://UI/buff_indiactor_test.gd" id="25_d005f"]
 [ext_resource type="PackedScene" uid="uid://be1ruxyjak0wo" path="res://UI/buff_icon.tscn" id="26_0aamg"]
 [ext_resource type="Script" path="res://test/loot_number.gd" id="27_56qht"]
@@ -169,62 +167,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999659, 0.564809, 0.494062)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TestManager" type="Control" parent="CanvasLayer"]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("22_wtsrp")
-metadata/_edit_use_anchors_ = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TestManager"]
-layout_mode = 1
-offset_right = 330.0
-offset_bottom = 468.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TestManager/HBoxContainer"]
-layout_mode = 2
-
-[node name="CleanPlayerWeapon" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "清除玩家武器
-"
-
-[node name="SMG" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "SMG"
-
-[node name="Shotgun" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Shotgun
-"
-
-[node name="Reolver" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Reolver
-"
-
-[node name="Slugger" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Slugger"
-
-[node name="BombShooter" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "BombShooter
-"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/TestManager/HBoxContainer"]
-layout_mode = 2
-
-[node name="add loot" type="Button" parent="CanvasLayer/TestManager/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "添加战利品
-"
-
 [node name="LevelTargetTest" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 1
@@ -259,12 +201,6 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 max_value = 1.0
 step = 0.1
-
-[node name="PayloadProgressUI" parent="CanvasLayer" instance=ExtResource("24_dgxbv")]
-offset_left = 696.0
-offset_top = 824.0
-offset_right = 696.0
-offset_bottom = 824.0
 
 [node name="BuffIndiactorTest" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -385,7 +321,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.335, 0, 9.497)
 [node name="FollowEnemySpwaner04" parent="." instance=ExtResource("35_bkhkh")]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("36_yttye")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.72508, 3.05559, 8.48398)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.3426, 3.05559, -12.464)
 Camera = NodePath("../View/Camera3D")
 
 [node name="EnemyStateTest03" parent="." instance=ExtResource("37_4361j")]
@@ -402,13 +338,5 @@ UI = ExtResource("39_2p3jj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3146, 0, -15.2057)
 
 [node name="SpwanObject" type="Node" parent="."]
-
-[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/CleanPlayerWeapon" to="CanvasLayer/TestManager" method="_on_clean_player_weapon_pressed"]
-[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/SMG" to="CanvasLayer/TestManager" method="_on_smg_pressed"]
-[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/Shotgun" to="CanvasLayer/TestManager" method="_on_shotgun_pressed"]
-[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/Reolver" to="CanvasLayer/TestManager" method="_on_reolver_pressed"]
-[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/Slugger" to="CanvasLayer/TestManager" method="_on_slugger_pressed"]
-[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer/BombShooter" to="CanvasLayer/TestManager" method="_on_bomb_shooter_pressed"]
-[connection signal="pressed" from="CanvasLayer/TestManager/HBoxContainer/VBoxContainer3/add loot" to="CanvasLayer/TestManager" method="_on_add_loot_pressed"]
 
 [editable path="BasicGroundButton"]
