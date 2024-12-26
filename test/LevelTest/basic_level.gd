@@ -9,6 +9,8 @@ extends Node3D
 @onready var path_3d: Path3D = $Path3D
 
 @onready var entery_point: Area3D = $EnteryPoint #初始地点
+@onready var enter_shop_level_button: Node3D = $EnterShopLevelButton #离开地点
+
 
 @onready var level_timer: Timer = $LevelTimer #关卡计时器
 @onready var basic_player: CharacterBody3D = $"Basic Player" #玩家节点
