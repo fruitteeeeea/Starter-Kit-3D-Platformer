@@ -3,8 +3,10 @@ extends Node
 
 signal loot_status_update
 
-var current_loot_level := {} #当前关卡的战利品等级
-var current_shop_level := {} #当前关卡的商品等级
+#var current_loot_level := {} #当前关卡的战利品等级
+#var current_shop_level := {} #当前关卡的商品等级
+var current_loot_level := 0 #当前关卡的战利品等级
+var current_shop_level := 0 #当前关卡的商品等级
 
 var current_picked_loot := [] #当前呈现的战利品
 var current_selected_loot := [] #当前已选择的战利品 
@@ -20,10 +22,9 @@ var current_loot_page := 1 #当前页面
 var loot_nb_page := 3 #每一页战利品数量 
 
 #更新当前战利品等级
-func update_loot_level(info: Dictionary):
+func update_loot_level(level01: int):
 	#根据字典内容更新战利品等级分布情况
-	current_loot_level.clear()
-	current_loot_level = info.duplicate()
+	current_loot_level = level01
 
 
 func update_shop_level(info: Dictionary):
@@ -53,7 +54,7 @@ func pick_loot():
 	#在此处确定好等级
 	
 	for i in range(picked_loot_nb):
-		var picked_loot = FileServer.level_2_loot_list.pick_random() #在目标等级数组中随机挑选战利品 
+		var picked_loot = FileServer.loot_tres_info[current_loot_level].pick_random() #在目标等级数组中随机挑选战利品 
 		current_picked_loot.append(picked_loot) #这就是当前挑选的战利品
 
 #玩家选择战利品

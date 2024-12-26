@@ -44,6 +44,13 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TopRightPos" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
 [node name="LevelMassage" type="Control" parent="."]
 visible = false
 layout_mode = 3

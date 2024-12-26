@@ -1,10 +1,11 @@
-[gd_scene load_steps=48 format=4 uid="uid://bwemstfnlp6ix"]
+[gd_scene load_steps=49 format=4 uid="uid://bwemstfnlp6ix"]
 
 [ext_resource type="Script" path="res://Unit/Payload/move_payload_02.gd" id="1_dvh0u"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_rd5ar"]
 [ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://Unit/VisualEffect/alert_material.tres" id="2_6i5qc"]
 [ext_resource type="PackedScene" uid="uid://b6vk7xc8fcwcd" path="res://UI/payload_progress_ui.tscn" id="2_mf5hf"]
 [ext_resource type="Script" path="res://Unit/Payload/detect_indicator.gd" id="2_omvkw"]
+[ext_resource type="PackedScene" uid="uid://btalaslyy1lnc" path="res://UI/payload_message_ui.tscn" id="3_48jsv"]
 [ext_resource type="PackedScene" uid="uid://bwomwewgk2lff" path="res://Unit/DropItem/payload_rigids_apple.tscn" id="4_x142b"]
 [ext_resource type="PackedScene" uid="uid://cy726dgleckc6" path="res://Unit/DropItem/payload_rigids_lemon.tscn" id="5_ykvdn"]
 [ext_resource type="PackedScene" uid="uid://cthj57j0hyu7b" path="res://Unit/DropItem/payload_rigids_orange.tscn" id="6_6ix56"]
@@ -638,8 +639,10 @@ shadow_mesh = SubResource("ArrayMesh_emews")
 loop = false
 script = ExtResource("1_dvh0u")
 label = ExtResource("2_mf5hf")
+message = ExtResource("3_48jsv")
 alert_color = ExtResource("2_6i5qc")
 RigidItems = Array[PackedScene]([ExtResource("4_x142b"), ExtResource("5_ykvdn"), ExtResource("6_6ix56")])
+loot_nb = 5
 
 [node name="Vechice" type="Node3D" parent="."]
 transform = Transform3D(-3.61999e-06, 0, -1, 0, 1, 0, 1, 0, -3.61999e-06, 0, 0, 0)

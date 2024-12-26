@@ -15,18 +15,37 @@ var final_level_scene := "res://Unit/Level/SpecialLevelScene/CompleteLevel.tscn"
 var defult_level_info := "res://Unit/Level/NormalLevelScene/0/00.tres" #默认的关卡信息
 
 #====战利品==== #所有关于战利品的都存放在Unit/Loots/ 下的对应等级文件中 #记得使用load
-var loot_tres := "res://Unit/Loots/Loot/" #战利品资源文件
+var loot_tres := [ #战利品资源文件 #扫描在这几个位置 扫描出来的战利品放进字典里
+	"res://Unit/Loots/Loot/Enemy/",
+	"res://Unit/Loots/Loot/Payload/",
+	"res://Unit/Loots/Loot/Player/",
+	"res://Unit/Loots/Loot/Weapon/"
+]
+var loot_tres_info := { 0 : [], 1 : [], 2 : [], 3 : [] } #所有战利品资源文件的信息
 
-@export var level_1_loot_list := [load("res://Unit/Loots/Loot/Player/1-1.tres"),
-load("res://Unit/Loots/Loot/Player/1-2.tres"),
-load("res://Unit/Loots/Loot/Player/1-3.tres")] #等级1战利品 #此处放置词条信息资源文件
+func _ready() -> void:
+	get_all_loots_tres()
 
-@export var level_2_loot_list := [load("res://Unit/Loots/Loot/Payload/2-1.tres"),
-load("res://Unit/Loots/Loot/Payload/2-2.tres"),
-load("res://Unit/Loots/Loot/Payload/2-3.tres")
+#获取所有的 loot 资源文件 #TODO 在游戏开始前获取所有资源文件
+func get_all_loots_tres(): 
+	for i in loot_tres:
+		var dir = DirAccess.open(i)
+		
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.begins_with("0") && file_name.ends_with(".tres"):
+				loot_tres_info[0].append(load(i.path_join(file_name)))
+			if file_name.begins_with("1") && file_name.ends_with(".tres"):
+				loot_tres_info[1].append(load(i.path_join(file_name)))
+			elif file_name.begins_with("2") && file_name.ends_with(".tres"):
+				loot_tres_info[2].append(load(i.path_join(file_name)))
+			elif file_name.begins_with("3") && file_name.ends_with(".tres"):
+				loot_tres_info[3].append(load(i.path_join(file_name)))
+			file_name = dir.get_next()
+		dir.list_dir_end() #结束遍历
 	
-] #等级2战利品
-@export var level_3_loot_list := [] #等级3战利品 
+	print("已获取所有 loot 资源信息", loot_tres_info) #扫描出所有符合要求的loot资源文件
 
 #获取关卡场景实例
 func get_next_level_scene(leve_info01 : LevelInfo): #总是获取下一个关卡场景
@@ -34,7 +53,7 @@ func get_next_level_scene(leve_info01 : LevelInfo): #总是获取下一个关卡
 
 	var result_level_scene := [] #关卡实例 #扫描出来的关卡场景
 	var result_level_tres := [] #关卡信息 #扫描出来的关卡信息
-	var target_folder_path = FileServer.normal_level_dir.path_join(str(next_level)) #打开对应关卡文件夹
+	var target_folder_path = normal_level_dir.path_join(str(next_level)) #打开对应关卡文件夹
 	
 	var dir = DirAccess.open(target_folder_path) #打开目标文件夹
 	

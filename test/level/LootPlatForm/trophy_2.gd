@@ -13,5 +13,9 @@ func _process(delta):
 func _on_area_3d_body_entered(body: Node3D) -> void: #玩家触碰最终奖杯
 	Hud.level_massage.show_massage("已完成本轮游戏！", "即将返回主菜单")
 	await get_tree().create_timer(2.0).timeout
+	
 	LevelServer.level_info = load(FileServer.defult_level_info) #重置一下关卡信息
+	PlayerSatusServer.reset_modify_status() #重置一下所有玩家局内加成
+	PayloadServer.current_payload_arms.clear() #重置一下所有载具武装
+	
 	LevelServer.change_scene(FileServer.title_level_scene)

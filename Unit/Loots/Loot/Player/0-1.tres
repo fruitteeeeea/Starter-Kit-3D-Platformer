@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LootInfo" load_steps=2 format=3 uid="uid://bfvej3kafp2k5"]
+
+[ext_resource type="Script" path="res://Unit/Loots/LootInfo.gd" id="2_2rt7k"]
+
+[resource]
+script = ExtResource("2_2rt7k")
+Rarity = "普通"
+Tag = "玩家"
+Description = "占位用词条"
+rarity_color = Color(0, 0, 0, 1)
+tag_color = Color(0, 0, 0, 1)

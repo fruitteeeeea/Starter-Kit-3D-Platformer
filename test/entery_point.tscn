@@ -44,6 +44,8 @@ shadow_mesh = SubResource("ArrayMesh_2y52e")
 size = Vector3(1, 5, 1)
 
 [node name="EnteryPoint" type="Area3D"]
+collision_layer = 0
+collision_mask = 64
 
 [node name="indicator-special-cross" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.33, 0)

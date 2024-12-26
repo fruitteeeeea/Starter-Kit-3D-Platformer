@@ -1,5 +1,7 @@
 extends Node
 
+signal level_complete_requirement_met
+
 @export var level_info : LevelInfo
 @export var final_level := 3 #最后一关是第3关 最后一关结束之后不会被传送到商店 而是通关关卡
 

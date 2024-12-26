@@ -7,8 +7,11 @@ signal payload_complete (payload01) #当到达终点时发出信号
 
 @export var is_loop_payload := false #是否为无限循环的车子
 @export var label : PackedScene
+@export var message : PackedScene
 @export var alert_color : Material
 @export var RigidItems : Array[PackedScene] #列表
+
+@export var loot_nb := 1
 
 var max_move_speed := 2.5 #玩家推动
 var current_move_speed := 0.0

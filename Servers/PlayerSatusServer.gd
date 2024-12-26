@@ -35,3 +35,7 @@ func get_player_status(status01: String) -> float: #综合三个数值之后得�
 	var final_value = 0
 	final_value = BasicStatus[status01] + ModifyStatus[status01] + BuffStatus[status01]
 	return final_value
+
+func reset_modify_status():
+	for i in ModifyStatus:
+		ModifyStatus[i] = 0.0

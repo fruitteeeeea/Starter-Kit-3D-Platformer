@@ -62,7 +62,6 @@ func _on_detect_player_body_entered(body: Node3D) -> void:
 
 func _on_detect_player_body_exited(body: Node3D) -> void:
 	player_enter = false
-	print("player exit")
 
 
 func _on_detect_enemy_body_entered(body: Node3D) -> void:

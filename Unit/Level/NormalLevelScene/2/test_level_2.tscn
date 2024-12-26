@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bh8efddmke1ed" path="res://test/LevelTest/basic_level.tscn" id="1_13ljg"]
 
 [node name="TestLevel2" instance=ExtResource("1_13ljg")]
+
+[node name="MovePayload02" parent="Path3D" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 0, -10)

@@ -41,6 +41,8 @@ func _ready() -> void:
 	entery_point.area_exited.connect(level_start) #离开黄圈 关卡开始
 	level_timer.timeout.connect(level_complete) #计时器完成 关卡结束
 
+	LevelServer.level_complete_requirement_met.connect(level_complete)
+
 #添加各类生成器
 func add_spwaners(): 
 	var main_level = get_tree().current_scene #直接加载在主场景下
@@ -70,12 +72,19 @@ func level_start():
 
 
 func level_complete():
+	print("已完成关卡")
 	#判断玩家是否完成关卡目标
 	#否 玩家失败
 	#是 玩家进入过渡层
 	
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(enter_shop_level_button, "position:y", 0.0, .5)
+	
 	#展示战利品结算界面
 	#展示商店？
-	
 	#关卡
 	pass
+
+#玩家离开区域 关卡开始
+func _on_entery_point_body_exited(body: Node3D) -> void:
+	entery_point.queue_free()

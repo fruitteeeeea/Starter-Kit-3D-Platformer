@@ -52,10 +52,11 @@ text = "主武器"
 horizontal_alignment = 1
 
 [node name="LootPorperty" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "属性+20
-属性+20"
+text = "增加玩家跳跃高度"
+autowrap_mode = 1
 
 [node name="LootDescrption" type="Label" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)

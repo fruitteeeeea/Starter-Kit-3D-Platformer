@@ -5,6 +5,7 @@ class_name LootInfo
 @export_enum("普通", "稀有", "传奇") var Rarity : String = "普通" #战利品稀有度
 @export_enum("玩家", "武器", "载具", "敌人") var Tag : String = "玩家" #战利品标签
 
+@export_multiline var AttributeText : String = "未设置描述" #战利品描述
 @export_multiline var Description : String = "未设置描述" #战利品描述
 
 #稀有度和标签颜色
@@ -16,13 +17,13 @@ class_name LootInfo
 
 func get_attribute_text() -> String:
 	#根据 loot_effect的效果撰写描述
-	var text = "未设置属性"
+	var text = AttributeText
 	
-	if loot_effect is PlayerLootEffect: 
-		text = loot_effect.modify_property + str(loot_effect.modify_value)
-	
-	if loot_effect is PayloadLootEffect:
-		text = "添加" + loot_effect.ArmsName
+	#if loot_effect is PlayerLootEffect: 
+		#text = loot_effect.modify_property + str(loot_effect.modify_value)
+	#
+	#if loot_effect is PayloadLootEffect:
+		#text = "添加" + loot_effect.ArmsName
 	
 	return text
 

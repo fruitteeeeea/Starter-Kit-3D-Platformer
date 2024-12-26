@@ -21,6 +21,10 @@ func add_payload(payload01 :  MovePayload):
 	payload01.payload_stop.connect(label._payload_stop)
 	payload01.payload_complete.connect(label._payload_complete)
 	Hud.add_child(label)
+	
+	var message = payload01.message.instantiate() #message 相关
+	payload01.payload_complete.connect(message._payload_complete)
+	Hud.top_right_pos.add_child(message)
 
 
 func _payload_move(payload01):
@@ -31,12 +35,17 @@ func _payload_stop(payload01):
 	current_actived_payloads.clear()
 
 #完成推车
-func _payload_complete(payload01):
-	var loot_nb01 = 1 #完成推车增加1个战利品 
+func _payload_complete(payload01 : MovePayload):
+	var loot_nb01 = payload01.loot_nb #完成推车增加1个战利品 
 	for i in range(payload01.complete_debuff.size()):
 		loot_nb01 += 1 #每个完成的debuff挑战增加1个战利品
 	
-	LootServer.update_loot_status(loot_nb01, 1)
+	var loot_pg = round(loot_nb01 / 3) + 1
+	
+	LootServer.update_loot_status(loot_nb01, loot_pg)
+	#如果达到了最低的通关要求 可以向关卡管理发送已达成同关条件
+	LevelServer.level_complete_requirement_met.emit()
+	
 
 #为车子添加武装
 func add_payload_arms(payload01: MovePayload): 

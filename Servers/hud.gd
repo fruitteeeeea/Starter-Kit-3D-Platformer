@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var central_pos: Control = $CentralPos #游戏UI中心区域
 var central_pos_panel := [] #当前中心区域展示的panel
+@onready var top_right_pos: Control = $TopRightPos #游戏UI右上区域
+var topright_pos_panel := [] #当前右上心区域展示的panel
 
 @onready var massage: Control = $Massage
 
