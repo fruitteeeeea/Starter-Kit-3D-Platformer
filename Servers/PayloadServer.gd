@@ -24,7 +24,7 @@ func add_payload(payload01 :  MovePayload):
 	
 	var message = payload01.message.instantiate() #message 相关
 	payload01.payload_complete.connect(message._payload_complete)
-	Hud.top_right_pos.add_child(message)
+	Hud.bottom_right_pos.add_child(message)
 
 
 func _payload_move(payload01):

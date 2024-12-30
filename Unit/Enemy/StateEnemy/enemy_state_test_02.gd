@@ -142,6 +142,8 @@ func _on_dead_state_entered() -> void:
 
 #死亡方法 以及掉落
 func die(drop_item := true):
+	SoundManager.play_sfx("EnemyDeadSFX", true) #死亡音效
+	
 	is_dying = true
 	enemy_dead.emit(self)
 	

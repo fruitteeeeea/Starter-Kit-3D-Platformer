@@ -4,6 +4,9 @@ extends CanvasLayer
 var central_pos_panel := [] #当前中心区域展示的panel
 @onready var top_right_pos: Control = $TopRightPos #游戏UI右上区域
 var topright_pos_panel := [] #当前右上心区域展示的panel
+@onready var bottom_right_pos: Control = $BottomRightPos
+var bottom_right_pos_panel := [] #当前右下角区域展示的panel
+
 
 @onready var massage: Control = $Massage
 

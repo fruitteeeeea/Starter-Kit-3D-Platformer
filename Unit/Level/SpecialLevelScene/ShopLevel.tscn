@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://bjmyw1gsg1x6t"]
+[gd_scene load_steps=14 format=4 uid="uid://bjmyw1gsg1x6t"]
 
 [ext_resource type="PackedScene" uid="uid://b86bkk20muc6b" path="res://Unit/Level/level_type_01.tscn" id="1_mixhm"]
+[ext_resource type="Script" path="res://UI/check_loot_nb.gd" id="2_4xk8u"]
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="3_qdm5i"]
 [ext_resource type="PackedScene" uid="uid://dxxym3sxaptvh" path="res://UI/enter_next_level.tscn" id="4_ajdly"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="6_rkvsw"]
@@ -92,7 +93,25 @@ shadow_mesh = SubResource("ArrayMesh_1ju0v")
 [node name="Label3D" parent="World/TopButton" index="2"]
 text = "进入下一关"
 
-[node name="EnterNextLevel" type="Node" parent="World/TopButton/Method" index="0"]
+[node name="CheckLootNb" type="Node" parent="World/TopButton/Method" index="0" node_paths=PackedStringArray("panel")]
+script = ExtResource("2_4xk8u")
+panel = NodePath("Control")
+
+[node name="Control" type="PanelContainer" parent="World/TopButton/Method/CheckLootNb" index="0"]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 147.0
+offset_bottom = 192.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="World/TopButton/Method/CheckLootNb/Control" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "未选择战利品"
+
+[node name="EnterNextLevel" type="Node" parent="World/TopButton/Method" index="1"]
 script = ExtResource("3_qdm5i")
 UI = ExtResource("4_ajdly")
 

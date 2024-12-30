@@ -75,6 +75,9 @@ func _on_detect_enemy_body_exited(body: Node3D) -> void:
 func _on_complete_state_entered() -> void:
 	payload_complete.emit(self) #车子到达终点 发出信号
 	$Vechice/VechiceAnimationPlayer.play("complete")
+	$AuraEffect.emitting = true
+	$AuraEffect2.emitting = true
+	SoundManager.play_sfx("PayloadCompleteSFX")
 	await $Vechice/VechiceAnimationPlayer.animation_finished
 	Hud.level_massage.show_massage("已完成载具运送", "前往下一个目标或离开关卡")
 	queue_free()

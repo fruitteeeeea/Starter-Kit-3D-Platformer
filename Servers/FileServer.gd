@@ -14,6 +14,12 @@ var final_level_scene := "res://Unit/Level/SpecialLevelScene/CompleteLevel.tscn"
 #默认关卡info
 var defult_level_info := "res://Unit/Level/NormalLevelScene/0/00.tres" #默认的关卡信息
 
+var level_tres_info :={ #临时 导出用记录方法
+	1 : ["res://Unit/Level/NormalLevelScene/1/test_level_1.tscn", "res://Unit/Level/NormalLevelScene/1/01.tres"],
+	2 : ["res://Unit/Level/NormalLevelScene/2/test_level_2.tscn", "res://Unit/Level/NormalLevelScene/2/01.tres"],
+	3 : ["res://Unit/Level/NormalLevelScene/3/test_level_3.tscn", "res://Unit/Level/NormalLevelScene/3/01.tres"]
+}
+
 #====战利品==== #所有关于战利品的都存放在Unit/Loots/ 下的对应等级文件中 #记得使用load
 var loot_tres := [ #战利品资源文件 #扫描在这几个位置 扫描出来的战利品放进字典里
 	"res://Unit/Loots/Loot/Enemy/",
@@ -21,7 +27,20 @@ var loot_tres := [ #战利品资源文件 #扫描在这几个位置 扫描出来
 	"res://Unit/Loots/Loot/Player/",
 	"res://Unit/Loots/Loot/Weapon/"
 ]
-var loot_tres_info := { 0 : [], 1 : [], 2 : [], 3 : [] } #所有战利品资源文件的信息
+
+var loot_tres_info := { 0 : [  #临时 导出用记录方法
+	load("res://Unit/Loots/Loot/Player/0-1.tres")
+], 1 : [
+	load("res://Unit/Loots/Loot/Player/1-1.tres"),
+	load("res://Unit/Loots/Loot/Player/1-2.tres"),
+	load("res://Unit/Loots/Loot/Player/1-3.tres"),
+], 2 : [
+	load("res://Unit/Loots/Loot/Payload/2-1.tres"),
+	load("res://Unit/Loots/Loot/Payload/2-2.tres"),
+	load("res://Unit/Loots/Loot/Payload/2-3.tres")
+], 3 : [
+	load("res://Unit/Loots/Loot/Player/3-1.tres")
+] } #所有战利品资源文件的信息
 
 func _ready() -> void:
 	get_all_loots_tres()
@@ -66,10 +85,13 @@ func get_next_level_scene(leve_info01 : LevelInfo): #总是获取下一个关卡
 			result_level_tres.append(target_folder_path.path_join(file_name)) #加入到关卡资源数组中
 		file_name = dir.get_next()
 	dir.list_dir_end() #结束遍历
-	print(["关卡实例", result_level_scene, "关卡信息", result_level_tres]) #扫描出所有符合要求的关卡场景文件
+	print(["已获取所有 level 资源信息", "关卡实例", result_level_scene, "关卡信息", result_level_tres]) #扫描出所有符合要求的关卡场景文件
 	
 	var final_scene = result_level_scene.pick_random() #得出最终关卡场景
 	var final_tres = result_level_tres.pick_random() #得出最终关卡信息
+	
+	#var final_scene = level_tres_info[next_level][0] #得出最终关卡场景
+	#var final_tres = level_tres_info[next_level][1] #得出最终关卡信息
 	
 	return [final_scene, final_tres] #返回关卡场景和关卡信息
 

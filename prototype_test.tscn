@@ -31,7 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://cfd4tnawju0ay" path="res://Unit/Facility/buff_test_ground_button.tscn" id="33_toiyo"]
 [ext_resource type="PackedScene" uid="uid://bf2tuy0g8hnxr" path="res://Unit/Enemy/follow_enemy_spwaner_02.tscn" id="35_bkhkh"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="36_yttye"]
-[ext_resource type="PackedScene" uid="uid://c3iha1stqvr32" path="res://Unit/Enemy/StateEnemy/enemy_state_test_03.tscn" id="37_4361j"]
+[ext_resource type="PackedScene" uid="uid://eedl6qegyukb" path="res://test/BossTest/deer_boss.tscn" id="37_jvw1b"]
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="37_w3g8n"]
 [ext_resource type="Script" path="res://Unit/Facility/ButtonShowPanel.gd" id="38_kej0k"]
 [ext_resource type="PackedScene" uid="uid://b5trjk6qnruqj" path="res://UI/upgrad_chosen.tscn" id="39_2p3jj"]
@@ -158,7 +158,8 @@ path_u_distance = 0.69
 path_joined = false
 
 [node name="MovePayload02" parent="PathTest/Path3D" instance=ExtResource("39_g7mb5")]
-transform = Transform3D(0.707105, 0, -0.707105, 0, 1, 0, 0.707105, 0, 0.707105, -16, -0.423, -16)
+transform = Transform3D(0.944713, -3.87376e-06, -0.327892, 4.36934e-06, 1, 7.74747e-07, 0.327892, -2.1646e-06, 0.944713, -18.2915, -0.422989, -11.9113)
+progress = 152.844
 
 [node name="OccupyZoneTest" type="Node3D" parent="."]
 
@@ -321,11 +322,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.335, 0, 9.497)
 [node name="FollowEnemySpwaner04" parent="." instance=ExtResource("35_bkhkh")]
 
 [node name="Basic Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("36_yttye")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -14.3426, 3.05559, -12.464)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -13.2388, 3.05559, -10.7354)
 Camera = NodePath("../View/Camera3D")
-
-[node name="EnemyStateTest03" parent="." instance=ExtResource("37_4361j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2844, 1.95902, -8.32331)
 
 [node name="BasicGroundButton" parent="." instance=ExtResource("37_w3g8n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114, 0, 8.795)
@@ -338,5 +336,8 @@ UI = ExtResource("39_2p3jj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3146, 0, -15.2057)
 
 [node name="SpwanObject" type="Node" parent="."]
+
+[node name="DeerBoss" parent="." instance=ExtResource("37_jvw1b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2333, 1.03684, -7.51051)
 
 [editable path="BasicGroundButton"]

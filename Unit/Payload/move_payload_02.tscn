@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bwemstfnlp6ix"]
+[gd_scene load_steps=64 format=4 uid="uid://bwemstfnlp6ix"]
 
 [ext_resource type="Script" path="res://Unit/Payload/move_payload_02.gd" id="1_dvh0u"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_rd5ar"]
@@ -13,8 +13,12 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="7_tgnv5"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="8_kmjck"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="9_d3uyk"]
+[ext_resource type="PackedScene" uid="uid://bfhr2xb0upbex" path="res://Unit/Payload/payload arms/pl_at_bomb.tscn" id="9_hfpt1"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="11_dgw3o"]
 [ext_resource type="PackedScene" uid="uid://bfpyhhr1e3nrl" path="res://Unit/DropItem/rigid_item_spwaner.tscn" id="16_ctvkm"]
+[ext_resource type="ArrayMesh" uid="uid://2yc34ps1bj6l" path="res://models/cylinder.obj" id="17_hm37q"]
+[ext_resource type="Shader" uid="uid://b2vhscqg2bn0t" path="res://Unit/Payload/cylinder_aur.tres" id="17_oblw5"]
+[ext_resource type="Texture2D" uid="uid://crh60whgt5b61" path="res://sprites/pattern_25.png" id="18_d8y7m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atn3y"]
 resource_name = "colormap"
@@ -635,6 +639,61 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_emews")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drpj7"]
+render_priority = 0
+shader = ExtResource("17_oblw5")
+shader_parameter/speed = Vector2(0, 6)
+shader_parameter/Texture2DParameter = ExtResource("18_d8y7m")
+
+[sub_resource type="Curve" id="Curve_gd8tc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.299013, 0.717526), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_prvdm"]
+curve = SubResource("Curve_gd8tc")
+
+[sub_resource type="Curve" id="Curve_6j0lr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_224kn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5e7le"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ivqt3"]
+curve_x = SubResource("Curve_6j0lr")
+curve_y = SubResource("Curve_224kn")
+curve_z = SubResource("Curve_5e7le")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wm8il"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 0.8
+scale_curve = SubResource("CurveXYZTexture_ivqt3")
+color = Color(1, 0.87451, 0.360784, 1)
+alpha_curve = SubResource("CurveTexture_prvdm")
+
+[sub_resource type="Curve" id="Curve_ff1rf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4gmwm"]
+curve_x = SubResource("Curve_6j0lr")
+curve_y = SubResource("Curve_ff1rf")
+curve_z = SubResource("Curve_5e7le")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vjwwp"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveXYZTexture_4gmwm")
+color = Color(1, 0.87451, 0.360784, 1)
+alpha_curve = SubResource("CurveTexture_prvdm")
+
 [node name="MovePayload02" type="PathFollow3D"]
 loop = false
 script = ExtResource("1_dvh0u")
@@ -690,6 +749,8 @@ autoplay = "moving"
 
 [node name="Arms" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.442509, 0)
+
+[node name="PLAtBOMB" parent="Arms" instance=ExtResource("9_hfpt1")]
 
 [node name="DetectIndicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -801,6 +862,28 @@ skeleton = NodePath("")
 
 [node name="RigidItemTimer" type="Timer" parent="RigidItemSpwaner"]
 autostart = true
+
+[node name="AuraEffect" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27086, 0)
+material_override = SubResource("ShaderMaterial_drpj7")
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 1.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_wm8il")
+draw_pass_1 = ExtResource("17_hm37q")
+
+[node name="AuraEffect2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27086, 0)
+material_override = SubResource("ShaderMaterial_drpj7")
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 1.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_vjwwp")
+draw_pass_1 = ExtResource("17_hm37q")
 
 [connection signal="body_entered" from="DetectPlayer" to="." method="_on_detect_player_body_entered"]
 [connection signal="body_entered" from="DetectPlayer" to="DetectIndicator" method="_on_detect_player_body_entered"]

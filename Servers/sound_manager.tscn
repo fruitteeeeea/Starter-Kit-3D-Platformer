@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bev1afvjcusac"]
+[gd_scene load_steps=30 format=3 uid="uid://bev1afvjcusac"]
 
 [ext_resource type="Script" path="res://Servers/sound_manager.gd" id="1_8i6x8"]
 [ext_resource type="AudioStream" uid="uid://ciuovsfdr7hfe" path="res://test/SFX/Mobile Buff 001.wav" id="2_ehnpd"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://d0e4tm5e817bi" path="res://test/SFX/Mineral Insectoid Pain 003.wav" id="20_36uo4"]
 [ext_resource type="AudioStream" uid="uid://crykemmwabuva" path="res://test/SFX/Mineral Insectoid Pain 004.wav" id="21_onpe6"]
 [ext_resource type="AudioStream" uid="uid://o2slllhhui58" path="res://test/SFX/Mineral Insectoid Pain 005.wav" id="22_qpdd0"]
+[ext_resource type="AudioStream" uid="uid://tn6p8rshq82d" path="res://sounds/Metal Impact Big D.wav" id="23_g8gky"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kfupq"]
 streams_count = 3
@@ -91,8 +92,13 @@ volume_db = -15.0
 
 [node name="EnemyDeadSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = SubResource("AudioStreamRandomizer_a5ixm")
-volume_db = -5.0
+volume_db = -8.0
 max_polyphony = 5
+
+[node name="PayloadCompleteSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("23_g8gky")
+volume_db = -8.0
+pitch_scale = 1.2
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_wxvwd")
