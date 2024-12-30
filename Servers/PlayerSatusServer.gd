@@ -36,6 +36,7 @@ func get_player_status(status01: String) -> float: #综合三个数值之后得�
 	final_value = BasicStatus[status01] + ModifyStatus[status01] + BuffStatus[status01]
 	return final_value
 
+#新的游戏会重置玩家加成状况
 func reset_modify_status():
 	for i in ModifyStatus:
 		ModifyStatus[i] = 0.0
