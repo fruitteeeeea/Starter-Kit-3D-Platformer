@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqp0ndk07ljxu"]
+
+[ext_resource type="PackedScene" uid="uid://bwomwewgk2lff" path="res://Unit/DropItem/payload_rigids_apple.tscn" id="1_nm4uv"]
+[ext_resource type="Script" path="res://test/joltTest/marker_3d.gd" id="2_vfkfh"]
+[ext_resource type="PackedScene" uid="uid://cy726dgleckc6" path="res://Unit/DropItem/payload_rigids_lemon.tscn" id="3_6b6ap"]
+[ext_resource type="PackedScene" uid="uid://cthj57j0hyu7b" path="res://Unit/DropItem/payload_rigids_orange.tscn" id="4_ull74"]
+[ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="5_wgshe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tm4fm"]
+size = Vector3(5, 5, 0.5)
+
+[node name="JoltTest" type="Node3D"]
+
+[node name="PayloadRigids" parent="." instance=ExtResource("1_nm4uv")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.87511, -0.510587)
+
+[node name="static" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.73237)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="static/StaticBody3D"]
+shape = SubResource("BoxShape3D_tm4fm")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="static"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.73957, 0, -0.496883)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="static/StaticBody3D3"]
+shape = SubResource("BoxShape3D_tm4fm")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="static"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.74628, 0, -0.496883)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="static/StaticBody3D4"]
+shape = SubResource("BoxShape3D_tm4fm")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="static"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.74628)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="static/StaticBody3D2"]
+shape = SubResource("BoxShape3D_tm4fm")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="static"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -2.23081, -0.510587)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="static/StaticBody3D5"]
+shape = SubResource("BoxShape3D_tm4fm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.47165)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+script = ExtResource("2_vfkfh")
+item01 = Array[PackedScene]([ExtResource("1_nm4uv"), ExtResource("3_6b6ap"), ExtResource("4_ull74")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_wgshe")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.91212, 0.355004, -0.204961, 0, 0.5, 0.866025, 0.409923, -0.789919, 0.45606, -23.5194, 9.37435, -3.25129)
+shadow_enabled = true
+shadow_opacity = 0.75

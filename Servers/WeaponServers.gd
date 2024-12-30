@@ -20,6 +20,14 @@ var weapon_info := {
 }
 
 var modify_info := {
+	"bullet_number" : 0,
+	"bullet_damage" : 0.0,
+	"bullet_scale" : 0.0,
+	"bullet_speed" : 0.0,
+	"spread_angle" : 0.0,
+	"random_speed" : 0.0,
+	"fire_colddown" : 0.0,
+	"bullet_interval" : 0.0
 }
 
 var buff_info := {

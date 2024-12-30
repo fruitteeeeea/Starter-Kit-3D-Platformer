@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerAttackInfo" load_steps=2 format=3 uid="uid://cualnmql4y65j"]
+
+[ext_resource type="Script" path="res://Unit/Battle/Attack/PlayerAttackInfo.gd" id="1_hfl0p"]
+
+[resource]
+script = ExtResource("1_hfl0p")
+damage = 10.0
+knockback_force = 10.0
+knockback_direction = Vector3(0, 1, 0)

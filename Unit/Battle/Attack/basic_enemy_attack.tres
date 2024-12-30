@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bob1sv3d3n6be"]
+
+[ext_resource type="Script" path="res://Unit/Battle/Attack/AttackInfo.gd" id="1_suwto"]
+
+[resource]
+script = ExtResource("1_suwto")
+damage = 1.0
+knockback_force = 1.0

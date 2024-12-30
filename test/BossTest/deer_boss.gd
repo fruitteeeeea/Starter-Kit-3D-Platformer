@@ -5,18 +5,22 @@ extends CharacterBody3D
 @export var blood_trail : PackedScene #死亡血迹
 
 #击中闪烁 #身体部分
-@onready var reindeer: MeshInstance3D = $Model/reindeer
-var body_parts := [reindeer]
+@onready var model: Node3D = $Model
+var body_parts := []
 
 @export var hit_flash_material : Material #受击时显示的材质
 @export var FloatingText : PackedScene
 
-@export var knockback_recover := .1 * 2 #击退中的恢复速度
-var knockback_direction : Vector3 #击退方向 相对于玩家的位置
-var knockback_strength : float #攻击来源的击退强度
+@export var health : HealthInfo
+
 
 func state_enemy():
 	pass
+
+func _ready() -> void:
+	for i in model.get_children():
+		body_parts.append(i)
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -35,5 +39,5 @@ func take_damage(knockback_strength01 : float, damge : float):
 	VisualServer.spwan_floating_text(FloatingText, global_position, damge)
 	
 	var player = get_tree().get_first_node_in_group("player")
-	knockback_direction = (global_position - player.global_position).normalized() * 3 + Vector3(0, 3, 0) #加一个向上的力
-	knockback_strength  = knockback_strength01
+	#health.knockback_direction = (global_position - player.global_position).normalized() * 3 + Vector3(0, 3, 0) #加一个向上的力
+	#health.knockback_strength  = knockback_strength01
