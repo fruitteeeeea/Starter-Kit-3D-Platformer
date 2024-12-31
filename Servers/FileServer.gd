@@ -22,10 +22,8 @@ var level_tres_info :={ #临时 导出用记录方法
 
 #====战利品==== #所有关于战利品的都存放在Unit/Loots/ 下的对应等级文件中 #记得使用load
 var loot_tres := [ #战利品资源文件 #扫描在这几个位置 扫描出来的战利品放进字典里
-	"res://Unit/Loots/Loot/Enemy/",
 	"res://Unit/Loots/Loot/Payload/",
-	"res://Unit/Loots/Loot/Player/",
-	"res://Unit/Loots/Loot/Weapon/"
+	"res://Unit/Loots/Loot/Player/"
 ]
 
 var loot_tres_info := { 0 : [  #临时 导出用记录方法

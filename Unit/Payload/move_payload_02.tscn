@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://bwemstfnlp6ix"]
+[gd_scene load_steps=66 format=4 uid="uid://bwemstfnlp6ix"]
 
 [ext_resource type="Script" path="res://Unit/Payload/move_payload_02.gd" id="1_dvh0u"]
 [ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_rd5ar"]
@@ -19,6 +19,8 @@
 [ext_resource type="ArrayMesh" uid="uid://2yc34ps1bj6l" path="res://models/cylinder.obj" id="17_hm37q"]
 [ext_resource type="Shader" uid="uid://b2vhscqg2bn0t" path="res://Unit/Payload/cylinder_aur.tres" id="17_oblw5"]
 [ext_resource type="Texture2D" uid="uid://crh60whgt5b61" path="res://sprites/pattern_25.png" id="18_d8y7m"]
+[ext_resource type="Script" path="res://Unit/Payload/waypoint.gd" id="20_p1dox"]
+[ext_resource type="Texture2D" uid="uid://dyonefn0nca1v" path="res://Unit/Payload/waypoint.svg" id="21_d873h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atn3y"]
 resource_name = "colormap"
@@ -646,8 +648,8 @@ shader_parameter/speed = Vector2(0, 6)
 shader_parameter/Texture2DParameter = ExtResource("18_d8y7m")
 
 [sub_resource type="Curve" id="Curve_gd8tc"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.299013, 0.717526), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.280156, 0.76585), -2.728, -2.728, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_prvdm"]
 curve = SubResource("Curve_gd8tc")
@@ -884,6 +886,31 @@ lifetime = 1.1
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_vjwwp")
 draw_pass_1 = ExtResource("17_hm37q")
+
+[node name="PayloadTop" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47572, 0)
+
+[node name="waypoint" type="Control" parent="PayloadTop"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("20_p1dox")
+text = "Payload"
+
+[node name="Label" type="Label" parent="PayloadTop/waypoint"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Marker" type="TextureRect" parent="PayloadTop/waypoint"]
+layout_mode = 1
+offset_left = -13.0
+offset_top = -26.0
+offset_right = 115.0
+offset_bottom = 102.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("21_d873h")
 
 [connection signal="body_entered" from="DetectPlayer" to="." method="_on_detect_player_body_entered"]
 [connection signal="body_entered" from="DetectPlayer" to="DetectIndicator" method="_on_detect_player_body_entered"]

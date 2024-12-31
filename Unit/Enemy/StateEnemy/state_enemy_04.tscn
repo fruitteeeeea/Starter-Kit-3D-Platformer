@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://capem3humv8pg"]
+
+[node name="StateEnemy04" type="CharacterBody3D"]
