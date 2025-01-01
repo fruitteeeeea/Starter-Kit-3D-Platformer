@@ -1,0 +1,2 @@
+extends WeaponStatus
+class_name ModifyWeaponStatus

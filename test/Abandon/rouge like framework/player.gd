@@ -5,7 +5,7 @@ extends Control
 
 #UI元素 分别对应属性名称 对应节点
 @export var Status_UI := {}
-@export var basic_ui := preload("res://test/rouge like framework/player_status_ui.tscn") #基础UI组件
+#@export var basic_ui := preload("res://test/rouge like framework/player_status_ui.tscn") #基础UI组件
 
 #====决定版====
 #白字属性

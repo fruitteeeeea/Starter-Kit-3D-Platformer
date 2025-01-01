@@ -8,48 +8,23 @@ signal ui_secondary_weapon_fire_rate(time : float) #向ui发送射击冷却信�
 #====武器具体参数====
 var can_shoot := true
 
-var weapon_info := {
-	"bullet_number" : 1,
-	"bullet_damage" : 1.0,
-	"bullet_scale" : 1.0,
-	"bullet_speed" : 1.0,
-	"spread_angle" : 5.0,
-	"random_speed" : 0.1,
-	"fire_colddown" : 1.0,
-	"bullet_interval" : 0.1
-}
-
-var modify_info := {
-	"bullet_number" : 0,
-	"bullet_damage" : 0.0,
-	"bullet_scale" : 0.0,
-	"bullet_speed" : 0.0,
-	"spread_angle" : 0.0,
-	"random_speed" : 0.0,
-	"fire_colddown" : 0.0,
-	"bullet_interval" : 0.0
-}
-
-var buff_info := {
-	"bullet_number" : 0,
-	"bullet_damage" : 0.0,
-	"bullet_scale" : 0.0,
-	"bullet_speed" : 0.0,
-	"spread_angle" : 0.0,
-	"random_speed" : 0.0,
-	"fire_colddown" : 0.0,
-	"bullet_interval" : 0.0
-}
+#白字属性
+@export var BasicStatus := BasicWeaponStatus.new()
+#应用战利品修改后的属性
+@export var ModifyStatus := ModifyWeaponStatus.new()
+#Buff 的加成属性
+@export var BuffStatus := BuffWeaponStatus.new()
 
 #====节点====
 var main_weapon : Node
 var second_weapon : Node
-var Player : CharacterBody3D
+var player : CharacterBody3D
 
 #获取具体数值
 func WeaponInfo(value01 : String) -> float:
 	var final_value = 0.0
-	final_value += weapon_info[value01] + modify_info.get(value01, 0) + buff_info.get(value01, 0)
+	#final_value += weapon_info[value01] + modify_info.get(value01, 0) + buff_info.get(value01, 0)
+	final_value += BasicStatus.status_info[value01] + ModifyStatus.status_info[value01] + BuffStatus.status_info[value01]
 	return final_value
 
 #==发射子弹 #子弹数量 #散射
@@ -90,21 +65,21 @@ func shoot_bomb(weapon01 : Node3D, bullet_scene : PackedScene):
 
 #添加武器
 func add_weapon(weapon01 : PackedScene):
-	if !Player:
+	if !player:
 		return
 
-	for i in Player.weapon.get_children():
+	for i in player.weapon.get_children():
 		if i is Weapon:
 			remove_weapon()
 
 	var weapon = weapon01.instantiate()
-	Player.weapon.add_child(weapon)
+	player.weapon.add_child(weapon)
 
 #移除武器
 func remove_weapon(): 
-	if !Player:
+	if !player:
 		return
 
-	for i in Player.weapon.get_children():
+	for i in player.weapon.get_children():
 		if i is Weapon:
 			i.queue_free()

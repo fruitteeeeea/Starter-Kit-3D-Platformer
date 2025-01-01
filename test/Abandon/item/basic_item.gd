@@ -44,5 +44,5 @@ func _on_detect_player_area_body_exited(body: Node3D) -> void:
 
 #角色应用buff
 func player_accept_power():
-	var modify_value = PlayerSatusServer.BasicStatus[property] * increase_value #获取增加量
+	var modify_value = PlayerSatusServer.BasicStatus.status_info[property] * increase_value #获取增加量
 	PlayerSatusServer.ModifyStatus[property] += modify_value #增加修改值

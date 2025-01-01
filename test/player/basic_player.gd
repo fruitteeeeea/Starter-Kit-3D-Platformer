@@ -4,16 +4,13 @@ signal coin_collected
 
 @export_subgroup("Components")
 @export var Camera: Camera3D
-@export var specific_weapon : Node3D
 @export var activate_followbot := false
 @export var FollowBot : PackedScene
 
-@onready var weapon: Node3D = $Weapon
-
+@onready var weapon: Node3D = $Weapon #这个节点下的子节点是武器场景
 
 @export_subgroup("Properties")
-#@export var movement_speed = 300
-@export var jump_strength = 7
+@export var player_status : BasicPlayerStatus
 
 var movement_velocity: Vector3
 var rotation_direction: float
@@ -39,9 +36,11 @@ var camera : Camera3D
 func _ready() -> void:
 	add_to_group("player")
 	
-	WeaponServers.Player = self
+	PlayerSatusServer.BasicStatus = player_status
+	WeaponServers.player = self
 	
 	Camera = get_viewport().get_camera_3d()
+
 	#if activate_followbot: #如果需要添加无人机
 		#add_bot()
 
@@ -151,7 +150,6 @@ func handle_controls(delta):
 	if input.length() > 1:
 		input = input.normalized()
 
-	#movement_velocity = input * movement_speed * delta
 	movement_velocity = input * PlayerSatusServer.get_player_status("move_speed") * delta
 
 	# Jumping
@@ -174,11 +172,10 @@ func handle_gravity(delta):
 
 # Jumping
 
-func jump(strength01 = jump_strength):
+func jump(strength01 : float = 7.0):
 
 	Audio.play("res://sounds/jump.ogg")
 
-	#gravity = -strength01
 	gravity = - PlayerSatusServer.get_player_status("jump_hight")
 
 	model.scale = Vector3(0.5, 1.5, 0.5)

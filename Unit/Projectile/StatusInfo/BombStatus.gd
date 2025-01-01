@@ -1,0 +1,2 @@
+extends ProjectileStatus
+class_name BombStatus

@@ -1,0 +1,2 @@
+extends EnemyStatus
+class_name BuffEnemyStatus

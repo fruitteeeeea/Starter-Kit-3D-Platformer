@@ -7,16 +7,7 @@ extends Weapon
 
 @onready var fire_sfx: AudioStreamPlayer = $FireSFX #音效节点
 
-@export var weapon_info := {
-	"bullet_number" : 1, #子弹倍率
-	"bullet_damage" : 1.0, #子弹伤害
-	"bullet_scale" : 1.0, #子弹体积
-	"bullet_speed" : 1.0, #子弹速度加成
-	"spread_angle" : 5.0, # 偏离的最大角度，以度数表示
-	"random_speed" : 0.1, #随机速度（射程）
-	"fire_colddown" : 1.0, #开火间隔
-	"bullet_interval" : 0.1 #多发子弹枪之间的间隔
-}
+@export var weapon_status : BasicWeaponStatus #武器的状态数据
 
 @export var BulletShell : PackedScene #弹壳场景
 @export var spwan_shell_change := .66
@@ -26,8 +17,7 @@ extends Weapon
 var player : CharacterBody3D
 
 func _ready() -> void:
-	WeaponServers.weapon_info.clear()
-	WeaponServers.weapon_info = weapon_info.duplicate(true) #传递字典值
+	WeaponServers.BasicStatus = weapon_status #更新一下数据
 	
 	await get_tree().create_timer(.01).timeout
 	player = get_tree().get_first_node_in_group("player") #获取玩家
