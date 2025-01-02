@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://uhrre7e7bf2s" path="res://Unit/DropItem/drop_normal_item_coins.tscn" id="12_vl4jd"]
 [ext_resource type="Texture2D" uid="uid://c166yt8qgsmq3" path="res://test/attack/food model/GLB format/Textures/colormap.png" id="14_24n2q"]
 [ext_resource type="Texture2D" uid="uid://dyjllxgpbhgll" path="res://test/enemy/caution_sign.png" id="16_neymm"]
-[ext_resource type="Script" path="res://test/StateTest/hit_player_ray_cast.gd" id="18_ejus3"]
+[ext_resource type="Script" path="res://Unit/Box/hit_player_ray_cast.gd" id="18_ejus3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xru77"]
 resource_name = "colormap"

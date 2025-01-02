@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs1y3y8kpdu1n" path="res://Unit/Projectile/basic_bullet.tscn" id="1_87wvx"]
 [ext_resource type="PackedScene" uid="uid://xua7u36lxw26" path="res://move/fire_ball_02.tscn" id="2_6mvji"]
-[ext_resource type="Script" path="res://test/StateTest/hit_player_ray_cast.gd" id="3_w5lri"]
+[ext_resource type="Script" path="res://Unit/Box/hit_player_ray_cast.gd" id="3_w5lri"]
 
 [node name="EnemyBullet" instance=ExtResource("1_87wvx")]
 collision_layer = 4
