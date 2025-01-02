@@ -30,7 +30,7 @@ func do_fire():
 	shoot_bullet()
 
 #射击子弹 #后期使用 ProjectileServer
-func shoot_bullet():
+func shoot_bullet(): 
 	fire_sfx.play()
 	add_bullet_shell() #添加弹壳
 	

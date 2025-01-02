@@ -35,6 +35,11 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		"add 10xloot":
 			LootServer.update_loot_status(9, 3)
 			print("添加 1 0 个战利品")
+		"complete all payload":
+			for i in PayloadServer.current_payload:
+				if is_instance_valid(i):
+					i.progress_ratio = 1.0
+				print("完成所有载具")
 		_:
 			print("未找到匹配方法")
 			

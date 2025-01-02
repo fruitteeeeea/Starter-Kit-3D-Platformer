@@ -1,4 +1,4 @@
-extends Resource
+extends Loot
 class_name LootInfo
 #此资源文件记载这战利品的信息
 

@@ -43,9 +43,9 @@ func _payload_complete(payload01 : MovePayload):
 	var loot_pg = round(loot_nb01 / 3) + 1
 	
 	LootServer.update_loot_status(loot_nb01, loot_pg)
-	#如果达到了最低的通关要求 可以向关卡管理发送已达成同关条件
-	LevelServer.level_complete_requirement_met.emit()
 	
+	LevelServer.level_complete_requirement_met.emit()#达到最低的通关要求
+	current_payload.clear() #顶空当前字典
 
 #为车子添加武装
 func add_payload_arms(payload01: MovePayload): 

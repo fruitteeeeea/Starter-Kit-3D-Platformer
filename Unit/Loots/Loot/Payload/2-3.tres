@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dgyfh0nmnww48" path="res://Unit/Payload/payload arms/pl_at_melee.tscn" id="1_61kte"]
 [ext_resource type="Script" path="res://Unit/Loots/LootEffect/PayloadLootEffect.gd" id="2_eyugy"]
-[ext_resource type="Script" path="res://Unit/Loots/LootInfo.gd" id="3_dlnyr"]
+[ext_resource type="Script" path="res://Unit/Loots/StatusInfo/LootInfo.gd" id="3_dlnyr"]
 
 [sub_resource type="Resource" id="Resource_njkj2"]
 script = ExtResource("2_eyugy")

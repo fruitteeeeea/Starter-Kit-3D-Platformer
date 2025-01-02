@@ -4,8 +4,7 @@ signal coin_collected
 
 @export_subgroup("Components")
 @export var Camera: Camera3D
-@export var activate_followbot := false
-@export var FollowBot : PackedScene
+@export var drone_info : DroneInfo
 
 @onready var weapon: Node3D = $Weapon #这个节点下的子节点是武器场景
 
@@ -46,17 +45,6 @@ func _ready() -> void:
 
 func player():
 	pass
-
-#添加无人机
-#func add_bot():
-	#await get_tree().create_timer(.5).timeout
-	#if FollowBot && follow_point:
-		#var follow_bot = FollowBot.instantiate()
-		#get_tree().root.add_child(follow_bot)
-		#follow_bot.position = follow_point.global_position
-		#follow_bot.player = self
-		#follow_bot.follow_point  = follow_point #赋予跟踪marker3d
-
 
 func _physics_process(delta):
 

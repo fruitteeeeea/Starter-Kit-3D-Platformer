@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LootInfo" load_steps=4 format=3 uid="uid://byk8h26ap1glo"]
+
+[ext_resource type="Script" path="res://Unit/Loots/LootEffect/WeaponLootEffect.gd" id="1_3uxbw"]
+[ext_resource type="Script" path="res://Unit/Loots/StatusInfo/LootInfo.gd" id="2_gyq2p"]
+
+[sub_resource type="Resource" id="Resource_np81b"]
+script = ExtResource("1_3uxbw")
+modify_property = ""
+modify_value = 0.0
+
+[resource]
+script = ExtResource("2_gyq2p")
+Rarity = "普通"
+Tag = "武器"
+AttributeText = "未设置描述"
+Description = "未设置描述"
+rarity_color = Color(0.552941, 0.368627, 0.831373, 0.301961)
+tag_color = Color(0.988235, 0.407843, 0.231373, 1)
+loot_effect = SubResource("Resource_np81b")

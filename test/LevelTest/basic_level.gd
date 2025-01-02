@@ -83,7 +83,6 @@ func level_complete():
 	#展示战利品结算界面
 	#展示商店？
 	#关卡
-	pass
 
 #玩家离开区域 关卡开始
 func _on_entery_point_body_exited(body: Node3D) -> void:

@@ -1,11 +1,19 @@
-[gd_resource type="Resource" script_class="LootInfo" load_steps=2 format=3 uid="uid://bfvej3kafp2k5"]
+[gd_resource type="Resource" script_class="LootInfo" load_steps=4 format=3 uid="uid://bfvej3kafp2k5"]
 
-[ext_resource type="Script" path="res://Unit/Loots/LootInfo.gd" id="2_2rt7k"]
+[ext_resource type="Script" path="res://Unit/Loots/LootEffect/PlayerLootEffect.gd" id="1_ycwge"]
+[ext_resource type="Script" path="res://Unit/Loots/StatusInfo/LootInfo.gd" id="2_2rt7k"]
+
+[sub_resource type="Resource" id="Resource_8ytex"]
+script = ExtResource("1_ycwge")
+modify_property = "move_speed"
+modify_value = 0.0
 
 [resource]
 script = ExtResource("2_2rt7k")
 Rarity = "普通"
 Tag = "玩家"
+AttributeText = "占位用0级词条"
 Description = "占位用词条"
 rarity_color = Color(0, 0, 0, 1)
 tag_color = Color(0, 0, 0, 1)
+loot_effect = SubResource("Resource_8ytex")
