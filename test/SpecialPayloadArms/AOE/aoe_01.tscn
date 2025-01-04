@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4a3voq3pla0u"]
+
+[ext_resource type="PackedScene" uid="uid://c7l3rysjjp0ux" path="res://test/SpecialPayloadArms/AOE/basic_area_aoe.tscn" id="1_feula"]
+
+[node name="AOE01" instance=ExtResource("1_feula")]
+aoe_range = 2.0

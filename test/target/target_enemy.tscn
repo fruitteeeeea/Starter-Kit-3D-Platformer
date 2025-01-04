@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=4 uid="uid://c3ndpg12bjjp3"]
 
 [ext_resource type="Script" path="res://test/target/target_enemy.gd" id="1_4w63p"]
-[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_mf7xx"]
+[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/PrototypeKit/Textures/colormap.png" id="1_mf7xx"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_yft5c"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_pj25f"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_habar"]

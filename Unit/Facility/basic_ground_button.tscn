@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://c7vf8dwe3tj4"]
 
-[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_7kgrs"]
+[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/PrototypeKit/Textures/colormap.png" id="1_7kgrs"]
 [ext_resource type="Script" path="res://Unit/Facility/basic_ground_button.gd" id="1_kccom"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm1ov"]

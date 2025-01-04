@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://7uvdr3yyn0pq"]
+
+[ext_resource type="Script" path="res://test/SpecialPayloadArms/test_manager.gd" id="1_1m5n4"]
+[ext_resource type="Script" path="res://Unit/Camera/view.gd" id="1_41ao4"]
+[ext_resource type="PackedScene" uid="uid://4a3voq3pla0u" path="res://test/SpecialPayloadArms/AOE/aoe_01.tscn" id="2_60di2"]
+[ext_resource type="Script" path="res://Unit/Camera/camera_3d.gd" id="2_cojxh"]
+[ext_resource type="Script" path="res://Unit/Camera/truma_component.gd" id="3_cuevt"]
+[ext_resource type="FastNoiseLite" uid="uid://cf8kmjxfov4l1" path="res://test/level/noise.tres" id="4_i4sl6"]
+[ext_resource type="Shader" path="res://move/ground_checkerboard.gdshader" id="5_2ktk2"]
+[ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="6_ygqt8"]
+[ext_resource type="Environment" uid="uid://d05prbjccscu6" path="res://move/envi01.tres" id="7_58w01"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hl4ym"]
+render_priority = 0
+shader = ExtResource("5_2ktk2")
+shader_parameter/albedo_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/uv_scale = 20.0
+shader_parameter/checkerboard_sampler = ExtResource("6_ygqt8")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5ysq8"]
+size = Vector2(40, 40)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ey3sm"]
+data = PackedVector3Array(40, 0, 40, -40, 0, 40, 40, 0, -40, -40, 0, 40, -40, 0, -40, 40, 0, -40)
+
+[node name="AoeTest" type="Node3D"]
+
+[node name="TestManager" type="Node" parent="."]
+script = ExtResource("1_1m5n4")
+AOE = ExtResource("2_60di2")
+
+[node name="View" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.12, 0)
+script = ExtResource("1_41ao4")
+
+[node name="Camera3D" type="Camera3D" parent="View"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, -4.5292, 8.51674, 3.69911)
+projection = 1
+size = 12.0
+far = 40.0
+script = ExtResource("2_cojxh")
+
+[node name="truma_component" type="Node" parent="View/Camera3D"]
+script = ExtResource("3_cuevt")
+max_x = 2.0
+max_y = 2.0
+max_z = 2.0
+max_trauma = 0.4
+noise = ExtResource("4_i4sl6")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Sun" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.91212, 0.355004, -0.204961, 0, 0.5, 0.866025, 0.409923, -0.789919, 0.45606, -23.5194, 9.37435, -3.25129)
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+material_override = SubResource("ShaderMaterial_hl4ym")
+mesh = SubResource("PlaneMesh_5ysq8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ey3sm")
+
+[node name="Environment" type="WorldEnvironment" parent="World"]
+environment = ExtResource("7_58w01")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.992157, 0.423529, 0.25098, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(1, 0.803922, 0.364706, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.4, 0.568627, 0.847059, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Control/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+color = Color(0.380392, 0.796078, 0.545098, 1)

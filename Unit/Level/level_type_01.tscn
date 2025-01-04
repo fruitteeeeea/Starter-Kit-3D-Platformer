@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b2jq6w3oviv25" path="res://move/checkerboard.svg" id="7_tsrgm"]
 [ext_resource type="PackedScene" uid="uid://c7vf8dwe3tj4" path="res://Unit/Facility/basic_ground_button.tscn" id="8_b2o62"]
 [ext_resource type="Texture2D" uid="uid://d3ue6gkrdi1xq" path="res://PototypeModel/FacilityModel/Textures/colormap.png" id="9_nr3j1"]
-[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="10_qn3qw"]
+[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/PrototypeKit/Textures/colormap.png" id="10_qn3qw"]
 [ext_resource type="PackedScene" uid="uid://dknht2bov7s7k" path="res://test/player/Basic Player.tscn" id="11_1s8n2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7sy5s"]

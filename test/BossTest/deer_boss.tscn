@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="6_032g2"]
 [ext_resource type="Resource" uid="uid://xko355h1npco" path="res://Unit/Battle/Health/basic_enemy_health.tres" id="6_pghhp"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_u4q7r"]
-[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="12_gd8yc"]
+[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/PrototypeKit/Textures/colormap.png" id="12_gd8yc"]
 [ext_resource type="Material" uid="uid://cvk45xm3vwolu" path="res://Unit/VisualEffect/alert_material.tres" id="14_6qfwo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7a0iq"]

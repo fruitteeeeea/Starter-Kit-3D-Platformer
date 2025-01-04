@@ -1,0 +1,134 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7l3rysjjp0ux"]
+
+[ext_resource type="Script" path="res://test/SpecialPayloadArms/AOE/basic_area_aoe.gd" id="1_4f6dw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rccsk"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7gr7"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 0.803922, 0.364706, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xgcfv"]
+size = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_ve5d1"]
+resource_name = "01"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.0947323, 0.0947323),
+"update": 0,
+"values": [1.0, 0.95]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.0947323, 0.0947323),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dfhrc"]
+resource_name = "02"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.2, 0.333333, 0.366667, 0.4, 0.466667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true, true, false, false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_cvel6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:material_override:transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v1sco"]
+_data = {
+"01": SubResource("Animation_ve5d1"),
+"02": SubResource("Animation_dfhrc"),
+"RESET": SubResource("Animation_cvel6")
+}
+
+[node name="BasicAreaAOE" type="Area3D"]
+script = ExtResource("1_4f6dw")
+mesh_color = Array[Color]([Color(0.992157, 0.423529, 0.25098, 1), Color(1, 0.803922, 0.364706, 1), Color(0.4, 0.568627, 0.847059, 1), Color(0.380392, 0.796078, 0.545098, 1)])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rccsk")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = SubResource("StandardMaterial3D_m7gr7")
+transparency = 0.8
+mesh = SubResource("PlaneMesh_xgcfv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v1sco")
+}

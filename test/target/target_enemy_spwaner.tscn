@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://di0n76sqbueep"]
 
-[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/GLB format/Textures/colormap.png" id="1_4md0k"]
+[ext_resource type="Texture2D" uid="uid://pxa5mjotgwir" path="res://PototypeModel/PrototypeKit/Textures/colormap.png" id="1_4md0k"]
 [ext_resource type="Script" path="res://test/target/target_enemy_spwaner.gd" id="1_do6nl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1og5"]
