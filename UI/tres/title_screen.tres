@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c5nsyokhnuod1"]
+
+[ext_resource type="FontFile" uid="uid://bipy4j1flwaub" path="res://fonts/NotoSansSC-ExtraBold.ttf" id="1_u8p43"]
+
+[resource]
+font = ExtResource("1_u8p43")
+font_size = 192
+font_color = Color(0.00392157, 0, 0.00784314, 1)
+shadow_size = 5
+shadow_color = Color(0.192157, 0.235294, 0.0627451, 1)
+shadow_offset = Vector2(13.6654, 13.6654)
